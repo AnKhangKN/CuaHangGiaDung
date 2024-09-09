@@ -1,1 +1,12 @@
 Trong đây chứa kết nối mysql đừng tạo ra một file khác tránh việc khó quản lý
+
+
+-- Lưu dữ liệu đã mã hóa vào cơ sở dữ liệu (khi INSERT password hãy INSERT theo cấu trúc này.)
+INSERT INTO users (username, password) 
+VALUES ('user1', AES_ENCRYPT('my_secret_password', 'encryption_key'));
+
+
+-- Lấy dữ liệu đã giải mã từ cơ sở dữ liệu (khi SELECT dữ liệu password hay theo cấu trúc này.)
+SELECT username, AES_DECRYPT(password, 'encryption_key') AS decrypted_password
+FROM users
+WHERE username = 'user1';
