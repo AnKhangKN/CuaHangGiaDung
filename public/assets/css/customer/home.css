@@ -1,0 +1,24 @@
+.header{
+    height: 80px;
+    background-color: black;
+}
+
+.header_nav{
+    display: flex;
+    
+}
+
+.nav_logo{
+
+}
+
+.nav_ul_list{
+    list-style: none;
+    line-height: 80px;
+    
+}
+
+.nav_ul_list_item{
+    display: inline-block;
+    
+}

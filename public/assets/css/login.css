@@ -14,23 +14,21 @@
     width: 9%;
 }
 
-.head_title{
+.header_title{
     
     font-size: 28px;
 }
 
-.form_s{
+.section_form{
     margin-top: 60px;
 }
 
-.input_f{
+.form_input{
     width: 100%;
     height: 50px;
     border-radius: 10px;
     border: 0.5px solid #818181 ;
     overflow: hidden;
-    
-    
 }
 
 #email_error, #password_error {
@@ -40,14 +38,14 @@
     font-size: 12px;
 }
 
-.input_f input[type=text]:focus, .input_f input[type=password]:focus{
+.form_input input[type=text]:focus, .form_input input[type=password]:focus{
     width: 100%;
     border-radius: 10px;
     padding-left: 15px;
     border: none;
 }
 
-.input_f input[type=text], .input_f input[type=password]{
+.form_input input[type=text], .form_input input[type=password]{
     
     width: 100%;
     height: 50px;
@@ -55,21 +53,21 @@
     padding-left: 15px;
 }
 
-.input_p{
+.form_input_password{
     margin-top: 20px;
 }
 
-.text_e{
+.form_text{
     color: rgb(117, 117, 117);
     margin-top: 80px;
 }
 
-.btn_group{
+.form_btn{
     position: relative;
     margin-top: 20px;
 }
 
-.btn_s{
+.form_btn_save{
     position: absolute;
     right: 0;
     padding: 12px 24px;
@@ -80,15 +78,22 @@
     font-weight: bold;
 }
 
-.btn_b{
+.form_btn_back{
     position: absolute;
     left: 0;
     top: 15px;
 }
 
-.btn_signup{
-    position: absolute;
-    top: 125px;
-    left: 110px;
+.form_remember{
+    display: flex;  
+}
+
+.form_remember_text{
+    margin-top: 14px;
+    margin-left: 15px;
+}
+
+.form_remember_text{
+    color: rgb(117, 117, 117);
     
 }
