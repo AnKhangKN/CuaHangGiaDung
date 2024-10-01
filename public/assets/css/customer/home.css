@@ -1,24 +1,131 @@
 .header{
     height: 80px;
     background-color: black;
+    position: sticky;
 }
 
 .header_nav{
     display: flex;
+    position: relative;
     
 }
 
 .nav_logo{
+    position: absolute;
+    left: 32px;
+    width: 3%;
+    line-height: 80px;
+}
 
+.nav_logo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .nav_ul_list{
     list-style: none;
     line-height: 80px;
-    
+    position: absolute;
+    left: 70px;
+    text-transform: uppercase;
 }
 
 .nav_ul_list_item{
     display: inline-block;
-    
+    padding: 0 16px;
+    color: white;
+}
+
+.nav_ul_list_item_link{
+    color: white;
+    text-decoration: none;
+    font-weight: 100;
+    font-weight: bold;
+}
+
+.nav_tool{
+    display: flex;
+    position: absolute;
+    right: 20px;
+    /* line-height: 80px; */
+    /* position: relative; */
+}
+
+.nav_tool_search{
+    height: 40px;
+    background-color: white;
+    cursor: pointer;
+    line-height: 35.5px;
+    width: 225px;
+    margin-top: 20px;
+    margin-right: 15px;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    background-color: rgb(245, 245, 245);
+}
+
+#nav_tool_search_input{
+    padding:0 15px;
+    width: 190px;
+    outline: none;
+    position: absolute;
+    top: 1px;
+    border: none;
+    background-color: rgb(245, 245, 245);
+}
+
+#nav_tool_search_icon{
+    position: absolute;
+    padding: 12px;
+    border-radius: 50%;
+    top: -0.25px;
+    right: 0;
+    transition: all 0.3s ease; /* Làm mượt tất cả các thuộc tính trong 0.3 giây */
+}
+
+#nav_tool_search_icon:hover{
+    background-color: rgb(196, 196, 196);
+    transition: all 0.3s ease; /* Làm mượt tất cả các thuộc tính trong 0.3 giây */
+}
+
+.nav_tool_cart{
+    padding: 10px 10px;
+    margin:-4px -2px;
+}
+
+.nav_tool_user{
+    margin: 0px 4px;
+    padding: 5px 6px;
+}
+
+.nav_tool_mark{
+    /* background-color: aqua; */
+    overflow: hidden;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    margin-top: 22px;
+    margin-left: 13px;
+}
+
+.nav_tool_mark:hover{
+    background-color: rgb(59, 59, 59);    overflow: hidden;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    margin-top: 22px;
+    transition: all 0.3s ease; /* Làm mượt tất cả các thuộc tính trong 0.3 giây */
+}
+
+
+@media only screen and (max-width: 1040px) {
+    #nav_tool_search_input{
+        display: none;
+    }
+
+    .nav_tool_search{
+        width: 40px;
+    }
 }

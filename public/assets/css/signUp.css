@@ -45,6 +45,7 @@
     border-radius: 10px;
     padding-left: 15px;
     border: none;
+    outline: none;
 }
 
 .input_f input[type=text], .input_f input[type=password]{
