@@ -3,58 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/cuahangdungcu/vendor/bootstrap-5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/cuahangdungcu/public/assets/css/login.css">
-    <title>Đăng nhâp cùng HKN store</title>
+    <!-- Jquery -->
+    <script src="/CuaHangDungCu/vendor/jQuery/jquery-3.7.1.min.js"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/CuaHangDungCu/vendor/bootstrap-5.3.3/dist/css/bootstrap.min.css">
+    <script src="/CuaHangDungCu/vendor/bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    
-    
+    <!-- css -->
+    <link rel="stylesheet" href="/CuaHangDungCu/public/assets/css/others/login.css">
+
+    <title>Đăng nhập</title>
 </head>
-
 <body>
-<div class="result"></div>
-<div class="wapper p-3">
-<header class="head_login">
-    <img src="/cuahangdungcu/public/assets/images/logo_trang.jpg" alt="Logo" class="img_logo " >
-    <p class="header_title mt-4">Chào mừng bạn đến với HKN store hãy đăng nhập để có trải nghiệm tốt nhất.</p>
-</header>
-<section class="section_form">
-
-    <form action="controllerLogin.php" method="post">
-    <div class="form_input">
-        <input type="text" id="input_email" name="email" placeholder="Email*">
+    <div class="result"></div>
+    <div class="container-fluid mx-auto mt-0 wrapper">
+    <header class="header">
+        <img src="/CuaHangDungCu/public/assets/images/logo_trang.jpg" class="header_logo" alt="logo_trang">
+        <p class="header_title">Hãy đăng ký tài khoản để tham gia vào HKN store</p>
+    </header>
+    <main class="main">
+        <form>
+            <div class="main_input_group">
+                <input type="text" class="main_input_group_item_email" id="input_email">
+                <span class="errorEmail" id="email_error"></span>
+                <input type="password" class="main_input_group_item_pass password" id="input_password">
+                <span class="errorPassword" id="password_error"></span>
+            </div>
+            <div class="main_checkbox">
+                <input type="checkbox" class="main_checkbox_box">
+                <p class="main_checkbox_text">Lưu lại mật khẩu</p>
+            </div>
+            <p class="main_title">Nhóm phát triển HKN cảm ơn bạn đã ghé thăm.</p>
+            <div class="main_btn_group">
+                <a href="#" class="main_btn_group_back text-black">Trở về</a>
+                <input type="submit" class="button main_btn_group_login" value="Đăng nhập">
+            </div>
+        </form>
+    </main>
     </div>
-    <span id="email_error"></span> <!-- Vùng hiển thị lỗi -->
-
-    <div class="form_input form_input_password">
-        <input type="password" id="input_password" name="password" placeholder="Mật khẩu*">  
-    </div>
-    <span id="password_error"></span> <!-- Vùng hiển thị lỗi -->
-
-    <div class="form_remember">
-        <input type="checkbox" class="form_remember_checkbox"> 
-        <p class="form_remember_text">Lưu lại mật khẩu</p>
-    </div>
-
-    <p class="form_text">Nhóm phát triển HKN cảm ơn bạn đã ghé thăm.</p>
-
-    <div class="form_btn">          
-        <input type="submit" id="btn_continue" name="continue" class="form_btn_save" value="Đăng nhập">
-        <a href="#" class="form_btn_back text-black text-decoration-none">Trở lại</a>                                                
-    </div>        
-    </form>
-</section>
-
-</div>
-
-
-<script src="/cuahangdungcu/vendor/bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="/cuahangdungcu/vendor/jQuery/jquery-3.7.1.min.js"></script>
-<script src="/cuahangdungcu/public/assets/js/login.js"></script>
-
-
-
+    <script src="/CuaHangDungCu/public/assets/js/others/login.js"></script>
 </body>
-
-
 </html>

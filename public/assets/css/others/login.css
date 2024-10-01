@@ -1,0 +1,101 @@
+.wrapper{
+    width: 532px;
+    padding: 0 36px;
+}
+
+.header{
+    width: 460px;
+    height: 250px;
+    position: relative;
+}
+
+.header_logo img{
+    width: 100%;
+    height: 100%;
+}
+
+.header_logo{
+    width: 15%;
+    position: absolute;
+    bottom: 130px;
+}
+
+.header_title{
+    font-size: 28px;
+    position: absolute;
+    bottom: 0px;
+}
+
+.main{
+    width: 460px;
+}
+
+.main_input_group{
+    margin-top: 45px;
+}
+
+.main_input_group_item_email{
+    width: 460px;
+    height: 50px;
+    border-radius: 10px;
+    padding: 0 15px;
+    outline: none;
+    border: 1px solid gray;
+}
+
+.errorEmail{
+    color: red;
+    font-size: 13px;
+}
+
+.main_input_group_item_pass{
+    width: 460px;
+    height: 50px;
+    border-radius: 10px;
+    padding: 0 15px;
+    margin-top: 42px;
+    outline: none;
+    border: 1px solid gray;
+}
+
+.errorPassword{
+    color: red;
+    font-size: 13px;
+}
+
+.main_checkbox{
+    display: flex;
+    position: relative;
+    margin-top: 55px;
+}
+
+.main_checkbox_text{
+    position: absolute;
+    left: 25px;
+    top: -6px;
+}
+
+.main_title{
+    margin-top: 25px;
+}
+
+.main_btn_group{
+    position: relative;
+    margin-top: 55px;
+}
+
+.main_btn_group_back{
+    text-decoration: none
+}
+
+.main_btn_group_login{
+    position: absolute;
+    right: 0px;
+    width: 120px;
+    height: 46px;
+    border-radius: 25px;
+    border: none;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}
