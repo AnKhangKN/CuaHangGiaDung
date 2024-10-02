@@ -1,7 +1,4 @@
 <?php
-// Bật hiển thị lỗi để dễ dàng gỡ lỗi
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
 // Include file kết nối cơ sở dữ liệu
 include 'C:\xampp\htdocs\CuaHangDungCu\config\connectdb.php';
@@ -18,7 +15,7 @@ if ($conn->connect_error) {
 }
 
 // Sử dụng prepared statement để tránh SQL Injection
-$stmt = $conn->prepare("SELECT * FROM taikhoan WHERE email = ?");
+$stmt = $conn->prepare("SELECT * FROM taikhoan WHERE email = ? and quyen = 0");
 $stmt->bind_param("s", $email); // Bảo vệ khỏi SQL Injection
 $stmt->execute();
 $result = $stmt->get_result();
@@ -31,10 +28,10 @@ if ($result->num_rows > 0) {
         // Trả về phản hồi thành công với URL chuyển hướng
         echo json_encode(['success' => true, 'redirect' => 'http://localhost/CuaHangDungCu/app/views/customer/index.php']);
     } else {
-        echo json_encode(['success' => false, 'message' => "Mật khẩu không đúng."]);
+        echo json_encode(['success' => false, 'message' => "*Thông tin đăng nhập không chính xác."]);
     }
 } else {
-    echo json_encode(['success' => false, 'message' => "Không tìm thấy người dùng."]);
+    echo json_encode(['success' => false, 'message' => "*Không tìm thấy người dùng."]);
 }
 
 // Đóng statement và kết nối

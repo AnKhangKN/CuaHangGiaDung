@@ -60,4 +60,27 @@ $(document).ready(function() {
             });
         }
     });
+
+    // Theo dõi sự kiện 'input' để ẩn lỗi khi có sự thay đổi
+    $('#input_email').on('input', function() {
+        $('#email_error').text(''); // Xóa lỗi khi có thay đổi
+    });
+
+    $('#input_password').on('input', function() {
+        $('#password_error').text(''); // Xóa lỗi khi có thay đổi
+    });
+
+    // Theo dõi sự kiện 'blur' để ẩn lỗi khi người dùng rời khỏi ô input sau khi đã có thay đổi
+    $('#input_email').blur(function() {
+        if ($('#input_email').val() != "") { // Kiểm tra nếu email không trống sau khi blur
+            $('#email_error').text('');
+        }
+    });
+
+    $('#input_password').blur(function() {
+        if ($('#input_password').val() != "") { // Kiểm tra nếu password không trống sau khi blur
+            $('#password_error').text('');
+        }
+    });
+
 });

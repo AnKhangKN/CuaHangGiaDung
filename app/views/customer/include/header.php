@@ -4,28 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- bootstrap -->
-    <link rel="stylesheet" href="/vendor/bootstrap-5.3.3/dist/css/bootstrap.min.css">
-    <script src="/vendor/bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/CuaHangDungCu/vendor/bootstrap-5.3.3/dist/css/bootstrap.min.css">
+    <script src="/CuaHangDungCu/vendor/bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- fontawesome -->
-    <link rel="stylesheet" href="/vendor/fontawesome-free-6.6.0-web/css/all.min.css">
+    <link rel="stylesheet" href="/CuaHangDungCu/vendor/fontawesome-free-6.6.0-web/css/all.min.css">
 
     <!-- css -->
-    <link rel="stylesheet" href="/public/assets/css/customer/home.css">
+    <link rel="stylesheet" href="/CuaHangDungCu/public/assets/css/customer/home.css">
     <title>Trang chủ</title>
 </head>
 <body>
         <header class="header">
             <nav class="header_nav">
                 <div class="nav_logo">
-                    <a href="#"><img src="/public/assets/images/logo_den.jpg" class="nav_logo_img" alt="HKN store"></a>                  
+                    <a href="index.php"><img src="/CuaHangDungCu/public/assets/images/logo_den.jpg" class="nav_logo_img" alt="HKN store"></a>                  
                 </div>
                 <ul class="nav_ul_list text-white ">
-                    <li class="nav_ul_list_item"><a href="#" class="nav_ul_list_item_link">Trang chủ</a></li>
-                    <li class="nav_ul_list_item"><a href="#" class="nav_ul_list_item_link">Sản phẩm</a></li>
-                    <li class="nav_ul_list_item"><a href="#" class="nav_ul_list_item_link">Tin tức</a></li>
-                    <li class="nav_ul_list_item"><a href="#" class="nav_ul_list_item_link">Giới thiệu</a></li>
-                    <li class="nav_ul_list_item"><a href="#" class="nav_ul_list_item_link">Liên hệ</a></li>
+                    <li class="nav_ul_list_item"><a href="index.php" class="nav_ul_list_item_link">Trang chủ</a></li>
+                    <li class="nav_ul_list_item"><a href="index.php?page=sanpham" class="nav_ul_list_item_link">Sản phẩm</a></li>
+                    <li class="nav_ul_list_item"><a href="index.php?page=moinhat" class="nav_ul_list_item_link">Mới nhất</a></li>
+                    <li class="nav_ul_list_item"><a href="index.php?page=lienhe" class="nav_ul_list_item_link">Liên hệ</a></li>
                 </ul>
                 <div class="nav_tool">
                     <form action="">
@@ -34,14 +33,14 @@
                             <i class="fa-solid fa-magnifying-glass" id="nav_tool_search_icon"></i>
                         </div>
                     </form>
-                    <a href="#">
+                    <a href="index.php?page=giohang">
                         <div class="nav_tool_mark">
                             <div class="nav_tool_cart">
                                 <i class="fa-solid fa-cart-shopping text-white"></i>
                             </div>
                         </div>
                     </a>
-                    <a href="#">
+                    <a href="index.php?page=thongtin">
                         <div class="nav_tool_mark">
                             <div class="nav_tool_user">
                                 <i class="fa-solid fa-user text-white"></i>
@@ -51,15 +50,3 @@
                 </div>
             </nav>
         </header>
-        <main>
-            
-            <div class="container-fluid">
-                
-            </div>
-
-        </main>
-        <footer>
-        </footer>
-    <script src="/public/assets/js/customer/home.js"></script>
-</body>
-</html>
