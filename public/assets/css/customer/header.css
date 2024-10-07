@@ -1,0 +1,299 @@
+.header{
+    height: 80px;
+    background-color: rgb(24, 24, 24);
+    position: fixed;
+    top: 0;
+    width: 100%; 
+    z-index: 1000;
+}
+
+.header_nav{
+    display: flex;
+    position: relative;
+    align-content: center;
+}
+
+.list_nav_after_hidden{
+    color: white;
+    display: none;
+}
+
+.nav_logo{
+    position: absolute;
+    left: 32px;
+    width: 45px;
+    line-height: 80px;
+}
+
+.nav_logo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.nav_ul_list{
+    list-style: none;
+    line-height: 84px;
+    position: absolute;
+    left: 70px;
+    text-transform: uppercase;
+    padding: 0px 50px;
+    margin: 0;
+}
+
+.nav_ul_list_item{
+    display: inline-block;
+    padding: 0 16px;
+    color: white;
+}
+
+.nav_ul_list_item_link{
+    color: white;
+    text-decoration: none;
+    font-weight: 100;
+    font-weight: bold;
+}
+
+/* trang hiện tại */
+
+.header_link{
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    padding: 0 10px;
+}
+
+.header_link::after{
+    content: "";
+    position: absolute;
+    width: 80%; 
+    height: 2px;
+    top: 60px; 
+    left: 13px;
+    bottom: -6px; 
+    background-color: white; 
+    border-radius: 2px;
+}
+
+/* trang tiếp theo */
+.header_link_next{
+    position: relative;
+    display: inline-block;
+    text-decoration: none; 
+}
+
+.header_link_next::after{
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px; 
+    top: 60px;
+    border-radius: 2px;
+    bottom: -6px;
+    left: 13px;
+    background-color: #ffffff; 
+    transition: width 0.3s ease-in-out; 
+}
+
+.header_link_next:hover::after,
+.header_link_next:focus::after,
+.header_link_next:active::after {
+    width: 80%; 
+}
+
+/* danh mục đề xuất trong sản phẩm */
+.list_products_subnav_item {
+    position: relative;
+}
+
+.subnav_item_link {
+    color: black;
+    font-weight: 500;
+    position: relative;
+    display: inline-block;
+    text-decoration: none; 
+    padding-bottom: 8px; 
+}
+
+.subnav_item_link::after {
+    content: "";
+    position: absolute;
+    top: 60px; /* Có thể điều chỉnh để nằm ngay dưới link */
+    width: 320px; 
+    height: 1px; 
+    left: 0;
+    background-color: rgb(175, 175, 175);
+}
+
+.nav_ul_list_item_subnav {
+    position: absolute;
+    width: 1080px;
+    background-color: white;
+    top: 80px;
+    left: -35px;
+    list-style: none;
+    padding: 15px;
+    display: none; /* Bắt đầu ẩn */
+    z-index: 1000; /* Đảm bảo nằm trên các phần tử khác */
+}
+
+/* Phần tử con bên trong giữ nguyên thuộc tính inline-block */
+.nav_ul_list_item_subnav_item {
+    display: inline-block;
+    width: calc(100% / 3);
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.subnav_item_childen {
+    list-style: none;
+    margin-top: 10px;
+    padding: 0;
+}
+
+.childen_link {
+    text-decoration: none;
+    font-size: 13px;
+    color: black;
+}
+
+/* khi hover danh mục đề xuất */
+.list_products_subnav_item:hover .nav_ul_list_item_subnav {
+    display: flex;
+}
+
+.list_products_subnav_item:hover .subnav_item_childen{
+    display: block;
+}
+
+/* Giữ cho subnav luôn có khoảng trống khi không hiển thị */
+.nav_ul_list_item_subnav,
+.subnav_item_childen {
+    visibility: hidden; /* Ẩn subnav mà không thay đổi chiều cao */
+    opacity: 0; /* Ẩn subnav */
+    transition: visibility 0s, opacity 0.3s linear; /* Hiệu ứng chuyển tiếp */
+}
+
+.list_products_subnav_item:hover .nav_ul_list_item_subnav,
+.list_products_subnav_item:hover .subnav_item_childen {
+    visibility: visible; /* Hiện subnav khi hover */
+    opacity: 1; /* Hiện subnav */
+}
+
+.subnav_item_childen_item{
+    line-height: 50px;
+}
+
+
+.nav_tool{
+    display: flex;
+    position: absolute;
+    right: 20px;
+}
+
+.nav_tool_search{
+    height: 40px;
+    background-color: white;
+    cursor: pointer;
+    line-height: 35.5px;
+    width: 225px;
+    margin-top: 20px;
+    margin-right: 15px;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    background-color: rgb(245, 245, 245);
+}
+
+#nav_tool_search_input{
+    padding:0 15px;
+    width: 190px;
+    outline: none;
+    position: absolute;
+    top: 1px;
+    border: none;
+    background-color: rgb(245, 245, 245);
+}
+
+#nav_tool_search_icon{
+    position: absolute;
+    padding: 12px;
+    border-radius: 50%;
+    top: -0.25px;
+    right: 0;
+    transition: all 0.3s ease; /* Làm mượt tất cả các thuộc tính trong 0.3 giây */
+}
+
+#nav_tool_search_icon:hover{
+    background-color: rgb(196, 196, 196);
+    transition: all 0.3s ease; /* Làm mượt tất cả các thuộc tính trong 0.3 giây */
+}
+
+.nav_tool_cart{
+    padding: 10px 10px;
+    margin:-4px -2px;
+}
+
+.nav_tool_user{
+    margin: 0px 4px;
+    padding: 5px 6px;
+}
+
+.nav_tool_mark{
+    /* background-color: aqua; */
+    overflow: hidden;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    margin-top: 22px;
+    margin-left: 13px;
+}
+
+.nav_tool_mark:hover{
+    background-color: rgb(59, 59, 59);    
+    overflow: hidden;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    margin-top: 22px;
+    transition: all 0.3s ease; /* Làm mượt tất cả các thuộc tính trong 0.3 giây */
+}
+
+@media only screen and (max-width: 1060px) {
+    .list_nav_after_hidden{
+        cursor: pointer;
+        display: block;
+        font-size: 16px;
+        padding: 10px 14px;
+        margin: 18px;
+        border-radius: 50%;
+    }
+
+    .list_nav_after_hidden:hover{
+        background-color: rgb(59, 59, 59);
+        transition: all 0.3s ease;
+    }
+
+    .nav_logo{
+        left: 50%;
+    }
+
+    .nav_ul_list{
+        display: none;
+        left: -30px;
+        top: 80px;
+        background-color: rgb(24, 24, 24);
+    }
+
+    .nav_ul_list_item {
+        display: block;
+    }
+
+    #nav_tool_search_input{
+        display: none;
+    }
+
+    .nav_tool_search{
+        width: 40px;
+    }
+}

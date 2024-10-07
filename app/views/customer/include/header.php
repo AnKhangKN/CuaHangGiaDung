@@ -10,7 +10,9 @@
     <!-- fontawesome -->
     <link rel="stylesheet" href="/CuaHangDungCu/vendor/fontawesome-free-6.6.0-web/css/all.min.css">
 
-    <!-- css -->
+    <!-- css header -->
+    <link rel="stylesheet" href="/CuaHangDungCu/public/assets/css/customer/header.css">
+    <!-- css home -->
     <link rel="stylesheet" href="/CuaHangDungCu/public/assets/css/customer/home.css">
     <title>Trang chủ</title>
 </head>
@@ -22,9 +24,9 @@
                 </div>
                 <ul class="nav_ul_list text-white ">
                     <li class="nav_ul_list_item"><a href="index.php" class="nav_ul_list_item_link">Trang chủ</a></li>
-                    <li class="nav_ul_list_item"><a href="index.php?page=sanpham" class="nav_ul_list_item_link">Sản phẩm</a></li>
-                    <li class="nav_ul_list_item"><a href="index.php?page=moinhat" class="nav_ul_list_item_link">Mới nhất</a></li>
-                    <li class="nav_ul_list_item"><a href="index.php?page=lienhe" class="nav_ul_list_item_link">Liên hệ</a></li>
+                    <li class="nav_ul_list_item"><a href="index.php?page=products" class="nav_ul_list_item_link">Sản phẩm</a></li>
+                    <li class="nav_ul_list_item"><a href="index.php?page=news" class="nav_ul_list_item_link">Mới nhất</a></li>
+                    <li class="nav_ul_list_item"><a href="index.php?page=contact" class="nav_ul_list_item_link">Liên hệ</a></li>
                 </ul>
                 <div class="nav_tool">
                     <form action="">
@@ -33,14 +35,14 @@
                             <i class="fa-solid fa-magnifying-glass" id="nav_tool_search_icon"></i>
                         </div>
                     </form>
-                    <a href="index.php?page=giohang">
+                    <a href="index.php?page=cart">
                         <div class="nav_tool_mark">
                             <div class="nav_tool_cart">
                                 <i class="fa-solid fa-cart-shopping text-white"></i>
                             </div>
                         </div>
                     </a>
-                    <a href="index.php?page=thongtin">
+                    <a href="index.php?page=information">
                         <div class="nav_tool_mark">
                             <div class="nav_tool_user">
                                 <i class="fa-solid fa-user text-white"></i>
