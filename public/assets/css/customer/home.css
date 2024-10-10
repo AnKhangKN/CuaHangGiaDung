@@ -124,6 +124,7 @@
     width: 150px;
     height: 50px;
     background-color: white;
+    margin: 5px;
 }
 
 .banner_btn_item:hover{
@@ -220,6 +221,15 @@
         flex: 0 0 33.33%; /* Mỗi sản phẩm chiếm 33.33% chiều rộng */
         opacity: 1; 
     }
+
+    .banner_btn_item{
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        flex-direction: column; /* Sắp xếp các mục theo chiều dọc */
+        margin:15px auto;
+    }
 }
 
 
@@ -234,6 +244,15 @@
     .new_products_list_card{
         flex: 0 0 100%;
         opacity: 1;
+    }
+
+    .banner_btn_item{
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        flex-direction: column; /* Sắp xếp các mục theo chiều dọc */
+        margin:15px auto;
     }
 }
 

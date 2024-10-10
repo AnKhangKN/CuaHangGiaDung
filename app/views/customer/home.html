@@ -37,9 +37,9 @@
                     <li class="nav_ul_list_item header_link_next list_products_subnav_item">
                         <a href="#" class="nav_ul_list_item_link">Sản phẩm</a>
                         <ul class="nav_ul_list_item_subnav">
-                            <li class="nav_ul_list_item_subnav_item">
-                                <a href="#" class="subnav_item_link">Thời trang thể thao</a>
-                                <ul class="subnav_item_childen">
+                            <li class="nav_ul_list_item_subnav_item sub_menu_products" >
+                                <a href="#" class="subnav_item_link"><i class="fa-solid fa-plus sub_icon"></i> Thời trang thể thao </a>
+                                <ul class="subnav_item_childen sub_menu_products_list">
                                     <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sản phẩm lv 1</a></li>
                                     <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sản phẩm lv 1</a></li>
                                     <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sản phẩm lv 1</a></li>
@@ -48,8 +48,8 @@
                                     <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sản phẩm lv 1</a></li>
                                 </ul>
                             </li>
-                            <li class="nav_ul_list_item_subnav_item">
-                                <a href="#" class="subnav_item_link">Dụng cụ thể thao</a>
+                            <li class="nav_ul_list_item_subnav_item sub_menu_products">
+                                <a href="#" class="subnav_item_link"><i class="fa-solid fa-plus sub_icon"></i> Dụng cụ thể thao </a>
                                 <ul class="subnav_item_childen">
                                     <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sản phẩm lv 2</a></li>
                                     <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sản phẩm lv 2</a></li>
@@ -57,8 +57,8 @@
                                     <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sản phẩm lv 2</a></li>
                                 </ul>
                             </li>
-                            <li class="nav_ul_list_item_subnav_item">
-                                <a href="#" class="subnav_item_link">Phụ kiện thể thao</a>
+                            <li class="nav_ul_list_item_subnav_item sub_menu_products">
+                                <a href="#" class="subnav_item_link"><i class="fa-solid fa-plus sub_icon"></i> Phụ kiện thể thao </a>
                                 <ul class="subnav_item_childen">
                                     <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sẩn phẩm lv3</a></li>
                                     <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sẩn phẩm lv3</a></li>
@@ -83,22 +83,21 @@
                         <div class="nav_tool_search">
                             <input type="text" placeholder="Tìm kiếm" id="nav_tool_search_input">
                             <i class="fa-solid fa-magnifying-glass" id="nav_tool_search_icon"></i>
+                            <!-- đang chỉnh -->
+                            <button id="close_search" style="display:none; color:white;">Close</button> <!-- Nút đóng có thể ẩn -->
+                            <!-- đang chỉnh -->
                         </div>
                     </form>
-                    <a href="#">
-                        <div class="nav_tool_mark">
-                            <div class="nav_tool_cart">
-                                <i class="fa-solid fa-cart-shopping text-white"></i>
-                            </div>
+                    <div class="nav_tool_mark">
+                        <div class="nav_tool_cart">
+                            <i class="fa-solid fa-cart-shopping text-white"></i>
                         </div>
-                    </a>
-                    <a href="#">
-                        <div class="nav_tool_mark">
-                            <div class="nav_tool_user">
-                                <i class="fa-solid fa-user text-white"></i>
-                            </div>
+                    </div>
+                    <div class="nav_tool_mark">
+                        <div class="nav_tool_user">
+                            <i class="fa-solid fa-user text-white"></i>
                         </div>
-                    </a>
+                    </div>
                 </div>
             </nav>
         </header>
@@ -243,7 +242,7 @@
                         </div>
                         <div class="banner_btn">
                             <button class="banner_btn_item">Men</button>
-                            <button class="banner_btn_item" style="margin: 0 15px;">Women</button>
+                            <button class="banner_btn_item">Women</button>
                             <button class="banner_btn_item">Kid</button>
                         </div>
                     </div>

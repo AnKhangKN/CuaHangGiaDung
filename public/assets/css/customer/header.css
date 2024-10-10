@@ -180,8 +180,18 @@
     opacity: 1; /* Hiện subnav */
 }
 
+.sub_icon{
+    display: none;
+}
+
 .subnav_item_childen_item{
     line-height: 50px;
+}
+
+.subnav_item_childen_item:hover {
+    background-color: #eee; /* Thêm hiệu ứng hover cho các liên kết con */
+    transition: all 0.3s ease;
+    padding:0 15px;
 }
 
 
@@ -257,9 +267,10 @@
     width: 35px;
     margin-top: 22px;
     transition: all 0.3s ease; /* Làm mượt tất cả các thuộc tính trong 0.3 giây */
+    cursor: pointer;
 }
 
-@media only screen and (max-width: 1060px) {
+@media (min-width: 0px) and (max-width: 1060px) {
     .list_nav_after_hidden{
         cursor: pointer;
         display: block;
@@ -279,13 +290,17 @@
     }
 
     .nav_ul_list{
+        margin-left: 30px;
+        padding: 0px;
         display: none;
         left: -30px;
         top: 80px;
         background-color: rgb(24, 24, 24);
+        height: 700px;
     }
 
     .nav_ul_list_item {
+        padding: 0 40px;
         display: block;
     }
 
@@ -296,4 +311,91 @@
     .nav_tool_search{
         width: 40px;
     }
+
+    .nav_ul_list_item_subnav {
+        position: absolute;
+        width: 800px;
+        background-color: white;
+        top: -85px;
+        left: 173.5px;
+        list-style: none;
+        padding: 15px;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column; /* Sắp xếp các mục theo chiều dọc */
+    }
+    
+    .sub_icon{
+        display: inline-block;
+    }
+
+    /* Mục con bên trong giữ nguyên chiều rộng và hiển thị block */
+    .nav_ul_list_item_subnav_item {
+        display: block;
+        width: calc(100%); /* Căn mỗi mục chiếm 1/3 chiều rộng */
+        padding: 0 10px;
+        box-sizing: border-box;
+        
+    }
+    
+    /* Hiển thị menu con khi di chuột vào mục cha */
+    .sub_menu_products:hover .subnav_item_childen_item {
+        display: block;
+        padding: 5px 10px;
+        background-color: #ffffff;
+    }
+
+    /* Thay đổi icon khi hover vào phần tử cha */
+    .sub_menu_products:hover .sub_icon::before {
+    content: "\f00d"; /* Unicode của icon fa-minus trong Font Awesome */
+    }
+
+    .subnav_item_childen:hover{
+        transition: all 0.3s ease;
+    }
+
+    /* Các mục con trong menu */
+    .subnav_item_childen_item {
+        display: none; /* Ban đầu ẩn các mục con */
+    }
+    
+    .subnav_item_childen_item a {
+        text-decoration: none;
+        color: black;
+        display: block;
+        padding: 5px 10px;
+    }
+    
+    .subnav_item_childen_item a:hover {
+        background-color: #eee; /* Thêm hiệu ứng hover cho các liên kết con */
+        transition: all 0.3s ease;
+    }
+/* --------------------------- */
+    .nav_tool_search {
+        position: relative; /* Để có thể sử dụng vị trí tuyệt đối cho input */
+        margin-right: 15px;
+    }
+    
+    #nav_tool_search_input {
+        display: none; /* Ban đầu ẩn */
+        position: fixed; /* Đặt nó ở vị trí cố định */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 80px; /* Chiếm toàn bộ chiều cao màn hình */
+        background-color: rgba(0, 0, 0); /* Nền mờ */
+        color: white; /* Màu chữ */
+        padding: 20px; /* Khoảng cách bên trong */
+        box-sizing: border-box; /* Bao gồm padding trong chiều rộng và chiều cao */
+        z-index: 2000; /* Đảm bảo nằm trên các thành phần khác */
+        display: flex;
+        align-items: center; /* Căn giữa theo chiều dọc */
+        justify-content: center; /* Căn giữa theo chiều ngang */
+    }
+    
+    /* Hiển thị khi có lớp active */
+    #nav_tool_search_input.active {
+        display: flex; /* Hiện thành phần khi có lớp active */
+    }
+    
 }
