@@ -1,0 +1,11 @@
+.position_top{
+    height: 40px;
+}
+
+.banner_products_top img{
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+}
+
+

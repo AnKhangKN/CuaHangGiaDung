@@ -31,7 +31,7 @@
                     <a href="#"><img src="/public/assets/images/logo_den.jpg" class="nav_logo_img" alt="HKN store"></a>                  
                 </div>
                 <ul class="nav_ul_list text-white" id="menu">
-                    <li class="nav_ul_list_item header_link">
+                    <li class="nav_ul_list_item header_link_next">
                         <a href="#" class="nav_ul_list_item_link">Trang chủ</a>
                     </li>
                     <li class="nav_ul_list_item header_link_next list_products_subnav_item">
@@ -80,23 +80,44 @@
                 </ul>
                 <div class="nav_tool">
                     <form action="">
-                        <div class="nav_tool_search">
+                        <div class="nav_tool_search" id="nav_tool_search_box">
                             <input type="text" placeholder="Tìm kiếm" id="nav_tool_search_input">
-                            <i class="fa-solid fa-magnifying-glass" id="nav_tool_search_icon"></i>
-                            <!-- đang chỉnh -->
-                            <button id="close_search" style="display:none; color:white;">Close</button> <!-- Nút đóng có thể ẩn -->
-                            <!-- đang chỉnh -->
                         </div>
+                        <div class="nav_tool_search_icon_box" id="nav_tool_search_icon_box_btn">
+                            <span class="nav_tool_search_icon_box_text">Tìm kiếm sản phẩm</span>
+                            <i class="fa-solid fa-magnifying-glass" id="nav_tool_search_icon"></i> 
+                        </div>
+                        <button class="close_search_top" id="close_search_top_element">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                        <div class="nav_tool_box" id="nav_tool_box_recommend"></div>
                     </form>
                     <div class="nav_tool_mark">
                         <div class="nav_tool_cart">
                             <i class="fa-solid fa-cart-shopping text-white"></i>
                         </div>
                     </div>
-                    <div class="nav_tool_mark">
+                    <div class="nav_tool_mark" id="nav_tool_mark_id_user">
                         <div class="nav_tool_user">
                             <i class="fa-solid fa-user text-white"></i>
                         </div>
+                    </div>
+                    <div class="nav_tool_user_option_up">
+                        <i class="fa-solid fa-caret-up"></i>
+                    </div>
+                    <div class="nav_tool_user_option" id="nav_tool_user_option_id_user">
+                        <a href="#" style="text-decoration: none; color: black;">
+                            <div class="option_sub">
+                                <i class="fa-solid fa-right-to-bracket"></i>
+                                <p>Đăng nhập</p>
+                            </div>
+                        </a>
+                        <a href="#" style="text-decoration: none; color: black;">
+                            <div class="option_sub">
+                                <i class="fa-solid fa-user-plus"></i>
+                                <p>Đăng ký</p>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </nav>

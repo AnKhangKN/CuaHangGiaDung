@@ -15,48 +15,73 @@ iconMenu.addEventListener('click', function(){
     }
 });
 
-// Lắng nghe sự kiện click cho biểu tượng
-document.getElementById("nav_tool_search_icon").addEventListener("click", function() {
-    document.getElementById("nav_tool_search_input").focus(); // Đưa con trỏ vào ô nhập liệu
+
+
+// --------------------------------------------------------------------
+// search
+// Lấy các phần tử từ DOM
+const boxIcon = document.querySelector('.nav_tool_search_icon_box');
+const boxRecommend = document.querySelector('.nav_tool_box');
+const boxClose = document.querySelector('.close_search_top');
+const boxSearch = document.querySelector('.nav_tool_search');
+const inputBox = document.getElementById('nav_tool_search_box');
+
+// Hàm xử lý click vào biểu tượng tìm kiếm
+function showSearchBox() {
+    boxIcon.style.display = 'none'; // Ẩn biểu tượng tìm kiếm
+    boxRecommend.style.display = 'block'; // Hiện hộp gợi ý
+    boxClose.style.display = 'block'; // Hiện nút đóng
+    boxSearch.style.display = 'block'; // Hiện hộp tìm kiếm
+}
+
+// Hàm xử lý click vào nút đóng
+function hideSearchBox() {
+    boxIcon.style.display = 'block'; // Hiện lại biểu tượng tìm kiếm
+    boxRecommend.style.display = 'none'; // Ẩn hộp gợi ý
+    boxClose.style.display = 'none'; // Ẩn nút đóng
+    boxSearch.style.display = 'none'; // Ẩn hộp tìm kiếm
+}
+
+// Gán sự kiện click cho các phần tử
+boxIcon.addEventListener('click', showSearchBox);
+inputBox.addEventListener('click', showSearchBox);
+boxClose.addEventListener('click', hideSearchBox);
+
+// --------------------------------------------------------------------
+
+// Ẩn hiện đang nhập đăng ký
+const upUserOption = document.getElementsByClassName('nav_tool_user_option_up')[0]; // Lấy phần tử đầu tiên
+const userOptionMark = document.getElementById('nav_tool_mark_id_user');
+const userOption = document.getElementById('nav_tool_user_option_id_user');
+
+// Hàm hiển thị tùy chọn người dùng
+function showUserOption() {
+    userOption.style.display = 'block';
+    upUserOption.style.display = 'block';
+}
+
+// Hàm ẩn tùy chọn người dùng
+function hideUserOption() {
+    userOption.style.display = 'none';
+    upUserOption.style.display = 'none';
+}
+
+// Sự kiện khi nhấp vào biểu tượng
+userOptionMark.addEventListener('click', function(event) {
+    event.stopPropagation(); // Ngăn chặn sự kiện click lan truyền
+    // Kiểm tra trạng thái hiển thị của tùy chọn người dùng
+    if (userOption.style.display === 'block' && upUserOption.style.display === 'block') {
+        hideUserOption(); // Nếu đang hiển thị thì ẩn đi
+    } else {
+        showUserOption(); // Nếu không thì hiển thị
+    }
 });
 
-var sliderIndex = 0;
-carousel();
-
-function carousel() {
-    var item;
-    var slider = document.getElementsByClassName("home_slider_img");
-    for (item = 0; item < slider.length; item++) {
-    slider[item].style.display = "none";  
+// Sự kiện khi nhấp ra ngoài tùy chọn người dùng
+document.addEventListener('click', function(event) {
+    // Kiểm tra nếu nhấp ra ngoài biểu tượng hoặc phần tùy chọn người dùng
+    if (!userOptionMark.contains(event.target) && !userOption.contains(event.target)) {
+        hideUserOption(); // Ẩn phần tùy chọn người dùng
     }
-    sliderIndex++;
-    if (sliderIndex > slider.length) {sliderIndex = 1}    
-    slider[sliderIndex-1].style.display = "block";  
-  setTimeout(carousel, 3000); // Change image every 2 seconds
-}
+});
 
-// ---------------------------------------------
-// Lấy các phần tử
-const searchInput = document.getElementById('nav_tool_search_input');
-const searchIcon = document.getElementById('nav_tool_search_icon');
-const closeButton = document.getElementById('close_search');
-
-// Hàm hiển thị ô tìm kiếm full màn hình
-function showSearchInput() {
-    searchInput.classList.add('active');
-    searchInput.style.display = 'flex'; // Hiện ô tìm kiếm
-    closeButton.style.display = 'block'; // Hiện nút đóng
-}
-
-// Hàm ẩn ô tìm kiếm
-function hideSearchInput() {
-    searchInput.classList.remove('active');
-    searchInput.style.display = 'none'; // Ẩn ô tìm kiếm
-    closeButton.style.display = 'none'; // Ẩn nút đóng
-}
-
-// Gắn sự kiện click cho biểu tượng tìm kiếm
-searchIcon.addEventListener('click', showSearchInput);
-
-// Gắn sự kiện click cho nút đóng
-closeButton.addEventListener('click', hideSearchInput);

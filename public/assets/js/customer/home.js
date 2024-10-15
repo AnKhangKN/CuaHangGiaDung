@@ -1,4 +1,20 @@
+// --------------------------------------------------------------------
+//slider
+var sliderIndex = 0;
+carousel();
 
+function carousel() {
+    var item;
+    var slider = document.getElementsByClassName("home_slider_img");
+    for (item = 0; item < slider.length; item++) {
+    slider[item].style.display = "none";  
+    }
+    sliderIndex++;
+    if (sliderIndex > slider.length) {sliderIndex = 1}    
+    slider[sliderIndex-1].style.display = "block";  
+  setTimeout(carousel, 3000); // Change image every 2 seconds
+}
+// --------------------------------------------------------------------
 
 // chuyển sản phẩm best sellers
 function createProductCarousel(productsListId, prevBtnId, nextBtnId) {
@@ -65,6 +81,8 @@ function createProductCarousel(productsListId, prevBtnId, nextBtnId) {
 // Khởi tạo carousel
 createProductCarousel('productsList', 'prevBtn', 'nextBtn');
 
+// --------------------------------------------------------------------
+
 // chuyển sản phẩm mới
 function createNewProductCarousel(productsListId, newPrevBtnId, newNextBtnId) {
     const productsList = document.getElementById(productsListId);
@@ -80,7 +98,7 @@ function createNewProductCarousel(productsListId, newPrevBtnId, newNextBtnId) {
         const screenWidth = window.innerWidth;
         if (screenWidth >= 1024) {
             return 3; // Hiển thị 3 sản phẩm trên màn hình lớn
-        } else if (screenWidth >= 768) {
+        } else if (screenWidth >= 600) {
             return 2; // Hiển thị 2 sản phẩm trên màn hình trung bình
         } else{
             return 1;
