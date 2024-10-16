@@ -126,14 +126,270 @@
             </nav>
         </header>
         <main class="main">
+            <!-- position sub -->
             <div class="position_top">
-                <span>Products</span>
+                <span>Products / All products</span>
             </div>
-            <div class="container_products">
-                <div class="banner_products_top">
-                    <img src="/public/assets/images/banner/Banner-demo-products.png" alt="Banner">
+            <!-- banner top -->
+            <div class="banner_products_top">
+                <img src="/public/assets/images/banner/Banner-demo-products.png" alt="Banner">
+            </div>
+            <!-- all products -->
+            <!-- all products top -->
+            <div class="container">
+                <div class="all_products_top">
+                    <span class="all_products_top_text">
+                        Tất cả sản phẩm
+                    </span>
+                    <div class="all_products_top_order">
+                        <div class="all_products_top_order_title">
+                            <span>Sắp xếp</span>
+                        </div>
+                        <ul class="all_products_top_order_list">
+                            <li class="all_products_top_order_list_item">
+                                <span>Sắp xếp</span>
+                            </li> 
+                            <li class="all_products_top_order_list_item">
+                                <span>Bán chạy nhất</span>
+                            </li> 
+                            <li class="all_products_top_order_list_item">
+                                <span>Tên: A - Z</span>
+                            </li> 
+                            <li class="all_products_top_order_list_item">
+                                <span>Tên: Z - A</span>
+                            </li>
+                            <li class="all_products_top_order_list_item">
+                                <span>Giá: Tăng dần</span>
+                            </li> 
+                            <li class="all_products_top_order_list_item">
+                                <span>Giá: Giảm dần</span>
+                            </li> 
+                        </ul>
+                    </div>                    
                 </div>
-            </div>
+                <!-- filter -->
+                <div class="all_products_filter">
+                    <!-- text -->
+                    <div class="all_products_filter_text">
+                        <i class="fa-solid fa-arrow-down-wide-short"></i>
+                        <span>Bộ lọc</span>
+                    </div>
+
+                    <!-- group -->
+                    <div class="all_products_filter_group">
+                        <!-- price -->
+                        <div class="all_products_filter_price">
+                            <div class="all_products_filter_price_title">
+                                <span>Giá</span>
+                            </div>
+                            <ul class="all_products_filter_price_list">
+                                <li class="all_products_filter_price_list_item">
+                                    <input type="checkbox" name="" id="">
+                                    <span>Dưới 100.000đ</span>
+                                </li>
+                                <li class="all_products_filter_price_list_item">
+                                    <input type="checkbox" name="" id="">
+                                    <span>100.000đ - 250.000đ</span>
+                                </li>
+                                <li class="all_products_filter_price_list_item">
+                                    <input type="checkbox" name="" id="">
+                                    <span>250.000đ - 500.000đ</span>
+                                </li>
+                                <li class="all_products_filter_price_list_item">
+                                    <input type="checkbox" name="" id="">
+                                    <span>500.000đ - 800.000đ</span>
+                                </li>
+                                <li class="all_products_filter_price_list_item">
+                                    <input type="checkbox" name="" id="">
+                                    <span>800.000đ - 1.500.000đ</span>
+                                </li>
+                                <li class="all_products_filter_price_list_item">
+                                    <input type="checkbox" name="" id="">
+                                    <span>Trên 1.500.000đ</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- color -->
+                        <div class="all_products_filter_color">
+                            <div class="all_products_filter_color_title">
+                                <span>Màu sắc</span>
+                            </div>
+                            <ul class="all_products_filter_color_list">
+                                <li class="all_products_filter_color_list_item" >
+                                    <input type="checkbox" id="color-red">
+                                    <label for="" style="background-color: red;"></label>
+                                </li>
+                                <li class="all_products_filter_color_list_item">
+                                    <input type="checkbox" id="color-blue" >
+                                    <label for="" style="background-color: blue;"></label>
+                                </li>
+                                <li class="all_products_filter_color_list_item" >
+                                    <input type="checkbox" id="color-green" >
+                                    <label for="" style="background-color: green;"></label>
+                                </li>
+                                <li class="all_products_filter_color_list_item" >
+                                    <input type="checkbox" id="color-yellow" >
+                                    <label for="" style="background-color: yellow;"></label>
+                                </li>
+                                <li class="all_products_filter_color_list_item" >
+                                    <input type="checkbox" id="color-purple" >
+                                    <label for="" style="background-color: purple;"></label>
+                                </li>
+                                <li class="all_products_filter_color_list_item" >
+                                    <input type="checkbox" id="color-orange" >
+                                    <label for="" style="background-color: orange;"></label>
+                                </li>
+                            </ul>
+                        </div>
+
+
+                        <!-- size -->
+                        <div class="all_products_filter_size">
+                            <div class="all_products_filter_size_title">
+                                <span>Kích thước</span>
+                            </div>
+                            <ul class="all_products_filter_size_list">
+                                <li>
+                                    <ul>Quần áo
+                                        <li class="all_products_filter_size_list_item">
+                                            <input type="checkbox" name="" id="">
+                                            <span>S</span>
+                                        </li>
+                                        <li class="all_products_filter_size_list_item">
+                                            <input type="checkbox" name="" id="">
+                                            <span>M</span>
+                                        </li>
+                                        <li class="all_products_filter_size_list_item">
+                                            <input type="checkbox" name="" id="">
+                                            <span>L</span>
+                                        </li>
+                                        <li class="all_products_filter_size_list_item">
+                                            <input type="checkbox" name="" id="">
+                                            <span>XL</span>
+                                        </li>
+                                        <li class="all_products_filter_size_list_item">
+                                            <input type="checkbox" name="" id="">
+                                            <span>XXL</span>
+                                        </li>
+                                    </ul>
+                                </li>
+                                
+                                <li>
+                                    <ul>Giày
+                                        <li class="all_products_filter_size_list_item">
+                                            <input type="checkbox" name="" id="">
+                                            <span>36</span>
+                                        </li>
+                                        <li class="all_products_filter_size_list_item">
+                                            <input type="checkbox" name="" id="">
+                                            <span>37</span>
+                                        </li>
+                                        <li class="all_products_filter_size_list_item">
+                                            <input type="checkbox" name="" id="">
+                                            <span>38</span>
+                                        </li>
+                                        <li class="all_products_filter_size_list_item">
+                                            <input type="checkbox" name="" id="">
+                                            <span>39</span>
+                                        </li>
+                                        <li class="all_products_filter_size_list_item">
+                                            <input type="checkbox" name="" id="">
+                                            <span>40</span>
+                                        </li>
+                                        <li class="all_products_filter_size_list_item">
+                                            <input type="checkbox" name="" id="">
+                                            <span>41</span>
+                                        </li>
+                                        <li class="all_products_filter_size_list_item">
+                                            <input type="checkbox" name="" id="">
+                                            <span>42</span>
+                                        </li>
+                                        <li class="all_products_filter_size_list_item">
+                                            <input type="checkbox" name="" id="">
+                                            <span>43</span>
+                                        </li>
+                                        <li class="all_products_filter_size_list_item">
+                                            <input type="checkbox" name="" id="">
+                                            <span>44</span>
+                                        </li>
+                                    </ul>
+                                </li>
+                                
+
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+
+                <!-- tag -->
+                <div class="all_products_tags">
+                    <div class="all_products_tags_filter">
+                        Giá: 
+                    </div>
+
+                    <div class="all_products_tags_filter">
+                        Màu sắc:
+                    </div>
+
+                    <div class="all_products_tags_filter">
+                        Kích thước:
+                    </div>
+
+                    <div class="all_products_tags_remove_all">
+                        <span>Xóa hết</span>
+                    </div>
+                </div>
+
+            <!-- all products container -->
+            
+                <div class="row row-cols-lg-5 g-2">
+                    <div class="col">
+                        <div class="all_products_card">
+                            <div class="card-header">Header</div>
+                            <div class="card-body">Content</div>
+                            <div class="card-footer">Footer</div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="all_products_card">
+                            <div class="card-header">Header</div>
+                            <div class="card-body">Content</div>
+                            <div class="card-footer">Footer</div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="all_products_card">
+                            <div class="card-header">Header</div>
+                            <div class="card-body">Content</div>
+                            <div class="card-footer">Footer</div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="all_products_card">
+                            <div class="card-header">Header</div>
+                            <div class="card-body">Content</div>
+                            <div class="card-footer">Footer</div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="all_products_card">
+                            <div class="card-header">Header</div>
+                            <div class="card-body">Content</div>
+                            <div class="card-footer">Footer</div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="all_products_card">
+                            <div class="card-header">Header</div>
+                            <div class="card-body">Content</div>
+                            <div class="card-footer">Footer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>            
         </main>
         <footer class="footer">
             <div class="container container_footer">
