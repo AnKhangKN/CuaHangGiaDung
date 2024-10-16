@@ -1,0 +1,38 @@
+.footer{
+    margin-top: 100px;
+    background-color: rgb(24, 24, 24);
+    color: white;
+    padding:40px 0;
+}
+
+.container_footer{
+    display: flex;
+    margin-bottom: 65px;
+}
+
+.footer_content{
+    display: flex;
+    flex-direction: column; /* Chuyển các thành phần con thành từng dòng */
+    width: calc(100%/3);
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.footer_content_item{
+    padding: 5px 0;
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+    font-weight: 400;
+}
+
+.footer_hr{
+    height: 2px;
+    color: white;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+.copyright{
+    margin-top: 30px;
+}

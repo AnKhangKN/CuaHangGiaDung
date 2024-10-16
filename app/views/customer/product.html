@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="/vendor/bootstrap-5.3.3/dist/css/bootstrap.min.css">
+    <script src="/vendor/bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="/vendor/fontawesome-free-6.6.0-web/css/all.min.css">
+
+    <!-- css header -->
+    <link rel="stylesheet" href="/public/assets/css/customer/header.css">
+
+    <!-- css home -->
+    <link rel="stylesheet" href="/public/assets/css/customer/home.css">
+
+    <!-- css products -->
+    <link rel="stylesheet" href="/public/assets/css/customer/product.css">
+
+    <!-- css footer -->
+    <link rel="stylesheet" href="/public/assets/css/customer/footer.css">
+
+    <title>Sản phẩm</title>
+</head>
+<body>
+        <header class="header">
+            <nav class="header_nav">
+                <div class="list_nav_after_hidden">
+                    <i class="fa-solid fa-bars fa-lg" id="menu_icon"></i>
+                </div>
+                <div class="nav_logo">
+                    <a href="#"><img src="/public/assets/images/logo_den.jpg" class="nav_logo_img" alt="HKN store"></a>                  
+                </div>
+                <ul class="nav_ul_list text-white" id="menu">
+                    <li class="nav_ul_list_item header_link_next">
+                        <a href="#" class="nav_ul_list_item_link">Trang chủ</a>
+                    </li>
+                    <li class="nav_ul_list_item header_link_next list_products_subnav_item">
+                        <a href="#" class="nav_ul_list_item_link">Sản phẩm</a>
+                        <ul class="nav_ul_list_item_subnav">
+                            <li class="nav_ul_list_item_subnav_item sub_menu_products" >
+                                <a href="#" class="subnav_item_link"><i class="fa-solid fa-plus sub_icon"></i> Thời trang thể thao </a>
+                                <ul class="subnav_item_childen sub_menu_products_list">
+                                    <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sản phẩm lv 1</a></li>
+                                    <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sản phẩm lv 1</a></li>
+                                    <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sản phẩm lv 1</a></li>
+                                    <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sản phẩm lv 1</a></li>
+                                    <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sản phẩm lv 1</a></li>
+                                    <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sản phẩm lv 1</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav_ul_list_item_subnav_item sub_menu_products">
+                                <a href="#" class="subnav_item_link"><i class="fa-solid fa-plus sub_icon"></i> Dụng cụ thể thao </a>
+                                <ul class="subnav_item_childen">
+                                    <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sản phẩm lv 2</a></li>
+                                    <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sản phẩm lv 2</a></li>
+                                    <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sản phẩm lv 2</a></li>
+                                    <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sản phẩm lv 2</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav_ul_list_item_subnav_item sub_menu_products">
+                                <a href="#" class="subnav_item_link"><i class="fa-solid fa-plus sub_icon"></i> Phụ kiện thể thao </a>
+                                <ul class="subnav_item_childen">
+                                    <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sẩn phẩm lv3</a></li>
+                                    <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sẩn phẩm lv3</a></li>
+                                    <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sẩn phẩm lv3</a></li>
+                                    <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sẩn phẩm lv3</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav_ul_list_item header_link_next">
+                        <a href="#" class="nav_ul_list_item_link">Tin tức</a>
+                    </li>
+                    <li class="nav_ul_list_item header_link_next">
+                        <a href="#" class="nav_ul_list_item_link">Giới thiệu</a>
+                    </li>
+                    <li class="nav_ul_list_item header_link_next">
+                        <a href="#" class="nav_ul_list_item_link">Liên hệ</a>
+                    </li>
+                </ul>
+                <div class="nav_tool">
+                    <form action="">
+                        <div class="nav_tool_search" id="nav_tool_search_box">
+                            <input type="text" placeholder="Tìm kiếm" id="nav_tool_search_input">
+                        </div>
+                        <div class="nav_tool_search_icon_box" id="nav_tool_search_icon_box_btn">
+                            <span class="nav_tool_search_icon_box_text">Tìm kiếm sản phẩm</span>
+                            <i class="fa-solid fa-magnifying-glass" id="nav_tool_search_icon"></i> 
+                        </div>
+                        <button class="close_search_top" id="close_search_top_element">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                        <div class="nav_tool_box" id="nav_tool_box_recommend"></div>
+                    </form>
+                    <div class="nav_tool_mark">
+                        <div class="nav_tool_cart">
+                            <i class="fa-solid fa-cart-shopping text-white"></i>
+                        </div>
+                    </div>
+                    <div class="nav_tool_mark" id="nav_tool_mark_id_user">
+                        <div class="nav_tool_user">
+                            <i class="fa-solid fa-user text-white"></i>
+                        </div>
+                    </div>
+                    <div class="nav_tool_user_option_up">
+                        <i class="fa-solid fa-caret-up"></i>
+                    </div>
+                    <div class="nav_tool_user_option" id="nav_tool_user_option_id_user">
+                        <a href="#" style="text-decoration: none; color: black;">
+                            <div class="option_sub">
+                                <i class="fa-solid fa-right-to-bracket"></i>
+                                <p>Đăng nhập</p>
+                            </div>
+                        </a>
+                        <a href="#" style="text-decoration: none; color: black;">
+                            <div class="option_sub">
+                                <i class="fa-solid fa-user-plus"></i>
+                                <p>Đăng ký</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main class="main">
+            <!-- position sub -->
+            <div class="position_top">
+                <span>Products / All products</span>
+            </div>
+            <!-- banner top -->
+            <div class="banner_products_top">
+                <img src="/public/assets/images/banner/Banner-demo-products.png" alt="Banner">
+            </div>
+            <!-- all products -->
+            <!-- all products top -->
+            <div class="container">
+                <div class="all_products_top">
+                    <span class="all_products_top_text">
+                        Tất cả sản phẩm
+                    </span>
+                    <div class="all_products_top_order">
+                        <div class="all_products_top_order_title">
+                            <span>Sắp xếp</span>
+                        </div>
+                        <ul class="all_products_top_order_list">
+                            <li class="all_products_top_order_list_item">
+                                <span>Sắp xếp</span>
+                            </li> 
+                            <li class="all_products_top_order_list_item">
+                                <span>Bán chạy nhất</span>
+                            </li> 
+                            <li class="all_products_top_order_list_item">
+                                <span>Tên: A - Z</span>
+                            </li> 
+                            <li class="all_products_top_order_list_item">
+                                <span>Tên: Z - A</span>
+                            </li>
+                            <li class="all_products_top_order_list_item">
+                                <span>Giá: Tăng dần</span>
+                            </li> 
+                            <li class="all_products_top_order_list_item">
+                                <span>Giá: Giảm dần</span>
+                            </li> 
+                        </ul>
+                    </div>                    
+                </div>
+                <!-- filter -->
+                <div class="all_products_filter">
+                    <!-- text -->
+                    <div class="all_products_filter_text">
+                        <i class="fa-solid fa-arrow-down-wide-short"></i>
+                        <span>Bộ lọc</span>
+                    </div>
+
+                    <!-- group -->
+                    <div class="all_products_filter_group">
+                        <!-- price -->
+                        <div class="all_products_filter_price">
+                            <div class="all_products_filter_price_title">
+                                <span>Giá</span>
+                            </div>
+                            <ul class="all_products_filter_price_list">
+                                <li class="all_products_filter_price_list_item">
+                                    <input type="checkbox" name="" id="">
+                                    <span>Dưới 100.000đ</span>
+                                </li>
+                                <li class="all_products_filter_price_list_item">
+                                    <input type="checkbox" name="" id="">
+                                    <span>100.000đ - 250.000đ</span>
+                                </li>
+                                <li class="all_products_filter_price_list_item">
+                                    <input type="checkbox" name="" id="">
+                                    <span>250.000đ - 500.000đ</span>
+                                </li>
+                                <li class="all_products_filter_price_list_item">
+                                    <input type="checkbox" name="" id="">
+                                    <span>500.000đ - 800.000đ</span>
+                                </li>
+                                <li class="all_products_filter_price_list_item">
+                                    <input type="checkbox" name="" id="">
+                                    <span>800.000đ - 1.500.000đ</span>
+                                </li>
+                                <li class="all_products_filter_price_list_item">
+                                    <input type="checkbox" name="" id="">
+                                    <span>Trên 1.500.000đ</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- color -->
+                        <div class="all_products_filter_color">
+                            <div class="all_products_filter_color_title">
+                                <span>Màu sắc</span>
+                            </div>
+                            <ul class="all_products_filter_color_list">
+                                <li class="all_products_filter_color_list_item" >
+                                    <input type="checkbox" id="color-red">
+                                    <label for="" style="background-color: red;"></label>
+                                </li>
+                                <li class="all_products_filter_color_list_item">
+                                    <input type="checkbox" id="color-blue" >
+                                    <label for="" style="background-color: blue;"></label>
+                                </li>
+                                <li class="all_products_filter_color_list_item" >
+                                    <input type="checkbox" id="color-green" >
+                                    <label for="" style="background-color: green;"></label>
+                                </li>
+                                <li class="all_products_filter_color_list_item" >
+                                    <input type="checkbox" id="color-yellow" >
+                                    <label for="" style="background-color: yellow;"></label>
+                                </li>
+                                <li class="all_products_filter_color_list_item" >
+                                    <input type="checkbox" id="color-purple" >
+                                    <label for="" style="background-color: purple;"></label>
+                                </li>
+                                <li class="all_products_filter_color_list_item" >
+                                    <input type="checkbox" id="color-orange" >
+                                    <label for="" style="background-color: orange;"></label>
+                                </li>
+                            </ul>
+                        </div>
+
+
+                        <!-- size -->
+                        <div class="all_products_filter_size">
+                            <div class="all_products_filter_size_title">
+                                <span>Kích thước</span>
+                            </div>
+                            <ul class="all_products_filter_size_list">
+                                <li>
+                                    <ul>Quần áo
+                                        <li class="all_products_filter_size_list_item">
+                                            <input type="checkbox" name="" id="">
+                                            <span>S</span>
+                                        </li>
+                                        <li class="all_products_filter_size_list_item">
+                                            <input type="checkbox" name="" id="">
+                                            <span>M</span>
+                                        </li>
+                                        <li class="all_products_filter_size_list_item">
+                                            <input type="checkbox" name="" id="">
+                                            <span>L</span>
+                                        </li>
+                                        <li class="all_products_filter_size_list_item">
+                                            <input type="checkbox" name="" id="">
+                                            <span>XL</span>
+                                        </li>
+                                        <li class="all_products_filter_size_list_item">
+                                            <input type="checkbox" name="" id="">
+                                            <span>XXL</span>
+                                        </li>
+                                    </ul>
+                                </li>
+                                
+                                <li>
+                                    <ul>Giày
+                                        <li class="all_products_filter_size_list_item">
+                                            <input type="checkbox" name="" id="">
+                                            <span>36</span>
+                                        </li>
+                                        <li class="all_products_filter_size_list_item">
+                                            <input type="checkbox" name="" id="">
+                                            <span>37</span>
+                                        </li>
+                                        <li class="all_products_filter_size_list_item">
+                                            <input type="checkbox" name="" id="">
+                                            <span>38</span>
+                                        </li>
+                                        <li class="all_products_filter_size_list_item">
+                                            <input type="checkbox" name="" id="">
+                                            <span>39</span>
+                                        </li>
+                                        <li class="all_products_filter_size_list_item">
+                                            <input type="checkbox" name="" id="">
+                                            <span>40</span>
+                                        </li>
+                                        <li class="all_products_filter_size_list_item">
+                                            <input type="checkbox" name="" id="">
+                                            <span>41</span>
+                                        </li>
+                                        <li class="all_products_filter_size_list_item">
+                                            <input type="checkbox" name="" id="">
+                                            <span>42</span>
+                                        </li>
+                                        <li class="all_products_filter_size_list_item">
+                                            <input type="checkbox" name="" id="">
+                                            <span>43</span>
+                                        </li>
+                                        <li class="all_products_filter_size_list_item">
+                                            <input type="checkbox" name="" id="">
+                                            <span>44</span>
+                                        </li>
+                                    </ul>
+                                </li>
+                                
+
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+
+                <!-- tag -->
+                <div class="all_products_tags">
+                    <div class="all_products_tags_filter">
+                        Giá: 
+                    </div>
+
+                    <div class="all_products_tags_filter">
+                        Màu sắc:
+                    </div>
+
+                    <div class="all_products_tags_filter">
+                        Kích thước:
+                    </div>
+
+                    <div class="all_products_tags_remove_all">
+                        <span>Xóa hết</span>
+                    </div>
+                </div>
+
+            <!-- all products container -->
+            
+                <div class="row row-cols-lg-5 g-2">
+                    <div class="col">
+                        <div class="all_products_card">
+                            <div class="card-header">Header</div>
+                            <div class="card-body">Content</div>
+                            <div class="card-footer">Footer</div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="all_products_card">
+                            <div class="card-header">Header</div>
+                            <div class="card-body">Content</div>
+                            <div class="card-footer">Footer</div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="all_products_card">
+                            <div class="card-header">Header</div>
+                            <div class="card-body">Content</div>
+                            <div class="card-footer">Footer</div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="all_products_card">
+                            <div class="card-header">Header</div>
+                            <div class="card-body">Content</div>
+                            <div class="card-footer">Footer</div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="all_products_card">
+                            <div class="card-header">Header</div>
+                            <div class="card-body">Content</div>
+                            <div class="card-footer">Footer</div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="all_products_card">
+                            <div class="card-header">Header</div>
+                            <div class="card-body">Content</div>
+                            <div class="card-footer">Footer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </main>
+        <footer class="footer">
+            <div class="container container_footer">
+                <div class="footer_content">
+                    <p>THÔNG TIN CHUNG </p> 
+                    <a href="#" class="footer_content_item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>256 Nguyễn Văn Cừ An Hòa 94108 Cần Thơ</span>
+                    </a>
+                    <a href="#" class="footer_content_item">
+                        <i class="fa-solid fa-phone"></i>
+                        <span >+84 292 3898 167</span> 
+                    </a>
+                    <a href="#" class="footer_content_item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>hknstore@gmail.com</span> 
+                    </a>
+                    <a href="#" class="footer_content_item">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span>Gửi phản hồi</span>
+                    </a>
+                </div>
+                <div class="footer_content">
+                    <p>HƯỚNG DẪN</p>  
+                    <a href="#" class="footer_content_item">Hướng dẫn mua hàng</a>
+                    <a href="#" class="footer_content_item">Hướng dẫn thanh toán</a>
+                    <a href="#" class="footer_content_item">Hướng dẫn đổi trả</a>
+                </div>
+                <div class="footer_content">
+                    <p>MẠNG XÃ HỘI</p>
+                    <a href="#" class="footer_content_item"><i class="fa-brands fa-facebook"></i> facebook</a>
+                    <a href="#" class="footer_content_item"><i class="fa-brands fa-instagram"></i> instagram</a>
+                    <a href="#" class="footer_content_item"><i class="fa-solid fa-z"></i> zalo</a>
+                </div> 
+            </div>
+
+            <hr class="footer_hr">
+
+            <div class="container copyright">
+                <p class="text-center" style="margin-bottom: 0;">Bản quyền © 2024 bởi HKN store</p>
+            </div>
+        </footer>
+    <script src="/public/assets/js/customer/header.js"></script>
+
+    <script src="/public/assets/js/customer/home.js"></script>
+</body>
+</html>

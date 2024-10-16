@@ -1,0 +1,319 @@
+
+
+/* slider */
+.home_slider{
+    width: 100%;
+}
+
+.home_slider_img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* chỉnh lại thành none */
+
+}
+
+/* best sellers */
+
+.container_best_sellers{
+    margin-top: 100px;
+}
+
+/* top */
+.best_sellers_top{
+    margin: 50px 0;
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.best_sellers_top_text{
+    position: absolute;
+    left: 10px;
+}
+
+.best_sellers_top_btn{
+    position: absolute;
+    right: 10px;
+}
+
+.best_sellers_top_btn_left {
+    color: #4c4c4c;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.best_sellers_top_btn_right{
+    color: #4c4c4c;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin:0 10px;
+}
+
+/* products */
+.best_sellers_products_list{
+    display: flex;
+    overflow: hidden; /* Ẩn các sản phẩm ngoài vùng hiển thị */
+    width: 100%; /* Chiều rộng của vùng hiển thị sản phẩm */
+}
+
+.best_sellers_products_list_card{
+    flex: 0 0 25%; /* Mỗi sản phẩm chiếm 25% chiều rộng */
+    padding: 0 10px; /* Khoảng cách giữa các sản phẩm */
+    opacity: 1; /* Thiết lập độ mờ ban đầu */
+}
+
+.best_sellers_list_card_img{
+    border: 0.5px solid rgb(199, 199, 199);
+}
+
+.best_sellers_list_card_body_title{
+    margin: 0;
+    line-height: 55px;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.best_sellers_list_card_body_kind{
+    margin: 0;
+    color: gray;
+}
+
+.best_sellers_list_card_body_price{
+    margin: 0;
+    font-size: 18px;
+}
+
+/* banner */
+.container_banner{
+    margin-top: 100px ;
+    width: 100%;
+    height: 540px;
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+    border: 1px solid rgb(255, 255, 255);
+}
+
+.banner{
+    width: 50%;
+    margin: auto;
+    margin-top: 155px;
+    color: white;
+}
+
+.banner_title{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: xx-large;
+}
+
+.banner_content{
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.banner_btn_item{
+    text-transform: uppercase;
+    border: none;
+    width: 150px;
+    height: 50px;
+    background-color: white;
+    margin: 5px;
+}
+
+.banner_btn_item:hover{
+    background-color: rgb(151, 151, 151);
+    color: white;
+}
+
+/* new products
+/* top */
+.container_new_products{
+    display: block;
+    min-height: 800px;
+}
+
+.new_products_top{
+    margin: 45px 0;
+    align-items: center;
+    justify-content: center;
+}
+
+/* products */
+.container_new_products_list{
+    position: relative;
+    height: calc(270px + (170 * ((100vw - 1024px) / (1920 - 1024)))); /* 1024px đến 1920px */
+}
+
+/* btn */
+.new_products_list_btn_left {
+    background-color: white;
+    border: none;
+    width: 55px;
+    height: calc(270px + (170 * ((100vw - 1024px) / (1920 - 1024)))); /* 1024px đến 1920px */
+    margin-right: 10px;
+    position: absolute;
+    left: 20px;
+}
+
+.new_products_list_btn_right{
+    background-color: white;
+    border: none;
+    width: 55px;    
+    height: calc(270px + (170 * ((100vw - 1024px) / (1920 - 1024)))); /* 1024px đến 1920px */
+    margin:0 10px;
+    position: absolute;
+    right: 10px;
+}
+
+.new_products_list_btn_left:hover, .new_products_list_btn_right:hover{
+    background-color: #dbdbdb;
+    transition: all 0.3s ease;
+}
+
+/* list products */
+
+.new_products_list{
+    position: absolute;
+    left: 70px;
+    display: flex;
+    overflow: hidden; 
+    right: 70px;
+}
+
+.new_products_list_card{
+    flex: 0 0 calc(100%/3); 
+    padding: 0 10px; 
+    opacity: 1; 
+}
+
+.new_products_list_card_img{
+    border: 0.5px solid rgb(199, 199, 199);
+    width: 100%;
+}
+
+.new_products_list_card_body_title{
+    margin: 0;
+    line-height: 55px;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.new_products_list_card_body_kind{
+    margin: 0;
+    color: gray;
+}
+
+.new_products_list_card_body_price{
+    margin: 0;
+    font-size: 18px;
+} 
+
+
+@media (min-width:600px) and (max-width: 1024px){
+    /* best sellers */
+    .best_sellers_products_list_card {
+        flex: 0 0 33.33%; /* Mỗi sản phẩm chiếm 33.33% chiều rộng */
+        opacity: 1; 
+    }
+
+    .banner_btn_item{
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        flex-direction: column; /* Sắp xếp các mục theo chiều dọc */
+        margin:15px auto;
+    }
+
+        /* products */
+    .container_new_products_list{
+        position: relative;
+        height: calc(200px + (170 * ((100vw - 600px) / (1024 - 600)))); /* 1024px đến 1920px */
+    }
+
+    /* btn */
+    .new_products_list_btn_left {
+        background-color: white;
+        border: none;
+        width: 55px;
+        height: calc(200px + (170 * ((100vw - 600px) / (1024 - 600)))); /* 1024px đến 1920px */
+        margin-right: 10px;
+        position: absolute;
+        left: 20px;
+    }
+
+    .new_products_list_btn_right{
+        background-color: white;
+        border: none;
+        width: 55px;    
+        height: calc(200px + (170 * ((100vw - 600px) / (1024 - 600)))); /* 1024px đến 1920px */
+        margin:0 10px;
+        position: absolute;
+        right: 10px;
+    }
+
+    .new_products_list_card{
+        flex: 0 0 50%;
+        opacity: 1;
+    }
+
+}
+
+
+@media (min-width: 0px) and (max-width: 600px) {
+    /* best sellers */
+    .best_sellers_products_list_card {
+        flex: 0 0 50%; /* Mỗi sản phẩm chiếm 50% chiều rộng */
+        opacity: 1; 
+    }
+
+    /* products */
+    .container_new_products_list{
+        position: relative;
+        height: calc(120px + (170 * ((100vw - 0px) / (600 - 0)))); /* 1024px đến 1920px */
+    }
+
+    /* btn */
+    .new_products_list_btn_left {
+        background-color: white;
+        border: none;
+        width: 55px;
+        height: calc(120px + (170 * ((100vw - 0px) / (600 - 0)))); /* 1024px đến 1920px */
+        margin-right: 10px;
+        position: absolute;
+        left: 20px;
+    }
+
+    .new_products_list_btn_right{
+        background-color: white;
+        border: none;
+        width: 55px;    
+        height: calc(120px + (170 * ((100vw - 0px) / (600 - 0)))); /* 1024px đến 1920px */
+        margin:0 10px;
+        position: absolute;
+        right: 10px;
+    }
+
+    /* new products */
+    .new_products_list_card{
+        flex: 0 0 100%;
+        opacity: 1;
+    }
+
+    .banner_btn_item{
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        flex-direction: column; /* Sắp xếp các mục theo chiều dọc */
+        margin:15px auto;
+    }
+}
+
+
+

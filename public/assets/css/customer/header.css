@@ -1,0 +1,660 @@
+.header{
+    height: 80px;
+    background-color: rgb(24, 24, 24);
+    position: fixed;
+    top: 0;
+    width: 100%; 
+    z-index: 1000;
+}
+
+.header_nav{
+    display: flex;
+    position: relative;
+    align-content: center;
+}
+
+.list_nav_after_hidden{
+    color: white;
+    display: none;
+}
+
+.nav_logo{
+    position: absolute;
+    left: 32px;
+    width: 45px;
+    line-height: 80px;
+}
+
+.nav_logo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.nav_ul_list{
+    list-style: none;
+    line-height: 84px;
+    position: absolute;
+    left: 70px;
+    text-transform: uppercase;
+    padding: 0px 50px;
+    margin: 0;
+}
+
+.nav_ul_list_item{
+    display: inline-block;
+    padding: 0 16px;
+    color: white;
+}
+
+.nav_ul_list_item_link{
+    color: white;
+    text-decoration: none;
+    font-weight: 100;
+    font-weight: bold;
+}
+
+/* trang tiếp theo */
+.header_link_next{
+    position: relative;
+    display: inline-block;
+    text-decoration: none; 
+}
+
+.header_link_next::after{
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px; 
+    top: 60px;
+    border-radius: 2px;
+    bottom: -6px;
+    left: 13px;
+    background-color: #ffffff; 
+    transition: width 0.3s ease-in-out; 
+}
+
+.header_link_next:hover::after,
+.header_link_next:focus::after,
+.header_link_next:active::after {
+    width: 80%; 
+}
+
+/* danh mục đề xuất trong sản phẩm */
+.list_products_subnav_item {
+    position: relative;
+}
+
+.subnav_item_link {
+    color: black;
+    font-weight: 500;
+    position: relative;
+    display: inline-block;
+    text-decoration: none; 
+    padding-bottom: 8px; 
+}
+
+.subnav_item_link::after {
+    content: "";
+    position: absolute;
+    top: 60px; /* Có thể điều chỉnh để nằm ngay dưới link */
+    width: 280px; 
+    height: 1px; 
+    left: 0;
+    background-color: rgb(175, 175, 175);
+}
+
+.nav_ul_list_item_subnav {
+    position: absolute;
+    width: 1000px;
+    background-color: white;
+    top: 80px;
+    left: -210px;
+    list-style: none;
+    padding: 15px;
+    display: none; /* Bắt đầu ẩn */
+    z-index: 1000; /* Đảm bảo nằm trên các phần tử khác */
+}
+
+/* Phần tử con bên trong giữ nguyên thuộc tính inline-block */
+.nav_ul_list_item_subnav_item {
+    display: inline-block;
+    width: calc(100% / 3);
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.subnav_item_childen {
+    list-style: none;
+    margin-top: 10px;
+    padding: 0;
+}
+
+.childen_link {
+    text-decoration: none;
+    font-size: 13px;
+    color: black;
+}
+
+/* khi hover danh mục đề xuất */
+.list_products_subnav_item:hover .nav_ul_list_item_subnav {
+    display: flex;
+}
+
+.list_products_subnav_item:hover .subnav_item_childen{
+    display: block;
+}
+
+/* Giữ cho subnav luôn có khoảng trống khi không hiển thị */
+.nav_ul_list_item_subnav,
+.subnav_item_childen {
+    visibility: hidden; /* Ẩn subnav mà không thay đổi chiều cao */
+    opacity: 0; /* Ẩn subnav */
+    transition: visibility 0s, opacity 0.3s linear; /* Hiệu ứng chuyển tiếp */
+}
+
+.list_products_subnav_item:hover .nav_ul_list_item_subnav,
+.list_products_subnav_item:hover .subnav_item_childen {
+    visibility: visible; /* Hiện subnav khi hover */
+    opacity: 1; /* Hiện subnav */
+}
+
+.sub_icon{
+    display: none;
+}
+
+.subnav_item_childen_item{
+    line-height: 50px;
+}
+
+.subnav_item_childen_item:hover {
+    background-color: #eee; /* Thêm hiệu ứng hover cho các liên kết con */
+    transition: all 0.3s ease;
+    padding:0 15px;
+}
+
+
+.nav_tool{
+    display: flex;
+    position: absolute;
+    right: 20px;
+}
+
+.nav_tool_search{
+    height: 40px;
+    background-color: white;
+    cursor: pointer;
+    line-height: 35.5px;
+    width: 225px;
+    margin-top: 20px;
+    margin-right: 15px;
+    border-radius: 20px;
+    position: relative;
+    /* overflow: hidden; */
+    background-color: rgb(245, 245, 245);
+}
+
+#nav_tool_search_input{
+    padding:0 15px;
+    width: 195px;
+    outline: none;
+    position: absolute;
+    left: 5px;
+    top: 2px;
+    border: none;
+    background-color: rgb(245, 245, 245);
+    border-radius: 25px;
+}
+
+#nav_tool_search_icon{
+    position: absolute;
+    padding: 12px;
+    border-radius: 50%;
+    top: 0px;
+    right: 0px;
+    transition: all 0.3s ease; /* Làm mượt tất cả các thuộc tính trong 0.3 giây */
+}
+
+#nav_tool_search_icon:hover{
+    background-color: rgb(196, 196, 196);
+    transition: all 0.3s ease; /* Làm mượt tất cả các thuộc tính trong 0.3 giây */
+}
+
+.nav_tool_cart{
+    padding: 10px 10px;
+    margin:-4px -2px;
+}
+
+.nav_tool_user{
+    margin: 0px 4px;
+    padding: 5px 6px;
+}
+
+.nav_tool_mark{
+    /* background-color: aqua; */
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    margin-top: 22px;
+    margin-left: 13px;
+}
+
+.nav_tool_mark:hover{
+    background-color: rgb(59, 59, 59);    
+    overflow: hidden;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    margin-top: 22px;
+    transition: all 0.3s ease; /* Làm mượt tất cả các thuộc tính trong 0.3 giây */
+    cursor: pointer;
+}
+
+.nav_tool_user_option_up{
+    display: none;
+    color: white;
+    position: absolute;
+    top: 55px;
+    right: 9px;
+    font-size: 30px;
+}
+
+.nav_tool_user_option{
+    display: none;
+    /* display: block; */
+    position: absolute;
+    top: 80px;
+    padding: 10px;
+    /* border: 1px solid black; */
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 170px;
+    right: -15px;
+}
+
+.option_sub{
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    margin: 0px;
+    height: 30px;
+}
+
+.option_sub:hover{
+    text-decoration: none;
+    background-color: black;
+    padding:0 18px;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.option_sub > p{
+    margin: 0px 10px;
+}
+
+.close_search_top{
+    display:none ;
+    z-index: 3000;
+    position: absolute;
+    margin-top: -40px;
+    right: 3%;
+    padding: 7px 13px;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+
+/* test */
+.nav_tool_search_icon_box{
+    background-color: white;
+    margin: 19px 15px;
+    width: 240px;
+    height: 42px;
+    border-radius: 25px;
+    display: flex;
+    position: relative;
+}
+
+.nav_tool_search_icon_box_text{
+    position: absolute;
+    left: 15px;
+    top: 8px;
+}
+
+.nav_tool_search{
+    /* display: block; */
+    display: none;
+    z-index: 3000;
+    width: 65vw;
+    position: relative;
+}
+
+#nav_tool_search_input{
+    width: 98%;
+}
+
+.nav_tool_box{
+    display: none;
+    /* display: block; */
+    height: 380px;
+    top: 0;
+    background-color: white;
+    width: 100%;
+    position: relative;
+    z-index: 2000;
+    position: fixed;
+    right: 0px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.close_search_top{
+    display:none ;
+    /* display: block; */
+    top: 60px;
+    z-index: 3000;
+    position: absolute;
+    margin-top: -40px;
+    right: 3%;
+    padding: 7px 13px;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+.main{
+    margin-top: 80px;
+}
+
+@media (min-width: 400px) and (max-width: 1060px) {
+    .list_nav_after_hidden{
+        cursor: pointer;
+        display: block;
+        font-size: 16px;
+        padding: 10px 14px;
+        margin: 18px;
+        border-radius: 50%;
+    }
+
+    .list_nav_after_hidden:hover{
+        background-color: rgb(59, 59, 59);
+        transition: all 0.3s ease;
+    }
+
+    .nav_logo{
+        left: 50%;
+    }
+
+    .nav_ul_list{
+        margin-left: 30px;
+        padding: 0px;
+        display: none;
+        left: -30px;
+        top: 80px;
+        background-color: rgb(24, 24, 24);
+        height: 700px;
+    }
+
+    .nav_ul_list_item {
+        padding: 0 40px;
+        display: block;
+    }
+
+    .nav_ul_list_item_subnav {
+        position: absolute;
+        width: 800px;
+        background-color: white;
+        top: -84px;
+        left: 173.5px;
+        list-style: none;
+        padding: 15px;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column; /* Sắp xếp các mục theo chiều dọc */
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .sub_icon{
+        display: inline-block;
+    }
+
+    /* Mục con bên trong giữ nguyên chiều rộng và hiển thị block */
+    .nav_ul_list_item_subnav_item {
+        display: block;
+        width: calc(100%); /* Căn mỗi mục chiếm 1/3 chiều rộng */
+        padding: 0 10px;
+        box-sizing: border-box;
+        
+    }
+    
+    /* Hiển thị menu con khi di chuột vào mục cha */
+    .sub_menu_products:hover .subnav_item_childen_item {
+        display: block;
+        padding: 5px 10px;
+        background-color: #ffffff;
+    }
+
+    /* Thay đổi icon khi hover vào phần tử cha */
+    .sub_menu_products:hover .sub_icon::before {
+    content: "\f00d"; /* Unicode của icon fa-minus trong Font Awesome */
+    }
+
+    .subnav_item_childen:hover{
+        transition: all 0.3s ease;
+    }
+
+    /* Các mục con trong menu */
+    .subnav_item_childen_item {
+        display: none; /* Ban đầu ẩn các mục con */
+    }
+    
+    .subnav_item_childen_item a {
+        text-decoration: none;
+        color: black;
+        display: block;
+        padding: 5px 10px;
+    }
+    
+    .subnav_item_childen_item a:hover {
+        background-color: #eee; /* Thêm hiệu ứng hover cho các liên kết con */
+        transition: all 0.3s ease;
+    }
+/* --------------------------- */
+
+    .nav_tool_search_icon_box_text{
+        display: none;
+    }
+
+    .nav_tool_search_icon_box{
+        background-color: white;
+        margin: 19px 15px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+
+    .nav_tool_search{
+        /* display: block; */
+        display: none;
+        z-index: 3000;
+        width: 65vw;
+        position: relative;
+    }
+
+    #nav_tool_search_input{
+        width: 98%;
+    }
+
+    .nav_tool_box{
+        display: none;
+        /* display: block; */
+        height: 380px;
+        top: 0;
+        background-color: white;
+        width: 100%;
+        position: relative;
+        z-index: 2000;
+        position: fixed;
+        right: 0px;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .close_search_top{
+        display:none ;
+        /* display: block; */
+        top: 60px;
+        z-index: 3000;
+        position: absolute;
+        margin-top: -40px;
+        right: 3%;
+        padding: 7px 13px;
+        border: 1px solid black;
+        border-radius: 50%;
+    }
+}
+
+@media (min-width: 0px) and (max-width: 400px){
+    .list_nav_after_hidden{
+        cursor: pointer;
+        display: block;
+        font-size: 16px;
+        padding: 10px 14px;
+        margin: 18px;
+        border-radius: 50%;
+    }
+
+    .list_nav_after_hidden:hover{
+        background-color: rgb(59, 59, 59);
+        transition: all 0.3s ease;
+    }
+
+    .nav_logo{
+        left: 20%;
+    }
+
+    .nav_ul_list{
+        margin-left: 30px;
+        padding: 0px;
+        display: none;
+        left: -30px;
+        top: 80px;
+        background-color: rgb(24, 24, 24);
+        height: 700px;
+    }
+
+    .nav_ul_list_item {
+        padding: 0 40px;
+        display: block;
+    }
+
+    .nav_ul_list_item_subnav {
+        position: absolute;
+        width: 800px;
+        background-color: white;
+        top: -84px;
+        left: 173.5px;
+        list-style: none;
+        padding: 15px;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column; /* Sắp xếp các mục theo chiều dọc */
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .sub_icon{
+        display: inline-block;
+    }
+
+    /* Mục con bên trong giữ nguyên chiều rộng và hiển thị block */
+    .nav_ul_list_item_subnav_item {
+        display: block;
+        width: calc(100%); /* Căn mỗi mục chiếm 1/3 chiều rộng */
+        padding: 0 10px;
+        box-sizing: border-box;
+        
+    }
+    
+    /* Hiển thị menu con khi di chuột vào mục cha */
+    .sub_menu_products:hover .subnav_item_childen_item {
+        display: block;
+        padding: 5px 10px;
+        background-color: #ffffff;
+    }
+
+    /* Thay đổi icon khi hover vào phần tử cha */
+    .sub_menu_products:hover .sub_icon::before {
+    content: "\f00d"; /* Unicode của icon fa-minus trong Font Awesome */
+    }
+
+    .subnav_item_childen:hover{
+        transition: all 0.3s ease;
+    }
+
+    /* Các mục con trong menu */
+    .subnav_item_childen_item {
+        display: none; /* Ban đầu ẩn các mục con */
+    }
+    
+    .subnav_item_childen_item a {
+        text-decoration: none;
+        color: black;
+        display: block;
+        padding: 5px 10px;
+    }
+    
+    .subnav_item_childen_item a:hover {
+        background-color: #eee; /* Thêm hiệu ứng hover cho các liên kết con */
+        transition: all 0.3s ease;
+    }
+/* --------------------------- */
+
+    .nav_tool_search_icon_box_text{
+        display: none;
+    }
+
+    .nav_tool_search_icon_box{
+        background-color: white;
+        margin: 19px 15px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+
+    .nav_tool_search{
+        /* display: block; */
+        display: none;
+        z-index: 3000;
+        width: 65vw;
+        position: relative;
+    }
+
+    #nav_tool_search_input{
+        width: 98%;
+    }
+
+    .nav_tool_box{
+        display: none;
+        /* display: block; */
+        height: 380px;
+        top: 0;
+        background-color: white;
+        width: 100%;
+        position: relative;
+        z-index: 2000;
+        position: fixed;
+        right: 0px;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .close_search_top{
+        display:none ;
+        /* display: block; */
+        top: 60px;
+        z-index: 3000;
+        position: absolute;
+        margin-top: -40px;
+        right: 3%;
+        padding: 7px 13px;
+        border: 1px solid black;
+        border-radius: 50%;
+    }
+}
+
