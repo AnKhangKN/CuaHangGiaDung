@@ -1,0 +1,22 @@
+.introduce_contents{
+    display: flex;
+}
+
+.group_contact{
+    margin-top: 20px;
+}
+
+.introduce_img{
+    margin: 50px;
+}
+
+.introduce_img h2{
+    margin: 10px 100px;
+}
+
+@media (min-width: 400px) and (max-width: 1060px){
+    .introduce_img{
+        display: none;
+    }
+
+}

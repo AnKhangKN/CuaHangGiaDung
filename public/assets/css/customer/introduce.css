@@ -1,0 +1,13 @@
+.introduce_contents{
+    margin-top: 40px;
+}
+
+.contents_introduce_ul li{
+    list-style: none;
+    padding: 5px 0;
+}
+
+.contents_introduce_ul_footer li{
+    list-style: none;
+    padding: 5px 0;
+}
