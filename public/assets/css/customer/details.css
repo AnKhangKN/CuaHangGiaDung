@@ -59,3 +59,152 @@
     transition: all 0.3s ease;
     color: #333;
 }
+
+.products_details_info_title{
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.products_details_info_price{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    margin-top: 20px;
+}
+
+.products_details_info_price_under{
+    display: flex;
+    align-items: center;
+    margin-right: 40px;
+}
+
+.products_details_info_price_under_promotion{
+    background-color: rgb(255, 77, 77);
+    color: white;
+    width: 50px;
+    text-align: center;
+}
+
+.products_details_info_price_new{
+    color: red;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.products_details_info_size_group {
+    display: flex;
+    margin-top: 40px;
+}
+
+.products_details_info_size_group_clothes {
+    align-items: center;
+    display: none; /* Ẩn lựa chọn size quần áo */
+}
+
+.products_details_info_size_group_shoes {
+    display: flex; /* Hiển thị lựa chọn size giày */
+}
+
+.products_details_info_size_group_shoes_item label, 
+.products_details_info_size_group_clothes_item label {
+    border: 1px solid #eaeaea;
+    width: 25px;
+    height: 25px;
+    border-radius: 5px;
+    float: left;
+    position: relative;
+    font-size: 14px;
+    background-color: #333;
+    color: white;
+    margin: 0px;
+    font-weight: normal;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+/* Ẩn checkbox */
+.products_details_info_size_group_shoes_item input, 
+.products_details_info_size_group_clothes_item input {
+    display: none;
+}
+
+/* Hiển thị dấu check khi chọn */
+.products_details_info_size_group_shoes_item input:checked + label, 
+.products_details_info_size_group_clothes_item input:checked + label {
+    background-color: #555; /* Thay đổi màu nền khi được chọn */
+    border-color: #000; /* Thay đổi màu viền khi được chọn */
+}
+
+.products_details_info_size_group_shoes_item input:checked + label::before, 
+.products_details_info_size_group_clothes_item input:checked + label::before {
+    content: '';
+    position: absolute;
+    top: 7px;
+    left: 6px;
+    height: 6px;
+    width: 12px;
+    z-index: 99;
+    border: 2px solid #fff;
+    border-top-style: none;
+    border-right-style: none;
+    font-size: 0;
+    transform: rotate(-45deg); /* Tạo dấu check */
+}
+
+
+.products_details_info_color{
+    display: flex;
+    margin-top: 20px;
+}
+
+.products_details_info_add_products_minus button, .products_details_info_add_products_plus button{
+    width: 40px;
+    height: 40px;
+    border: none;
+    border: 1px solid rgb(231, 231, 231);
+    
+}
+
+.products_details_info_add_products_minus{
+    padding-left: 24px;
+}
+
+.products_details_info_add_products_number, .products_details_info_add_products_plus{
+    padding: 0;
+}
+
+.products_details_info_add_products_number input[type="text"]{
+    border: 1px solid rgb(231, 231, 231);
+    width: 65px;
+    height: 40px;
+    text-align: center;
+    /* border: none; */
+    outline: none;
+}
+
+.products_details_info_add_btn button{
+    background-color: #333;
+    color: white;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 600;
+    height: 40px;
+    width: 100%;
+    border: none;
+}
+
+.products_details_sub_info{
+    margin-top: 40px;
+}
+
+.products_details_sub_info_text{
+    background-color: #dedede;
+    /* color: white; */
+    padding: 20px;
+    font-weight: 600;
+    text-align: center;
+}
