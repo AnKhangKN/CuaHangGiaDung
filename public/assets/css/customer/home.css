@@ -106,6 +106,7 @@
 }
 
 .banner_title{
+    display: none;
     text-transform: uppercase;
     font-weight: bold;
     font-size: xx-large;
@@ -119,7 +120,7 @@
 .banner_btn_item{
     text-transform: uppercase;
     border: none;
-    width: 150px;
+    width: 230px;
     height: 50px;
     background-color: white;
     margin: 5px;
