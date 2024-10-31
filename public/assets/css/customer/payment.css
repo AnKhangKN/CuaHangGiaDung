@@ -1,0 +1,157 @@
+
+
+.title p{
+    font-weight: 400;
+    font-size: 30px;
+}
+
+.infor_payment_title p{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.infor_payment_login{
+    color: rgb(170, 170, 170);
+}
+
+.infor_payment_login a{
+    text-decoration: none;
+    color: black;
+}
+
+.container_infor_payment > p{
+    margin-top: 10px ;
+    font-size: 20px;
+    font-weight: 400;
+}   
+
+.infor_payment_content{
+    margin: 40px 0;
+}
+
+.row_infor_payment_content{
+    display: flex;
+}
+
+.infor_payment_content_text{
+    margin: 10px 0;
+}
+
+.infor_payment_content_text_email{
+    width: 60%;
+}
+
+.infor_payment_content_text_phone{
+    width: 33.2%;
+}
+
+
+
+.infor_payment_content_text input, .infor_payment_content_text_email input, .infor_payment_content_text_phone input{
+    padding: 10px;
+    width: 90%;
+    height: 45px;
+    border-radius: 5px;
+    border: 0.5px solid rgb(190, 190, 190);
+    outline: none;
+}
+
+.infor_payment_method_title p{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.infor_payment_method_content_choose{
+    margin: 20px 0;
+}
+
+.content_transfer{
+    display: none;
+    /* display: block; */
+    margin: 20px 16px;
+    text-align: center;
+    width: 80%;
+    padding: 15px;
+    color: white;
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+}
+
+.infor_payment_btn{
+    margin-top: 70px;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.infor_payment_btn_cart, .infor_payment_btn_continue{
+    width: 50%;
+}
+
+.infor_payment_btn_cart a{
+    text-decoration: none;
+    color: black;
+}
+
+.infor_payment_btn_continue{
+    text-align: right;
+    
+}
+
+.infor_payment_btn_continue button{
+    border: none;
+    color: white;
+    height: 45px;
+    font-weight: 500;
+    width: 195px;
+    border-radius: 5px;
+    outline: none;
+    background-color: #333;
+}
+
+.list_infor_products_payment_item{
+    margin-top: 50px;
+    display: flex;
+}
+
+.img_infor_payment_item,.text_infor_payment_item,.price_infor_payment_item{
+    width: calc(100%/3);
+}
+
+.text_infor_payment_item{
+    margin-left: 10px;
+}
+
+.price_infor_payment_item{
+    text-align: right;
+}
+
+.img_infor_payment_item{
+    width: 90px;
+}
+
+.img_infor_payment_item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.expense_item, .total_bill{
+    display: flex;
+    align-items: center;
+}
+
+.expense_item span,  .total_bill_label {
+    width: 50%;
+    color: rgb(144, 144, 144);
+}
+
+.expense_item p, .total_bill_due{
+    width: 50%;
+    text-align: right;
+}
+
+.total_bill_due_price{
+    font-size: 30px;
+    font-weight: 400;
+    margin: 0 10px;
+}

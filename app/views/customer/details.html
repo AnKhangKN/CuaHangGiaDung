@@ -155,57 +155,37 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="row">
+                            <!-- Cột chứa ảnh nhỏ -->
                             <div class="col-lg-2">
                                 <div class="all_img">
-                                    <img src="/public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
+                                    <img class="thumbnail" src="/public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="" onclick="changeImage(this)">
                                 </div>
                                 <div class="all_img">
-                                    <img src="/public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
+                                    <img class="thumbnail" src="/public/assets/images/products/AoPoLoDaBa_Trang.jpg" alt="" onclick="changeImage(this)">
                                 </div>
                                 <div class="all_img">
-                                    <img src="/public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
+                                    <img class="thumbnail" src="/public/assets/images/products/AoPoLoDaBa_Xanh.jpg" alt="" onclick="changeImage(this)">
                                 </div>
                                 <div class="all_img">
-                                    <img src="/public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
+                                    <img class="thumbnail" src="/public/assets/images/products/GangTayXeDap_Cam.jpg" alt="" onclick="changeImage(this)">
                                 </div>
                             </div>
+
+                            <!-- Ảnh lớn -->
                             <div class="col-lg-10 main_img_show">
-                                <button class="main_img_show_btn_left" id="main_img_show_btn_left_id">
+                                <button class="main_img_show_btn_left" id="main_img_show_btn_left_id" onclick="prevImage()">
                                     <i class="fa-solid fa-arrow-left"></i>
                                 </button>
                                 <div class="main_img_show_list" id="main_img_show_list_id">
                                     <div class="img_main">
-                                        <img src="/public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
-                                    </div>
-                            
-                                    <div class="img_main">
-                                        <img src="/public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
-                                    </div>
-                            
-                                    <div class="img_main">
-                                        <img src="/public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
-                                    </div>
-                            
-                                    <div class="img_main">
-                                        <img src="/public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
-                                    </div>
-                            
-                                    <div class="img_main">
-                                        <img src="/public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
-                                    </div>
-                            
-                                    <div class="img_main">
-                                        <img src="/public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
-                                    </div>
-                            
-                                    <div class="img_main">
-                                        <img src="/public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
+                                        <img id="largeImg" src="/public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
                                     </div>
                                 </div>
-                                <button class="main_img_show_btn_right" id="main_img_show_btn_right_id">
+                                <button class="main_img_show_btn_right" id="main_img_show_btn_right_id" onclick="nextImage()">
                                     <i class="fa-solid fa-arrow-right"></i>
                                 </button>
                             </div>
+                            
                             
                         </div>
                     </div>
@@ -305,7 +285,47 @@
                                 
 
                                 <div class="products_details_info_color">
-                                    
+                                    <span>Color</span>
+                                    <li class="products_details_info_color_item" >
+                                        <input type="checkbox" id="color-red">
+                                        <label for="" style="background-color: red;"></label>
+                                    </li>
+                                    <li class="products_details_info_color_item">
+                                        <input type="checkbox" id="color-blue" >
+                                        <label for="" style="background-color: blue;"></label>
+                                    </li>
+                                    <li class="products_details_info_color_item" >
+                                        <input type="checkbox" id="color-green" >
+                                        <label for="" style="background-color: green;"></label>
+                                    </li>
+                                    <li class="products_details_info_color_item" >
+                                        <input type="checkbox" id="color-yellow" >
+                                        <label for="" style="background-color: yellow;"></label>
+                                    </li>
+                                    <li class="products_details_info_color_item" >
+                                        <input type="checkbox" id="color-purple" >
+                                        <label for="" style="background-color: purple;"></label>
+                                    </li>
+                                    <li class="products_details_info_color_item" >
+                                        <input type="checkbox" id="color-orange" >
+                                        <label for="" style="background-color: orange;"></label>
+                                    </li>
+                                    <li class="products_details_info_color_item" >
+                                        <input type="checkbox" id="color-black" >
+                                        <label for="" style="background-color: rgb(0, 0, 0);"></label>
+                                    </li>
+                                    <li class="products_details_info_color_item" >
+                                        <input type="checkbox" id="color-pink" >
+                                        <label for="" style="background-color: rgb(255, 0, 204);"></label>
+                                    </li>
+                                    <li class="products_details_info_color_item" >
+                                        <input type="checkbox" id="color-white" >
+                                        <label for="" style="background-color: white;"></label>
+                                    </li>
+                                    <li class="products_details_info_color_item" >
+                                        <input type="checkbox" id="color-gray" >
+                                        <label for="" style="background-color: gray"></label>
+                                    </li>
                                 </div>
                                 <hr>
                                 <div class="products_details_info_add row">
@@ -351,6 +371,107 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <!-- Đề xuất -->
+            <div class="container-fluid container_best_sellers">
+                <!-- top -->
+                <div class="best_sellers_top">
+                    <h2 class="best_sellers_top_text ">Dành cho bạn</h2>
+                    <div class="best_sellers_top_btn">
+                        <button class="best_sellers_top_btn_left" id="prevBtnRecommend">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+                        <button class="best_sellers_top_btn_right" id="nextBtnRecommend">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!--products -->
+                
+                
+                <div class="best_sellers_products_list" id="productsListRecommend">
+                    
+                    <div class="best_sellers_products_list_card">
+                        <img class="card-img-top best_sellers_list_card_img" src="/public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="Card image" style="width:100%">
+                        <div class="best_sellers_list_card_body">
+                            <p class="best_sellers_list_card_body_title">tensanpham</p>
+                            <p class="best_sellers_list_card_body_kind">tendanhmuc</p>
+                            <p class="best_sellers_list_card_body_price">dongi</p>
+                        </div>
+                    </div>
+                    
+                    <div class="best_sellers_products_list_card">
+                        <img class="card-img-top best_sellers_list_card_img" src="/public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="Card image" style="width:100%">
+                        <div class="best_sellers_list_card_body">
+                            <p class="best_sellers_list_card_body_title">tensanpham</p>
+                            <p class="best_sellers_list_card_body_kind">tendanhmuc</p>
+                            <p class="best_sellers_list_card_body_price">dongi</p>
+                        </div>
+                    </div>
+
+                    <div class="best_sellers_products_list_card">
+                        <img class="card-img-top best_sellers_list_card_img" src="/public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="Card image" style="width:100%">
+                        <div class="best_sellers_list_card_body">
+                            <p class="best_sellers_list_card_body_title">tensanpham</p>
+                            <p class="best_sellers_list_card_body_kind">tendanhmuc</p>
+                            <p class="best_sellers_list_card_body_price">dongi</p>
+                        </div>
+                    </div>
+
+                    <div class="best_sellers_products_list_card">
+                        <img class="card-img-top best_sellers_list_card_img" src="/public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="Card image" style="width:100%">
+                        <div class="best_sellers_list_card_body">
+                            <p class="best_sellers_list_card_body_title">tensanpham</p>
+                            <p class="best_sellers_list_card_body_kind">tendanhmuc</p>
+                            <p class="best_sellers_list_card_body_price">dongi</p>
+                        </div>
+                    </div>
+
+                    <div class="best_sellers_products_list_card">
+                        <img class="card-img-top best_sellers_list_card_img" src="/public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="Card image" style="width:100%">
+                        <div class="best_sellers_list_card_body">
+                            <p class="best_sellers_list_card_body_title">tensanpham</p>
+                            <p class="best_sellers_list_card_body_kind">tendanhmuc</p>
+                            <p class="best_sellers_list_card_body_price">dongi</p>
+                        </div>
+                    </div>
+
+                    <div class="best_sellers_products_list_card">
+                        <img class="card-img-top best_sellers_list_card_img" src="/public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="Card image" style="width:100%">
+                        <div class="best_sellers_list_card_body">
+                            <p class="best_sellers_list_card_body_title">tensanpham</p>
+                            <p class="best_sellers_list_card_body_kind">tendanhmuc</p>
+                            <p class="best_sellers_list_card_body_price">dongi</p>
+                        </div>
+                    </div>
+
+                    <div class="best_sellers_products_list_card">
+                        <img class="card-img-top best_sellers_list_card_img" src="/public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="Card image" style="width:100%">
+                        <div class="best_sellers_list_card_body">
+                            <p class="best_sellers_list_card_body_title">tensanpham</p>
+                            <p class="best_sellers_list_card_body_kind">tendanhmuc</p>
+                            <p class="best_sellers_list_card_body_price">dongi</p>
+                        </div>
+                    </div>
+
+                    <div class="best_sellers_products_list_card">
+                        <img class="card-img-top best_sellers_list_card_img" src="/public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="Card image" style="width:100%">
+                        <div class="best_sellers_list_card_body">
+                            <p class="best_sellers_list_card_body_title">tensanpham</p>
+                            <p class="best_sellers_list_card_body_kind">tendanhmuc</p>
+                            <p class="best_sellers_list_card_body_price">dongi</p>
+                        </div>
+                    </div>
+                            
+                            
+                    
+                    
+                
                 </div>
             </div>
             
@@ -399,7 +520,7 @@
     <script src="/public/assets/js/customer/header.js"></script>
 
     <script src="/public/assets/js/customer/home.js"></script>
-
+    
     <script src="/public/assets/js/customer/details.js"></script>
 
 </body>

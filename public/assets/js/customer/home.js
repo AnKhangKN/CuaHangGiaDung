@@ -1,19 +1,23 @@
 // --------------------------------------------------------------------
-//slider
-var sliderIndex = 0;
-carousel();
 
-function carousel() {
-    var item;
-    var slider = document.getElementsByClassName("home_slider_img");
-    for (item = 0; item < slider.length; item++) {
-    slider[item].style.display = "none";  
+
+    //slider
+    var sliderIndex = 0;
+    carousel();
+
+    function carousel() {
+        var item;
+        var slider = document.getElementsByClassName("home_slider_img");
+        for (item = 0; item < slider.length; item++) {
+        slider[item].style.display = "none";  
+        }
+        sliderIndex++;
+        if (sliderIndex > slider.length) {sliderIndex = 1}    
+        slider[sliderIndex-1].style.display = "block";  
+      setTimeout(carousel, 3000); // Change image every 2 seconds
     }
-    sliderIndex++;
-    if (sliderIndex > slider.length) {sliderIndex = 1}    
-    slider[sliderIndex-1].style.display = "block";  
-  setTimeout(carousel, 3000); // Change image every 2 seconds
-}
+    
+
 // --------------------------------------------------------------------
 
 // chuyển sản phẩm best sellers

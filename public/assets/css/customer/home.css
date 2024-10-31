@@ -77,6 +77,7 @@
     line-height: 55px;
     font-weight: 500;
     font-size: 24px;
+    
 }
 
 .best_sellers_list_card_body_kind{
@@ -106,6 +107,7 @@
 }
 
 .banner_title{
+    display: none;
     text-transform: uppercase;
     font-weight: bold;
     font-size: xx-large;
@@ -119,7 +121,7 @@
 .banner_btn_item{
     text-transform: uppercase;
     border: none;
-    width: 150px;
+    width: 230px;
     height: 50px;
     background-color: white;
     margin: 5px;

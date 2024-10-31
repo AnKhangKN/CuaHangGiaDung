@@ -16,6 +16,8 @@
 </head>
 <body>
     
+
+
     <div class="container-fluid mx-auto mt-0 wrapper">
     <header class="header">
         <img src="/CuaHangDungCu/public/assets/images/logo_trang.jpg" class="header_logo" alt="logo_trang">
@@ -24,8 +26,8 @@
     <main class="main">
         <form>
             <div class="main_input_group">
-            <span class="result" style="color:red; font-size: 13px; "></span>
-                <input type="text" class="main_input_group_item_email" id="input_email">
+            <div class="result" style="color:red; font-size: 13px; "></div>
+                <input type="text" class="main_input_group_item_email email" id="input_email">
                 <span class="errorEmail" id="email_error"></span>
                 <input type="password" class="main_input_group_item_pass password" id="input_password">
                 <span class="errorPassword" id="password_error"></span>

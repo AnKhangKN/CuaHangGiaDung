@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="/vendor/bootstrap-5.3.3/dist/css/bootstrap.min.css">
+    <script src="/vendor/bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="/vendor/fontawesome-free-6.6.0-web/css/all.min.css">
+
+    <!-- css header -->
+    <link rel="stylesheet" href="/public/assets/css/customer/header.css">
+
+    <!-- css home -->
+    <link rel="stylesheet" href="/public/assets/css/customer/home.css">
+
+    <!-- css products -->
+    <link rel="stylesheet" href="/public/assets/css/customer/product.css">
+
+    <!-- css news -->
+    <link rel="stylesheet" href="/public/assets/css/customer/news.css">
+
+    <!-- css introduce -->
+    <link rel="stylesheet" href="/public/assets/css/customer/introduce.css">
+
+    <!-- css contact -->
+    <link rel="stylesheet" href="/public/assets/css/customer/contact.css">
+
+    <!-- css cart -->
+    <link rel="stylesheet" href="/public/assets/css/customer/cart.css">
+
+    <!-- details -->
+    <link rel="stylesheet" href="/public/assets/css/customer/details.css">
+
+    <!-- payment -->
+    <link rel="stylesheet" href="/public/assets/css/customer/payment.css">
+
+    <!-- css footer -->
+    <link rel="stylesheet" href="/public/assets/css/customer/footer.css">
+
+
+    
+
+    <title>Chi tiết sản phẩm</title>
+</head>
+<body>
+        <header class="header">
+            <nav class="header_nav">
+                <div class="list_nav_after_hidden">
+                    <i class="fa-solid fa-bars fa-lg" id="menu_icon"></i>
+                </div>
+                <div class="nav_logo">
+                    <a href="#"><img src="/public/assets/images/logo_den.jpg" class="nav_logo_img" alt="HKN store"></a>                  
+                </div>
+                <ul class="nav_ul_list text-white" id="menu">
+                    <li class="nav_ul_list_item header_link_next">
+                        <a href="#" class="nav_ul_list_item_link">Trang chủ</a>
+                    </li>
+                    <li class="nav_ul_list_item header_link_next list_products_subnav_item">
+                        <a href="#" class="nav_ul_list_item_link">Sản phẩm</a>
+                        <ul class="nav_ul_list_item_subnav">
+                            <li class="nav_ul_list_item_subnav_item sub_menu_products" >
+                                <a href="#" class="subnav_item_link"><i class="fa-solid fa-plus sub_icon"></i> Thời trang thể thao </a>
+                                <ul class="subnav_item_childen sub_menu_products_list">
+                                    <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sản phẩm lv 1</a></li>
+                                    <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sản phẩm lv 1</a></li>
+                                    <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sản phẩm lv 1</a></li>
+                                    <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sản phẩm lv 1</a></li>
+                                    <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sản phẩm lv 1</a></li>
+                                    <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sản phẩm lv 1</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav_ul_list_item_subnav_item sub_menu_products">
+                                <a href="#" class="subnav_item_link"><i class="fa-solid fa-plus sub_icon"></i> Dụng cụ thể thao </a>
+                                <ul class="subnav_item_childen">
+                                    <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sản phẩm lv 2</a></li>
+                                    <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sản phẩm lv 2</a></li>
+                                    <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sản phẩm lv 2</a></li>
+                                    <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sản phẩm lv 2</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav_ul_list_item_subnav_item sub_menu_products">
+                                <a href="#" class="subnav_item_link"><i class="fa-solid fa-plus sub_icon"></i> Phụ kiện thể thao </a>
+                                <ul class="subnav_item_childen">
+                                    <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sẩn phẩm lv3</a></li>
+                                    <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sẩn phẩm lv3</a></li>
+                                    <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sẩn phẩm lv3</a></li>
+                                    <li class="subnav_item_childen_item"><a href="#" class="childen_link">Sẩn phẩm lv3</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav_ul_list_item header_link_next">
+                        <a href="#" class="nav_ul_list_item_link">Tin tức</a>
+                    </li>
+                    <li class="nav_ul_list_item header_link_next">
+                        <a href="#" class="nav_ul_list_item_link">Giới thiệu</a>
+                    </li>
+                    <li class="nav_ul_list_item header_link_next">
+                        <a href="#" class="nav_ul_list_item_link">Liên hệ</a>
+                    </li>
+                </ul>
+                <div class="nav_tool">
+                    <form action="">
+                        <div class="nav_tool_search" id="nav_tool_search_box">
+                            <input type="text" placeholder="Tìm kiếm" id="nav_tool_search_input">
+                        </div>
+                        <div class="nav_tool_search_icon_box" id="nav_tool_search_icon_box_btn">
+                            <span class="nav_tool_search_icon_box_text">Tìm kiếm sản phẩm</span>
+                            <i class="fa-solid fa-magnifying-glass" id="nav_tool_search_icon"></i> 
+                        </div>
+                        <button class="close_search_top" id="close_search_top_element">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                        <div class="nav_tool_box" id="nav_tool_box_recommend"></div>
+                    </form>
+                    <div class="nav_tool_mark">
+                        <div class="nav_tool_cart">
+                            <i class="fa-solid fa-cart-shopping text-white"></i>
+                        </div>
+                    </div>
+                    <div class="nav_tool_mark" id="nav_tool_mark_id_user">
+                        <div class="nav_tool_user">
+                            <i class="fa-solid fa-user text-white"></i>
+                        </div>
+                    </div>
+                    <div class="nav_tool_user_option_up">
+                        <i class="fa-solid fa-caret-up"></i>
+                    </div>
+                    <div class="nav_tool_user_option" id="nav_tool_user_option_id_user">
+                        <a href="#" style="text-decoration: none; color: black;">
+                            <div class="option_sub">
+                                <i class="fa-solid fa-right-to-bracket"></i>
+                                <p>Đăng nhập</p>
+                            </div>
+                        </a>
+                        <a href="#" style="text-decoration: none; color: black;">
+                            <div class="option_sub">
+                                <i class="fa-solid fa-user-plus"></i>
+                                <p>Đăng ký</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main class="main">
+            
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 container_left">
+                        <!-- position sub -->
+                        <div class="position_top">
+                            <span class="position_top_main">Giỏ hàng</span>
+                            <i class="fa-solid fa-chevron-right"></i>
+                            <span class="position_top_sub">Thanh toán</span>
+                        </div>
+                        <div class="title">
+                            <p>HKN STORE VIETNAM</p>
+                        </div>
+                        <div class="container_infor_payment">
+                            <div class="infor_payment_title">
+                                <p>Thông tin giao hàng</p>
+                            </div>
+                            <div class="infor_payment_login">
+                                Bạn đã có tài khoản? <a href="#">Đăng nhập</a>
+                            </div>
+                            <p>Hãy nhập thông tin tài khoản để có thể tiến hành thanh toán.</p>
+
+                            <div class="infor_payment_content">
+                                <div class="infor_payment_content_text">
+                                    <input type="text" placeholder="Họ và tên">
+                                </div>
+
+                                <div class="row_infor_payment_content">
+                                    
+                                    <div class="infor_payment_content_text_email">
+                                        <input type="text" placeholder="Email">
+                                    </div>
+                                    <div class="infor_payment_content_text_phone">
+                                        <input type="text" placeholder="Số điện thoại">
+                                    </div>
+                                </div>
+                                
+                                <div class="infor_payment_content_text">
+                                    <input type="text" placeholder="Địa chỉ">
+                                </div>
+                            </div>
+
+                            <div class="infor_payment_method">
+                                <div class="infor_payment_method_title">
+                                    <p>Phương thức thanh toán</p>
+                                </div>
+                                <div class="infor_payment_method_content">
+                                    <div class="infor_payment_method_content_choose">
+                                        <input type="radio">
+                                        <span>Thanh toán khi giao hàng (COD)</span>
+                                    </div>
+                                    <div class="infor_payment_method_content_choose">
+                                        <input type="radio">
+                                        <i class="fa-regular fa-credit-card"></i>
+                                        <span>Chuyển khoản qua ngân hàng</span>
+                                        <div class="content_transfer">
+                                            <p>Nội dung chuyển khoản bạn vui lòng điền theo CÚ PHÁP như sau: 
+                                                MÃ ĐƠN HÀNG + SĐT + TÊN để Degrey xác nhận thanh toán nhanh chóng cho bạn.
+                                            </p>
+                                            <p>TÀI KHOẢN CỦA SHOP :</p>
+                                            <p>Ngân hàng Vietinbank chi nhánh Lâm Đồng</p>
+                                            <p>Số tài khoản: 110884899999</p>
+                                            <p>Tên tài khoản: CONG TY TNHH DEGREY</p>
+                                            <p>Nếu có vấn đề vui lòng chat qua http://m.me/degrey.saigon hoặc 
+                                                hotline: 03363.11117 để gặp nhân viên hỗ trợ
+                                            </p>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+                            
+                        </div>
+                        
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="container_infor_products_payment">
+                            
+                            <div class="list_infor_products_payment_item">
+                                <div class="img_infor_payment_item">
+                                    <img src="/public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
+                                </div>
+                                <div class="text_infor_payment_item">
+                                    <p>Tên sản phẩm</p>
+                                    <p>S</p>
+                                </div>
+                                <div class="price_infor_payment_item">
+                                    <span>200.000 đ</span>
+                                </div>
+                            </div>
+
+                            <div class="list_infor_products_payment_item">
+                                <div class="img_infor_payment_item">
+                                    <img src="/public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
+                                </div>
+                                <div class="text_infor_payment_item">
+                                    <p>Tên sản phẩm</p>
+                                    <p>S</p>
+                                </div>
+                                <div class="price_infor_payment_item">
+                                    <span>200.000 đ</span>
+                                </div>
+                            </div>
+
+                                
+
+
+                            
+
+                            <hr>
+
+                            <div class="all_expense">
+                                <div class="expense_item">
+                                    <span>Tạm tính: </span>
+                                    <p>400.000 đ</p> 
+                                </div>
+                                <div class="expense_item">
+                                    <span>Phí vận chuyển: </span>
+                                    <p>30.000 đ</p> 
+                                </div>
+                            </div>
+
+                            <hr>
+                            
+                            <div class="total_bill">
+                                <div class="total_bill_label">
+                                    <span>Tổng cộng: </span>
+                                </div>
+                                <div class="total_bill_due">
+                                    <span>VND</span>
+                                    <span class="total_bill_due_price">430.000</span>
+                                    <span>đ</span>
+                                </div>
+                                
+                            </div>
+
+                            <hr>
+
+                            <div class="infor_payment_btn">
+                                <div class="infor_payment_btn_cart">
+                                    <a href="#">Giỏ hàng</a>
+                                </div>
+                                <div class="infor_payment_btn_continue">
+                                    <button>Hoàn thành đơn hàng</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </main>
+        <footer class="footer">
+            <div class="container container_footer">
+                <div class="footer_content">
+                    <p>THÔNG TIN CHUNG </p> 
+                    <a href="#" class="footer_content_item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>256 Nguyễn Văn Cừ An Hòa 94108 Cần Thơ</span>
+                    </a>
+                    <a href="#" class="footer_content_item">
+                        <i class="fa-solid fa-phone"></i>
+                        <span >+84 292 3898 167</span> 
+                    </a>
+                    <a href="#" class="footer_content_item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>hknstore@gmail.com</span> 
+                    </a>
+                    <a href="#" class="footer_content_item">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span>Gửi phản hồi</span>
+                    </a>
+                </div>
+                <div class="footer_content">
+                    <p>HƯỚNG DẪN</p>  
+                    <a href="#" class="footer_content_item">Hướng dẫn mua hàng</a>
+                    <a href="#" class="footer_content_item">Hướng dẫn thanh toán</a>
+                    <a href="#" class="footer_content_item">Hướng dẫn đổi trả</a>
+                </div>
+                <div class="footer_content">
+                    <p>MẠNG XÃ HỘI</p>
+                    <a href="#" class="footer_content_item"><i class="fa-brands fa-facebook"></i> facebook</a>
+                    <a href="#" class="footer_content_item"><i class="fa-brands fa-instagram"></i> instagram</a>
+                    <a href="#" class="footer_content_item"><i class="fa-solid fa-z"></i> zalo</a>
+                </div> 
+            </div>
+
+            <hr class="footer_hr">
+
+            <div class="container copyright">
+                <p class="text-center" style="margin-bottom: 0;">Bản quyền © 2024 bởi HKN store</p>
+            </div>
+        </footer>
+    <script src="/public/assets/js/customer/header.js"></script>
+
+    <script src="/public/assets/js/customer/home.js"></script>
+    
+    <script src="/public/assets/js/customer/details.js"></script>
+
+</body>
+</html>
