@@ -12,10 +12,12 @@
     <link rel="stylesheet" href="/vendor/fontawesome-free-6.6.0-web/css/all.min.css">
 
     <!-- css header -->
-    <link rel="stylesheet" href="/app/views/employee/assetss/css/header.css">
+    <link rel="stylesheet" href="/CuaHangDungCu/app/views/employee/assetss/css/header.css">
 
-    <!-- css -->
-    <link rel="stylesheet" href="/app/views/employee/assetss/css/khachhang.css">
+    <!-- css khách hàng -->
+    <link rel="stylesheet" href="/CuaHangDungCu/app/views/employee/assetss/css/khachhang.css">
+    <!-- css thống kê -->
+    <link rel="stylesheet" href="/CuaHangDungCu/app/views/employee/assetss/css/khachhang.css">
     <title>Khách hàng</title>
 
     
@@ -25,7 +27,7 @@
     <div class="nav_left">
         
         <div class="header_logo">
-          <img src="./public/assets/images/logo_den.jpg" alt="">
+          <img src="/CuaHangDungCu/public/assets/images/logo_den.jpg" alt="">
       </div>
     </div>
     

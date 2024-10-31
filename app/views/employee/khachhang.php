@@ -1,59 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="/vendor/bootstrap-5.3.3/dist/css/bootstrap.min.css">
-    <script src="/vendor/bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- fontawesome -->
-    <link rel="stylesheet" href="/vendor/fontawesome-free-6.6.0-web/css/all.min.css">
-
-    <!-- css header -->
-    <link rel="stylesheet" href="/app/views/employee/assetss/css/header.css">
-
-    <!-- css -->
-    <link rel="stylesheet" href="/app/views/employee/assetss/css/khachhang.css">
-    <title>Khách hàng</title>
-
-    
-</head>
-<body>
-  <nav class="nav">
-    <div class="nav_left">
-        
-        <div class="header_logo">
-          <img src="/public/assets/images/logo_den.jpg" alt="">
-      </div>
-    </div>
-    
-    <div class="nav_right">
-      <i class="fa-solid fa-cart-shopping"></i>
-      <i class="fa-regular fa-user" ></i>
-      <i class="fa-regular fa-bell" ></i>
-      <i class="fa-regular fa-heart"></i>
-  
-      
-        
-    </div>
-
-</nav>
-    <div class="container-fluid">
+<div class="container-fluid">
       
         <div class="container_employee row">
             <div class="col-lg-2 header">
               <div class="container">
-                <a href="./sanpham.html">Sản phẩm <span class="badge"></span></a><br>
-                <a href="./khachhang.html">Khách hàng <span class="badge"></span></a><br>
-                <a href="./thongke.html">Thống kê <span class="badge"></span></a>
+                <a href="index.php?page=sanpham">Sản phẩm <span class="badge"></span></a><br>
+                <a href="index.php?page=khachhang">Khách hàng <span class="badge"></span></a><br>
+                <a href="index.php?page=thongke">Thống kê <span class="badge"></span></a>
               </div>
             </div>
 
             <div class="main_show col-lg-10">
-                
-                <main class="main">
+
+<main class="main">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-lg-6">
@@ -86,22 +44,22 @@
                                               <tr>
                                                 <td>Văn Hiếu</td>
                                                 <td>0987612345</td>
-                                              </tr>
-                                              <tr>
+                                            </tr>
+                                            <tr>
                                                 <td>A</td>
                                                 <td>049394138</td>
-                                              </tr>
-                                              <tr>
+                                            </tr>
+                                            <tr>
                                                 <td>B</td>
                                                 <td>054123414</td>
-                                              </tr>
-                                              <tr>
+                                            </tr>
+                                            <tr>
                                                 <td>C</td>
                                                 <td>098767896</td>
-                                              </tr>
-                                             
+                                            </tr>
+                                            
                                             </tbody>
-                                          </table>
+                                        </table>
                                     </div>
                                     
                                 </div>
@@ -114,27 +72,27 @@
                                         <h4>THÊM KHÁCH HÀNG</h4>                                        
                                     </div>
                                     <div class="form-group">
-                                      <label class="control-label col-sm-2" for="name">Tên khách hàng:</label>
-                                      <div class="col-sm-10">
+                                    <label class="control-label col-sm-2" for="name">Tên khách hàng:</label>
+                                    <div class="col-sm-10">
                                         <input type="text" class="form-control" id="name" placeholder="Nhập tên" name="name">
-                                      </div>
+                                    </div>
                                     </div>
                                     <div class="form-group">
-                                      <label class="control-label col-sm-2" for="phone">Số điện thoại:</label>
-                                      <div class="col-sm-10">          
+                                    <label class="control-label col-sm-2" for="phone">Số điện thoại:</label>
+                                    <div class="col-sm-10">          
                                         <input type="text" class="form-control" id="phone" placeholder="Nhập số điện thoại" name="phone">
-                                      </div>
+                                    </div>
                                     </div>
                                     <div class="form-group">
-                                      <label class="control-label col-sm-2" for="phone">Địa chỉ:</label>
-                                      <div class="col-sm-10">          
+                                    <label class="control-label col-sm-2" for="phone">Địa chỉ:</label>
+                                    <div class="col-sm-10">          
                                         <input type="text" class="form-control" id="address" placeholder="Nhập địa chỉ" name="address">
-                                      </div>
+                                    </div>
                                     </div>
                                     <div class="form-group">        
-                                      <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="col-sm-offset-2 col-sm-10">
                                         <button type="button" class="btn btn-default">Thêm</button>
-                                      </div>
+                                    </div>
                                     </div>
 
                                 
@@ -144,13 +102,10 @@
                         
                         </div>
                     </div>
-                     
+                    
                 </main>
-                
-            </div>
+
+                </div>
 
         </div>
     </div>
-</body>
-</html>
-

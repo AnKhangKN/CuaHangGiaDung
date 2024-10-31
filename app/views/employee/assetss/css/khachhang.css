@@ -25,9 +25,7 @@
     width: 70%;
     margin-left: 60px;
 }
-.container_employee row{
-    background-color: rgb(19, 18, 19);
-}
+
 
 .form-group label{
     width: 100%;
@@ -42,14 +40,9 @@
     margin-top: 20px;
     border-color:rgb(25, 26, 27);
     font-weight: 500;
-  
+
 }
-.fa-regular{
-    color: #ede8e8; margin: 17px;  font-size: 24px;  
-}
-.fa-solid{
-    color: #ede8e8;  margin: 17px;  font-size: 24px;
-}
+
 .container_table {
     margin-right: 20px;
     font-size: 17px;
@@ -61,5 +54,5 @@
     text-decoration: none;
     
 
- 
+
 }
