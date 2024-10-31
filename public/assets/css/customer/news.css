@@ -1,0 +1,17 @@
+.title_top{
+    height: 70px;
+    background-color: rgb(224, 224, 224);
+}
+
+.title_top span{
+    padding: 0 40px;
+    line-height: 70px;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.title_contents{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}

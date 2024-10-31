@@ -25,7 +25,8 @@
                 <ul class="nav_ul_list text-white ">
                     <li class="nav_ul_list_item"><a href="index.php" class="nav_ul_list_item_link">Trang chủ</a></li>
                     <li class="nav_ul_list_item"><a href="index.php?page=products" class="nav_ul_list_item_link">Sản phẩm</a></li>
-                    <li class="nav_ul_list_item"><a href="index.php?page=news" class="nav_ul_list_item_link">Mới nhất</a></li>
+                    <li class="nav_ul_list_item"><a href="index.php?page=news" class="nav_ul_list_item_link">Tin tức</a></li>
+                    <li class="nav_ul_list_item"><a href="index.php?page=introduce" class="nav_ul_list_item_link">Giới thiệu</a></li>
                     <li class="nav_ul_list_item"><a href="index.php?page=contact" class="nav_ul_list_item_link">Liên hệ</a></li>
                 </ul>
                 <div class="nav_tool">

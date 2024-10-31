@@ -1,0 +1,140 @@
+.cart_title, .payment_title{
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.cart_contents_table{
+    border: 1px solid rgb(224, 224, 224);
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+.cart_contents_table_item_left{
+    position: relative;
+}
+
+
+
+.cart_contents_table_item_left_remove{
+    position: absolute;
+    top: 0;
+    width: 20px;
+    border-radius: 15px;
+    height: 20px;
+    border: 1px solid #333;
+    background-color: #333;
+    font-size: 10px;
+    padding: 1px;
+}
+
+.cart_contents_table_item_left_remove a{
+    text-decoration: none;
+    color: white;
+}
+
+.cart_contents_table_item{
+    padding: 10px;
+}
+
+.cart_contents_table_item_left_img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cart_contents_table_item_left_img{
+    width: 105px;
+}
+
+.cart_contents_table_item_right_info_title{
+    margin: 0;
+}
+
+.cart_contents_table_item_right_info_title a{
+    text-decoration: none;
+    color: #333;
+    font-size: 15px;
+}
+
+.cart_contents_table_item_right_info_size{
+    font-size: 13px;
+    color: #878787;
+    margin-bottom: 10px;
+}
+
+.cart_contents_table_item_total_price{
+    margin-left: 48px;
+    font-weight: 500;
+}
+
+.cart_contents_table_item_total_qty {
+    margin-top: 25px;
+}
+
+.cart_contents_table_item_total_qty_number {
+    width: 40px;
+    padding: 0px;
+    margin-top: 1px;
+}
+
+.cart_contents_table_item_total_qty_number input[type="text"]{
+    width: 40px;
+    height: 30px;
+    text-align: center;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.cart_contents_table_item_total_qty_plus{
+    padding:2px 9px;
+}
+
+.cart_contents_table_item_total_qty_minus{
+    padding: 2px 12px;
+}
+
+.cart_contents_table_item_total_qty_plus button, .cart_contents_table_item_total_qty_minus button{
+    border: 1px solid #c3c3c3;
+    background-color: white;
+    outline: none;
+    border-radius: 5px;
+}
+
+.cart_contents_note{
+    margin-top: 30px;
+}
+
+.payment_contents_total_p{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.payment_contents_total_p span{
+    
+    color: red;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.payment_contents_action_erorr{
+    display: none;
+    padding: 10px;
+    color: rgb(219, 55, 56);
+    background-color: rgb(254, 227, 232);
+    border-radius: 5px;
+}
+
+.payment_contents_action_btn button{
+    width: 100%;
+    background-color: #333;
+    border: none;
+    color: white;
+    height: 45px;
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 30px;
+    border-radius: 10px;
+}

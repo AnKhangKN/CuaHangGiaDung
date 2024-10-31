@@ -1,0 +1,65 @@
+.container_table{
+    margin-top: 20px;
+    background-color: rgb(255, 255, 255);
+}
+.search-container{
+    margin-top: 20px;
+    
+}
+.search-box input{
+    width: 90%;
+    font-size: 17px;
+}
+
+.add{
+    color:black;
+    margin-top: 30px;
+    font-size:inherit;
+}
+
+.add{
+    margin-top: 30px;
+    font-size: 50px;
+}
+.search-box1 input{
+    width: 70%;
+    margin-left: 60px;
+}
+.container_employee row{
+    background-color: rgb(19, 18, 19);
+}
+
+.form-group label{
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 18px;
+
+}
+.form-group button{
+    margin-left: 250px;
+    margin-top: 20px;
+    border-color:rgb(25, 26, 27);
+    font-weight: 500;
+  
+}
+.fa-regular{
+    color: #ede8e8; margin: 17px;  font-size: 24px;  
+}
+.fa-solid{
+    color: #ede8e8;  margin: 17px;  font-size: 24px;
+}
+.container_table {
+    margin-right: 20px;
+    font-size: 17px;
+}
+.container a{
+    margin: 50px;
+    color: #ede8e8;
+    font-size: 24px;
+    text-decoration: none;
+    
+
+ 
+}
