@@ -1,14 +1,23 @@
 <?php 
-    include './app/models/customer/productModel.php';
+    include './app/controllers/customer/customerController.php';
 ?>
 
 <main class="main">
             <!-- position sub -->
-            <div class="position_top">
-                <span class="position_top_main">Trang chủ</span>
-                <i class="fa-solid fa-chevron-right"></i>
-                <span class="position_top_sub">Sản phẩm</span>
-            </div>
+            <ul class="position_top">
+                <li class="position_top_li_home">
+                    <a href="index.php" style="text-decoration: none; color: #333;">
+                        <span class="position_top_main">Trang chủ</span>
+                    </a>
+                </li>
+
+
+                <li class="position_top_li">
+                    <span class="position_top_sub">Sản phẩm</span>
+                </li> 
+            </ul>
+
+
             <!-- banner top -->
             <div class="banner_products_top">
                 <img src="./public/assets/images/banner/Banner-demo-products.png" alt="Banner">

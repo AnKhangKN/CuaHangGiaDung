@@ -1,3 +1,18 @@
+document.querySelectorAll('.header_link_next > a').forEach(function(item) {
+    item.addEventListener('click', function() {
+        // Xóa class 'is_here' khỏi tất cả phần tử
+        document.querySelectorAll('.header_link_next').forEach(function(i) {
+            i.classList.remove('is_here');
+        });
+        
+        // Thêm class 'is_here' vào phần tử cha của thẻ <a> hiện tại
+        this.parentElement.classList.add('is_here');
+    });
+});
+
+
+
+
 // Ẩn hiện menu chính
 const iconMenu = document.getElementById('menu_icon'); // Không dùng '#'
 const menu = document.getElementById('menu');

@@ -39,11 +39,14 @@
                 <p class="text-center" style="margin-bottom: 0;">Bản quyền © 2024 bởi HKN store</p>
             </div>
         </footer>
+
     <script src="./public/assets/js/customer/header.js"></script>
 
     <script src="./public/assets/js/customer/home.js"></script>
 
     <script src="./public/assets/js/customer/details.js"></script>
+
+    <script src="./public/assets/js/customer/information.js"></script>
 
 </body>
 </html>

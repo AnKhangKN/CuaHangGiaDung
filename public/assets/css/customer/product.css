@@ -1,20 +1,4 @@
-/* top */
-.position_top{
-    padding: 10px;
-    height: 50px;
-}
 
-.position_top_main{
-    color: #333;
-    font-size: 15px;
-    /* font-weight: 600; */
-    /* text-decoration: none; */
-}
-
-.position_top_sub{
-    font-size: 15px;
-    color: #817878;
-}
 
 .banner_products_top img{
     width: 100%;

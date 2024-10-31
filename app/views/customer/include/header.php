@@ -34,7 +34,16 @@
     <link rel="stylesheet" href="./public/assets/css/customer/cart.css">
 
     <!-- details -->
-    <link rel="stylesheet" href="./public/assets/css/customer/details.css">
+    <link rel="stylesheet" href="./public/assets/css/customer/details.css"> 
+    
+    <!-- payment -->
+    <link rel="stylesheet" href="./public/assets/css/customer/payment.css">
+
+    <!-- information -->
+    <link rel="stylesheet" href="./public/assets/css/customer/information.css">
+
+    <!-- detail bill -->
+    <link rel="stylesheet" href="./public/assets/css/customer/detail_bill.css">
 
     <!-- css footer -->
     <link rel="stylesheet" href="./public/assets/css/customer/footer.css">
@@ -83,7 +92,7 @@
                                         while ($row_sp = mysqli_fetch_array($sql_sp)) {
                                             ?>
                                             <li class="subnav_item_childen_item">
-                                                <a href="#" class="childen_link <?php echo $row_sp['idSanPham']?>"><?php echo $row_sp['tensanpham']; ?></a>
+                                                <a href="index.php?page=details&id=<?php echo $row_sp['idSanPham']?>" class="childen_link <?php echo $row_sp['idSanPham']?>"><?php echo $row_sp['tensanpham']; ?></a>
                                             </li>
                                             <?php
                                         }
@@ -138,12 +147,31 @@
                         <i class="fa-solid fa-caret-up"></i>
                     </div>
                     <div class="nav_tool_user_option" id="nav_tool_user_option_id_user">
-                        <a href="#" style="text-decoration: none; color: black;">
+                    <?php 
+                        if(isset($_SESSION['user_id'])){
+
+                        ?>
+                        <a href="index.php?page=information" style="text-decoration: none; color: black;">
+                            <div class="option_sub">
+                                <i class="fa-solid fa-user"></i>
+                                <p>Tài khoản của bạn</p>
+                            </div>
+                        </a>
+                        <?php
+                        }else{
+                            ?>
+                        <a href="./app/views/others/login.php" style="text-decoration: none; color: black;">
                             <div class="option_sub">
                                 <i class="fa-solid fa-right-to-bracket"></i>
                                 <p>Đăng nhập</p>
                             </div>
                         </a>
+                            <?php
+                        }
+                    ?>
+                        
+
+                        
                         <a href="#" style="text-decoration: none; color: black;">
                             <div class="option_sub">
                                 <i class="fa-solid fa-user-plus"></i>

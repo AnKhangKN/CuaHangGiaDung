@@ -1,10 +1,19 @@
 <main class="main">
             <!-- position sub -->
-            <div class="position_top">
-                <span class="position_top_main">Trang chủ</span>
-                <i class="fa-solid fa-chevron-right"></i>
-                <span class="position_top_sub">Tin tức</span>
-            </div>
+            <ul class="position_top">
+                <li class="position_top_li_home">
+                    <a href="index.php" style="text-decoration: none; color: #333;">
+                        <span class="position_top_main">Trang chủ</span>
+                    </a>
+                </li>
+
+
+                <li class="position_top_li">
+                    <span class="position_top_sub">Tin tức</span>
+                </li> 
+            </ul>
+
+
             <div class="container_news">
                 <div class="title_top">
                     <span>Tin tức</span>

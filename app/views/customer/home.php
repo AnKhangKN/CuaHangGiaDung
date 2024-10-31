@@ -1,6 +1,5 @@
 
 
-
 <main class="main">
             <div class="container-fluid">
                 <div class="home_slider">
@@ -55,13 +54,16 @@
                     <?php 
                         while($row_best_products = mysqli_fetch_array($sql_best_products)){
                             ?>
+                    
                     <div class="best_sellers_products_list_card">
+                        <a href="index.php?page=details&id=<?php echo $row_best_products['idSanPham'] ?>" style="text-decoration: none; color: #333">
                         <img class="card-img-top best_sellers_list_card_img" src="./public/assets/images/products/<?php echo $row_best_products['urlHinhAnh']?>" alt="Card image" style="width:100%">
                         <div class="best_sellers_list_card_body">
                             <p class="best_sellers_list_card_body_title"><?php echo $row_best_products['tensanpham']?></>
                             <p class="best_sellers_list_card_body_kind"><?php echo $row_best_products['tendanhmuc']?></p>
                             <p class="best_sellers_list_card_body_price"><?php echo $row_best_products['dongia']?> đ</p>
                         </div>
+                        </a>
                     </div>
                             
                             
@@ -136,12 +138,14 @@
                             
                         <!-- list new product -->
                         <div class="new_products_list_card">
+                            <a href="index.php?page=details&id=<?php echo $row_new_products['idSanPham'] ?>" style="text-decoration: none; color: #333">
                             <img class="card-img-top new_products_list_card_img" src="./public/assets/images/products/<?php echo $row_new_products['urlhinhanh']; ?>" alt="Card image" style="width:100%">
                             <div class="new_products_list_card_body">
                                 <p class="new_products_list_card_body_title"><?php echo $row_new_products['tensanpham']; ?></p>
                                 <p class="new_products_list_card_body_kind"><?php echo $row_new_products['tendanhmuc']; ?></p>
                                 <p class="new_products_list_card_body_price"><?php echo $row_new_products['dongia']; ?> đ</p>
                             </div>
+                            </a>
                         </div>
                         <?php
                         }

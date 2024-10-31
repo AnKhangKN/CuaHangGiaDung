@@ -1,5 +1,5 @@
 <?php 
-    include './app/models/customer/productModel.php';
+    include './app/controllers/customer/customerController.php';
 
     if(isset($_GET['id']) && ($_GET['id']) > 0){
         $id = $_GET['id'];
@@ -12,22 +12,40 @@
 
 <main class="main">
             <!-- position sub -->
-            <div class="position_top">
-                <a href="index.php" style="text-decoration: none;">
-                <span class="position_top_main">Trang chủ /</span>
-                </a>
-                <a href="index.php?page=products" style="text-decoration: none;">
-                    <span class="position_top_main">Sản phẩm /</span>
-                </a>
-                <span class="position_top_sub"> <?php echo htmlentities($ProductId['tensanpham'])?></span>
-            </div>
+            <ul class="position_top">
+                <li class="position_top_li_home">
+                    <a href="index.php" style="text-decoration: none; color: #333;">
+                        <span class="position_top_main">Trang chủ</span>
+                    </a>
+                </li>
+                
+                <li class="position_top_item">
+                    <a href="index.php?page=products" style="text-decoration: none; color: #333;">
+                    <span class="position_top_sub">Sản phẩm</span>
+                    </a>
+                </li>
+
+                <li class="position_top_li">
+                    <span class="position_top_sub"><?php echo htmlentities($ProductId['tensanpham'])?></span>
+                </li> 
+            </ul>
             
             <!-- details -->
             <div class="container">
                 <div class="row">
+
                     <div class="col-lg-6">
+
                         <div class="row">
+
                             <div class="col-lg-2">
+                            <a href="index.php?page=products" style="text-decoration: none; color: #333;">
+                                <div class="back_home">
+                                    <i class="fa-solid fa-arrow-left"></i>
+                                </div>
+                            </a>
+                            
+
                                 <div class="all_img">
                                     <img src="./public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
                                 </div>
