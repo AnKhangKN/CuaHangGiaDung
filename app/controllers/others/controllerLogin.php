@@ -48,7 +48,7 @@ if ($result->num_rows > 0) {
         } elseif ($rows['quyen'] == 1) {
             $response['redirect'] = '/CuaHangDungCu/admin/index.php';
         } elseif ($rows['quyen'] == 2) {
-            $response['redirect'] = '/CuaHangDungCu/employee/index.php';
+            $response['redirect'] = '/CuaHangDungCu/app/views/employee/';
         } else{
             $response['redirect'] = '/CuaHangDungCu/app/views/others/login.php';
         }
