@@ -1,11 +1,18 @@
 <?php 
     include './app/controllers/customer/customerController.php';
 
-    if(isset($_GET['id']) && ($_GET['id']) > 0){
+    if(isset($_GET['id'])){
         $id = $_GET['id'];
         $ProductId = getProductById($id);
-    }else{
-        $ProductId = 0;
+
+        if(!$ProductId){
+            header('Location: http://localhost/CuaHangDungCu/index.php?page=products');
+            exit;
+        }
+
+    }  else{
+        header('Location: http://localhost/CuaHangDungCu/index.php?page=products');
+        exit;
     }
 
 ?>

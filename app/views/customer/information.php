@@ -1,12 +1,12 @@
 <?php 
-
+session_start();
 
 include $_SERVER['DOCUMENT_ROOT'] . '/CuaHangDungCu/app/controllers/customer/customerController.php';
 
-if(isset($_SESSION['user_id'])){
+if(isset($_SESSION['user_id'])) {
     $Customer = getCustomerById($_SESSION['user_id']);
     
-}
+} 
 
 
 ?>
@@ -62,6 +62,8 @@ if(isset($_SESSION['user_id'])){
 
                                         <?php 
                                         $Bill = getBillByIdCustomer($Customer['idKhachHang']);
+
+                                        
                                         if (!empty($Bill)) {
                                             foreach ($Bill as $rowBill) { ?>
                                                 <tbody>
@@ -81,7 +83,8 @@ if(isset($_SESSION['user_id'])){
 
                                                         echo ($trangthai)?></td>
                                                         
-                                                        <td><a href="#" style="color: #333;"><i class="fa-solid fa-eye"></i></a></td>
+                                                        <td><a href="#" 
+                                                        style="color: #333;"><i class="fa-solid fa-eye"></i></a></td>
                                                     </tr>
                                                 </tbody>
                                             <?php 

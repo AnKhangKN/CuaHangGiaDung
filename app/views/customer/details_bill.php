@@ -1,47 +1,48 @@
 <?php 
+    
     include './app/controllers/customer/customerController.php';
+    
 
-    // Kiểm tra xem có idBill không và nó lớn hơn 0
-    if (isset($_GET['idBill']) && intval($_GET['idBill']) > 0) {
-        $idBill = intval($_GET['idBill']);
-        $BillId = getBillById($idBill);
+    
+    if (isset($_GET['idBill'])) {
+        $idBill = $_GET['idBill'];
+
+        $DetailBillid = getAllDetailBillByIdBill($idBill);
+        
+        $Billid = getBillById($idBill);
     } else {
         
         return 0;
     }
-    
-    // Kiểm tra xem BillId có hợp lệ không
-    if ($BillId) {
-        // Lấy thông tin khách hàng dựa trên idKhachHang từ hóa đơn
-        $CustomerId = getCustomerById($BillId['idKhachHang']);
-    } else {
 
-        return 0;
-    }
 ?>
 
 <main class="main">
-            <!-- position sub -->
-            <div class="position_top">
-                <span class="position_top_main">Trang chủ</span>
-                <i class="fa-solid fa-chevron-right"></i>
-                <span class="position_top_sub">Lịch sử mua hàng</span>
-                <i class="fa-solid fa-chevron-right"></i>
-                <span class="position_top_sub">Chi tiết hóa đơn</span>
-            </div>
+            
             
             <div class="container detail_bill_container">
                 <div class="row">
                     
                     <div class="col-lg-5">
                         <div class="detail_bill">
-                            <p>Họ tên khách hàng: <span><?php echo htmlentities($CustomerId['tenkhachhang'])?></span></p>
-                            <p>Mã đơn hàng: <span><?php htmlentities($BillId['idHoaDon'])?></span></p>
-                            <p>Tổng tiền hóa đơn: <span>400.000 đ</span></p>
-                            <p>Ngày xuất hóa đơn : <span>12/12/2024</span></p>
-                            <p>Ghi chú: <span>hàng chất lượng</span></p>
-                            <p>Trạng thái: <span>Hoàng thành</span></p>
-                            <p>Mua online</p>
+                            <p>Họ tên khách hàng: <span>phan</span></p>
+                            <p>Mã đơn hàng: <span><?php echo htmlentities($Billid['idHoaDon'])?></span></p>
+                            <p>Tổng tiền hóa đơn: <span><?php echo htmlentities($Billid['tongtien'])?></span></p>
+                            <p>Ngày xuất hóa đơn : <span><?php echo htmlentities($Billid['ngayxuathoadon'])?></span></p>
+                            <p>Ghi chú: <span><?php echo htmlentities($Billid['ghichu'])?></span></p>
+                            <p>Trạng thái: <span>
+                            <?php
+
+                                if($Billid['trangthai'] == 0){
+                                    $trangthai = 'Hoàn thành';
+                                } elseif($Billid['trangthai'] == 1){
+                                    $trangthai = 'Đang chờ xử lý';
+                                } elseif ($Billid['trangthai']== 2){
+                                    $trangthai = 'Đang giao hàng';
+                                }
+
+                                echo ($trangthai)?>
+                            </span></p>
                             
                             
                         </div>

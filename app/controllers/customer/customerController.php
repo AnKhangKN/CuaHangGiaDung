@@ -118,32 +118,62 @@ function getImageUrlsByProductId($product_id) {
             $stmt->execute();
     
             $result = $stmt->get_result();
-            return $result->fetch_all(MYSQLI_ASSOC);
+            return $result->fetch_assoc();
         } else {
-            return [];
+            return null;
         }
     }
-    
-    
 
-    // get bill by id
-    function getBillById($idBill){
+    function getBillById($idBill) {
+        // Kết nối đến cơ sở dữ liệu
         $conn = connectBD();
-
+        
+        // Chuyển đổi $idproduct thành số nguyên để tránh lỗi
         $idBill = (int)$idBill;
-        if($idBill > 0){
-            $sql = 'SELECT * FROM hoadon WHERE idHoaDon = ?';
 
-            $stmt = $conn -> prepare($sql);
-            $stmt -> bind_param("i", $idBill);
-            $stmt -> execute();
+        // Nếu id hợp lệ, thực hiện truy vấn
+        if ($idBill > 0) {
+            // Câu truy vấn
+            $sql = "SELECT * FROM hoadon WHERE idHoaDon = ?";
 
+            // Chuẩn bị và thực thi câu truy vấn
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("i", $idBill);
+            $stmt->execute();
+
+            // Lấy kết quả
             $result = $stmt->get_result();
-            return $result-> fetch_assoc();
-        }else{
+            return $result->fetch_assoc();
+        } else {    
+            // Trả về null nếu id không hợp lệ
             return 0;
         }
     }
+    
+    
+    
+
+    // get all detail bill
+function getAllDetailBillByIdBill($idBill){
+    $conn = connectBD(); // Giả sử connectBD() trả về một kết nối PDO
+
+    $idBill = intval($idBill);
+    if($idBill > 0){
+        $sql = "SELECT * FROM chitiethoadon WHERE idHoaDon = ?";
+
+    $stmt = $conn->prepare($sql);
+    $stmt -> bind_param('i',$idBill);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
+    } else {
+        return [];
+    }
+
+    
+}
+
 
 
 ?>

@@ -157,6 +157,14 @@
                                 <p>Tài khoản của bạn</p>
                             </div>
                         </a>
+
+                        <a href="./app/views/others/logout.php" style="text-decoration: none; color: black;">
+                            <div class="option_sub">
+                                <i class="fa-solid fa-user"></i>
+                                <p>Đăng xuất</p>
+                            </div>
+                        </a>
+
                         <?php
                         }else{
                             ?>
@@ -166,18 +174,20 @@
                                 <p>Đăng nhập</p>
                             </div>
                         </a>
-                            <?php
-                        }
-                    ?>
-                        
 
-                        
                         <a href="#" style="text-decoration: none; color: black;">
                             <div class="option_sub">
                                 <i class="fa-solid fa-user-plus"></i>
                                 <p>Đăng ký</p>
                             </div>
                         </a>
+                            <?php
+                        }
+                    ?>
+                        
+
+                        
+                        
                     </div>
                 </div>
             </nav>
