@@ -4,7 +4,7 @@
 }
 
 .header{
-    background-image: linear-gradient(#111010, #333842);
+    background-image: linear-gradient(#242429, #333842);
     padding: 0;
 }
 
@@ -21,6 +21,7 @@
 
 .main_show{
     padding: 0;
+
 }
 
 .nav{
@@ -28,7 +29,8 @@
     padding: 0;
     display: flex;
     align-items: center;
-    background-color: #ffdbdb;
+    background-color: rgb(25, 25, 25);
+
 }
 
 .nav_left{
@@ -65,5 +67,14 @@
 .main{
     padding: 0;
     height: 900px;
-    background-color: #80ddff;
+    background-color: rgb(240, 240, 240)
+}
+.header_img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.header_img{
+    width: 90px;
+    padding: 10px 10px;
 }
