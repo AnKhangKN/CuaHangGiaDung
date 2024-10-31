@@ -45,57 +45,47 @@
                                 </div>
                             </a>
                             
+                            <?php 
+
+                            $imgAll = getImageUrlsByProductId($ProductId['idSanPham']);
+
+                            $imageUrls = [];
+
+                                foreach($imgAll as $rowImg){ 
+                                    $imageUrls[] = "./public/assets/images/products/" . htmlentities($rowImg['urlhinhanh']);
+                                    ?>
 
                                 <div class="all_img">
-                                    <img src="./public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
+                                        <img src="<?php echo $imageUrls[count($imageUrls) - 1]; ?>" 
+                                        alt="Ảnh <?php echo htmlentities($ProductId['tensanpham'])?>"
+                                        onclick="changeImage(this)">
                                 </div>
-                                <div class="all_img">
-                                    <img src="./public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
-                                </div>
-                                <div class="all_img">
-                                    <img src="./public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
-                                </div>
-                                <div class="all_img">
-                                    <img src="./public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
-                                </div>
+                                <?php
+                                }
+                            ?>
                             </div>
                             <div class="col-lg-10 main_img_show">
-                                <button class="main_img_show_btn_left" id="main_img_show_btn_left_id">
+                                <button class="main_img_show_btn_left" id="main_img_show_btn_left_id" onclick="prevImage()">
                                     <i class="fa-solid fa-arrow-left"></i>
                                 </button>
                                 <div class="main_img_show_list" id="main_img_show_list_id">
+
+
                                     <div class="img_main">
-                                        <img src="./public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
+                                    <img id="largeImg" src="<?php echo $imageUrls[0]; ?>" 
+                                    alt="Ảnh <?php echo htmlentities($ProductId['tensanpham'])?>">
                                     </div>
                             
-                                    <div class="img_main">
-                                        <img src="./public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
-                                    </div>
-                            
-                                    <div class="img_main">
-                                        <img src="./public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
-                                    </div>
-                            
-                                    <div class="img_main">
-                                        <img src="./public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
-                                    </div>
-                            
-                                    <div class="img_main">
-                                        <img src="./public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
-                                    </div>
-                            
-                                    <div class="img_main">
-                                        <img src="./public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
-                                    </div>
-                            
-                                    <div class="img_main">
-                                        <img src="./public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
-                                    </div>
+                                    
                                 </div>
-                                <button class="main_img_show_btn_right" id="main_img_show_btn_right_id">
+                                <button class="main_img_show_btn_right" id="main_img_show_btn_right_id" onclick="nextImage()">
                                     <i class="fa-solid fa-arrow-right"></i>
                                 </button>
                             </div>
+
+                                
+
+                                
                             
                         </div>
                     </div>
@@ -341,3 +331,8 @@
             </div>
             
         </main>
+
+        <script>
+        // Xuất mảng ảnh sang một biến JavaScript toàn cục
+        window.imageUrlsFromPhp = <?php echo json_encode($imageUrls); ?>; 
+        </script>

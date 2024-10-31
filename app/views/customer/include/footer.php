@@ -40,6 +40,7 @@
             </div>
         </footer>
 
+        
     <script src="./public/assets/js/customer/header.js"></script>
 
     <script src="./public/assets/js/customer/home.js"></script>

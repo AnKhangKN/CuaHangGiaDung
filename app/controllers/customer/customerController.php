@@ -31,20 +31,24 @@
     
 
     // get img product detail
-    function getImageUrlsByProductId($product_id) {
-        global $pdo; // Sử dụng biến $pdo từ kết nối cơ sở dữ liệu
-        $sql = "SELECT url FROM hinhanhsanpham WHERE product_id = :product_id";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute(['product_id' => $product_id]);
-    
-        // Tạo mảng chứa các URL ảnh
-        $imageUrls = [];
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $imageUrls[] = $row['url'];
-        }
-    
-        return $imageUrls; // Trả về mảng URL ảnh
+function getImageUrlsByProductId($product_id) {
+    $conn = connectBD();
+
+    $product_id = (int)$product_id;
+
+    if ($product_id > 0) {
+        $sql = "SELECT * FROM hinhanhsanpham WHERE idSanPham = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $product_id); 
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC); // Trả về tất cả hình ảnh dưới dạng mảng
+    } else {
+        // Trả về mảng rỗng nếu id không hợp lệ
+        return [];
     }
+}
 
 // --------------------------------------------------------------------------------
 
