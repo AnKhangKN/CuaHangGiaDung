@@ -1,11 +1,18 @@
 <?php 
     include './app/controllers/customer/customerController.php';
 
-    if(isset($_GET['id']) && ($_GET['id']) > 0){
+    if(isset($_GET['id'])){
         $id = $_GET['id'];
         $ProductId = getProductById($id);
-    }else{
-        $ProductId = 0;
+
+        if(!$ProductId){
+            header('Location: http://localhost/CuaHangDungCu/index.php?page=products');
+            exit;
+        }
+
+    }  else{
+        header('Location: http://localhost/CuaHangDungCu/index.php?page=products');
+        exit;
     }
 
 ?>
@@ -96,17 +103,19 @@
                                     <span><?php echo htmlentities($ProductId['tensanpham'])?></span>
                                 </div>
                                 <div class="products_details_info_price">
-                                    <div class="products_details_info_price_under">
+                                    <!-- <div class="products_details_info_price_under">
                                         <div class="products_details_info_price_under_promotion">
-                                            <!-- khuyến mãi -->
+                                            
                                             <span>40%</span>
                                         </div>
                                         
-                                        <!-- Giá gốc -->
+                                        
                                         <del>160.000đ</del>
-                                    </div>
+                                    </div> -->
                                     <!-- giá hiệ tại -->
-                                    <span class="products_details_info_price_new">100.000đ</span>
+                                    <span class="products_details_info_price_new">
+                                        <?php echo htmlentities($ProductId['dongia'])?> đ
+                                    </span>
                                 </div>
                                 
                                 

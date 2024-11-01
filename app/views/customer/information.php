@@ -1,12 +1,12 @@
 <?php 
-
+session_start();
 
 include $_SERVER['DOCUMENT_ROOT'] . '/CuaHangDungCu/app/controllers/customer/customerController.php';
 
-if(isset($_SESSION['user_id'])){
+if(isset($_SESSION['user_id'])) {
     $Customer = getCustomerById($_SESSION['user_id']);
     
-}
+} 
 
 
 ?>
@@ -15,17 +15,15 @@ if(isset($_SESSION['user_id'])){
 <main class="main">
             <!-- position sub -->
             <ul class="position_top">
-                <li class="position_top_li_home">
-                    <a href="index.php" style="text-decoration: none; color: #333;">
-                        <span class="position_top_main">Trang chủ</span>
-                    </a>
-                </li>
-                <li class="position_top_li">
-                    <span class="position_top_sub">Thông tin của bạn</span>
-                </li> 
-            </ul>
-
-            
+            <li class="position_top_li_home">
+                <a href="index.php" style="text-decoration: none; color: #333;">
+                    <span class="position_top_main">Trang chủ</span>
+                </a>
+            </li>
+            <li class="position_top_li">
+                <span class="position_top_sub">Thông tin của bạn</span>
+            </li> 
+        </ul>
             <div class="container container_infor_control">
                 <div class="row">
                     <div class="col-lg-2">
@@ -55,43 +53,52 @@ if(isset($_SESSION['user_id'])){
                                                 <th>Tổng tiền</th>
                                                 <th>Ngày xuất hóa đơn</th>
                                                 <th>Trạng thái</th>
-                                                
                                                 <th></th>
                                             </tr>
                                         </thead>
-
-                                        <?php 
-                                        $Bill = getBillByIdCustomer($Customer['idKhachHang']);
-                                        if (!empty($Bill)) {
-                                            foreach ($Bill as $rowBill) { ?>
-                                                <tbody>
-                                                    <tr>
-                                                        <td><?php echo htmlentities($rowBill['idHoaDon']); ?></td>
-                                                        <td><?php echo htmlentities($rowBill['tongtien']); ?></td>
-                                                        <td><?php echo htmlentities($rowBill['ngayxuathoadon'])?></td>
-                                                        <td><?php
-
-                                                        if($rowBill['trangthai'] == 0){
-                                                            $trangthai = 'Hoàn thành';
-                                                        } elseif($rowBill['trangthai'] == 1){
-                                                            $trangthai = 'Đang chờ xử lý';
-                                                        } elseif ($rowBill['trangthai']== 2){
-                                                            $trangthai = 'Đang giao hàng';
-                                                        }
-
-                                                        echo ($trangthai)?></td>
-                                                        
-                                                        <td><a href="#" style="color: #333;"><i class="fa-solid fa-eye"></i></a></td>
-                                                    </tr>
-                                                </tbody>
+                                        <tbody>
                                             <?php 
-                                            }
-                                        } else {
-                                            echo "";
-                                        }
-                                        ?>
+                                                $Bill = getBillsByIdCustomer($Customer['idKhachHang']);
+                                                
+                                                foreach($Bill as $rowBill){
 
-                                        
+                                                    
+                                                    
+                                                    ?>
+                                            <tr>
+                                                <td><?php echo htmlentities($rowBill['idHoaDon'])?></td>
+                                                <td><?php echo htmlentities($rowBill['tongtien'])?></td>
+                                                <td><?php echo htmlentities($rowBill['ngayxuathoadon'])?></td>
+                                                <td><?php 
+                                                
+                                                    if($rowBill['trangthai'] == 0){
+                                                        $trangthai = 'Hoàn thành';
+                                                    } elseif($rowBill['trangthai'] == 1){
+                                                        $trangthai = 'Đang chờ xử lý';
+                                                    } elseif ($rowBill['trangthai']== 2){
+                                                        $trangthai = 'Đang giao hàng';
+                                                    } else {
+                                                        $trangthai = 'Không xác định đơn hàng';
+                                                    }
+                    
+                                                    echo htmlentities($trangthai)
+                                                ?></td>
+                                                <td><a href="index.php?page=details_bill&idBill=<?php
+
+                                                    if($rowBill['trangthai'] == 0 || $rowBill['trangthai'] == 1 || $rowBill['trangthai'] == 2){
+                                                        echo htmlentities($rowBill['idHoaDon']);
+                                                    }else{
+                                                        echo htmlentities(0);
+                                                    }
+                                                
+                                                
+                                                ?>" style="color: #333;"><i class="fa-solid fa-eye "></i></a></td>
+                                            </tr>
+                                            <?php
+                                                }
+                                            ?>
+                                            
+                                        </tbody>
                                     </table>
                                 </div>
                                 <div class="promotion">
@@ -215,5 +222,9 @@ if(isset($_SESSION['user_id'])){
                     </div>
                 </div>
             </div>
+            
+            
+            
+            
             
         </main>

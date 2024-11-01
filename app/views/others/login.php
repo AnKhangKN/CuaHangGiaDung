@@ -1,3 +1,13 @@
+<?php
+    session_start();
+    ob_start();
+
+    
+    if(isset($_SESSION['user_id'])){
+        header('Location: http://localhost/CuaHangDungCu/index.php');
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

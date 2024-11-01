@@ -1,52 +1,83 @@
 <?php 
+    
     include './app/controllers/customer/customerController.php';
+    
 
-    // Kiểm tra xem có idBill không và nó lớn hơn 0
-    if (isset($_GET['idBill']) && intval($_GET['idBill']) > 0) {
-        $idBill = intval($_GET['idBill']);
-        $BillId = getBillById($idBill);
+    
+    if (isset($_GET['idBill'])) {
+        $idBill = $_GET['idBill'];
+
+        $DetailBillid = getAllDetailBillByIdBill($idBill);
+
+        $Customer = getCustomerById($_SESSION['user_id']);
+
+        $Bill = getBillById($idBill);
+
+        if(!$DetailBillid){
+            header('Location: http://localhost/CuaHangDungCu/index.php?page=information');
+        }
     } else {
         
-        return 0;
+        header('Location: http://localhost/CuaHangDungCu/index.php?page=information');
     }
-    
-    // Kiểm tra xem BillId có hợp lệ không
-    if ($BillId) {
-        // Lấy thông tin khách hàng dựa trên idKhachHang từ hóa đơn
-        $CustomerId = getCustomerById($BillId['idKhachHang']);
-    } else {
 
-        return 0;
-    }
 ?>
 
 <main class="main">
             <!-- position sub -->
-            <div class="position_top">
-                <span class="position_top_main">Trang chủ</span>
-                <i class="fa-solid fa-chevron-right"></i>
-                <span class="position_top_sub">Lịch sử mua hàng</span>
-                <i class="fa-solid fa-chevron-right"></i>
-                <span class="position_top_sub">Chi tiết hóa đơn</span>
-            </div>
+            <ul class="position_top">
+                <li class="position_top_li_home">
+                    <a href="index.php" style="text-decoration: none; color: #333;">
+                        <span class="position_top_main">Trang chủ</span>
+                    </a>
+                </li>
+                
+                <li class="position_top_item">
+                    <a href="index.php?page=information" style="text-decoration: none; color: #333;">
+                    <span class="position_top_sub">Thông tin của bạn</span>
+                    </a>
+                </li>
+
+                <li class="position_top_li">
+                    <span class="position_top_sub">Chi tiết hóa đơn</span>
+                </li> 
+            </ul>
+            
             
             <div class="container detail_bill_container">
                 <div class="row">
                     
                     <div class="col-lg-5">
                         <div class="detail_bill">
-                            <p>Họ tên khách hàng: <span><?php echo htmlentities($CustomerId['tenkhachhang'])?></span></p>
-                            <p>Mã đơn hàng: <span><?php htmlentities($BillId['idHoaDon'])?></span></p>
-                            <p>Tổng tiền hóa đơn: <span>400.000 đ</span></p>
-                            <p>Ngày xuất hóa đơn : <span>12/12/2024</span></p>
-                            <p>Ghi chú: <span>hàng chất lượng</span></p>
-                            <p>Trạng thái: <span>Hoàng thành</span></p>
-                            <p>Mua online</p>
+                            <p>Họ tên khách hàng: <span><?php echo htmlentities($Customer['tenkhachhang'])?></span></p>
+                            <p>Mã đơn hàng: <span><?php echo htmlentities($Bill['idHoaDon'])?></span></p>
+                            <p>Tổng tiền hóa đơn: <span><?php echo htmlentities($Bill['tongtien'])?></span></p>
+                            <p>Ngày xuất hóa đơn : <span><?php echo htmlentities($Bill['ngayxuathoadon'])?></span></p>
+                            <p>Ghi chú: <span><?php echo htmlentities($Bill['ghichu'])?></span></p>
+                            <p>Trạng thái: <span>
+
+                                <?php 
+                                
+                                if($Bill['trangthai'] == 0){
+                                    $trangthai = 'Hoàn thành';
+                                } elseif ($Bill['trangthai'] == 1){
+                                    $trangthai = 'Đang chờ xử lý';
+                                } elseif ($Bill['trangthai'] == 2){
+                                    $trangthai = 'Đang giao hàng';
+                                } else {
+                                    $trangthai = 'Không xác định đơn hàng';
+                                }
+
+                                echo htmlentities($trangthai);
+                                
+                                ?>
+
+                            </span></p>
                             
                             
                         </div>
                         <div class="detail_bill_active">
-                            <a href="#"><i class="fa-solid fa-arrow-left"></i> Quay lại </a>
+                            <a href="index.php?page=information"><i class="fa-solid fa-arrow-left"></i> Quay lại </a>
                             <button>Xuất hóa đơn</button>
                         </div>
                     </div>
@@ -63,15 +94,26 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php 
+                                        $detailsBill = getAllDetailBillByIdBillWithProductName($idBill);
+
+                                        foreach($detailsBill as $rowDetailBill){
+                                            ?>
+
                                     <tr>
-                                        <td>1</td>
-                                        <td>Doe</td>
-                                        <td>john@example.com</td>
-                                        <td>john@example.com</td>
+                                        <td><?php echo htmlentities($rowDetailBill['tensanpham'])?></td>
+                                        <td><?php echo htmlentities($rowDetailBill['soluong'])?></td>
+                                        <td><?php echo htmlentities($rowDetailBill['mausac'])?></td>
+                                        <td><?php echo htmlentities($rowDetailBill['kichthuoc'])?></td>
                                         <td>
                                             <button class="btn_reorder">Mua lại</button>
                                         </td>
                                     </tr>
+
+                                            <?php 
+                                        }
+                                    ?>
+                                    
                                 </tbody>
                             </table>
                         
