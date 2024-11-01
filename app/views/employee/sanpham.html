@@ -22,6 +22,11 @@
 
     <!-- css thống kê -->
     <link rel="stylesheet" href="/app/views/employee/assetss/css/thongke.css">
+    <!-- css duyệt đơn -->
+    <link rel="stylesheet" href="/app/views/employee/assetss/css/duyetdon.css">
+    <!-- css trang cá nhân -->
+    <link rel="stylesheet" href="/app/views/employee/assetss/css/trangcanhan.css">
+    <title>Sản phẩm</title>
 
 
     
@@ -39,10 +44,7 @@
       <!-- tool -->
       <div class="header_tool">
         <div class="header_tool_item">
-          <i class="fa-solid fa-cart-shopping"></i>
-        </div>
-        <div class="header_tool_item">
-          <i class="fa-regular fa-user" ></i>
+          <a href="trangcanhan.html"><i class="fa-regular fa-user" ></i></a>
         </div>
         <div class="header_tool_item">
           <i class="fa-regular fa-bell" ></i>
@@ -59,9 +61,10 @@
   <div class="container_main">
     <nav class="nav">
       <ul class="list_tool">
-        <li class="list_tool_item"><a href="./sanpham.html">Sản phẩm</a></li>
-        <li class="list_tool_item"><a href="./khachhang.html">Khách hàng</a></li>
-        <li class="list_tool_item"><a href="./thongke.html">Thống kê</a></li>
+        <li class="list_tool_item"><i class="fa-solid fa-bag-shopping"></i><a href="./sanpham.html"> SẢN PHẨM</a></li>
+        <li class="list_tool_item"> <i class="fa-regular fa-user"></i> <a href="./khachhang.html">KHÁCH HÀNG</a></li>
+        <li class="list_tool_item"><i class="fa-solid fa-chart-simple"></i><a href="./thongke.html"> THỐNG KÊ</a></li>
+        <li class="list_tool_item"><i class="fa-solid fa-check"></i><a href="./duyetdon.html"> DUYỆT ĐƠN</a></li>
       </ul>
     </nav>
 
@@ -72,7 +75,7 @@
                     <div class="container_left">
                         <!-- Phan lam -->
                         <div class="search-container">
-                            <div class="search-box">
+                            <div class="search-box-sp">
                                 <input type="text" id="search" placeholder="Nhập từ khóa tìm kiếm">                    
                             </div>
                         </div>
@@ -104,13 +107,41 @@
                 <div class="col-lg-6">
                     <div class="container_right">
                         <div class="search-container">
-                            <div class="search-box1">
+                            <div class="search-box-pay">
                                 <input type="text" id="search" placeholder="Nhập từ khóa tìm kiếm">                    
                             </div>
                         </div>
-                        <div class="add text-center">
-                            <h5>THANH TOÁN</h5>                                        
-                        </div>                        
+                        <div class="container_payment ">
+                            <h5 class="text-center">THANH TOÁN</h5>
+                          <div class="title_payment">
+                            <p>Tên khách hàng: </p>
+                            <p>Số điện thoại: </p>
+                            <p>Nhân viên bán hàng:</p> 
+                          </div>
+                          <div class="content_payment">
+                            <table class="table">
+                              <thead>
+                                <th>Tên sản phẩm</th>
+                                <th>Giá </th>
+                                <th>Số lượng</th>
+                                <th>Thành tiền</th>
+                              </thead>
+                              <tbody>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                              </tbody>
+                            </table>
+                          </div>
+
+                          <div class="action_payment">
+                            <button type="button" class="btn bg-dark text-white">Tạm tính</button>
+                            <button type="button" class="btn bg-dark text-white">Thanh toán</button>
+                          </div>  
+
+                        </div>    
+                                    
                     </div>
                 </div>   
 

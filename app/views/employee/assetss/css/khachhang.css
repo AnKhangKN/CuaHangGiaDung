@@ -6,10 +6,6 @@
     margin-top: 20px;
     
 }
-.search-box input{
-    width: 90%;
-    font-size: 17px;
-}
 
 .add{
     color:black;
@@ -21,10 +17,7 @@
     margin-top: 30px;
     font-size: 50px;
 }
-.search-box1 input{
-    width: 70%;
-    margin-left: 60px;
-}
+
 
 
 .form-group label{
@@ -35,13 +28,9 @@
     font-size: 18px;
 
 }
-.form-group button{
-    margin-left: 250px;
-    margin-top: 20px;
-    border-color:rgb(25, 26, 27);
-    font-weight: 500;
 
-}
+
+
 
 .container_table {
     margin-right: 20px;
@@ -56,3 +45,27 @@
 
 
 }
+.search-box input{ 
+    color:black;
+     width: 85%;
+     font-size: 17px;
+     margin-right: 10px;
+     margin-left: 20px;
+     height: 34px;
+     padding: 10px;
+     border-radius: 5px;
+     border: 0.5px solid;
+  }
+  .btn_kh{
+    width: 100px;
+    color:aliceblue;
+    background-color: rgb(24, 24, 24);
+    border-radius: 5px;
+    font-weight: 500;
+    margin-left: 275px;
+    margin-top: 40px;
+    font-weight: 500;
+
+  }
+
+  

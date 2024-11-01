@@ -22,7 +22,11 @@
 
     <!-- css thống kê -->
     <link rel="stylesheet" href="/app/views/employee/assetss/css/thongke.css">
-
+    <!-- css duyệt đơn -->
+    <link rel="stylesheet" href="/app/views/employee/assetss/css/duyetdon.css">
+    <!-- css trang cá nhân -->
+    <link rel="stylesheet" href="/app/views/employee/assetss/css/trangcanhan.css">
+    <title>Khách hàng</title>
 
     
 </head>
@@ -38,11 +42,9 @@
 
       <!-- tool -->
       <div class="header_tool">
+       
         <div class="header_tool_item">
-          <i class="fa-solid fa-cart-shopping"></i>
-        </div>
-        <div class="header_tool_item">
-          <i class="fa-regular fa-user" ></i>
+          <a href="trangcanhan.html"><i class="fa-regular fa-user" ></i></a>
         </div>
         <div class="header_tool_item">
           <i class="fa-regular fa-bell" ></i>
@@ -59,9 +61,10 @@
   <div class="container_main">
     <nav class="nav">
       <ul class="list_tool">
-        <li class="list_tool_item"><a href="./sanpham.html">Sản phẩm</a></li>
-        <li class="list_tool_item"><a href="./khachhang.html">Khách hàng</a></li>
-        <li class="list_tool_item"><a href="./thongke.html">Thống kê</a></li>
+        <li class="list_tool_item"><i class="fa-solid fa-bag-shopping"></i><a href="./sanpham.html"> SẢN PHẨM</a></li>
+        <li class="list_tool_item"> <i class="fa-regular fa-user"></i> <a href="./khachhang.html">KHÁCH HÀNG</a></li>
+        <li class="list_tool_item"><i class="fa-solid fa-chart-simple"></i><a href="./thongke.html"> THỐNG KÊ</a></li>
+        <li class="list_tool_item"><i class="fa-solid fa-check"></i><a href="./duyetdon.html"> DUYỆT ĐƠN</a></li>
       </ul>
     </nav>
 
@@ -145,7 +148,7 @@
                       </div>
                       <div class="form-group">        
                         <div class="col-sm-offset-2 col-sm-10">
-                          <button type="button" class="btn btn-default">Thêm</button>
+                          <button type="button" class="btn_kh btn-dark center">Thêm</button>
                         </div>
                       </div>
 

@@ -44,29 +44,43 @@
 }
 
 .nav{
-    background-color: rgb(60, 60, 60);
+    background-color: rgb(30, 31, 32);
 }
 
 .list_tool{
     padding: 0;
-    margin-top: 80px;
+    margin-top: 35px;
 }
 
 .list_tool_item{
     width: 240px;
-    padding-left: 70px;
+    padding-left: 35px;
     line-height: 85px;
     font-size: 20px;
     color: white;
     list-style: none;
+    
 }
 
 .list_tool_item:hover{
-    background-color: white;
-    color: #333;
+    background-color: rgb(77, 79, 88);
+    color:rgb(84, 86, 87);
 }
 
 .main{
     background-color: rgb(255, 255, 255);
     width: 100%;
+}
+.list_tool_item a{
+    color: aliceblue;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight:500;
+}
+.list_tool_item i{
+    margin-right: 12px;
+    color: aliceblue;
+}
+.header_tool_item a{
+    color:aliceblue ;
 }

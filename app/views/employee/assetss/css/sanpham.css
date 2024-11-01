@@ -1,0 +1,54 @@
+.header_img img{
+  
+    max-width: 30%; /* Giới hạn chiều rộng tối đa bằng 100% phần tử cha */
+    height: auto; /* Tự động điều chỉnh chiều cao để giữ tỷ lệ */
+
+}
+.title_payment{
+    padding: 40px;
+}
+
+.container_payment{
+    margin-top: 40px;
+}
+.action_payment{
+    display: flex;
+    justify-content: space-between;
+    margin: 150px 30px;
+}
+.action_payment button{
+    color:aliceblue;
+    background-color: rgb(24, 24, 24);
+  
+    
+}
+.title_payment{
+    font-weight: 600;
+}
+.search-box-sp input{ 
+    color:black;
+     width: 85%;
+     font-size: 17px;
+     margin-right: 10px;
+     margin-left: 20px;
+     border-radius: 5px;
+     border: 0.5px solid;
+     height: 34px;
+     padding: 10px;
+ 
+  }
+  .search-box-pay input{ 
+    color:black;
+     width: 60%;
+     font-size: 17px;
+     margin: 0px 125px;
+     border-radius: 5px;
+     border: 0.5px solid;
+     height: 34px;
+     padding: 10px;
+ 
+  }
+  .text{
+    font-weight: 20px;
+  }
+  
