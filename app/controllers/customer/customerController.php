@@ -22,6 +22,10 @@
             // Lấy kết quả
             $result = $stmt->get_result();
             return $result->fetch_assoc();
+
+            // Đóng statement và kết nối
+            $stmt->close();
+            $conn->close();
         } else {    
             // Trả về null nếu id không hợp lệ
             return 0;
@@ -69,7 +73,7 @@ function getImageUrlsByProductId($product_id) {
         $rows = [];
 
         // Loop through the result set and fetch all rows
-        while($row_all_products = mysqli_fetch_array($sql_all_products)){
+        while($row_all_products = mysqli_fetch_assoc($sql_all_products)){
             $rows[] = $row_all_products;
         }
 
@@ -106,8 +110,8 @@ function getImageUrlsByProductId($product_id) {
     }
 
 
-    // get bill by id customer
-    function getBillByIdCustomer($idCustomer) {
+    // get all bills by customer id
+    function getBillsByIdCustomer($idCustomer) {
         $conn = connectBD();
     
         $idCustomer = (int)$idCustomer;
@@ -116,13 +120,20 @@ function getImageUrlsByProductId($product_id) {
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("i", $idCustomer);
             $stmt->execute();
-    
+        
             $result = $stmt->get_result();
-            return $result->fetch_assoc();
+            $bills = [];
+        
+            while ($row = $result->fetch_assoc()) {
+                $bills[] = $row;
+            }
+        
+            return $bills;
         } else {
             return null;
         }
     }
+    
 
     function getBillById($idBill) {
         // Kết nối đến cơ sở dữ liệu
@@ -154,25 +165,60 @@ function getImageUrlsByProductId($product_id) {
     
 
     // get all detail bill
-function getAllDetailBillByIdBill($idBill){
-    $conn = connectBD(); // Giả sử connectBD() trả về một kết nối PDO
-
-    $idBill = intval($idBill);
-    if($idBill > 0){
-        $sql = "SELECT * FROM chitiethoadon WHERE idHoaDon = ?";
-
-    $stmt = $conn->prepare($sql);
-    $stmt -> bind_param('i',$idBill);
-    $stmt->execute();
-
-    $result = $stmt->get_result();
-    return $result->fetch_all(MYSQLI_ASSOC);
-    } else {
-        return [];
+    function getAllDetailBillByIdBill($idBill){
+        $conn = connectBD();
+    
+        $idBill = (int)$idBill;
+        if ($idBill > 0) {
+            $sql = 'SELECT * FROM chitiethoadon WHERE idHoaDon = ?';
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("i", $idBill);
+            $stmt->execute();
+        
+            $result = $stmt->get_result();
+            $detail_bills = [];
+        
+            while ($row = $result->fetch_assoc()) {
+                $detail_bills[] = $row;
+            }
+        
+            return $detail_bills;
+        } else {
+            return null;
+        }
     }
 
+    // get all detail bill
+    function getAllDetailBillByIdBillWithProductName($idBill){
+        $conn = connectBD();
     
-}
+        $idBill = (int)$idBill;
+        if ($idBill > 0) {
+            $sql = 'SELECT sp.tensanpham, SUM(cthd.soluong) soluong ,  ms.mausac,  kt.kichthuoc
+                    FROM chitiethoadon cthd
+                    JOIN chitietsanpham ctsp ON ctsp.idChiTietSanPham = cthd.idChiTietSanPham
+                    JOIN sanpham sp ON sp.idSanPham = ctsp.idSanPham
+                    JOIN kichthuocsanpham kt ON ctsp.idKichThuoc = kt.idKichThuoc
+                    JOIN mausacsanpham ms ON ms.idMauSac = ctsp.idMauSac
+                            
+                    WHERE idHoaDon = ?
+                    GROUP BY ctsp.idChiTietSanPham';
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("i", $idBill);
+            $stmt->execute();
+        
+            $result = $stmt->get_result();
+            $detail_bills = [];
+        
+            while ($row = $result->fetch_assoc()) {
+                $detail_bills[] = $row;
+            }
+        
+            return $detail_bills;
+        } else {
+            return null;
+        }
+    }
 
 
 
