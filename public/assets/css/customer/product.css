@@ -79,6 +79,49 @@
     opacity: 1; 
     transition: opacity 0.3s ease;
 }
+/* customer checkbox style ---------------------------------------------------- */
+.all_products_top_order_list_item {
+    display: flex;
+    align-items: center;
+}
+
+/* Ẩn checkbox mặc định */
+.all_products_top_order_list_item input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+/* Tạo nhãn tùy chỉnh cho checkbox */
+.all_products_top_order_list_item .custom-checkbox {
+    width: 25px;
+    height: 25px;
+    margin: 0px 10px;
+    background-color: #fff;
+    border: 0.5px solid #333;
+    border-radius: 3px; /* Bo tròn các góc */
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+}
+
+/* Thêm dấu kiểm tùy chỉnh */
+.all_products_top_order_list_item input:checked + .custom-checkbox::after {
+    content: '';
+    background-color: white;
+    position: absolute;
+    top: -9px; /* Điều chỉnh để căn giữa dọc */
+    left: 13px; /* Điều chỉnh để căn giữa ngang */
+    width: 10px;
+    /* padding: 2px; */
+    height: 26px;
+    border: solid #00ff44;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+/* ---------------------------------------------------------------- */
 
 /* filter */
 

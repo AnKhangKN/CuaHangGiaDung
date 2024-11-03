@@ -36,19 +36,23 @@
                         <ul class="all_products_top_order_list">
                             
                             <li class="all_products_top_order_list_item">
-                                <input type="checkbox" class="arrange filter_arrange" value="nameA-nameZ">
+                                <input type="checkbox" id="customCheckboxAZ" class="arrange filter_arrange" value="nameA-nameZ">
+                                <label class="custom-checkbox" for="customCheckboxAZ"></label>
                                 <span>Tên: A - Z</span>
                             </li> 
                             <li class="all_products_top_order_list_item">
-                                <input type="checkbox" class="arrange filter_arrange" value="nameZ-nameA">
+                                <input type="checkbox" id="customCheckboxZA" class="arrange filter_arrange" value="nameZ-nameA">
+                                <label class="custom-checkbox" for="customCheckboxZA"></label>
                                 <span>Tên: Z - A</span>
                             </li>
                             <li class="all_products_top_order_list_item">
-                                <input type="checkbox" class="arrange filter_arrange" value="minPrice-maxPrice">
+                                <input type="checkbox" id="customCheckboxMin" class="arrange filter_arrange" value="minPrice-maxPrice">
+                                <label class="custom-checkbox" for="customCheckboxMin"></label>
                                 <span>Giá: Tăng dần</span>
                             </li> 
                             <li class="all_products_top_order_list_item">
-                                <input type="checkbox" class="arrange filter_arrange" value="maxPrice-minPrice">
+                                <input type="checkbox" id="customCheckboxMax" class="arrange filter_arrange" value="maxPrice-minPrice">
+                                <label class="custom-checkbox" for="customCheckboxMax"></label>
                                 <span>Giá: Giảm dần</span>
                             </li> 
                         </ul>
