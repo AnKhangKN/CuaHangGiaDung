@@ -36,23 +36,61 @@
                         <ul class="all_products_top_order_list">
                             
                             <li class="all_products_top_order_list_item">
-                                <input type="checkbox" id="customCheckboxAZ" class="arrange filter_arrange" value="nameA-nameZ">
-                                <label class="custom-checkbox" for="customCheckboxAZ"></label>
+                                
+                                <div class="container_arrange">
+                                    <input type="checkbox" id="cbxaz" style="display: none;" class="arrange filter_arrange" value="nameA-nameZ">
+                                    <label for="cbxaz" class="check">
+                                    <svg width="18px" height="18px" viewBox="0 0 18 18">
+                                        <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
+                                        <polyline points="1 9 7 14 15 4"></polyline>
+                                        </svg>
+                                    </label>
+                                </div>
+                                
+                                
                                 <span>Tên: A - Z</span>
                             </li> 
                             <li class="all_products_top_order_list_item">
-                                <input type="checkbox" id="customCheckboxZA" class="arrange filter_arrange" value="nameZ-nameA">
-                                <label class="custom-checkbox" for="customCheckboxZA"></label>
+                                <div class="container_arrange">
+                                    <input type="checkbox" id="cbxza" style="display: none;" class="arrange filter_arrange" value="nameZ-nameA">
+                                    <label for="cbxza" class="check">
+                                        <svg width="18px" height="18px" viewBox="0 0 18 18">
+                                            <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
+                                            <polyline points="1 9 7 14 15 4"></polyline>
+                                        </svg>
+                                    </label>
+                                </div>
+                                
                                 <span>Tên: Z - A</span>
                             </li>
                             <li class="all_products_top_order_list_item">
-                                <input type="checkbox" id="customCheckboxMin" class="arrange filter_arrange" value="minPrice-maxPrice">
-                                <label class="custom-checkbox" for="customCheckboxMin"></label>
+
+                                <div class="container_arrange">
+                                    <input type="checkbox" id="cbxmin" style="display: none;" class="arrange filter_arrange" value="minPrice-maxPrice">
+                                    <label for="cbxmin" class="check">
+                                        <svg width="18px" height="18px" viewBox="0 0 18 18">
+                                            <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
+                                            <polyline points="1 9 7 14 15 4"></polyline>
+                                        </svg>
+                                    </label>
+                                </div>
+
+
+
                                 <span>Giá: Tăng dần</span>
                             </li> 
                             <li class="all_products_top_order_list_item">
-                                <input type="checkbox" id="customCheckboxMax" class="arrange filter_arrange" value="maxPrice-minPrice">
-                                <label class="custom-checkbox" for="customCheckboxMax"></label>
+                                
+                                <div class="container_arrange">
+                                    <input type="checkbox" id="cbxmax" style="display: none;" class="arrange filter_arrange" value="maxPrice-minPrice">
+                                    <label for="cbxmax" class="check">
+                                        <svg width="18px" height="18px" viewBox="0 0 18 18">
+                                            <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
+                                            <polyline points="1 9 7 14 15 4"></polyline>
+                                        </svg>
+                                    </label>
+                                </div>
+                            
                                 <span>Giá: Giảm dần</span>
                             </li> 
                         </ul>
@@ -75,28 +113,46 @@
                             </div>
                             <ul class="all_products_filter_price_list">
                                 <li class="all_products_filter_price_list_item">
-                                <input type="checkbox" class="filter-checkbox price" value="0-100000">
-                                <span>Dưới 100.000đ</span>
+                                    <div class="center_price_size">
+                                    <input type="checkbox" class="filter-checkbox price" value="0-100000">
+                                    <span>Dưới 100.000đ</span>
+                                    </div>
+                                        
                                 </li>
                                 <li class="all_products_filter_price_list_item">
+                                    <div class="center_price_size">
                                     <input type="checkbox" class="filter-checkbox price" value="100000-250000">
                                     <span>100.000đ - 250.000đ</span>
+                                    </div>
+                                    
                                 </li>
                                 <li class="all_products_filter_price_list_item">
+                                    <div class="center_price_size">
                                     <input type="checkbox" class="filter-checkbox price" value="250000-500000">
                                     <span>250.000đ - 500.000đ</span>
+                                    </div>
+                                    
                                 </li>
                                 <li class="all_products_filter_price_list_item">
+                                    <div class="center_price_size">
                                     <input type="checkbox" class="filter-checkbox price" value="500000-800000">
                                     <span>500.000đ - 800.000đ</span>
+                                    </div>
+                                    
                                 </li>
                                 <li class="all_products_filter_price_list_item">
+                                    <div class="center_price_size">
                                     <input type="checkbox" class="filter-checkbox price" value="800000-1500000">
                                     <span>800.000đ - 1.500.000đ</span>
+                                    </div>
+                                    
                                 </li>
                                 <li class="all_products_filter_price_list_item">
+                                    <div class="center_price_size">
                                     <input type="checkbox" class="filter-checkbox price" value="1500000">
                                     <span>Trên 1.500.000đ</span>
+                                    </div>
+                                    
                                 </li>
                             </ul>
                         </div>
@@ -112,12 +168,19 @@
                                 foreach ($Color as $rowColor){
                                     ?>
                                 <li class="all_products_filter_color_list_item" >
-                                    <input type="checkbox" class="filter-checkbox color" 
-                                    value="<?php echo htmlentities($rowColor['mausac'])?>" name="color" 
-                                    id="color-<?php echo htmlentities($rowColor['mausac'])?>">
-                                    <label for="" style="background-color: 
+
+                                <div class="content_color">
+                                    <label class="checkBox_color" style="box-shadow: 0px 0px 0px 2px 
                                     <?php echo htmlentities($rowColor['mausac'])?>;">
+                                        <input type="checkbox" class="filter-checkbox color" 
+                                        value="<?php echo htmlentities($rowColor['mausac'])?>" name="color" 
+                                        id="color-<?php echo htmlentities($rowColor['mausac'])?>">
+                                        <div class="transition_color" style="background-color: 
+                                        <?php echo htmlentities($rowColor['mausac'])?>;">
+                                        </div>
                                     </label>
+                                </div>
+
                                 </li>
                                     <?php
                                 }
@@ -137,14 +200,23 @@
                                         $CategoryName = 'Quần áo';
                                         $Size = getSizeProducts($CategoryName);
                                     ?>
-                                    <ul><?php echo htmlentities($CategoryName)?>
+                                    <ul>
+                                        <p><?php echo htmlentities($CategoryName)?></p>
+                                        
                                         <?php 
                                         foreach($Size as $rowSize){
                                             ?>
                                         <li class="all_products_filter_size_list_item">
-                                            <input type="checkbox" class="filter-checkbox size" 
-                                            value="<?php echo htmlentities($rowSize['kichthuoc'])?>" >
-                                            <span><?php echo htmlentities($rowSize['kichthuoc'])?></span>
+
+
+                                    
+                                            <div class="center_price_size">
+                                                <input type="checkbox" class="filter-checkbox size" 
+                                                value="<?php echo htmlentities($rowSize['kichthuoc'])?>" >
+                                                <span><?php echo htmlentities($rowSize['kichthuoc'])?></span>
+                                            </div>
+
+                                            
                                         </li>
                                             <?php
                                         }
@@ -156,14 +228,23 @@
                                         $CategoryName = 'Giày dép';
                                         $Size = getSizeProducts($CategoryName);
                                     ?>
-                                    <ul><?php echo htmlentities($CategoryName)?>
+                                    <ul>
+                                        <p><?php echo htmlentities($CategoryName)?></p>
+                                        
+
                                         <?php 
                                         foreach ($Size as $rowSize){
                                         ?>
                                         <li class="all_products_filter_size_list_item">
-                                            <input type="checkbox" class="filter-checkbox size" 
-                                            value="<?php echo htmlentities($rowSize['kichthuoc'])?>" name="size">
-                                            <span><?php echo htmlentities($rowSize['kichthuoc'])?></span>
+
+                                            <div class="center_price_size">
+                                                <input type="checkbox" class="filter-checkbox size" 
+                                                value="<?php echo htmlentities($rowSize['kichthuoc'])?>" name="size">
+                                                <span><?php echo htmlentities($rowSize['kichthuoc'])?></span>
+                                            </div>
+                                            
+
+
                                         </li>
                                         <?php
                                         }

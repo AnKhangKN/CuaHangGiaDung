@@ -79,49 +79,95 @@
     opacity: 1; 
     transition: opacity 0.3s ease;
 }
-/* customer checkbox style ---------------------------------------------------- */
+/* design check box arrange ---------------------------------------------------- */
 .all_products_top_order_list_item {
     display: flex;
     align-items: center;
 }
 
-/* Ẩn checkbox mặc định */
-.all_products_top_order_list_item input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-    position: absolute;
+.container_arrange{
+    margin-right: 10px;
 }
 
-/* Tạo nhãn tùy chỉnh cho checkbox */
-.all_products_top_order_list_item .custom-checkbox {
-    width: 25px;
-    height: 25px;
-    margin: 0px 10px;
-    background-color: #fff;
-    border: 0.5px solid #333;
-    border-radius: 3px; /* Bo tròn các góc */
-    display: inline-block;
+.check {
     cursor: pointer;
     position: relative;
+    margin: auto;
+    width: 18px;
+    height: 18px;
+    -webkit-tap-highlight-color: transparent;
+    transform: translate3d(0, 0, 0);
 }
 
-/* Thêm dấu kiểm tùy chỉnh */
-.all_products_top_order_list_item input:checked + .custom-checkbox::after {
-    content: '';
-    background-color: white;
+.check:before {
+    content: "";
     position: absolute;
-    top: -9px; /* Điều chỉnh để căn giữa dọc */
-    left: 13px; /* Điều chỉnh để căn giữa ngang */
-    width: 10px;
-    /* padding: 2px; */
-    height: 26px;
-    border: solid #00ff44;
-    border-width: 0 3px 3px 0;
-    transform: rotate(45deg);
+    top: -15px;
+    left: -15px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(34,50,84,0.03);
+    opacity: 0;
+    transition: opacity 0.2s ease;
 }
 
-/* ---------------------------------------------------------------- */
+.check svg {
+    position: relative;
+    z-index: 1;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: #c8ccd4;
+    stroke-width: 1.5;
+    transform: translate3d(0, 0, 0);
+    transition: all 0.2s ease;
+}
+
+.check svg path {
+    stroke-dasharray: 60;
+    stroke-dashoffset: 0;
+}
+
+.check svg polyline {
+    stroke-dasharray: 22;
+    stroke-dashoffset: 66;
+}
+
+.check:hover:before {
+    opacity: 1;
+}
+
+.check:hover svg {
+    stroke: #333;
+}
+
+#cbxaz:checked + .check svg, 
+#cbxza:checked + .check svg , 
+#cbxmin:checked + .check svg , 
+#cbxmax:checked + .check svg{
+    stroke: #333;
+}
+
+#cbxaz:checked + .check svg path, 
+#cbxza:checked + .check svg path , 
+#cbxmin:checked + .check svg path , 
+#cbxmax:checked + .check svg path{
+    stroke-dashoffset: 60;
+    transition: all 0.3s linear;
+}
+
+#cbxaz:checked + .check svg polyline, 
+#cbxza:checked + .check svg polyline , 
+#cbxmin:checked + .check svg polyline , 
+#cbxmax:checked + .check svg polyline{
+    stroke-dashoffset: 42;
+    transition: all 0.2s linear;
+    transition-delay: 0.15s;
+}
+
+
+/* ---------------------------------------------------------- */
 
 /* filter */
 
@@ -194,21 +240,63 @@
     padding: 10px;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
-    background-color: white;
+    gap: 15px;
+    background-color: rgb(240, 240, 240);
     border: 0.1px solid #cfcfcf;
 }
 
 .all_products_filter_color_list_item {
     position: relative;
-    height: 28px;
+    height: 27px;
     list-style: none;
     cursor: pointer;
     display: flex; /* Để căn chỉnh label bên cạnh checkbox */
     align-items: center; /* Căn giữa dọc */
 }
 
-.all_products_filter_color_list_item input {
+/* From Uiverse.io by JaydipPrajapati1910 */ 
+.clear {
+    clear: both;
+    }
+
+.checkBox_color{
+    display: block;
+    cursor: pointer;
+    width: 23px;
+    height: 23px;
+    border: 3px solid rgba(255, 255, 255, 0);
+    border-radius: 14px;
+    position: relative;
+    overflow: hidden;
+    
+}
+
+.checkBox_color div {
+    width: 60px;
+    height: 60px;
+    top: -52px;
+    left: -52px;
+    position: absolute;
+    transform: rotateZ(45deg);
+    z-index: 100;
+}
+
+.checkBox_color input[type=checkbox]:checked + div {
+    left: -10px;
+    top: -10px;
+}
+
+.checkBox_color input[type=checkbox] {
+    position: absolute;
+    left: 50px;
+    visibility: hidden;
+}
+
+.transition_color{
+    transition: 300ms ease;
+}
+
+/* .all_products_filter_color_list_item input {
     display: block; 
     position: absolute;
     width: 25px; 
@@ -250,7 +338,7 @@
     border-right-style: none;
     font-size: 0;
     transform: rotate(-45deg);
-}
+} */
 
 .all_products_filter_color_title:hover + .all_products_filter_color_list,
 .all_products_filter_color_list:hover {
@@ -288,6 +376,47 @@
     visibility: visible; 
     opacity: 1; 
     transition: opacity 0.3s ease;
+}
+
+/* From Uiverse.io by sans-script */ 
+.center_price_size {
+    width: 100%;
+
+}
+
+.center_price_size input[type="checkbox"] {
+    position: relative;
+    top: 3px;
+    width: 16px;
+    height: 16px;
+    margin-right: 3px;
+    -webkit-appearance: none;
+    outline: none;
+    transition: 0.5s;
+}
+
+.center_price_size input[type="checkbox"]:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0.5px solid #262626;
+    box-sizing: border-box;
+    transition: 0.5s;
+}
+
+.center_price_size input:checked[type="checkbox"]:before {
+    border-left: none;
+    border-top: none;
+    top: 0px;
+    height: 16px;
+    /* margin-right: 3px; */
+    left: -5px;
+    width: 7px;
+    border-color: rgb(24, 196, 24);
+    transform: rotate(45deg) translate(5px, -10px);
 }
 /* tags */
 
