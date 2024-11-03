@@ -49,5 +49,7 @@
 
     <script src="./public/assets/js/customer/information.js"></script>
 
+    <script src="./public/assets/js/customer/product.js"></script>
+
 </body>
 </html>

@@ -79,13 +79,14 @@
     /* height: 30px; */
 }
 
-.infor_update_item input{
+.infor_update_item_text{
     width: 75%;
     height: 45px;
     /* border-radius: 5px; */
     outline: none;
     border:none;
     padding: 10px;
+    margin: 0;
 }
 
 .infor_update_item i{
@@ -117,7 +118,7 @@
 .close_change{
     position: absolute;
     right: 0;
-    border: 1px solid black;
+    border: 1px solid rgb(255, 255, 255);
     width: 34.5px;
     height: 34px;
     font-size: 20px;
@@ -140,10 +141,14 @@
     font-weight: 500;
 }
 
+.change_info_box_content span{
+    color: red;
+}
+
 .change_item{
     width: 100%;
     height: 50px;
-    margin: 55px 0px;
+    margin: 40px 0px;
 }
 
 .change_item input{
@@ -162,9 +167,9 @@
     border: 1px solid white;
     background-color: #333;
     color: white;
-    margin: 0px 156px;
-    width: 145px;
-    border-radius: 10px;
+    /* margin: 0px 156px; */
+    width: 100%;
+    border-radius: 5px;
     font-size: 18px;
     height: 55px;
 }
@@ -175,3 +180,66 @@
     border: 1px solid #333;
     transition: all 0.3s ease;
 }
+
+/* Password ---------------------------------------------- */
+.change_info_box_content_pass{
+    display: none;
+    position: relative;
+    padding: 20px;
+    width: 500px;
+    background-color: rgba(255, 255, 255);
+    height: 420px;
+    border: 0.5px solid rgb(183, 183, 183);
+    border-radius: 5px;
+}
+
+.change_info_box_content_pass p{
+    font-size: 20px;
+    line-height: 32px;
+    font-weight: 500;
+}
+
+.change_info_box_content_pass span{
+    color: red;
+}
+
+.change_item_pass{
+    width: 100%;
+    height: 50px;
+    margin: 40px 0px;
+    
+}
+
+.change_item_pass input{
+    border-radius: 5px;
+    border: 0.5px solid rgb(194, 194, 194);
+    outline: none;
+    padding: 15px;
+    font-size: 16px;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 30px;
+}
+
+.change_info_box_content_pass button{
+    outline: none;
+    border: 1px solid white;
+    margin-top: 150px;
+    background-color: #333;
+    color: white;
+    /* margin: 0px 156px; */
+    width: 100%;
+    border-radius: 5px;
+    font-size: 18px;
+    height: 55px;
+}
+
+.change_info_box_content_pass button:hover{
+    color: #333;
+    background-color: white;
+    border: 1px solid #333;
+    transition: all 0.3s ease;
+}
+
+/* ---------------------------------------------------- */
+

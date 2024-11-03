@@ -249,27 +249,22 @@
 /* tags */
 
 .all_products_tags{
+    /* display: none; */
     display: flex;
-    justify-content: space-between;
-    width: 520px;
+    align-items: center;
+    width: 1000px;
     margin-bottom: 20px;
 }
 
 .all_products_tags_filter{
-    display: none;
     border: 1px solid gray;
+    margin: 0px 5px;
     padding: 3px 10px;
     border-radius: 13px;
     font-size: 13px;
     color: #817878;
 }
 
-.all_products_tags_remove_all{
-    display: none;
-    font-size: 15px;
-    color: #817878;
-
-}
 
 /* products */
 

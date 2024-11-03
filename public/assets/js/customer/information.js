@@ -42,12 +42,13 @@ showHistory('purchase_history_btn', 'purchase_history_show_hidden');
 // ----------------------------------------------------------------------
 function showChangeBox(idBox) {
     // Ẩn tất cả các phần nội dung
-    var sections = document.getElementsByClassName("change_info_box_content");
+    var sections = document.getElementsByClassName("changeBox");
 
     // Ẩn tất cả các sections
     for (var i = 0; i < sections.length; i++) {
         sections[i].style.display = "none";
     }
+
 
     // Hiển thị phần nội dung được chọn
     var selectedSection = document.getElementById(idBox);

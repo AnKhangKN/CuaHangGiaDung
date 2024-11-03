@@ -114,7 +114,7 @@
                                     </div> -->
                                     <!-- giá hiệ tại -->
                                     <span class="products_details_info_price_new">
-                                        <?php echo htmlentities($ProductId['dongia'])?> đ
+                                    <?php echo number_format($ProductId['dongia'],0,',','.') ?> đ
                                     </span>
                                 </div>
                                 
@@ -125,6 +125,7 @@
                                     <div class="products_details_info_size_title">
                                         <span>Size</span>
                                     </div>
+
                                 
                                     <!-- clothes -->
                                     <div class="products_details_info_size_group_clothes">
@@ -325,7 +326,7 @@
                         <div class="best_sellers_list_card_body">
                             <p class="best_sellers_list_card_body_title"><?php echo $row_best_products['tensanpham']?></>
                             <p class="best_sellers_list_card_body_kind"><?php echo $row_best_products['tendanhmuc']?></p>
-                            <p class="best_sellers_list_card_body_price"><?php echo $row_best_products['dongia']?> đ</p>
+                            <p class="best_sellers_list_card_body_price"><?php echo number_format($row_best_products['dongia'],0,',','.') ?> đ</p>
                         </div>
                     </div>
                             

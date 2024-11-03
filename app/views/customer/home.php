@@ -46,6 +46,7 @@
                                                                     JOIN chitietsanpham AS ctsp ON sp.idSanpham = ctsp.idSanpham
                                                                     JOIN chitiethoadon AS cthd ON ctsp.idChiTietSanPham = cthd.idChiTietSanPham
                                                                     JOIN danhmucsanpham AS dm ON sp.idDanhMuc = dm.idDanhMuc
+                                                                    where sp.trangthai = 1
                                                                     GROUP BY sp.idSanpham, dm.tendanhmuc
                                                                     ORDER BY tongSoLuongBan DESC");
                 ?>
@@ -61,7 +62,7 @@
                         <div class="best_sellers_list_card_body">
                             <p class="best_sellers_list_card_body_title"><?php echo $row_best_products['tensanpham']?></>
                             <p class="best_sellers_list_card_body_kind"><?php echo $row_best_products['tendanhmuc']?></p>
-                            <p class="best_sellers_list_card_body_price"><?php echo $row_best_products['dongia']?> đ</p>
+                            <p class="best_sellers_list_card_body_price"><?php echo number_format($row_best_products['dongia'], 0, ',', '.') ?> đ</p>
                         </div>
                         </a>
                     </div>
@@ -118,6 +119,7 @@
                                                             FROM sanpham AS sp
                                                             JOIN hinhanhsanpham AS ha ON sp.idSanpham = ha.idSanPham
                                                             JOIN danhmucsanpham AS dm ON sp.idDanhMuc = dm.idDanhMuc
+                                                            where sp.trangthai = 1  
                                                             GROUP BY sp.idSanpham, dm.tendanhmuc
                                                             ORDER BY sp.ngaytao DESC
 
@@ -143,7 +145,7 @@
                             <div class="new_products_list_card_body">
                                 <p class="new_products_list_card_body_title"><?php echo $row_new_products['tensanpham']; ?></p>
                                 <p class="new_products_list_card_body_kind"><?php echo $row_new_products['tendanhmuc']; ?></p>
-                                <p class="new_products_list_card_body_price"><?php echo $row_new_products['dongia']; ?> đ</p>
+                                <p class="new_products_list_card_body_price"><?php echo number_format($row_new_products['dongia'], 0, ',', '.') ?> đ</p>
                             </div>
                             </a>
                         </div>

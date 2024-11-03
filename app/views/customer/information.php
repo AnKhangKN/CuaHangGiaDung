@@ -4,7 +4,9 @@ session_start();
 include $_SERVER['DOCUMENT_ROOT'] . '/CuaHangDungCu/app/controllers/customer/customerController.php';
 
 if(isset($_SESSION['user_id'])) {
-    $Customer = getCustomerById($_SESSION['user_id']);
+    $id = $_SESSION['user_id'];
+    $Customer = getCustomerById($id);
+    $Account = getAccountById($id);
     
 } 
 
@@ -118,42 +120,46 @@ if(isset($_SESSION['user_id'])) {
                                 <div class="infor_update">
                                     <div class="infor_update_item">
                                         <span>Họ và tên</span>
-                                        <input type="text">
+                                        <p class="infor_update_item_text"><?php echo htmlentities($Customer['tenkhachhang'])?></p>
                                         <i class="fa-regular fa-pen-to-square" onclick="showChangeBox('change_name', this)"></i>
                                     </div>
                                     
                                     <div class="infor_update_item">
                                         <span>Số điện thoại</span>
-                                        <input type="text">
+                                        <p class="infor_update_item_text">0<?php echo htmlentities($Customer['sdt'])?></p>
                                         <i class="fa-regular fa-pen-to-square" onclick="showChangeBox('change_phone', this)"></i>
                                     </div>
                                     
                                     <div class="infor_update_item">
                                         <span>Địa chỉ</span>
-                                        <input type="text">
+                                        <p class="infor_update_item_text"><?php echo htmlentities($Customer['diachi'])?></p>
                                         <i class="fa-regular fa-pen-to-square" onclick="showChangeBox('change_address', this)"></i>
                                     </div>
             
                                     <div class="infor_update_item">
                                         <span>email</span>
-                                        <input type="text">
+                                        <p class="infor_update_item_text"><?php echo htmlentities($Account['email'])?></p>
                                         <i class="fa-regular fa-pen-to-square" onclick="showChangeBox('change_email', this)"></i>
                                     </div>
             
                                     <div class="infor_update_item">
                                         <span>mật khẩu</span>
-                                        <input type="password">
+                                        <p class="infor_update_item_text"><?php 
+                                        $password = $Account['matkhau'];
+                                        $maskedPassword = str_repeat('*', strlen($password));
+                                        echo htmlentities($maskedPassword);
+                                        ?></p>
                                         <i class="fa-regular fa-pen-to-square" onclick="showChangeBox('change_password', this)"></i>
                                     </div>
                                 </div>
                                 
                                 <!-- hiện để chỉnh sửa thông tin -->
                                 <div class="change_info_box">
-                                    <div class="change_info_box_content" id="change_name">
+                                    <div class="change_info_box_content changeBox" id="change_name">
                                         <div class="close_change">
                                             <i class="fa-solid fa-xmark"></i>
                                         </div>
-                                        <p>Họ và tên</p>
+                                        <p>Họ và tên <span>*</span></p>
                                         <div class="change_item">
                                             <input type="text">
                                         </div>
@@ -162,11 +168,11 @@ if(isset($_SESSION['user_id'])) {
                                     </div>
                                 
                                 
-                                    <div class="change_info_box_content" id="change_phone">
+                                    <div class="change_info_box_content changeBox" id="change_phone">
                                         <div class="close_change">
                                             <i class="fa-solid fa-xmark"></i>
                                         </div>
-                                        <p>Số điện thoại</p>
+                                        <p>Số điện thoại <span>*</span></p>
                                         <div class="change_item">
                                             <input type="text">
                                         </div>
@@ -176,11 +182,11 @@ if(isset($_SESSION['user_id'])) {
                                 
                                     
                             
-                                    <div class="change_info_box_content" id="change_address">
+                                    <div class="change_info_box_content changeBox" id="change_address">
                                         <div class="close_change">
                                             <i class="fa-solid fa-xmark"></i>
                                         </div>
-                                        <p>Địa chỉ</p>
+                                        <p>Địa chỉ <span>*</span></p>
                                         <div class="change_item">
                                             <input type="text">
                                         </div>
@@ -190,11 +196,11 @@ if(isset($_SESSION['user_id'])) {
                                 
 
                                 
-                                    <div class="change_info_box_content" id="change_email">
+                                    <div class="change_info_box_content changeBox" id="change_email">
                                         <div class="close_change">
                                             <i class="fa-solid fa-xmark"></i>
                                         </div>
-                                        <p>Email</p>
+                                        <p>Email <span>*</span></p>
                                         <div class="change_item">
                                             <input type="text">
                                         </div>
@@ -204,12 +210,14 @@ if(isset($_SESSION['user_id'])) {
                                 
                                     
                                 
-                                    <div class="change_info_box_content" id="change_password">
+                                    <div class="change_info_box_content_pass changeBox" id="change_password">
                                         <div class="close_change">
                                             <i class="fa-solid fa-xmark"></i>
                                         </div>
-                                        <p>Mật khẩu</p>
-                                        <div class="change_item">
+                                        <p>Mật khẩu <span>*</span></p>
+                                        <div class="change_item_pass">
+                                            <input type="text">
+                                            <input type="text">
                                             <input type="text">
                                         </div>
                                         

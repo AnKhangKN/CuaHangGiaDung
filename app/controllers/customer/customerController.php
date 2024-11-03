@@ -12,7 +12,7 @@
         // Nếu id hợp lệ, thực hiện truy vấn
         if ($idproduct > 0) {
             // Câu truy vấn
-            $sql = "SELECT * FROM sanpham WHERE idSanPham = ?";
+            $sql = "SELECT * FROM sanpham WHERE idSanPham = ? AND trangthai = 1";
 
             // Chuẩn bị và thực thi câu truy vấn
             $stmt = $conn->prepare($sql);
@@ -63,10 +63,11 @@ function getImageUrlsByProductId($product_id) {
         
         // Query to select all products from the 'sanpham' table
         $sql_all_products = mysqli_query($conn,
-        "SELECT sp.*, MIN(ha.urlhinhanh) AS urlhinhanh, dm.tendanhmuc
+        "SELECT sp.*, ha.urlhinhanh AS urlhinhanh, dm.tendanhmuc
         FROM sanpham sp
         JOIN hinhanhsanpham ha ON ha.idSanPham = sp.idSanPham
         JOIN danhmucsanpham dm ON dm.idDanhMuc = sp.idDanhMuc
+        WHERE sp.trangthai = 1
         GROUP BY sp.idSanPham");
         
         // Initialize an array to store all rows
@@ -220,6 +221,74 @@ function getImageUrlsByProductId($product_id) {
         }
     }
 
+    function getAccountById($idAccount){
+        $conn = connectBD();
+
+        $idAccount = (int)$idAccount;
+        if($idAccount > 0){
+            $sql = 'SELECT * FROM taikhoan WHERE idTaiKhoan = ?';
+
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param('i',$idAccount);
+            $stmt->execute();
+
+            $result = $stmt->get_result();
+            return $result->fetch_assoc();
+        } else {    
+            // Trả về null nếu id không hợp lệ
+            return 0;
+        }
+        
+    }
+
+    // filter ----------------------------------------------------------------
+    function getColorProduct() {
+        $conn = connectBD();
+        
+        $sql = 'SELECT DISTINCT(mssp.mausac) FROM sanpham sp 
+                JOIN chitietsanpham ctsp ON sp.idSanPham = ctsp.idSanPham
+                JOIN mausacsanpham mssp ON ctsp.idMauSac = mssp.idMauSac
+                WHERE sp.trangthai = 1';
+    
+        $result = $conn->query($sql);
+        $row_color = [];
+    
+        if ($result) {
+            while ($row = $result->fetch_assoc()) {
+                $row_color[] = $row;
+            }
+        }
+    
+        return $row_color;
+    }
+    
+
+    function getSizeProducts($tendanhmuc){
+        $conn = connectBD();
+
+        $sql = 'SELECT DISTINCT(ktsp.kichthuoc), dmsp.tendanhmuc FROM sanpham sp 
+                JOIN chitietsanpham ctsp ON sp.idSanPham = ctsp.idSanPham
+                JOIN kichthuocsanpham ktsp ON ctsp.idKichThuoc = ktsp.idKichThuoc
+                JOIN danhmucsanpham dmsp ON dmsp.idDanhMuc = sp.idDanhMuc
+                WHERE sp.trangthai = 1 AND dmsp.tendanhmuc = ?';
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('s', $tendanhmuc);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        $row_size = [];
+    
+        while ($row = $result->fetch_assoc()) {
+            $row_size[] = $row;
+        }
+    
+        return $row_size;
+    }
+
+    
+
+    // filter ----------------------------------------------------------------
 
 
 ?>
