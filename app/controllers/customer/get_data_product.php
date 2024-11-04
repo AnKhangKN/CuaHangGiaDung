@@ -9,7 +9,7 @@ if (isset($_POST['action'])) {
                 JOIN danhmucsanpham dmsp ON sp.idDanhMuc = dmsp.idDanhMuc
                 JOIN mausacsanpham mssp ON ctsp.idMauSac = mssp.idMauSac
                 JOIN kichthuocsanpham ktsp ON ktsp.idKichThuoc = ctsp.idKichThuoc
-                WHERE sp.trangthai = 1';
+                WHERE sp.trangthai = 1 AND ctsp.soluongconlai > 0';
 
     $filtersApplied = false;
 

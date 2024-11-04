@@ -121,30 +121,95 @@
                                     </span>
                                 </div>
                                 
-                                
+                                <!-- size group---------------------------------------------------------------------- -->
 
+                                <?php 
+
+                                    $Category = getCategoryByProductId($id);
+
+                                    if($Category['tendanhmuc'] === 'Quần áo'){
+                                        ?>
+                                        
                                 <div class="products_details_info_size_group">
                                     <!-- title -->
                                     <div class="products_details_info_size_title">
-                                        <span>Size</span>
+                                        <span>Size </span>
                                     </div>
                                     <!-- clothes -->
                                     <div class="products_details_info_size_group">
 
-                                                <div class="products_details_info_size_group_item">    
-                                                    <input type="checkbox" id="sizeS_clothes">
-                                                    <label for="sizeS_clothes">S</label>
-                                                </div>
+                                    <?php 
+                                        $Size = getProductsSizeByProductId($id);
 
-                                                <div class="products_details_info_size_group_item">
-                                                    <input type="checkbox" id="sizeM_shoes">
-                                                    <label for="sizeM_shoes">M</label>
-                                                </div>
+                                        foreach($Size as $rowSize){
+                                            ?>
+                                            
+                                            <div class="products_details_info_size_group_item">    
+                                                <input type="checkbox" id="size<?php echo htmlentities($rowSize['kichthuoc'])?>_clothes">
+                                                <label for="size<?php echo htmlentities($rowSize['kichthuoc'])?>_clothes">
+                                                    <?php echo htmlentities($rowSize['kichthuoc'])?>
+                                                </label>
+                                            </div>
+                                            
+                                            <?php
+                                        }
+
+
+                                    ?>
+
+                                                
+
+                                                
                                         
                                     </div>
-                                
-                                    
                                 </div>
+                                        
+                                        <?php 
+                                    } elseif($Category['tendanhmuc'] === 'Giày dép'){
+                                        
+                                        ?>
+                                <div class="products_details_info_size_group">
+                                    <!-- title -->
+                                    <div class="products_details_info_size_title">
+                                        <span>Size </span>
+                                    </div>
+                                    <!-- clothes -->
+                                    <div class="products_details_info_size_group">
+
+                                    <?php 
+                                        $Size = getProductsSizeByProductId($id);
+
+                                        foreach($Size as $rowSize){
+                                            ?>
+                                            
+                                            <div class="products_details_info_size_group_item">    
+                                                <input type="checkbox" id="size<?php echo htmlentities($rowSize['kichthuoc'])?>_clothes">
+                                                <label for="size<?php echo htmlentities($rowSize['kichthuoc'])?>_clothes">
+                                                    <?php echo htmlentities($rowSize['kichthuoc'])?>
+                                                </label>
+                                            </div>
+                                            
+                                            <?php
+                                        }
+                                    ?>
+                                        
+                                    </div>
+                                </div>
+                                        <?php
+                                    } else {
+
+                                        ?>
+                                        <div class="products_details_info_size_group">
+                                            
+                                        </div>
+                                        <?php
+
+                                    }
+                                ?>
+
+                                
+
+<!-- ------------------------------------------------------------------------------------------------------- -->
 
                                 <div class="products_details_info_color">
                                     <span>Color</span>

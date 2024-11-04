@@ -248,7 +248,7 @@ function getImageUrlsByProductId($product_id) {
         $sql = 'SELECT DISTINCT(mssp.mausac) FROM sanpham sp 
                 JOIN chitietsanpham ctsp ON sp.idSanPham = ctsp.idSanPham
                 JOIN mausacsanpham mssp ON ctsp.idMauSac = mssp.idMauSac
-                WHERE sp.trangthai = 1';
+                WHERE sp.trangthai = 1 AND ctsp.soluongconlai > 0';
     
         $result = $conn->query($sql);
         $row_color = [];
@@ -291,10 +291,34 @@ function getImageUrlsByProductId($product_id) {
                 JOIN chitietsanpham ctsp ON sp.idSanPham = ctsp.idSanPham
                 JOIN kichthuocsanpham ktsp ON ctsp.idKichThuoc = ktsp.idKichThuoc
                 JOIN danhmucsanpham dmsp ON dmsp.idDanhMuc = sp.idDanhMuc
-                WHERE sp.trangthai = 1 AND dmsp.tendanhmuc = ?';
+                WHERE sp.trangthai = 1 AND ctsp.soluongconlai > 0 AND dmsp.tendanhmuc = ?';
 
         $stmt = $conn->prepare($sql);
         $stmt->bind_param('s', $tendanhmuc);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        $row_size = [];
+    
+        while ($row = $result->fetch_assoc()) {
+            $row_size[] = $row;
+        }
+    
+        return $row_size;
+    }
+
+    function getProductsSizeByProductId($idProduct){
+        $conn = connectBD();
+
+        $idProduct = (int)$idProduct;
+
+        $sql = 'SELECT DISTINCT(ktsp.kichthuoc), sp.tensanpham FROM sanpham sp 
+                JOIN chitietsanpham ctsp ON sp.idSanPham = ctsp.idSanPham
+                JOIN kichthuocsanpham ktsp ON ctsp.idKichThuoc = ktsp.idKichThuoc
+                WHERE sp.trangthai = 1 AND ctsp.soluongconlai > 0 AND sp.idSanPham = ?';
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('i', $idProduct);
         $stmt->execute();
 
         $result = $stmt->get_result();
