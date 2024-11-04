@@ -72,22 +72,25 @@
                             ?>
                             </div>
                             <div class="col-lg-10 main_img_show">
+                                
+                                <div class="main_img_show_list" id="main_img_show_list_id">
+
                                 <button class="main_img_show_btn_left" id="main_img_show_btn_left_id" onclick="prevImage()">
                                     <i class="fa-solid fa-arrow-left"></i>
                                 </button>
-                                <div class="main_img_show_list" id="main_img_show_list_id">
-
 
                                     <div class="img_main">
                                     <img id="largeImg" src="<?php echo $imageUrls[0]; ?>" 
                                     alt="Ảnh <?php echo htmlentities($ProductId['tensanpham'])?>">
                                     </div>
                             
-                                    
-                                </div>
                                 <button class="main_img_show_btn_right" id="main_img_show_btn_right_id" onclick="nextImage()">
                                     <i class="fa-solid fa-arrow-right"></i>
                                 </button>
+
+
+                                </div>
+                                
                             </div>
 
                                 
@@ -125,74 +128,23 @@
                                     <div class="products_details_info_size_title">
                                         <span>Size</span>
                                     </div>
-
-                                
                                     <!-- clothes -->
-                                    <div class="products_details_info_size_group_clothes">
-                                        <div class="products_details_info_size_group_clothes_item">    
-                                            <input type="checkbox" id="sizeS_clothes">
-                                            <label for="sizeS_clothes">S</label>
-                                        </div>
-                                        <div class="products_details_info_size_group_clothes_item">
-                                            <input type="checkbox" id="sizeM_clothes">
-                                            <label for="sizeM_clothes">M</label>
-                                        </div>
-                                        <div class="products_details_info_size_group_clothes_item">
-                                            <input type="checkbox" id="sizeL_clothes">
-                                            <label for="sizeL_clothes">L</label>
-                                        </div>
-                                        <div class="products_details_info_size_group_clothes_item">
-                                            <input type="checkbox" id="sizeXL_clothes">
-                                            <label for="sizeXL_clothes">XL</label>
-                                        </div>
-                                        <div class="products_details_info_size_group_clothes_item">
-                                            <input type="checkbox" id="sizeXXL_clothes">
-                                            <label for="sizeXXL_clothes">XXL</label>
-                                        </div>
+                                    <div class="products_details_info_size_group">
+
+                                                <div class="products_details_info_size_group_item">    
+                                                    <input type="checkbox" id="sizeS_clothes">
+                                                    <label for="sizeS_clothes">S</label>
+                                                </div>
+
+                                                <div class="products_details_info_size_group_item">
+                                                    <input type="checkbox" id="sizeM_shoes">
+                                                    <label for="sizeM_shoes">M</label>
+                                                </div>
+                                        
                                     </div>
                                 
-                                    <!-- shoes -->
-                                    <div class="products_details_info_size_group_shoes">
-                                        <div class="products_details_info_size_group_shoes_item">
-                                            <input type="checkbox" id="size36_shoes">
-                                            <label for="size36_shoes">36</label>
-                                        </div>
-                                        <div class="products_details_info_size_group_shoes_item">
-                                            <input type="checkbox" id="size37_shoes">
-                                            <label for="size37_shoes">37</label>
-                                        </div>
-                                        <div class="products_details_info_size_group_shoes_item">
-                                            <input type="checkbox" id="size38_shoes">
-                                            <label for="size38_shoes">38</label>
-                                        </div>
-                                        <div class="products_details_info_size_group_shoes_item">
-                                            <input type="checkbox" id="size39_shoes">
-                                            <label for="size39_shoes">39</label>
-                                        </div>
-                                        <div class="products_details_info_size_group_shoes_item">
-                                            <input type="checkbox" id="size40_shoes">
-                                            <label for="size40_shoes">40</label>
-                                        </div>
-                                        <div class="products_details_info_size_group_shoes_item">
-                                            <input type="checkbox" id="size41_shoes">
-                                            <label for="size41_shoes">41</label>
-                                        </div>
-                                        <div class="products_details_info_size_group_shoes_item">
-                                            <input type="checkbox" id="size42_shoes">
-                                            <label for="size42_shoes">42</label>
-                                        </div>
-                                        <div class="products_details_info_size_group_shoes_item">
-                                            <input type="checkbox" id="size43_shoes">
-                                            <label for="size43_shoes">43</label>
-                                        </div>
-                                        <div class="products_details_info_size_group_shoes_item">
-                                            <input type="checkbox" id="size44_shoes">
-                                            <label for="size44_shoes">44</label>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
-                                
-                                
 
                                 <div class="products_details_info_color">
                                     <span>Color</span>

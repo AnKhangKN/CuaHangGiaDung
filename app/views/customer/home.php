@@ -131,7 +131,12 @@
                     <button class="new_products_list_btn_left" id="newPrevBtn">
                         <i class="fa-solid fa-chevron-left"></i>
                     </button>
+
                     <div class="new_products_list" id="newProductsList">
+
+                    
+
+
                         <?php 
                         while($row_new_products = mysqli_fetch_array($sql_new_products)){
                             
@@ -153,11 +158,15 @@
                         }
                         ?>
 
+                    
+
+
                     </div>
                     <!-- btnNext -->
                     <button class="new_products_list_btn_right" id="newNextBtn">
                         <i class="fa-solid fa-chevron-right"></i>
                     </button>
+                    
                 </div>
             </div>
         </main>

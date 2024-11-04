@@ -263,6 +263,27 @@ function getImageUrlsByProductId($product_id) {
     }
     
 
+    function getAllCategory() {
+        $conn = connectBD();
+    
+        $sql = 'SELECT * FROM danhmucsanpham';
+        $result = $conn->query($sql);
+    
+        $row_category = []; 
+        if ($result) {
+            while ($row = $result->fetch_assoc()) {
+                $row_category[] = $row;
+            }
+        } else {
+            // Xử lý lỗi khi truy vấn không thành công
+            echo "Lỗi: " . $conn->error;
+        }
+    
+        $conn->close(); // Đóng kết nối cơ sở dữ liệu
+        return $row_category;
+    }
+    
+
     function getSizeProducts($tendanhmuc){
         $conn = connectBD();
 
@@ -288,8 +309,30 @@ function getImageUrlsByProductId($product_id) {
 
     
 
-    // filter ----------------------------------------------------------------
+    // category ----------------------------------------------------------------
+    function getCategoryByProductId($productId){
 
+        $conn = connectBD();
+
+        $productId = (int)$productId;
+
+        if($productId > 0){
+        $sql = 'SELECT dmsp.* , sp.tensanpham FROM danhmucsanpham dmsp
+            JOIN sanpham sp ON sp.idDanhMuc = dmsp.idDanhMuc
+            WHERE sp.idSanPham = ?';
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('s',$productId);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+        } else {    
+            // Trả về null nếu id không hợp lệ
+            return 0;
+        }
+
+    }
 
 ?>
 

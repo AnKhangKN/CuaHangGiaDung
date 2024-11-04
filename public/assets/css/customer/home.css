@@ -148,15 +148,18 @@
 /* products */
 .container_new_products_list{
     position: relative;
-    height: calc(270px + (170 * ((100vw - 1024px) / (1920 - 1024)))); /* 1024px đến 1920px */
+    min-height: 300px;
 }
 
 /* btn */
 .new_products_list_btn_left {
     background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: none;
     width: 55px;
-    height: calc(270px + (170 * ((100vw - 1024px) / (1920 - 1024)))); /* 1024px đến 1920px */
+    height: 100%; 
     margin-right: 10px;
     position: absolute;
     left: 20px;
@@ -164,9 +167,12 @@
 
 .new_products_list_btn_right{
     background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: none;
     width: 55px;    
-    height: calc(270px + (170 * ((100vw - 1024px) / (1920 - 1024)))); /* 1024px đến 1920px */
+    height: 100%; 
     margin:0 10px;
     position: absolute;
     right: 10px;
@@ -235,15 +241,17 @@
         /* products */
     .container_new_products_list{
         position: relative;
-        height: calc(200px + (170 * ((100vw - 600px) / (1024 - 600)))); /* 1024px đến 1920px */
+        min-height: 300px; 
     }
+
+    
 
     /* btn */
     .new_products_list_btn_left {
         background-color: white;
         border: none;
         width: 55px;
-        height: calc(200px + (170 * ((100vw - 600px) / (1024 - 600)))); /* 1024px đến 1920px */
+        height: 100%;
         margin-right: 10px;
         position: absolute;
         left: 20px;
@@ -253,7 +261,7 @@
         background-color: white;
         border: none;
         width: 55px;    
-        height: calc(200px + (170 * ((100vw - 600px) / (1024 - 600)))); /* 1024px đến 1920px */
+        height: 100%;
         margin:0 10px;
         position: absolute;
         right: 10px;
@@ -277,7 +285,7 @@
     /* products */
     .container_new_products_list{
         position: relative;
-        height: calc(120px + (170 * ((100vw - 0px) / (600 - 0)))); /* 1024px đến 1920px */
+        min-height: 300px; /* 1024px đến 1920px */
     }
 
     /* btn */

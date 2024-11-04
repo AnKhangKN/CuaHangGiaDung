@@ -30,11 +30,13 @@
 
 .main_img_show{
     /* display: flex; */
-    position: relative;
+    /* position: relative; */
+    /* align-items: center; */
     margin-top: 10px;
 }
 
 .main_img_show_list{
+    position: relative;
     display: flex;
     overflow: hidden;
 }
@@ -87,9 +89,9 @@
 
 .products_details_info_price{
     display: flex;
-    /* justify-content: center; */
     align-items: center;
     margin-top: 20px;
+    margin-bottom: 40px;
 }
 
 .products_details_info_price_under{
@@ -112,31 +114,19 @@
     font-weight: 600;
 }
 
+
 .products_details_info_size_group {
-    display: flex;
-    margin-top: 40px;
-}
-
-.products_details_info_size_group_clothes {
     align-items: center;
-    margin-left: 10px;
+    /* margin-left: 10px; */
     display: flex;
-    /* display: none;  */
+    
 }
 
-.products_details_info_size_group_shoes {
-    /* display: flex;  */
-    display: none;
-    margin-left: 10px;
-}
-
-.products_details_info_size_group_shoes_item , 
-.products_details_info_size_group_clothes_item{
+.products_details_info_size_group_item{
     margin-left: 10px;
 } 
 
-.products_details_info_size_group_shoes_item label, 
-.products_details_info_size_group_clothes_item label {
+.products_details_info_size_group_item label {
     border: 1px solid #eaeaea;
     width: 25px;
     height: 25px;
@@ -156,21 +146,18 @@
     transition: background-color 0.3s ease;
 }
 
-/* Ẩn checkbox */
-.products_details_info_size_group_shoes_item input, 
-.products_details_info_size_group_clothes_item input {
+
+.products_details_info_size_group_item input {
     display: none;
 }
 
-/* Hiển thị dấu check khi chọn */
-.products_details_info_size_group_shoes_item input:checked + label, 
-.products_details_info_size_group_clothes_item input:checked + label {
+
+.products_details_info_size_group_item input:checked + label {
     background-color: #a7a7a7; /* Thay đổi màu nền khi được chọn */
     border-color: #000; /* Thay đổi màu viền khi được chọn */
 }
 
-.products_details_info_size_group_shoes_item input:checked + label::before, 
-.products_details_info_size_group_clothes_item input:checked + label::before {
+.products_details_info_size_group_item input:checked + label::before {
     content: '';
     position: absolute;
     top: 7px;
