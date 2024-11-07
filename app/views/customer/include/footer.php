@@ -41,15 +41,15 @@
         </footer>
 
         
-    <script src="./public/assets/js/customer/header.js"></script>
+    <script src="../public/assets/js/customer/header.js"></script>
 
-    <script src="./public/assets/js/customer/home.js"></script>
+    <script src="../public/assets/js/customer/home.js"></script>
 
-    <script src="./public/assets/js/customer/details.js"></script>
+    <script src="../public/assets/js/customer/details.js"></script>
 
-    <script src="./public/assets/js/customer/information.js"></script>
+    <script src="../public/assets/js/customer/information.js"></script>
 
-    <script src="./public/assets/js/customer/product.js"></script>
+    <script src="../public/assets/js/customer/product.js"></script>
 
 </body>
 </html>

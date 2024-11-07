@@ -8,14 +8,18 @@ $(document).ready(function() {
 
         // Kiểm tra xem email và password có trống không
         if ($email === "") {
-            $('.result').html('*Hãy nhập email.');
+            $('.errorPassword').html('');
+            $('.errorEmail').html('*Hãy nhập email.');
             return; // Dừng thực hiện nếu email trống
         }
         
         if ($password === "") {
-            $('.result').html('*Hãy nhập mật khẩu.');
+            $('.errorEmail').html('');
+            $('.errorPassword').html('*Hãy nhập mật khẩu.');
             return; // Dừng thực hiện nếu mật khẩu trống
         }
+
+        
 
         // Gửi yêu cầu AJAX
         $.ajax({
@@ -40,5 +44,21 @@ $(document).ready(function() {
             console.error("AJAX error: ", textStatus, errorThrown);
             $('.result').html('*Có lỗi xảy ra. Vui lòng thử lại.');
         });
+    });
+});
+
+
+document.querySelectorAll('.input_group input').forEach(input => {
+    input.addEventListener('input', function() {
+        const label = this.nextElementSibling;
+        if (this.value) {
+            label.style.top = '-5px';
+            label.style.fontSize = '11px';
+            label.style.color = '#333';
+        } else {
+            label.style.top = '16px';
+            label.style.fontSize = '13px';
+            label.style.color = '#999';
+        }
     });
 });

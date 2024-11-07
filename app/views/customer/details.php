@@ -1,17 +1,17 @@
 <?php 
-    include './app/controllers/customer/customerController.php';
+    include '../app/controllers/customer/customerController.php';
 
     if(isset($_GET['id'])){
         $id = $_GET['id'];
-        $ProductId = getProductById($id);
+        $ProductId = getProductByProductId($id);
 
         if(!$ProductId){
-            header('Location: http://localhost/CuaHangDungCu/index.php?page=products');
+            header('Location: http://localhost/CuaHangDungCu/public/index.php?page=products');
             exit;
         }
 
     }  else{
-        header('Location: http://localhost/CuaHangDungCu/index.php?page=products');
+        header('Location: http://localhost/CuaHangDungCu/public/index.php?page=products');
         exit;
     }
 
@@ -59,7 +59,7 @@
                             $imageUrls = [];
 
                                 foreach($imgAll as $rowImg){ 
-                                    $imageUrls[] = "./public/assets/images/products/" . htmlentities($rowImg['urlhinhanh']);
+                                    $imageUrls[] = "../public/assets/images/products/" . htmlentities($rowImg['urlhinhanh']);
                                     ?>
 
                                 <div class="all_img">
@@ -210,49 +210,26 @@
                                 
 
 <!-- ------------------------------------------------------------------------------------------------------- -->
-
+                                    
                                 <div class="products_details_info_color">
-                                    <span>Color</span>
+                                <span>Color</span>
+                                <?php 
+                                    $Color = getProductColorByProductId($id);
+                                    
+                                    foreach($Color as $rowColor){
+                                        ?>
+                                        
                                     <li class="products_details_info_color_item" >
-                                        <input type="checkbox" id="color-red">
-                                        <label for="" style="background-color: red;"></label>
+                                        <input type="checkbox" id="color-<?php echo htmlentities($rowColor['mausac'])?>">
+                                        <label style="background-color: <?php echo htmlentities($rowColor['mausac'])?>;"></label>
                                     </li>
-                                    <li class="products_details_info_color_item">
-                                        <input type="checkbox" id="color-blue" >
-                                        <label for="" style="background-color: blue;"></label>
-                                    </li>
-                                    <li class="products_details_info_color_item" >
-                                        <input type="checkbox" id="color-green" >
-                                        <label for="" style="background-color: green;"></label>
-                                    </li>
-                                    <li class="products_details_info_color_item" >
-                                        <input type="checkbox" id="color-yellow" >
-                                        <label for="" style="background-color: yellow;"></label>
-                                    </li>
-                                    <li class="products_details_info_color_item" >
-                                        <input type="checkbox" id="color-purple" >
-                                        <label for="" style="background-color: purple;"></label>
-                                    </li>
-                                    <li class="products_details_info_color_item" >
-                                        <input type="checkbox" id="color-orange" >
-                                        <label for="" style="background-color: orange;"></label>
-                                    </li>
-                                    <li class="products_details_info_color_item" >
-                                        <input type="checkbox" id="color-black" >
-                                        <label for="" style="background-color: rgb(0, 0, 0);"></label>
-                                    </li>
-                                    <li class="products_details_info_color_item" >
-                                        <input type="checkbox" id="color-pink" >
-                                        <label for="" style="background-color: rgb(255, 0, 204);"></label>
-                                    </li>
-                                    <li class="products_details_info_color_item" >
-                                        <input type="checkbox" id="color-white" >
-                                        <label for="" style="background-color: white;"></label>
-                                    </li>
-                                    <li class="products_details_info_color_item" >
-                                        <input type="checkbox" id="color-gray" >
-                                        <label for="" style="background-color: gray"></label>
-                                    </li>
+
+                                        <?php 
+                                    }
+                                    ?>
+                                    
+                                    
+                                    
                                 </div>
                                 <hr>
                                 <div class="products_details_info_add row">
@@ -294,7 +271,10 @@
 
                         <div class="info_product">
                             <div class="info_product_title">
-                                Thông tin sản phẩm
+                                <p>Thông tin sản phẩm</p>
+                            </div>
+                            <div class="info_product_content">
+                                <p><?php echo htmlentities($ProductId['mota'])?></p>
                             </div>
                         </div>
                     </div>
@@ -330,6 +310,7 @@
                                                                     JOIN chitietsanpham AS ctsp ON sp.idSanpham = ctsp.idSanpham
                                                                     JOIN chitiethoadon AS cthd ON ctsp.idChiTietSanPham = cthd.idChiTietSanPham
                                                                     JOIN danhmucsanpham AS dm ON sp.idDanhMuc = dm.idDanhMuc
+                                                                    WHERE sp.idSanPham > 0 AND sp.trangthai > 0
                                                                     GROUP BY sp.idSanpham, dm.tendanhmuc
                                                                     ORDER BY tongSoLuongBan DESC");
                 ?>
@@ -338,15 +319,18 @@
                     <?php 
                         while($row_best_products = mysqli_fetch_array($sql_best_products)){
                             ?>
+                    
                     <div class="best_sellers_products_list_card">
-                        <img class="card-img-top best_sellers_list_card_img" src="./public/assets/images/products/<?php echo $row_best_products['urlHinhAnh']?>" alt="Card image" style="width:100%">
+                    <a style="color: #333; text-decoration: none;" href="index.php?page=details&id=<?php echo htmlentities($row_best_products['idSanPham'])?>">
+                        <img class="card-img-top best_sellers_list_card_img" src="../public/assets/images/products/<?php echo $row_best_products['urlHinhAnh']?>" alt="Card image" style="width:100%">
                         <div class="best_sellers_list_card_body">
                             <p class="best_sellers_list_card_body_title"><?php echo $row_best_products['tensanpham']?></>
                             <p class="best_sellers_list_card_body_kind"><?php echo $row_best_products['tendanhmuc']?></p>
                             <p class="best_sellers_list_card_body_price"><?php echo number_format($row_best_products['dongia'],0,',','.') ?> đ</p>
                         </div>
+                        </a>
                     </div>
-                            
+                    
                             
                             <?php
                         }

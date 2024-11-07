@@ -1,5 +1,5 @@
 <?php 
-    include './app/controllers/customer/customerController.php';
+    include '../app/controllers/customer/customerController.php';
 ?>
 
 <main class="main">
@@ -20,7 +20,7 @@
 
             <!-- banner top -->
             <div class="banner_products_top">
-                <img src="./public/assets/images/banner/Banner-demo-products.png" alt="Banner">
+                <img src="../public/assets/images/banner/Banner-demo-products.png" alt="Banner">
             </div>
             <!-- all products -->
             <!-- all products top -->
@@ -164,7 +164,7 @@
                             </div>
                             <ul class="all_products_filter_color_list">
                                 <?php
-                                $Color = getColorProduct();
+                                $Color = getAllProductsColor();
                                 foreach ($Color as $rowColor){
                                     ?>
                                 <li class="all_products_filter_color_list_item" >
@@ -198,7 +198,7 @@
                                 <li>
                                     <?php 
                                         $CategoryName = 'Quần áo';
-                                        $Size = getSizeProducts($CategoryName);
+                                        $Size = getProductsSizeByCategoryName($CategoryName);
                                     ?>
                                     <ul>
                                         <p><?php echo htmlentities($CategoryName)?></p>
@@ -226,7 +226,7 @@
                                 <li>
                                 <?php 
                                         $CategoryName = 'Giày dép';
-                                        $Size = getSizeProducts($CategoryName);
+                                        $Size = getProductsSizeByCategoryName($CategoryName);
                                     ?>
                                     <ul>
                                         <p><?php echo htmlentities($CategoryName)?></p>
@@ -243,8 +243,6 @@
                                                 <span><?php echo htmlentities($rowSize['kichthuoc'])?></span>
                                             </div>
                                             
-
-
                                         </li>
                                         <?php
                                         }
@@ -272,7 +270,7 @@
                                     <a href="index.php?page=details&id=<?php echo htmlentities($product['idSanPham']); ?>" 
                                     class="all_products_card_link">
                                     <img class="card-img-top all_products_card_img" 
-                                    src="./public/assets/images/products/<?php echo htmlentities($product['urlhinhanh']) ?>" 
+                                    src="../public/assets/images/products/<?php echo htmlentities($product['urlhinhanh']) ?>" 
                                     alt="Card image" style="width:100%">
                                         <div class="card-body">
                                             <p class="all_products_card_title">

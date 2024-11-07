@@ -2,7 +2,7 @@
 // Detail
 
     // get product detail
-    function getProductById($idproduct) {
+    function getProductByProductId($idproduct) {
         // Kết nối đến cơ sở dữ liệu
         $conn = connectBD();
         
@@ -201,7 +201,6 @@ function getImageUrlsByProductId($product_id) {
                     JOIN sanpham sp ON sp.idSanPham = ctsp.idSanPham
                     JOIN kichthuocsanpham kt ON ctsp.idKichThuoc = kt.idKichThuoc
                     JOIN mausacsanpham ms ON ms.idMauSac = ctsp.idMauSac
-                            
                     WHERE idHoaDon = ?
                     GROUP BY ctsp.idChiTietSanPham';
             $stmt = $conn->prepare($sql);
@@ -242,7 +241,7 @@ function getImageUrlsByProductId($product_id) {
     }
 
     // filter ----------------------------------------------------------------
-    function getColorProduct() {
+    function getAllProductsColor() {
         $conn = connectBD();
         
         $sql = 'SELECT DISTINCT(mssp.mausac) FROM sanpham sp 
@@ -284,7 +283,7 @@ function getImageUrlsByProductId($product_id) {
     }
     
 
-    function getSizeProducts($tendanhmuc){
+    function getProductsSizeByCategoryName($tendanhmuc){
         $conn = connectBD();
 
         $sql = 'SELECT DISTINCT(ktsp.kichthuoc), dmsp.tendanhmuc FROM sanpham sp 
@@ -327,9 +326,39 @@ function getImageUrlsByProductId($product_id) {
         while ($row = $result->fetch_assoc()) {
             $row_size[] = $row;
         }
-    
         return $row_size;
     }
+
+    // get product color
+
+    function getProductColorByProductId($productid){
+        $conn = connectBD();
+
+        $productid = (int)$productid;
+        if($productid > 0){
+
+            $sql = 'SELECT sp.* , mssp.*, ctsp.idChiTietSanPham
+                FROM sanpham sp
+                JOIN chitietsanpham ctsp ON sp.idSanPham = ctsp.idSanPham
+                JOIN mausacsanpham mssp ON mssp.idMauSac = ctsp.idMauSac
+                WHERE ctsp.soluongconlai > 0 AND sp.idSanPham = ?
+                GROUP BY mssp.mausac';
+                }
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param('i',$productid);
+            $stmt->execute();
+            
+            $result = $stmt->get_result();
+            $row_color = [];
+            while($row = $result->fetch_assoc()){
+                $row_color[] = $row; 
+            }
+            return $row_color;
+        }
+
+        
+
+        
 
     
 
@@ -346,7 +375,7 @@ function getImageUrlsByProductId($product_id) {
             WHERE sp.idSanPham = ?';
 
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param('s',$productId);
+        $stmt->bind_param('i',$productId);
         $stmt->execute();
 
         $result = $stmt->get_result();
@@ -357,6 +386,7 @@ function getImageUrlsByProductId($product_id) {
         }
 
     }
+
 
 ?>
 

@@ -1,20 +1,18 @@
-
-
 <main class="main">
             <div class="container-fluid">
                 <div class="home_slider">
                     <a href="#">
-                        <img src="./public/assets/images/sliders/slider_demo_1.jpg" alt="slider1" class="home_slider_img">
+                        <img src="../public/assets/images/sliders/slider_demo_1.jpg" alt="slider1" class="home_slider_img">
                     </a>
                 </div>
                 <div class="home_slider">
                     <a href="#"></a>
-                        <img src="./public/assets/images/sliders/slider_demo_2.jpg" alt="slider2" class="home_slider_img">
+                        <img src="../public/assets/images/sliders/slider_demo_2.jpg" alt="slider2" class="home_slider_img">
                     </a>
                 </div>
                 <div class="home_slider"></div>
                     <a href="#">
-                        <img src="./public/assets/images/sliders/slider_demo_3.jpg" alt="slider3" class="home_slider_img">
+                        <img src="../public/assets/images/sliders/slider_demo_3.jpg" alt="slider3" class="home_slider_img">
                     </a>
                 </div>
             </div>
@@ -58,7 +56,7 @@
                     
                     <div class="best_sellers_products_list_card">
                         <a href="index.php?page=details&id=<?php echo $row_best_products['idSanPham'] ?>" style="text-decoration: none; color: #333">
-                        <img class="card-img-top best_sellers_list_card_img" src="./public/assets/images/products/<?php echo $row_best_products['urlHinhAnh']?>" alt="Card image" style="width:100%">
+                        <img class="card-img-top best_sellers_list_card_img" src="../public/assets/images/products/<?php echo $row_best_products['urlHinhAnh']?>" alt="Card image" style="width:100%">
                         <div class="best_sellers_list_card_body">
                             <p class="best_sellers_list_card_body_title"><?php echo $row_best_products['tensanpham']?></>
                             <p class="best_sellers_list_card_body_kind"><?php echo $row_best_products['tendanhmuc']?></p>
@@ -146,7 +144,7 @@
                         <!-- list new product -->
                         <div class="new_products_list_card">
                             <a href="index.php?page=details&id=<?php echo $row_new_products['idSanPham'] ?>" style="text-decoration: none; color: #333">
-                            <img class="card-img-top new_products_list_card_img" src="./public/assets/images/products/<?php echo $row_new_products['urlhinhanh']; ?>" alt="Card image" style="width:100%">
+                            <img class="card-img-top new_products_list_card_img" src="../public/assets/images/products/<?php echo $row_new_products['urlhinhanh']; ?>" alt="Card image" style="width:100%">
                             <div class="new_products_list_card_body">
                                 <p class="new_products_list_card_body_title"><?php echo $row_new_products['tensanpham']; ?></p>
                                 <p class="new_products_list_card_body_kind"><?php echo $row_new_products['tendanhmuc']; ?></p>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Jquery -->
+    <script src="../vendor/jQuery/jquery-3.7.1.min.js"></script>
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="../vendor/bootstrap-5.3.3/dist/css/bootstrap.min.css">
+    <script src="../vendor/bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- css -->
+    <link rel="stylesheet" href="../public/assets/css/others/login.css">
+
+    <title>Đăng ký</title>
+</head>
+<body>
+    
+
+
+    <div class="container-fluid mx-auto mt-0 wrapper">
+    <header class="header">
+        <img src="../public/assets/images/logo_trang.jpg" class="header_logo" alt="logo_trang">
+        <p class="header_title">Hãy đăng ký tài khoản và tham gia mua sắm cùng chúng tôi</p>
+    </header>
+    <main class="main">
+        <form>
+            <div class="main_input_group">
+            <div class="result" style="color:red; font-size: 13px; "></div>
+                <input type="text" class="main_input_group_item_email email" id="input_email">
+                <span class="errorEmail" id="email_error"></span>
+                <input type="password" class="main_input_group_item_pass password" id="input_password">
+                <span class="errorPassword" id="password_error"></span>
+            </div>
+            
+            <p class="main_title">Nhóm phát triển HKN chân thành cảm ơn.</p>
+            <div class="main_btn_group">
+                <a href="#" class="main_btn_group_back text-black">Trở về</a>
+                <a href="#">
+                    <input type="submit" class="button main_btn_group_login" value="Tiếp tục">
+                </a>
+            </div>
+        </form>
+    </main>
+    </div>
+    <script src="../public/assets/js/others/signup.js"></script>
+</body>
+</html>

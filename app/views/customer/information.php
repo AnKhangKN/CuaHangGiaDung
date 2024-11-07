@@ -75,9 +75,9 @@ if(isset($_SESSION['user_id'])) {
                                                 
                                                     if($rowBill['trangthai'] == 0){
                                                         $trangthai = 'Hoàn thành';
-                                                    } elseif($rowBill['trangthai'] == 1){
+                                                    } elseif($rowBill['trangthai'] == 2){
                                                         $trangthai = 'Đang chờ xử lý';
-                                                    } elseif ($rowBill['trangthai']== 2){
+                                                    } elseif ($rowBill['trangthai']== 1){
                                                         $trangthai = 'Đang giao hàng';
                                                     } else {
                                                         $trangthai = 'Không xác định đơn hàng';

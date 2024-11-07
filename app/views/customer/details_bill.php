@@ -1,6 +1,6 @@
 <?php 
     
-    include './app/controllers/customer/customerController.php';
+    include '../app/controllers/customer/customerController.php';
     
 
     

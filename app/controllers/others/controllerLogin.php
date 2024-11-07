@@ -41,7 +41,6 @@ if ($result->num_rows > 0) {
     if (password_verify($pass, $rows['matkhau'])) {
         // Thiết lập session với thông tin người dùng
         $_SESSION['user_id'] = $rows['idTaiKhoan'];
-        // $_SESSION['email'] = $rows['email'];
         $_SESSION['quyen'] = $rows['quyen'];
 
         // Cập nhật phản hồi nếu đăng nhập thành công
@@ -50,13 +49,13 @@ if ($result->num_rows > 0) {
         // Chuyển hướng dựa trên quyền người dùng
         switch ($rows['quyen']) {
             case 0:
-                $response['redirect'] = '/CuaHangDungCu/index.php?page=information';
+                $response['redirect'] = '/CuaHangDungCu/public/index.php?page=information';
                 break;
             case 1:
-                $response['redirect'] = '/CuaHangDungCu/admin/index.php';
+                $response['redirect'] = '/CuaHangDungCu/public/admin/index.php';
                 break;
             case 2:
-                $response['redirect'] = '/CuaHangDungCu/app/views/employee/';
+                $response['redirect'] = '/CuaHangDungCu/public/employee/index.php';
                 break;
             default:
                 $response['redirect'] = '/CuaHangDungCu/app/views/others/login.php';

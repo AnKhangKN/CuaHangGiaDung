@@ -37,7 +37,7 @@
                                             <div class="cart_contents_table_item row">
                                                 <div class="cart_contents_table_item_left col-lg-3">
                                                     <div class="cart_contents_table_item_left_img">
-                                                        <img src="./public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
+                                                        <img src="../public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
                                                     </div>
                                                     <div class="cart_contents_table_item_left_remove">
                                                         <a href="#">Xóa</a>
@@ -87,7 +87,7 @@
                                             <div class="cart_contents_table_item row">
                                                 <div class="cart_contents_table_item_left col-lg-3">
                                                     <div class="cart_contents_table_item_left_img">
-                                                        <img src="./public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
+                                                        <img src="../public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
                                                     </div>
                                                     <div class="cart_contents_table_item_left_remove">
                                                         <a href="#">Xóa</a>
@@ -137,7 +137,7 @@
                                             <div class="cart_contents_table_item row">
                                                 <div class="cart_contents_table_item_left col-lg-3">
                                                     <div class="cart_contents_table_item_left_img">
-                                                        <img src="./public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
+                                                        <img src="../public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
                                                     </div>
                                                     <div class="cart_contents_table_item_left_remove">
                                                         <a href="#">Xóa</a>
