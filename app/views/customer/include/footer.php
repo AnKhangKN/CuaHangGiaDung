@@ -51,5 +51,7 @@
 
     <script src="../public/assets/js/customer/product.js"></script>
 
+    <script src="../public/assets/js/customer/cart.js"></script>
+
 </body>
 </html>
