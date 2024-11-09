@@ -15,7 +15,7 @@
 
 
             <div class="container">
-                <div class="row">
+                <div class="row container_cart">
                     <div class="col-lg-8">
                         <div class="cart">
                             <div class="cart_title">
@@ -30,112 +30,73 @@
                                                 <span style="font-weight: 700;" id="count_product"></span>
                                                 sản phảm trong giỏ hàng
                                             </p>
-                                            <!-- Khi giỏ hàng trống sẽ hiện -->
-                                            <p style="display: none;">Giỏ hàng của bạn đang trống</p> 
                                         </div>
 
-                                        <div class="cart_contents_all" id="cart">
-                                            <div class="cart_contents_table">
-                                                <div class="cart_contents_table_item row">
-                                                    <div class="cart_contents_table_item_left col-lg-3">
-                                                        <div class="cart_contents_table_item_left_img">
-                                                            <img src="../public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
-                                                        </div>
-                                                        <div class="cart_contents_table_item_left_remove">
-                                                            <a href="#">Xóa</a>
-                                                        </div>
+                                        <div id="cart">
+                                            <!-- sp 1 -->
+                                            <div class="cart_contents_table" style="margin: 5px 0px;">
 
-                                                    </div>
-                                                    <div class="cart_contents_table_item_right col-lg-7">
-                                                        <div class="cart_contents_table_item_right_info ">
-                                                            <h3 class="cart_contents_table_item_right_info_title">
-                                                                <a href="#">Áo thun</a>
-                                                            </h3>
-                                                            <div class="cart_contents_table_item_right_info_size">
-                                                                <span>S</span>
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="cart_contents_table_item_price">
-                                                            <p>
-                                                                <span>100.000đ</span>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="cart_contents_table_item_total col-lg-2">
-                                                        <div class="cart_contents_table_item_total_price">
-                                                            <span>100.000đ</span>
-                                                        </div>
-                                                        <div class="cart_contents_table_item_total_qty row">
-                                                            <div class="cart_contents_table_item_total_qty_minus col-lg-4">
-                                                                <button >
-                                                                    <i class="fa-solid fa-minus"></i>
-                                                                </button>
-                                                            </div>
-                                                            <div class="cart_contents_table_item_total_qty_number col-lg-4">
-                                                                <input type="text">
-                                                            </div>
-                                                            <div class="cart_contents_table_item_total_qty_plus col-lg-4">
-                                                                <button>
-                                                                    <i class="fa-solid fa-plus"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
+                                                <div class="cart-table-thumb">
+                                                    <div class="cart-table-remove">Xóa</div>
+                                                    <div class="cart-table-img">
+                                                        <img src="../public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
                                                     </div>
                                                 </div>
+                                                <div class="cart-table-title">
+                                                    <div class="cart-table-name">Áo thun nam</div>
+                                                    <div class="cart-table-size">S</div>
+                                                    <div class="cart-table-unit"> <span class="unit_price">230000</span> đ</div>
+                                                </div>
+                                                <div class="cart-table-group">
+                                                    <div class="cart-table-price">
+                                                        <span class="total_price"></span> đ
+                                                    </div>
+                                                    <div class="cart-table-count">
+                                                        <button class="cart-table-minus">
+                                                            <i class="fa-solid fa-minus"></i>
+                                                        </button>
+                                                        <input type="text" value="1" class="cart-table-number">
+                                                        <button class="cart-table-plus">
+                                                            <i class="fa-solid fa-plus"></i>
+                                                        </button>
+                                                    </div>
+                                                    
+                                                </div>
+
                                             </div>
 
-                                            <div class="cart_contents_table">
-                                                <div class="cart_contents_table_item row">
-                                                    <div class="cart_contents_table_item_left col-lg-3">
-                                                        <div class="cart_contents_table_item_left_img">
-                                                            <img src="../public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
-                                                        </div>
-                                                        <div class="cart_contents_table_item_left_remove">
-                                                            <a href="#">Xóa</a>
-                                                        </div>
+                                            <!-- sp 2 -->
+                                            <div class="cart_contents_table" style="margin: 5px 0px;">
 
-                                                    </div>
-                                                    <div class="cart_contents_table_item_right col-lg-7">
-                                                        <div class="cart_contents_table_item_right_info ">
-                                                            <h3 class="cart_contents_table_item_right_info_title">
-                                                                <a href="#">Áo thun</a>
-                                                            </h3>
-                                                            <div class="cart_contents_table_item_right_info_size">
-                                                                <span>S</span>
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="cart_contents_table_item_price">
-                                                            <p>
-                                                                <span>100.000đ</span>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="cart_contents_table_item_total col-lg-2">
-                                                        <div class="cart_contents_table_item_total_price">
-                                                            <span>100.000đ</span>
-                                                        </div>
-                                                        <div class="cart_contents_table_item_total_qty row">
-                                                            <div class="cart_contents_table_item_total_qty_minus col-lg-4">
-                                                                <button >
-                                                                    <i class="fa-solid fa-minus"></i>
-                                                                </button>
-                                                            </div>
-                                                            <div class="cart_contents_table_item_total_qty_number col-lg-4">
-                                                                <input type="text">
-                                                            </div>
-                                                            <div class="cart_contents_table_item_total_qty_plus col-lg-4">
-                                                                <button>
-                                                                    <i class="fa-solid fa-plus"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
+                                                <div class="cart-table-thumb">
+                                                    <div class="cart-table-remove">Xóa</div>
+                                                    <div class="cart-table-img">
+                                                        <img src="../public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
                                                     </div>
                                                 </div>
+                                                <div class="cart-table-title">
+                                                    <div class="cart-table-name">Áo thun nam</div>
+                                                    <div class="cart-table-size">S</div>
+                                                    <div class="cart-table-unit"> <span class="unit_price">230000</span> đ</div>
+                                                </div>
+                                                <div class="cart-table-group">
+                                                    <div class="cart-table-price">
+                                                        <span class="total_price"></span> đ
+                                                    </div>
+                                                    <div class="cart-table-count">
+                                                        <button class="cart-table-minus">
+                                                            <i class="fa-solid fa-minus"></i>
+                                                        </button>
+                                                        <input type="text" value="1" class="cart-table-number">
+                                                        <button class="cart-table-plus">
+                                                            <i class="fa-solid fa-plus"></i>
+                                                        </button>
+                                                    </div>
+                                                    
+                                                </div>
+
                                             </div>
 
-                                            
                                         </div>
 
                                         
@@ -154,6 +115,7 @@
                             </div>
                         </div>
                     </div>  
+
                     <div class="col-lg-4">
                         <div class="payment">
                             <div class="payment_title">
@@ -163,9 +125,10 @@
                             <form action="">
                                 <div class="payment_contents">
                                     <div class="payment_contents_total">
-                                        <p class="payment_contents_total_p">Tổng tiền: 
-                                            <span> 300.000đ</span>
-                                        </p>
+                                        <p class="payment_contents_total_p">Tổng tiền: </p>
+                                        <div class="payment_block_price">
+                                                <span class="total_all_price"> </span> đ
+                                        </div>
                                     </div>
                                 </div>
                                 <hr>

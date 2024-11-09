@@ -1,14 +1,28 @@
 <main class="main">
             
+            <!-- position sub -->
+            <ul class="position_top">
+                            <li class="position_top_li_home">
+                                <a href="index.php" style="text-decoration: none; color: #333;">
+                                    <span class="position_top_main">Trang chủ</span>
+                                </a>
+                            </li>
+
+                            <li class="position_top_item">
+                                <a href="index.php?page=cart" style="text-decoration: none; color: #333;">
+                                <span class="position_top_sub">Giỏ hàng</span>
+                                </a>
+                            </li>
+
+                            <li class="position_top_li">
+                                <span class="position_top_sub">Thanh toán</span>
+                            </li> 
+                        </ul>
+
             <div class="container">
                 <div class="row">
                     <div class="col-lg-7 container_left">
-                        <!-- position sub -->
-                        <div class="position_top">
-                            <span class="position_top_main">Giỏ hàng</span>
-                            <i class="fa-solid fa-chevron-right"></i>
-                            <span class="position_top_sub">Thanh toán</span>
-                        </div>
+                        
                         <div class="title">
                             <p>HKN STORE VIETNAM</p>
                         </div>
