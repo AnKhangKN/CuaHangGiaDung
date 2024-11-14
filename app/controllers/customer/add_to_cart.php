@@ -1,6 +1,4 @@
 <?php
-session_start(); // Bắt đầu session
-
 // Kiểm tra dữ liệu gửi từ client (jQuery)
 if (isset($_POST['productId'], $_POST['tenSP'], $_POST['gia'], $_POST['size'], $_POST['color'], $_POST['soluong'])) {
     
@@ -13,21 +11,23 @@ if (isset($_POST['productId'], $_POST['tenSP'], $_POST['gia'], $_POST['size'], $
     $soluong = $_POST['soluong'];
     $idSanPham = $_POST['productId'];
 
-    // Kiểm tra nếu giỏ hàng chưa tồn tại trong session thì tạo mới
-    if (!isset($_SESSION['cart'])) {
-        $_SESSION['cart'] = array(); 
+    // Đọc giỏ hàng từ cookie nếu có
+    $cart = array();
+    if (isset($_COOKIE['cart'])) {
+        // Giải mã JSON từ cookie thành mảng
+        $cart = json_decode($_COOKIE['cart'], true);
     }
 
     // Tạo khóa duy nhất cho mỗi sự kết hợp sản phẩm dựa trên idSanPham, size và color
     $key = $idSanPham . '-' . $size . '-' . $mau;
 
     // Kiểm tra nếu sản phẩm đã có trong giỏ hàng
-    if (isset($_SESSION['cart'][$key])) {
+    if (isset($cart[$key])) {
         // Nếu sản phẩm đã có trong giỏ hàng và có cùng size và color, cộng thêm số lượng
-        $_SESSION['cart'][$key]['soluong'] += $soluong;
+        $cart[$key]['soluong'] += $soluong;
     } else {
         // Nếu sản phẩm có size và color khác, thêm mới với các chi tiết đầy đủ
-        $_SESSION['cart'][$key] = array(
+        $cart[$key] = array(
             'idSanPham' => $idSanPham,
             'tenSP' => $tenSP,
             'gia' => $gia,
@@ -37,6 +37,9 @@ if (isset($_POST['productId'], $_POST['tenSP'], $_POST['gia'], $_POST['size'], $
             'urlHinhAnh' => $urlHinhAnh,
         );
     }
+
+    // Mã hóa mảng giỏ hàng thành JSON và lưu vào cookie
+    setcookie('cart', json_encode($cart), time() + (86400 * 30), "/"); // Cookie có thời hạn 30 ngày
 
     echo "Sản phẩm đã được thêm vào giỏ hàng!";
 } else {
