@@ -63,4 +63,3 @@ function showChangeBox(idBox) {
     }
 }
 
-

@@ -52,6 +52,14 @@
     justify-content: center;
 }
 
+.cart_table_detail_group{
+    display: flex;
+}
+
+.cart-table-size{
+    margin-right: 15px;
+}
+
 .cart-table-name{
     font-size: 20px;
     font-weight: 600;

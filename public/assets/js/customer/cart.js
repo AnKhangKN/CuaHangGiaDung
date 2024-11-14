@@ -7,11 +7,15 @@ $(document).ready(function () {
 
     // Hàm cập nhật giá trị totalPrice cho một sản phẩm
     function updateTotalPrice(row) {
-        var sl = parseInt(row.find(".cart-table-number").val()) || 1;
-        var unitPrice = parseFloat(row.find(".unit_price").text());
+        var sl = parseFloat(row.find(".cart-table-number").val()) || 1;
+
+        var formatPrice = row.find(".unit_price").text();
+        var cleanPrice = formatPrice.replace(/\./g, '').replace(',', '.');
+
+        var unitPrice = parseFloat(cleanPrice);
 
         var nameProduct = row.find(".cart-table-name").text();
-        // console.log(nameProduct);
+        
 
         if(sl >= 1 && unitPrice >= 1){
             var total = sl * unitPrice;
@@ -25,31 +29,61 @@ $(document).ready(function () {
     // Hàm cập nhật tổng giá trị tất cả các sản phẩm
     function updateTotalAllPrice() {
         var totalPrice = 0;
-
         // Duyệt qua tất cả các hàng trong giỏ hàng
         $(".cart_contents_table").each(function () {
-            var totalUnit = parseFloat($(this).find(".total_price").text()) || 0;  // Lấy giá trị tổng cho sản phẩm
+            var totalUnit = parseFloat($(this).find(".total_price").text()) || 0;  
             totalPrice += totalUnit;  // Cộng dồn vào tổng
         });
-
         // Cập nhật giá trị tổng cho toàn bộ giỏ hàng
-        $(".total_all_price").text(totalPrice);  // Hiển thị giá trị với 2 chữ số thập phân
+        $(".total_all_price").text(totalPrice);  
     }
 
     // Cập nhật giá trị totalPrice khi trang tải
     $(".cart_contents_table").each(function () {
-        updateTotalPrice($(this));  // Gọi hàm cập nhật totalPrice khi trang tải
+        updateTotalPrice($(this));  
     });
 
     $(".cart-table-remove").click(function (e) { 
         e.preventDefault();
+        
+        // Lấy thông tin sản phẩm cần xóa
         var rowProduct = $(this).closest(".cart_contents_table");
-        var name = rowProduct.find(".cart-table-name").text();
+        var productId = rowProduct.find("#idSanPham_item").text(); // Lấy ID sản phẩm từ phần tử #idSanPham_item
+        var size = rowProduct.find(".cart-table-size").text();
+        var color = rowProduct.find(".cart-table-color").text();
+        var name = rowProduct.find(".cart-table-name").text(); // Lấy tên sản phẩm (có thể sử dụng nếu cần)
+    
+        // Xóa sản phẩm khỏi giỏ hàng (hiển thị)
         rowProduct.remove();
-        console.log(name);
+        
+        console.log("Sản phẩm ID cần xóa: " + productId);
+    
+        // Cập nhật số lượng sản phẩm và tổng giá sau khi xóa
         updateProductCount();
-        updateTotalAllPrice();  
+        updateTotalAllPrice();
+        
+        // Gửi yêu cầu AJAX để xóa sản phẩm khỏi giỏ hàng trong session
+        $.ajax({
+            type: "POST",
+            url: "/CuaHangDungCu/app/controllers/customer/delete_cart_item.php", // Đảm bảo URL đúng
+            data: {
+                action: 'remove',
+                productId: productId,
+                size: size,
+                color: color
+            },
+            success: function(response) {
+                // Cập nhật giao diện giỏ hàng hoặc thông báo từ PHP
+                console.log(response);
+                alert(response); // Hiển thị thông báo thành công từ PHP
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log("Lỗi: " + textStatus + " - " + errorThrown);
+                alert("Có lỗi xảy ra khi xóa sản phẩm!");
+            }
+        });
     });
+    
 
     $(".cart-table-minus").click(function (e) { 
         e.preventDefault();

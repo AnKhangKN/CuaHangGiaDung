@@ -35,24 +35,24 @@
     
 
     // get img product detail
-function getImageUrlsByProductId($product_id) {
-    $conn = connectBD();
+    function getImageUrlsByProductId($product_id) {
+        $conn = connectBD();
 
-    $product_id = (int)$product_id;
+        $product_id = (int)$product_id;
 
-    if ($product_id > 0) {
-        $sql = "SELECT * FROM hinhanhsanpham WHERE idSanPham = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("i", $product_id); 
-        $stmt->execute();
+        if ($product_id > 0) {
+            $sql = "SELECT * FROM hinhanhsanpham WHERE idSanPham = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("i", $product_id); 
+            $stmt->execute();
 
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC); // Trả về tất cả hình ảnh dưới dạng mảng
-    } else {
-        // Trả về mảng rỗng nếu id không hợp lệ
-        return [];
+            $result = $stmt->get_result();
+            return $result->fetch_all(MYSQLI_ASSOC); // Trả về tất cả hình ảnh dưới dạng mảng
+        } else {
+            // Trả về mảng rỗng nếu id không hợp lệ
+            return [];
+        }
     }
-}
 
 // --------------------------------------------------------------------------------
 
@@ -356,12 +356,6 @@ function getImageUrlsByProductId($product_id) {
             return $row_color;
         }
 
-        
-
-        
-
-    
-
     // category ----------------------------------------------------------------
     function getCategoryByProductId($productId){
 
@@ -386,6 +380,63 @@ function getImageUrlsByProductId($product_id) {
         }
 
     }
+
+    function updateCustomerName($CustomerName, $CustomerId) {
+        $conn = connectBD();
+    
+        $sql = "UPDATE khachhang kh
+                JOIN taikhoan tk ON tk.idTaiKhoan = kh.idTaiKhoan
+                SET kh.tenkhachhang = ?
+                WHERE tk.idTaiKhoan = ?";
+    
+        $stmt = $conn->prepare($sql);
+    
+        if ($stmt) {
+            $stmt->bind_param("si", $CustomerName, $CustomerId);
+            $success = $stmt->execute();
+            $stmt->close();
+            $conn->close();
+            return $success;
+        } else {
+            $conn->close();
+            return false;
+        }
+    }
+    
+    
+    function getDetailProductBySizeColor($ProductColor, $ProductSize) {
+        $conn = connectBD();
+    
+        $sql = "SELECT ctsp.idChiTietSanPham FROM chitietsanpham ctsp
+                JOIN kichthuocsanpham ktsp ON ktsp.idKichThuoc = ctsp.idKichThuoc
+                JOIN mausacsanpham mssp ON mssp.idMauSac = ctsp.idMauSac
+                WHERE mssp.mausac = ? AND ktsp.kichthuoc = ?";
+    
+        $stmt = $conn->prepare($sql);
+    
+        if ($stmt) {
+            $stmt->bind_param("ss", $ProductColor, $ProductSize);
+            $stmt->execute();
+    
+            // Lấy kết quả từ câu truy vấn
+            $result = $stmt->get_result();
+    
+            // Kiểm tra và lấy dòng đầu tiên
+            $detail = $result->fetch_assoc();
+    
+            // Đóng câu lệnh và kết nối
+            $stmt->close();
+            $conn->close();
+    
+            // Trả về giá trị idChiTietSanPham nếu tồn tại, ngược lại trả về null
+            return $detail ? $detail['idChiTietSanPham'] : null;
+        } else {
+            // Xử lý lỗi nếu không thể chuẩn bị câu lệnh
+            return null;
+        }
+    }
+    
+    
 
 
 ?>

@@ -1,15 +1,15 @@
 <?php 
 session_start();
 
-include $_SERVER['DOCUMENT_ROOT'] . '/CuaHangDungCu/app/controllers/customer/customerController.php';
+include '../app/controllers/customer/customerController.php';
 
 if(isset($_SESSION['user_id'])) {
+
     $id = $_SESSION['user_id'];
     $Customer = getCustomerById($id);
     $Account = getAccountById($id);
     
 } 
-
 
 ?>
 
@@ -161,12 +161,11 @@ if(isset($_SESSION['user_id'])) {
                                         </div>
                                         <p>Họ và tên <span>*</span></p>
                                         <div class="change_item">
-                                            <input type="text">
+                                            <input type="text" id="customerNameInput">
                                         </div>
                                         
-                                        <button>Lưu thay đổi</button>
+                                        <button id="customerNameSubmit">Lưu thay đổi</button>
                                     </div>
-                                
                                 
                                     <div class="change_info_box_content changeBox" id="change_phone">
                                         <div class="close_change">

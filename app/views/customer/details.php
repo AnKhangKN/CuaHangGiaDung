@@ -9,7 +9,7 @@
             header('Location: http://localhost/CuaHangDungCu/public/index.php?page=products');
             exit;
         }
-
+        
     }  else{
         header('Location: http://localhost/CuaHangDungCu/public/index.php?page=products');
         exit;
@@ -39,7 +39,7 @@
             
             <!-- details -->
             <div class="container">
-                <div class="row">
+                <div class="row product_info_to_cart">
 
                     <div class="col-lg-6">
 
@@ -103,7 +103,7 @@
                         <div class="products_details_info">
                             <form action="">
                                 <div class="products_details_info_title">
-                                    <span><?php echo htmlentities($ProductId['tensanpham'])?></span>
+                                    <span class="products_details_info_title_name"><?php echo htmlentities($ProductId['tensanpham'])?></span>
                                 </div>
                                 <div class="products_details_info_price">
                                     <!-- <div class="products_details_info_price_under">
@@ -117,11 +117,9 @@
                                     </div> -->
                                     <!-- giá hiệ tại -->
                                     <span class="products_details_info_price_new">
-                                    <?php echo number_format($ProductId['dongia'],0,',','.') ?> đ
-                                    </span>
+                                    <?php echo number_format($ProductId['dongia'],0,',','.') ?> 
+                                    </span><span>đ</span>
                                 </div>
-                                
-                                <!-- size group---------------------------------------------------------------------- -->
 
                                 <?php 
 
@@ -145,7 +143,9 @@
                                             ?>
                                             
                                             <div class="products_details_info_size_group_item">    
-                                                <input type="checkbox" id="size<?php echo htmlentities($rowSize['kichthuoc'])?>_clothes">
+                                                <input type="checkbox" value="<?php echo htmlentities($rowSize['kichthuoc'])?>" 
+                                                class="products_details_info_size_group_item_input" 
+                                                id="size<?php echo htmlentities($rowSize['kichthuoc'])?>_clothes">
                                                 <label for="size<?php echo htmlentities($rowSize['kichthuoc'])?>_clothes">
                                                     <?php echo htmlentities($rowSize['kichthuoc'])?>
                                                 </label>
@@ -154,13 +154,8 @@
                                             <?php
                                         }
 
-
                                     ?>
 
-                                                
-
-                                                
-                                        
                                     </div>
                                 </div>
                                         
@@ -183,7 +178,9 @@
                                             ?>
                                             
                                             <div class="products_details_info_size_group_item">    
-                                                <input type="checkbox" id="size<?php echo htmlentities($rowSize['kichthuoc'])?>_clothes">
+                                                <input type="checkbox" value="<?php echo htmlentities($rowSize['kichthuoc'])?>"
+                                                class="products_details_info_size_group_item_input"
+                                                id="size<?php echo htmlentities($rowSize['kichthuoc'])?>_clothes">
                                                 <label for="size<?php echo htmlentities($rowSize['kichthuoc'])?>_clothes">
                                                     <?php echo htmlentities($rowSize['kichthuoc'])?>
                                                 </label>
@@ -203,13 +200,8 @@
                                             
                                         </div>
                                         <?php
-
                                     }
                                 ?>
-
-                                
-
-<!-- ------------------------------------------------------------------------------------------------------- -->
                                     
                                 <div class="products_details_info_color">
                                 <span>Color</span>
@@ -220,7 +212,10 @@
                                         ?>
                                         
                                     <li class="products_details_info_color_item" >
-                                        <input type="checkbox" id="color-<?php echo htmlentities($rowColor['mausac'])?>">
+                                        <input type="checkbox"
+                                        value="<?php echo htmlentities($rowColor['mausac'])?>"
+                                        id="color-<?php echo htmlentities($rowColor['mausac'])?>"
+                                        class="products_details_info_color_item_input">
                                         <label style="background-color: <?php echo htmlentities($rowColor['mausac'])?>;"></label>
                                     </li>
 
@@ -228,28 +223,20 @@
                                     }
                                     ?>
                                     
-                                    
-                                    
                                 </div>
                                 <hr>
                                 <div class="products_details_info_add row">
                                     <div class="products_details_info_add_products row col-lg-4">
-                                        <div class="products_details_info_add_products_minus col-lg-4">
-                                            <button >
-                                                <i class="fa-solid fa-minus"></i>
-                                            </button>
-                                        </div>
-                                        <div class="products_details_info_add_products_number col-lg-4">
-                                            <input type="text">
-                                        </div>
-                                        <div class="products_details_info_add_products_plus col-lg-4">
-                                            <button>
-                                                <i class="fa-solid fa-plus"></i>
-                                            </button>
-                                        </div>
+                                        <button class="products_details_info_add_products_minus">
+                                            <i class="fa-solid fa-minus"></i>
+                                        </button>
+                                            <input type="text" value="1" class="products_details_info_add_products_input">
+                                        <button class="products_details_info_add_products_plus">
+                                        <i class="fa-solid fa-plus"></i>
+                                        </button>
                                     </div>
                                     <div class="products_details_info_add_btn col-lg-8">
-                                        <button>Thêm vào giỏ hàng</button>
+                                        <button class="add_cart">Thêm vào giỏ hàng</button>
                                     </div>
                                 </div>
                                 
@@ -274,6 +261,7 @@
                                 <p>Thông tin sản phẩm</p>
                             </div>
                             <div class="info_product_content">
+                                <div id="ProductId" style="display: none;"><?php echo htmlentities($id)?></div>
                                 <p><?php echo htmlentities($ProductId['mota'])?></p>
                             </div>
                         </div>
@@ -346,4 +334,5 @@
         <script>
         // Xuất mảng ảnh sang một biến JavaScript toàn cục
         window.imageUrlsFromPhp = <?php echo json_encode($imageUrls); ?>; 
+
         </script>

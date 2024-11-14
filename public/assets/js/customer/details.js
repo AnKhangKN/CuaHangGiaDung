@@ -114,4 +114,95 @@ window.onload = initImageUrls;
 
 
 
+// lấy dữ liệu
+$(document).ready(function () {
+
+    function checkValue(inputField) {
+        const soluong = parseInt(inputField.val()) || 1;
+        if (soluong < 1) {
+            inputField.val(1); 
+        }
+    }
+
+    $(".products_details_info_add_products_input").on('input', function () {
+        checkValue($(this));
+    });
+
+    // Event listener for decreasing quantity
+    $(".products_details_info_add_products_minus").click(function (e) { 
+        e.preventDefault();
+
+        const productInfo = $(this).closest(".product_info_to_cart");
+        const inputField = productInfo.find(".products_details_info_add_products_input");
+        const soluong = parseInt(inputField.val()) || 1;
+        const newCount = Math.max(1, soluong - 1);
+
+        inputField.val(newCount);
+    });
+
+    // Event listener for increasing quantity
+    $(".products_details_info_add_products_plus").click(function (e) { 
+        e.preventDefault();
+
+        const productInfo = $(this).closest(".product_info_to_cart");
+        const inputField = productInfo.find(".products_details_info_add_products_input");
+        const soluong = parseInt(inputField.val()) || 1;
+        const newCount = soluong + 1;
+
+        inputField.val(newCount);
+    });
+
+    $(".add_cart").click(function (e) { 
+        e.preventDefault();
+    
+        const productInfo = $(this).closest(".product_info_to_cart");
+    
+        const urlHinhAnh = productInfo.find("#largeImg").attr("src");
+        const tenSP = productInfo.find(".products_details_info_title_name").text();
+        const gia = productInfo.find(".products_details_info_price_new").text();
+    
+        let size = productInfo.find(".products_details_info_size_group_item_input:checked").val();
+        if (!size) {
+            size = "Không có kích thước";
+        }
+    
+        let color = productInfo.find(".products_details_info_color_item_input:checked").val();
+        if (!color) {
+            color = "Không có màu sắc";
+        }
+    
+        let soluong = productInfo.find(".products_details_info_add_products_input").val();
+        if (!soluong || soluong <= 0) {
+            soluong = 1;  
+        }
+    
+        // Lấy ID sản phẩm
+        const productId = productInfo.find("#ProductId").text();
+
+        $.ajax({
+            type: "POST",
+            url: "/CuaHangDungCu/app/controllers/customer/add_to_cart.php",
+            data: {
+                urlHinhAnh: urlHinhAnh,
+                tenSP: tenSP,
+                gia: gia,
+                size: size,
+                color: color,
+                soluong: soluong,
+                productId: productId
+            },
+            success: function(response) {
+                // Cập nhật giỏ hàng hoặc thông báo từ PHP
+                console.log(response);
+                alert(response); // Hiển thị thông báo thành công
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log("Lỗi: " + textStatus + " - " + errorThrown);
+            }
+        });
+    
+    });
+});
+
+
 
