@@ -6,7 +6,7 @@
 
 .cart_contents_table{
     border: 1px solid rgb(224, 224, 224);
-    margin-top: 10px;
+    margin-top: 20px;
     border-radius: 10px;
     display: flex;
 }
@@ -134,14 +134,21 @@
     border-radius: 5px;
 }
 
-.payment_contents_action_btn button{
-    width: 100%;
+.payment_contents_action_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
     background-color: #333;
     border: none;
-    color: white;
-    height: 45px;
     font-size: 20px;
     font-weight: 600;
     margin-top: 30px;
     border-radius: 10px;
+}
+
+.payment_contents_action_btn a{
+    text-decoration: none;
+    color: white;
+
 }

@@ -118,14 +118,26 @@ window.onload = initImageUrls;
 $(document).ready(function () {
 
     function checkValue(inputField) {
-        const soluong = parseInt(inputField.val()) || 1;
+        const soluong = parseInt(inputField.val());
+        const productInfo = inputField.closest(".product_info_to_cart");
+        let amount = parseInt(productInfo.find("#ProductAmount").text()); 
+
         if (soluong < 1) {
-            inputField.val(1); 
+            inputField.val(0); 
         }
+        else if(soluong > amount){
+            inputField.val(amount);
+        }
+        
     }
 
     $(".products_details_info_add_products_input").on('input', function () {
         checkValue($(this));
+    });
+
+    $().change(function (e) { 
+        e.preventDefault();
+        
     });
 
     // Event listener for decreasing quantity
@@ -135,24 +147,86 @@ $(document).ready(function () {
         const productInfo = $(this).closest(".product_info_to_cart");
         const inputField = productInfo.find(".products_details_info_add_products_input");
         const soluong = parseInt(inputField.val()) || 1;
-        const newCount = Math.max(1, soluong - 1);
-
+        const newCount = Math.max(0, soluong - 1);
+        
         inputField.val(newCount);
     });
 
     // Event listener for increasing quantity
     $(".products_details_info_add_products_plus").click(function (e) { 
         e.preventDefault();
-
+    
         const productInfo = $(this).closest(".product_info_to_cart");
         const inputField = productInfo.find(".products_details_info_add_products_input");
-        const soluong = parseInt(inputField.val()) || 1;
-        const newCount = soluong + 1;
-
-        inputField.val(newCount);
+        let amount = parseInt(productInfo.find("#ProductAmount").text()) || 0;
+    
+        // Sửa điều kiện kiểm tra giá trị amount
+        if (amount === 0) {
+            alert("Hãy chọn size và màu!");
+        } else {
+            let soluong = parseInt(inputField.val()) || 0;
+            
+    
+            let newCount = soluong + 1; 
+            
+            // Kiểm tra nếu số lượng nhập vào lớn hơn hoặc bằng số lượng còn lại
+            if (soluong >= amount) {
+                newCount = amount;  
+            }
+    
+            inputField.val(newCount); 
+        }
+    });
+    
+    $('.products_details_info_size_group_item input[type="checkbox"]').change(function() {
+        if ($(this).is(':checked')) {
+            $('.products_details_info_size_group_item input[type="checkbox"]').not(this).prop('checked', false);
+        }
     });
 
-    $(".add_cart").click(function (e) { 
+    $('.products_details_info_color_item input[type="checkbox"]').change(function() {
+        if ($(this).is(':checked')) {
+            $('.products_details_info_color_item input[type="checkbox"]').not(this).prop('checked', false);
+        }
+    });
+    
+
+    $(".products_details_info_size_group_item_input, .products_details_info_color_item_input").change(function() {
+        const productInfo = $(this).closest(".product_info_to_cart");
+        
+        let size = productInfo.find(".products_details_info_size_group_item_input:checked").val();
+        if (!size) {
+            size = "Không có kích thước";
+        }
+
+        let color = productInfo.find(".products_details_info_color_item_input:checked").val();
+        if (!color) {
+            color = "Không có màu sắc";
+        }
+
+        const productId = productInfo.find("#ProductId").text();
+
+        // Lấy số lượng còn lại của sản phẩm dựa trên size và color đã chọn
+        $.ajax({
+            type: "POST",
+            url: "/CuaHangDungCu/app/controllers/customer/ProductAmount.php",
+            data: {
+                action: "select",
+                size: size,
+                color: color,
+                productId: productId
+            },
+            success: function (response) {
+                $('#ProductAmount').html(response); // Cập nhật số lượng sản phẩm còn lại
+                console.log(response);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                $('#ProductAmount').html("Có lỗi xảy ra");
+            }
+        });
+    });
+
+    $(".add_cart").click(function (e) {
         e.preventDefault();
     
         const productInfo = $(this).closest(".product_info_to_cart");
@@ -167,42 +241,42 @@ $(document).ready(function () {
         }
     
         let color = productInfo.find(".products_details_info_color_item_input:checked").val();
-        if (!color) {
-            color = "Không có màu sắc";
-        }
     
-        let soluong = productInfo.find(".products_details_info_add_products_input").val();
-        if (!soluong || soluong <= 0) {
-            soluong = 1;  
-        }
-    
+        let soluong = parseInt(productInfo.find(".products_details_info_add_products_input").val());
+
         // Lấy ID sản phẩm
         const productId = productInfo.find("#ProductId").text();
 
-        $.ajax({
-            type: "POST",
-            url: "/CuaHangDungCu/app/controllers/customer/add_to_cart.php",
-            data: {
-                urlHinhAnh: urlHinhAnh,
-                tenSP: tenSP,
-                gia: gia,
-                size: size,
-                color: color,
-                soluong: soluong,
-                productId: productId
-            },
-            success: function(response) {
-                // Cập nhật giỏ hàng hoặc thông báo từ PHP
-                console.log(response);
-                alert(response); // Hiển thị thông báo thành công
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                console.log("Lỗi: " + textStatus + " - " + errorThrown);
-            }
-        });
+        let amount = parseInt(productInfo.find("#ProductAmount").text()); // Chuyển đổi `amount` thành số
     
+        if (soluong > 0 && amount > 0) {
+            // Thực hiện gửi dữ liệu thêm vào giỏ hàng
+            $.ajax({
+                type: "POST",
+                url: "/CuaHangDungCu/app/controllers/customer/add_to_cart.php",
+                data: {
+                    urlHinhAnh: urlHinhAnh,
+                    tenSP: tenSP,
+                    gia: gia,
+                    size: size,
+                    color: color,
+                    soluong: soluong,
+                    productId: productId
+                },
+                success: function (response) {
+                    console.log(response);
+                    alert(response); // Hiển thị thông báo từ server
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log("Lỗi: " + textStatus + " - " + errorThrown);
+                }
+            });
+        } else if (amount === 0) {
+            alert("Sản phẩm đã hết hàng!");
+            
+        } else {
+            alert("Hãy thêm số lượng!");
+        }
     });
+    
 });
-
-
-

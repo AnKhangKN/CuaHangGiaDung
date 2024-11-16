@@ -1,8 +1,7 @@
 <?php
-// Kiểm tra dữ liệu gửi từ client (jQuery)
+
 if (isset($_POST['productId'], $_POST['tenSP'], $_POST['gia'], $_POST['size'], $_POST['color'], $_POST['soluong'])) {
     
-    // Lấy dữ liệu từ POST
     $urlHinhAnh = $_POST['urlHinhAnh'];
     $tenSP = $_POST['tenSP'];
     $gia = $_POST['gia'];

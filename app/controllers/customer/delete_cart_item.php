@@ -1,4 +1,5 @@
 <?php
+
 if (isset($_POST['action']) && $_POST['action'] == 'remove' && isset($_POST['productId']) && isset($_POST['size']) && isset($_POST['color'])) {
     $productId = $_POST['productId'];
     $size = $_POST['size'];
@@ -18,16 +19,13 @@ if (isset($_POST['action']) && $_POST['action'] == 'remove' && isset($_POST['pro
             unset($cart[$key]);
 
             // Cập nhật cookie với mảng giỏ hàng mới
-            setcookie('cart', json_encode($cart), time() + (86400 * 30), "/"); // Lưu lại giỏ hàng mới trong 30 ngày
+            setcookie('cart', json_encode($cart), time() + (86400 * 30), "/"); 
 
-            // Trả về thông báo thành công
             echo "Sản phẩm đã được xóa khỏi giỏ hàng!";
         } else {
-            // Trường hợp sản phẩm không tồn tại trong giỏ hàng
             echo "Sản phẩm không có trong giỏ hàng!";
         }
     } else {
-        // Trường hợp giỏ hàng không tồn tại
         echo "Giỏ hàng trống!";
     }
 } else {

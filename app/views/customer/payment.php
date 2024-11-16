@@ -1,3 +1,21 @@
+<?php
+
+session_start();
+
+include '../app/controllers/customer/customerController.php';
+
+if(isset($_SESSION['user_id'])) {
+
+    $id = $_SESSION['user_id'];
+    $Customer = getCustomerById($id);
+    $Account = getAccountById($id);
+    
+} else{
+    echo 0;
+}
+?>
+
+
 <main class="main">
             
             <!-- position sub -->
@@ -30,29 +48,89 @@
                             <div class="infor_payment_title">
                                 <p>Thông tin giao hàng</p>
                             </div>
-                            <div class="infor_payment_login">
-                                Bạn đã có tài khoản? <a href="#">Đăng nhập</a>
-                            </div>
-                            <p>Hãy nhập thông tin tài khoản để có thể tiến hành thanh toán.</p>
+                            
+                            <?php 
+                            
+                            if(isset($_SESSION['user_id'])){
 
-                            <div class="infor_payment_content">
-                                <div class="infor_payment_content_text">
-                                    <input type="text" placeholder="Họ và tên">
+                                ?>
+                                
+                            <form>
+                                <div class="form-group" style="margin-top: 30px;">
+                                    <label for="name">Họ và Tên</label>
+                                    <input type="name" value="<?php echo htmlentities($Customer['tenkhachhang'])?>" class="form-control" placeholder="Họ và Tên" name="name" id="name" required>
                                 </div>
 
-                                <div class="row_infor_payment_content">
-                                    
-                                    <div class="infor_payment_content_text_email">
-                                        <input type="text" placeholder="Email">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group" style="margin-top: 10px;">
+                                            <label for="email">Email</label>
+                                            <input type="email" value="<?php echo htmlentities($Account['email'])?>" class="form-control" placeholder="Email" name="email" id="email" required>
+                                        </div>
                                     </div>
-                                    <div class="infor_payment_content_text_phone">
-                                        <input type="text" placeholder="Số điện thoại">
+                                    <div class="col">
+                                        <div class="form-group" style="margin-top: 10px;">
+                                            <label for="phone">Số điện thoại</label>
+                                            <input type="phone" value="0<?php echo htmlentities($Customer['sdt'])?>" class="form-control" placeholder="Số điện thoại" name="phone" id="phone" required>
+                                        </div>
                                     </div>
+                                </div>
+
+                                <div class="form-group" style="margin-top: 10px;">
+                                    <label for="address">Địa chỉ</label>
+                                    <input type="address" value="<?php echo htmlentities($Customer['diachi'])?>" class="form-control" placeholder="Địa chỉ" name="address" id="address" required>
                                 </div>
                                 
-                                <div class="infor_payment_content_text">
-                                    <input type="text" placeholder="Địa chỉ">
+                            </form>
+                                
+                                <?php
+                            }else{
+                                ?>
+
+                            <div class="infor_payment_login">
+                                    Bạn đã có tài khoản? <a href="http://localhost/CuaHangDungCu/public/login.php">Đăng nhập</a>
+                            </div>
+                            <p>Hãy nhập thông tin tài khoản để có thể tiến hành thanh toán.</p>
+                                
+                            <form>
+                                <div class="form-group" style="margin-top: 30px;">
+                                    <label for="name">Họ và Tên</label>
+                                    <input type="name" class="form-control" placeholder="Họ và Tên" name="name" id="name" required>
                                 </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group" style="margin-top: 10px;">
+                                            <label for="email">Email</label>
+                                            <input type="email" class="form-control" placeholder="Email" name="email" id="email" required>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group" style="margin-top: 10px;">
+                                            <label for="phone">Số điện thoại</label>
+                                            <input type="phone" class="form-control" placeholder="Số điện thoại" name="phone" id="phone" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group" style="margin-top: 10px;">
+                                    <label for="address">Địa chỉ</label>
+                                    <input type="address" class="form-control" placeholder="Địa chỉ" name="address" id="address" required>
+                                </div>
+                                
+                            </form>
+
+                                <?php
+                            }
+                            
+                            ?>
+
+                            
+
+
+                            <div class="form-group" style="margin-top: 40px;">
+                                <label for="exampleFormControlTextarea1">Ghi chú</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                             </div>
 
                             <div class="infor_payment_method">
@@ -91,48 +169,62 @@
                     </div>
                     <div class="col-lg-5">
                         <div class="container_infor_products_payment">
+
+                        <!-- sản phẩm ----------------------------------------------------- -->
+                        <?php
+                        // Kiểm tra session 'cart' có tồn tại không
+                        if (isset($_COOKIE["cart"]) && !empty($_COOKIE["cart"])) {
                             
-                            <div class="list_infor_products_payment_item">
-                                <div class="img_infor_payment_item">
-                                    <img src="./public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
-                                </div>
-                                <div class="text_infor_payment_item">
-                                    <p>Tên sản phẩm</p>
-                                    <p>S</p>
-                                </div>
-                                <div class="price_infor_payment_item">
-                                    <span>200.000 đ</span>
-                                </div>
-                            </div>
+                            // Giải mã JSON từ cookie thành mảng
+                            $cart = json_decode($_COOKIE["cart"], true);
 
-                            <div class="list_infor_products_payment_item">
-                                <div class="img_infor_payment_item">
-                                    <img src="./public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
-                                </div>
-                                <div class="text_infor_payment_item">
-                                    <p>Tên sản phẩm</p>
-                                    <p>S</p>
-                                </div>
-                                <div class="price_infor_payment_item">
-                                    <span>200.000 đ</span>
-                                </div>
-                            </div>
+                            if (!empty($cart)) {
+                        
+                            // Lặp qua các sản phẩm trong giỏ hàng
+                            foreach ($cart as $idSanPham => $product) {
+                                ?>
+                                <div class="list_infor_products_payment_item">
+                                <span id="idSanPham_item" style="display: none;"><?php echo htmlentities($product['idSanPham'])?></span>
+                                    <div class="infor_payment_item_group_product">
+                                        <div class="img_infor_payment_item">
+                                            <img src="<?php echo htmlentities($product['urlHinhAnh']) ?>" alt="">
+                                        </div>
+                                        <div class="text_infor_payment_item">
+                                            <span style="font-size: 18px; color: #333;"><?php echo htmlentities($product['tenSP']) ?></span>
+                                            <span>
 
-                                
+                                                <?php echo htmlentities($product['size']) ?>
+
+                                            </span> 
+                                            <span><?php echo htmlentities($product['color']) ?></span>
+                                            <span><?php echo htmlentities($product['soluong']) ?></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="price_infor_payment_item">
+                                        <span><?php echo htmlentities($product['gia']) ?> đ</span>
+                                    </div>
+                                </div>
+                                <?php
+                            }
+                        } else {
+                            echo "<p>Giỏ hàng của bạn đang trống!</p>";
+                        }
+                        }
+                        ?>
 
 
                             
-
                             <hr>
 
                             <div class="all_expense">
                                 <div class="expense_item">
                                     <span>Tạm tính: </span>
-                                    <p>400.000 đ</p> 
+                                    <p ><span id="expense_item_price" style="color:#333;">16000000</span> đ</p> 
                                 </div>
                                 <div class="expense_item">
                                     <span>Phí vận chuyển: </span>
-                                    <p>30.000 đ</p> 
+                                    <p><span id="expense_item_express" style="color: #333;">30.000</span> đ</p> 
                                 </div>
                             </div>
 
@@ -154,7 +246,7 @@
 
                             <div class="infor_payment_btn">
                                 <div class="infor_payment_btn_cart">
-                                    <a href="#">Giỏ hàng</a>
+                                    <a href="index.php?page=cart">Giỏ hàng</a>
                                 </div>
                                 <div class="infor_payment_btn_continue">
                                     <button>Hoàn thành đơn hàng</button>

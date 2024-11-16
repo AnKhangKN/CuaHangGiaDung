@@ -25,38 +25,8 @@
     font-weight: 400;
 }   
 
-.infor_payment_content{
-    margin: 40px 0;
-}
-
-.row_infor_payment_content{
-    display: flex;
-}
-
-.infor_payment_content_text{
-    margin: 10px 0;
-}
-
-.infor_payment_content_text_email{
-    width: 60%;
-}
-
-.infor_payment_content_text_phone{
-    width: 33.2%;
-}
-
-
-
-.infor_payment_content_text input, .infor_payment_content_text_email input, .infor_payment_content_text_phone input{
-    padding: 10px;
-    width: 90%;
-    height: 45px;
-    border-radius: 5px;
-    border: 0.5px solid rgb(190, 190, 190);
-    outline: none;
-}
-
 .infor_payment_method_title p{
+    margin-top: 30px;
     font-size: 18px;
     font-weight: 500;
 }
@@ -111,22 +81,27 @@
 .list_infor_products_payment_item{
     margin-top: 50px;
     display: flex;
+    justify-content: space-between;
 }
 
-.img_infor_payment_item,.text_infor_payment_item,.price_infor_payment_item{
-    width: calc(100%/3);
+.infor_payment_item_group_product{
+    display: flex;
 }
 
 .text_infor_payment_item{
     margin-left: 10px;
+    display: flex;
+    flex-flow: column;
 }
 
-.price_infor_payment_item{
-    text-align: right;
+.text_infor_payment_item span{
+    font-size: 14px;
+    color: rgb(144, 144, 144);
 }
 
 .img_infor_payment_item{
-    width: 90px;
+    width: 110px;
+    
 }
 
 .img_infor_payment_item img {

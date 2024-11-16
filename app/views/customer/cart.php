@@ -1,7 +1,5 @@
-
-
-
 <main class="main">
+
             <!-- position sub -->
             <ul class="position_top">
                 <li class="position_top_li_home">
@@ -9,13 +7,10 @@
                         <span class="position_top_main">Trang chủ</span>
                     </a>
                 </li>
-
-
                 <li class="position_top_li">
                     <span class="position_top_sub">Giỏ hàng</span>
                 </li> 
             </ul>
-
 
             <div class="container">
                 <div class="row container_cart">
@@ -51,8 +46,9 @@
                                                 // Duyệt qua từng sản phẩm trong giỏ hàng từ mảng $cart
                                                 foreach($cart as $idSanPham => $product){
                                                     ?>
-                                                    <div class="cart_contents_table" style="margin: 5px 0px;">
+                                                    <div class="cart_contents_table" >
                                                         <span id="idSanPham_item" style="display: none;"><?php echo htmlentities($product['idSanPham'])?></span>
+                                                        <div id="productAmount" style="display: none;"></div>
                                                         <div class="cart-table-thumb">
                                                             <div class="cart-table-remove">Xóa</div>
                                                             <div class="cart-table-img">
@@ -65,7 +61,9 @@
                                                                 <div class="cart-table-size"><?php echo htmlentities($product['size'])?></div>
                                                                 <div class="cart-table-color"><?php echo htmlentities($product['color'])?></div>
                                                             </div>
-                                                            <div class="cart-table-unit"> <span class="unit_price"><?php echo htmlentities($product['gia'])?></span> đ</div>
+                                                            <div class="cart-table-unit"> 
+                                                                <span class="unit_price"><?php echo htmlentities($product['gia'])?></span> đ
+                                                            </div>
                                                         </div>
                                                         <div class="cart-table-group">
                                                             <div class="cart-table-price">
@@ -100,16 +98,7 @@
 
                                         
                                     </div>
-                                    <div class="cart_row">
-                                        <div class="cart_contents_note">
-                                            <div class="cart_contents_note_title">
-                                                <span>Ghi chú đơn hàng</span>
-                                            </div>
-                                            <div class="cart_contents_note_contents">
-                                                <textarea class="form-control" id="note" name="note" rows="5"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                 </form>
                             </div>
                         </div>
@@ -141,8 +130,9 @@
                                         <p>Giỏ hàng của bạn hiện chưa đạt mức tối thiểu để thanh toán.</p>
                                     </div>
                                     <div class="payment_contents_action_btn">
-                                        <button>Thanh toán</button>
+                                    <a href="index.php?page=payment" >Thanh toán</a>
                                     </div>
+                                    
                                 </div>
                             </form>
                         </div>

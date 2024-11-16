@@ -381,63 +381,80 @@
 
     }
 
-    function updateCustomerName($CustomerName, $CustomerId) {
-        $conn = connectBD();
+    // function updateCustomerName($CustomerName, $CustomerId) {
+    //     $conn = connectBD();
     
-        $sql = "UPDATE khachhang kh
-                JOIN taikhoan tk ON tk.idTaiKhoan = kh.idTaiKhoan
-                SET kh.tenkhachhang = ?
-                WHERE tk.idTaiKhoan = ?";
+    //     $sql = "UPDATE khachhang kh
+    //             JOIN taikhoan tk ON tk.idTaiKhoan = kh.idTaiKhoan
+    //             SET kh.tenkhachhang = ?
+    //             WHERE tk.idTaiKhoan = ?";
     
-        $stmt = $conn->prepare($sql);
+    //     $stmt = $conn->prepare($sql);
     
-        if ($stmt) {
-            $stmt->bind_param("si", $CustomerName, $CustomerId);
-            $success = $stmt->execute();
-            $stmt->close();
-            $conn->close();
-            return $success;
-        } else {
-            $conn->close();
-            return false;
+    //     if ($stmt) {
+    //         $stmt->bind_param("si", $CustomerName, $CustomerId);
+    //         $success = $stmt->execute();
+    //         $stmt->close();
+    //         $conn->close();
+    //         return $success;
+    //     } else {
+    //         $conn->close();
+    //         return false;
+    //     }
+    // }
+    
+    
+    function getProductAmount($ProductId, $Size = "không có kích thước", $Color) {
+        $conn = connectBD(); 
+        
+        // Kiểm tra nếu ProductId và Color hợp lệ
+        if (!$ProductId || !$Color) {
+            return null; // Trả về null nếu không có productId hoặc color
         }
+    
+        // Câu truy vấn linh hoạt dựa trên giá trị của $Size
+        $sql = "SELECT ctsp.soluongconlai 
+                FROM chitietsanpham ctsp
+                JOIN mausacsanpham mssp ON mssp.idMauSac = ctsp.idMauSac";
+    
+        // Nếu $Size không phải là "không có kích thước", thêm JOIN và điều kiện kích thước
+        if ($Size !== "không có kích thước") {
+            $sql .= " JOIN kichthuocsanpham ktsp ON ktsp.idKichThuoc = ctsp.idKichThuoc
+                    WHERE ctsp.idSanPham = ? AND ktsp.kichthuoc = ? AND mssp.mausac = ?";
+        } else {
+            $sql .= " WHERE ctsp.idSanPham = ? AND mssp.mausac = ?";
+        }
+    
+        // Chuẩn bị câu truy vấn
+        $stmt = $conn->prepare($sql);
+        
+        // Kiểm tra nếu chuẩn bị không thành công
+        if (!$stmt) {
+            return null; // Trả về null nếu không thể chuẩn bị truy vấn
+        }
+    
+        // Gán tham số dựa trên trường hợp của $Size
+        if ($Size !== "không có kích thước") {
+            $stmt->bind_param("iss", $ProductId, $Size, $Color); // 'i' cho integer, 's' cho string
+        } else {
+            $stmt->bind_param("is", $ProductId, $Color); // 'i' cho integer, 's' cho string
+        }
+    
+        // Thực thi truy vấn
+        $stmt->execute();
+        
+        // Lấy kết quả
+        $stmt->bind_result($amount);
+        
+        if ($stmt->fetch()) {
+            return $amount; // Trả về số lượng sản phẩm
+        } else {
+            return 0; // Trả về 0 nếu không tìm thấy kết quả
+        }
+        
+        return null; // Trả về null nếu có lỗi hoặc điều kiện không hợp lệ
     }
     
     
-    function getDetailProductBySizeColor($ProductColor, $ProductSize) {
-        $conn = connectBD();
-    
-        $sql = "SELECT ctsp.idChiTietSanPham FROM chitietsanpham ctsp
-                JOIN kichthuocsanpham ktsp ON ktsp.idKichThuoc = ctsp.idKichThuoc
-                JOIN mausacsanpham mssp ON mssp.idMauSac = ctsp.idMauSac
-                WHERE mssp.mausac = ? AND ktsp.kichthuoc = ?";
-    
-        $stmt = $conn->prepare($sql);
-    
-        if ($stmt) {
-            $stmt->bind_param("ss", $ProductColor, $ProductSize);
-            $stmt->execute();
-    
-            // Lấy kết quả từ câu truy vấn
-            $result = $stmt->get_result();
-    
-            // Kiểm tra và lấy dòng đầu tiên
-            $detail = $result->fetch_assoc();
-    
-            // Đóng câu lệnh và kết nối
-            $stmt->close();
-            $conn->close();
-    
-            // Trả về giá trị idChiTietSanPham nếu tồn tại, ngược lại trả về null
-            return $detail ? $detail['idChiTietSanPham'] : null;
-        } else {
-            // Xử lý lỗi nếu không thể chuẩn bị câu lệnh
-            return null;
-        }
-    }
-    
-    
-
-
 ?>
 

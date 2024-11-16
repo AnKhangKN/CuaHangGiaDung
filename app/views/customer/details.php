@@ -121,10 +121,10 @@
                                     </span><span>đ</span>
                                 </div>
 
+                                
+                                <div id="Productsize">
                                 <?php 
-
                                     $Category = getCategoryByProductId($id);
-
                                     if($Category['tendanhmuc'] === 'Quần áo'){
                                         ?>
                                         
@@ -196,12 +196,11 @@
                                     } else {
 
                                         ?>
-                                        <div class="products_details_info_size_group">
-                                            
-                                        </div>
+                                        
                                         <?php
                                     }
                                 ?>
+                                </div>
                                     
                                 <div class="products_details_info_color">
                                 <span>Color</span>
@@ -224,13 +223,14 @@
                                     ?>
                                     
                                 </div>
+                                <div id="ProductAmount">0</div>
                                 <hr>
                                 <div class="products_details_info_add row">
                                     <div class="products_details_info_add_products row col-lg-4">
                                         <button class="products_details_info_add_products_minus">
                                             <i class="fa-solid fa-minus"></i>
                                         </button>
-                                            <input type="text" value="1" class="products_details_info_add_products_input">
+                                            <input type="text" value="0" class="products_details_info_add_products_input">
                                         <button class="products_details_info_add_products_plus">
                                         <i class="fa-solid fa-plus"></i>
                                         </button>
