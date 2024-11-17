@@ -49,7 +49,12 @@ if ($result->num_rows > 0) {
         // Chuyển hướng dựa trên quyền người dùng
         switch ($rows['quyen']) {
             case 0:
-                $response['redirect'] = '/CuaHangDungCu/public/index.php?page=information';
+                // Kiểm tra cookie giỏ hàng
+                if (!empty($_COOKIE['cart']) && json_decode($_COOKIE['cart'], true)) {
+                    $response['redirect'] = '/CuaHangDungCu/public/index.php?page=payment';
+                } else {
+                    $response['redirect'] = '/CuaHangDungCu/public/index.php?page=information';
+                }
                 break;
             case 1:
                 $response['redirect'] = '/CuaHangDungCu/public/admin/index.php';
