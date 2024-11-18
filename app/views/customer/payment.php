@@ -1,6 +1,8 @@
 <?php
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 include '../app/controllers/customer/customerController.php';
 
@@ -11,10 +13,9 @@ if(isset($_SESSION['user_id'])) {
     $Account = getAccountById($id);
     
 } else{
-    echo 0;
+    echo "";
 }
 ?>
-
 
 <main class="main">
             
@@ -95,27 +96,31 @@ if(isset($_SESSION['user_id'])) {
                             <form>
                                 <div class="form-group" style="margin-top: 30px;">
                                     <label for="name">Họ và Tên</label>
-                                    <input type="name" class="form-control" placeholder="Họ và Tên" name="name" id="name" required>
+                                    <input type="name" class="form-control" name="name" id="name" >
+                                    <p class="error_name" style="color: red; font-size: 12px;"></p>
                                 </div>
 
                                 <div class="row">
                                     <div class="col">
                                         <div class="form-group" style="margin-top: 10px;">
                                             <label for="email">Email</label>
-                                            <input type="email" class="form-control" placeholder="Email" name="email" id="email" required>
+                                            <input type="email" class="form-control" name="email" id="email" >
+                                            <p class="error_email" style="color: red; font-size: 12px;"></p>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="form-group" style="margin-top: 10px;">
                                             <label for="phone">Số điện thoại</label>
-                                            <input type="phone" class="form-control" placeholder="Số điện thoại" name="phone" id="phone" required>
+                                            <input type="phone" class="form-control" name="phone" id="phone" >
+                                            <p class="error_phone" style="color: red; font-size: 12px;"></p>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="form-group" style="margin-top: 10px;">
                                     <label for="address">Địa chỉ</label>
-                                    <input type="address" class="form-control" placeholder="Địa chỉ" name="address" id="address" required>
+                                    <input type="address" class="form-control" name="address" id="address" >
+                                    <p class="error_address" style="color: red; font-size: 12px;"></p>
                                 </div>
                                 
                             </form>
@@ -139,14 +144,14 @@ if(isset($_SESSION['user_id'])) {
                                 </div>
                                 <div class="infor_payment_method_content">
                                     <div class="infor_payment_method_content_choose">
-                                        <input type="radio">
+                                        <input type="checkbox" id="payment_by_cod">
                                         <span>Thanh toán khi giao hàng (COD)</span>
                                     </div>
                                     <div class="infor_payment_method_content_choose">
-                                        <input type="radio">
+                                        <input type="checkbox" id="payment_by_card">
                                         <i class="fa-regular fa-credit-card"></i>
                                         <span>Chuyển khoản qua ngân hàng</span>
-                                        <div class="content_transfer">
+                                        <div class="content_transfer" style="display: none;">
                                             <p>Nội dung chuyển khoản bạn vui lòng điền theo CÚ PHÁP như sau: 
                                                 MÃ ĐƠN HÀNG + SĐT + TÊN để Degrey xác nhận thanh toán nhanh chóng cho bạn.
                                             </p>
@@ -170,48 +175,47 @@ if(isset($_SESSION['user_id'])) {
                     <div class="col-lg-5">
                         <div class="container_infor_products_payment">
 
-                        <!-- sản phẩm ----------------------------------------------------- -->
-                        <?php
-                        // Kiểm tra session 'cart' có tồn tại không
-                        if (isset($_COOKIE["cart"]) && !empty($_COOKIE["cart"])) {
-                            
-                            // Giải mã JSON từ cookie thành mảng
-                            $cart = json_decode($_COOKIE["cart"], true);
+                            <!-- sản phẩm ----------------------------------------------------- -->
+                            <?php
+                            // Kiểm tra session 'cart' có tồn tại không
+                            if (isset($_COOKIE["cart"]) && !empty($_COOKIE["cart"])) {
 
-                            if (!empty($cart)) {
-                        
-                            // Lặp qua các sản phẩm trong giỏ hàng
-                            foreach ($cart as $idSanPham => $product) {
-                                ?>
-                                <div class="list_infor_products_payment_item">
-                                <span id="idSanPham_item" style="display: none;"><?php echo htmlentities($product['idSanPham'])?></span>
-                                    <div class="infor_payment_item_group_product">
-                                        <div class="img_infor_payment_item">
-                                            <img src="<?php echo htmlentities($product['urlHinhAnh']) ?>" alt="">
+                                // Giải mã JSON từ cookie thành mảng
+                                $cart = json_decode($_COOKIE["cart"], true);
+
+                                if (!empty($cart)) {
+                                
+                                // Lặp qua các sản phẩm trong giỏ hàng
+                                foreach ($cart as $idSanPham => $product) {
+                                    ?>
+                                    <div class="list_infor_products_payment_item">
+                                        <span id="idSanPham_item" style="display: none;"><?php echo htmlentities($product['idSanPham'])?></span>
+                                        <span id="idChiTietSanPham" style="display: none;">0</span>
+                                        <span id="SoLuongConLai" style="display: none;">0</span>
+                                        <div class="infor_payment_item_group_product">
+                                            <div class="img_infor_payment_item">
+                                                <img src="<?php echo htmlentities($product['urlHinhAnh']) ?>" alt="">
+                                            </div>
+                                            <div class="text_infor_payment_item">
+                                                <span style="font-size: 18px; color: #333;"><?php echo htmlentities($product['tenSP']) ?></span>
+                                                <span id="size_product"><?php echo htmlentities($product['size']) ?></span> 
+                                                <span id="color_product"><?php echo htmlentities($product['color']) ?></span>
+                                                <span>Số lượng: <span id="soluong_item"><?php echo htmlentities($product['soluong']) ?></span></span>
+                                            </div>
                                         </div>
-                                        <div class="text_infor_payment_item">
-                                            <span style="font-size: 18px; color: #333;"><?php echo htmlentities($product['tenSP']) ?></span>
-                                            <span>
 
-                                                <?php echo htmlentities($product['size']) ?>
-
-                                            </span> 
-                                            <span><?php echo htmlentities($product['color']) ?></span>
-                                            <span><?php echo htmlentities($product['soluong']) ?></span>
+                                        <div class="price_infor_payment_item">
+                                            <span id="price_item"><?php echo htmlentities($product['gia']) ?></span>
+                                            <span>đ</span>
                                         </div>
                                     </div>
-
-                                    <div class="price_infor_payment_item">
-                                        <span><?php echo htmlentities($product['gia']) ?> đ</span>
-                                    </div>
-                                </div>
-                                <?php
+                                    <?php
+                                }
+                            } else {
+                                echo "<p>Giỏ hàng của bạn đang trống!</p>";
                             }
-                        } else {
-                            echo "<p>Giỏ hàng của bạn đang trống!</p>";
-                        }
-                        }
-                        ?>
+                            }
+                            ?>
 
 
                             
@@ -220,7 +224,7 @@ if(isset($_SESSION['user_id'])) {
                             <div class="all_expense">
                                 <div class="expense_item">
                                     <span>Tạm tính: </span>
-                                    <p ><span id="expense_item_price" style="color:#333;">16000000</span> đ</p> 
+                                    <p ><span id="expense_item_price" style="color:#333;">0</span> đ</p> 
                                 </div>
                                 <div class="expense_item">
                                     <span>Phí vận chuyển: </span>
@@ -236,7 +240,7 @@ if(isset($_SESSION['user_id'])) {
                                 </div>
                                 <div class="total_bill_due">
                                     <span>VND</span>
-                                    <span class="total_bill_due_price">430.000</span>
+                                    <span class="total_bill_due_price">0</span>
                                     <span>đ</span>
                                 </div>
                                 
@@ -245,16 +249,39 @@ if(isset($_SESSION['user_id'])) {
                             <hr>
 
                             <div class="infor_payment_btn">
-                                <div class="infor_payment_btn_cart">
-                                    <a href="index.php?page=cart">Giỏ hàng</a>
-                                </div>
-                                <div class="infor_payment_btn_continue">
-                                    <button>Hoàn thành đơn hàng</button>
-                                </div>
+                                
+                                <a class="infor_payment_btn_cart" href="index.php?page=cart">Giỏ hàng</a>
+                                
+                                <button class="infor_payment_btn_continue">Hoàn thành đơn hàng</button>
+                                
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            
+<!-- Modal -->
+<div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="errorModalLabel">
+                    <i class="fa-solid fa-triangle-exclamation"></i></i> Thông Báo 
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="modalErrorMessage"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
             
         </main>

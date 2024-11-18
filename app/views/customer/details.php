@@ -101,7 +101,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="products_details_info">
-                            <form action="">
+                            <form >
                                 <div class="products_details_info_title">
                                     <span class="products_details_info_title_name"><?php echo htmlentities($ProductId['tensanpham'])?></span>
                                 </div>

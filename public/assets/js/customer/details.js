@@ -162,8 +162,9 @@ $(document).ready(function () {
     
         // Sửa điều kiện kiểm tra giá trị amount
         if (amount === 0) {
-            alert("Hãy chọn size và màu!");
-        } else {
+            alert("Sản phẩm này đã hết hàng!");
+        }
+        else {
             let soluong = parseInt(inputField.val()) || 0;
             
     
@@ -217,8 +218,16 @@ $(document).ready(function () {
                 productId: productId
             },
             success: function (response) {
-                $('#ProductAmount').html(response); // Cập nhật số lượng sản phẩm còn lại
-                console.log(response);
+
+                if (response.includes('|')) {
+                    const [amount, id] = response.split('|');
+                    $('#ProductAmount').html(amount);
+                    console.log("Số lượng:", amount);
+                    console.log("ID chi tiết sản phẩm:", id);
+                } else {
+                    console.log("Hãy chung cấp đủ thông tin!");
+                }
+
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 $('#ProductAmount').html("Có lỗi xảy ra");

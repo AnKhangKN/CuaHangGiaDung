@@ -36,8 +36,6 @@
 }
 
 .content_transfer{
-    display: none;
-    /* display: block; */
     margin: 20px 16px;
     text-align: center;
     width: 80%;
@@ -49,25 +47,18 @@
 .infor_payment_btn{
     margin-top: 70px;
     display: flex;
-    /* justify-content: center; */
     align-items: center;
+    justify-content: space-between;
 }
 
-.infor_payment_btn_cart, .infor_payment_btn_continue{
-    width: 50%;
-}
-
-.infor_payment_btn_cart a{
+.infor_payment_btn_cart{
     text-decoration: none;
     color: black;
 }
 
-.infor_payment_btn_continue{
-    text-align: right;
-    
-}
 
-.infor_payment_btn_continue button{
+.infor_payment_btn_continue{
+    text-align: center;
     border: none;
     color: white;
     height: 45px;

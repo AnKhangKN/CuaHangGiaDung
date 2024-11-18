@@ -44,7 +44,7 @@
 
         <div class="input_container">
             <div class="input_group">
-                <input type="text" class=" email" id="input_email" autocomplete="off">
+                <input type="text" class=" email" id="input_email" tabindex="1" autocomplete="off">
                 <label for="input_email">Email *</label>
             </div>
         </div>
@@ -52,23 +52,23 @@
 
         <div class="input_container">
             <div class="input_group">
-                <input type="password" class=" password" id="input_password" autocomplete="off">
+                <input type="password" class=" password" id="input_password" tabindex="2" autocomplete="off">
                 <label for="input_password">Password *</label>
             </div>
         </div>
         
         
 
-        <div class="main_checkbox">
+        <!-- <div class="main_checkbox">
             <input type="checkbox" class="main_checkbox_box">
             <p class="main_checkbox_text">Lưu lại mật khẩu</p>
-        </div>
+        </div> -->
 
         <p class="main_title">HKN Store – Mua thông minh, sắm chất lượng.</p>
 
         <div class="main_btn_group">
-            <a href="index.php" class="main_btn_group_back text-black">Trở về</a>
-            <input type="submit" class="button main_btn_group_login" value="Đăng nhập">
+            <a href="index.php" tabindex="4" class="main_btn_group_back text-black">Trở về</a>
+            <input type="submit" class="button main_btn_group_login" tabindex="3" value="Đăng nhập">
         </div>
     
     </main>

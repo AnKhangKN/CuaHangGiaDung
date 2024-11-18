@@ -104,7 +104,7 @@ if (isset($_POST['action'])) {
                     <div class="all_products_card filter_data" id="product-list">
                         <a href="index.php?page=details&id=' . htmlspecialchars($Row['idSanPham']) . '" class="all_products_card_link">
                             <img class="card-img-top all_products_card_img" 
-                            src="./public/assets/images/products/' . htmlspecialchars($Row['urlhinhanh']) . '" 
+                            src="../public/assets/images/products/' . htmlspecialchars($Row['urlhinhanh']) . '" 
                             alt="Card image" style="width:100%">
                             <div class="card-body">
                                 <p class="all_products_card_title">' . htmlspecialchars($Row['tensanpham']) . '</p>

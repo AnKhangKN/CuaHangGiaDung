@@ -53,5 +53,7 @@
 
     <script src="../public/assets/js/customer/cart.js"></script>
 
+    <script src="../public/assets/js/customer/payment.js"></script>
+
 </body>
 </html>

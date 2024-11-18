@@ -380,28 +380,6 @@
         }
 
     }
-
-    // function updateCustomerName($CustomerName, $CustomerId) {
-    //     $conn = connectBD();
-    
-    //     $sql = "UPDATE khachhang kh
-    //             JOIN taikhoan tk ON tk.idTaiKhoan = kh.idTaiKhoan
-    //             SET kh.tenkhachhang = ?
-    //             WHERE tk.idTaiKhoan = ?";
-    
-    //     $stmt = $conn->prepare($sql);
-    
-    //     if ($stmt) {
-    //         $stmt->bind_param("si", $CustomerName, $CustomerId);
-    //         $success = $stmt->execute();
-    //         $stmt->close();
-    //         $conn->close();
-    //         return $success;
-    //     } else {
-    //         $conn->close();
-    //         return false;
-    //     }
-    // }
     
     
     function getProductAmount($ProductId, $Size = "không có kích thước", $Color) {
@@ -413,7 +391,7 @@
         }
     
         // Câu truy vấn linh hoạt dựa trên giá trị của $Size
-        $sql = "SELECT ctsp.soluongconlai 
+        $sql = "SELECT ctsp.soluongconlai AS amount, ctsp.idChiTietSanPham AS id 
                 FROM chitietsanpham ctsp
                 JOIN mausacsanpham mssp ON mssp.idMauSac = ctsp.idMauSac";
     
@@ -427,7 +405,7 @@
     
         // Chuẩn bị câu truy vấn
         $stmt = $conn->prepare($sql);
-        
+    
         // Kiểm tra nếu chuẩn bị không thành công
         if (!$stmt) {
             return null; // Trả về null nếu không thể chuẩn bị truy vấn
@@ -435,26 +413,24 @@
     
         // Gán tham số dựa trên trường hợp của $Size
         if ($Size !== "không có kích thước") {
-            $stmt->bind_param("iss", $ProductId, $Size, $Color); // 'i' cho integer, 's' cho string
+            $stmt->bind_param("iss", $ProductId, $Size, $Color);
         } else {
-            $stmt->bind_param("is", $ProductId, $Color); // 'i' cho integer, 's' cho string
+            $stmt->bind_param("is", $ProductId, $Color);
         }
     
         // Thực thi truy vấn
         $stmt->execute();
-        
+    
         // Lấy kết quả
-        $stmt->bind_result($amount);
-        
+        $stmt->bind_result($amount, $id);
+    
         if ($stmt->fetch()) {
-            return $amount; // Trả về số lượng sản phẩm
+            return ['amount' => $amount, 'id' => $id]; // Trả về mảng chứa số lượng và ID
         } else {
-            return 0; // Trả về 0 nếu không tìm thấy kết quả
+            return null; // Trả về null nếu không tìm thấy kết quả
         }
-        
-        return null; // Trả về null nếu có lỗi hoặc điều kiện không hợp lệ
     }
     
-    
+
 ?>
 

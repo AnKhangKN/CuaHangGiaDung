@@ -20,7 +20,7 @@ $(document).ready(function () {
             var total = unitPrice;
         }
 
-        row.find(".total_price").text(total);
+        row.find(".total_price").text(total.toLocaleString("vi-VN"));
     }
 
     // Hàm cập nhật tổng giá trị tất cả các sản phẩm
@@ -28,12 +28,18 @@ $(document).ready(function () {
         var totalPrice = 0;
         // Duyệt qua tất cả các hàng trong giỏ hàng
         $(".cart_contents_table").each(function () {
-            var totalUnit = parseFloat($(this).find(".total_price").text());
-            totalPrice += totalUnit;  // Cộng dồn vào tổng
+            // Lấy giá trị từ .total_price và làm sạch chuỗi
+            var totalUnitText = $(this).find(".total_price").text().trim();
+            var cleanPrice = parseFloat(totalUnitText.replace(/\./g, '').replace(',', '.')) || 0;
+    
+            // Cộng dồn vào tổng giá
+            totalPrice += cleanPrice;
         });
+    
         // Cập nhật giá trị tổng cho toàn bộ giỏ hàng
-        $(".total_all_price").text(totalPrice);
+        $(".total_all_price").text(totalPrice.toLocaleString("vi-VN"));
     }
+    
 
     function checkValue(inputField) {
         const soluong = parseInt(inputField.val());
@@ -143,8 +149,16 @@ $(document).ready(function () {
                 productId: productId
             },
             success: function (response) {
-                rowProduct.find('#productAmount').html(response); // Cập nhật số lượng từng dòng
-                console.log(response);
+
+                if (response.includes('|')) {
+                    const [amount, id] = response.split('|');
+                    rowProduct.find('#productAmount').html(amount);
+                    console.log("Số lượng:", amount);
+                    console.log("ID chi tiết sản phẩm:", id);
+                } else {
+                    console.log("Hãy chung cấp đủ thông tin!");
+                }
+
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 rowProduct.find('#ProductAmount').html("Có lỗi xảy ra");
@@ -262,4 +276,19 @@ $(document).ready(function () {
 
     updateProductCount();
     updateTotalAllPrice();
+
+    $("#pay_page").click(function (e) { 
+        e.preventDefault();
+        
+        const page = $(this).closest("#click_pay_page");
+
+        let totalPrice = page.find(".total_all_price").text();
+        var cleanPrice = parseFloat(totalPrice.replace(/\./g, '').replace(',', '.')) || 0;
+        if(cleanPrice > 0){
+            window.location.href = $(this).attr("href");
+        }else{
+            alert("Hãy thêm sản phẩm!");
+        }
+    });
+    
 });

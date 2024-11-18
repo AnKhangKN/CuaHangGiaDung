@@ -39,7 +39,7 @@ if ($result->num_rows > 0) {
 
     // So sánh mật khẩu đã mã hóa
     if (password_verify($pass, $rows['matkhau'])) {
-        // Thiết lập session với thông tin người dùng
+        
         $_SESSION['user_id'] = $rows['idTaiKhoan'];
         $_SESSION['quyen'] = $rows['quyen'];
 

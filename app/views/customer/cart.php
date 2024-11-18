@@ -25,7 +25,7 @@
                                     <div class="cart_row">
                                         <div class="cart_contents_title">
                                             <p>Bạn có
-                                                <span style="font-weight: 700;" id="count_product"></span>
+                                                <span style="font-weight: 700;" id="count_product">0</span>
                                                 sản phảm trong giỏ hàng
                                             </p>
                                         </div>
@@ -110,7 +110,7 @@
                                 <p>Thông tin thanh toán</p>
                             </div>
                             <hr>
-                            <form action="">
+                            <form id="click_pay_page">
                                 <div class="payment_contents">
                                     <div class="payment_contents_total">
                                         <p class="payment_contents_total_p">Tổng tiền: </p>
@@ -129,8 +129,8 @@
                                     <div class="payment_contents_action_erorr">
                                         <p>Giỏ hàng của bạn hiện chưa đạt mức tối thiểu để thanh toán.</p>
                                     </div>
-                                    <div class="payment_contents_action_btn">
-                                    <a href="index.php?page=payment" >Thanh toán</a>
+                                    <div class="payment_contents_action_btn" >
+                                    <a id="pay_page" href="index.php?page=payment" >Thanh toán</a>
                                     </div>
                                     
                                 </div>
