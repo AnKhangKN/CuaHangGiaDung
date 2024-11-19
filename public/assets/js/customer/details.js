@@ -201,9 +201,7 @@ $(document).ready(function () {
         }
 
         let color = productInfo.find(".products_details_info_color_item_input:checked").val();
-        if (!color) {
-            color = "Không có màu sắc";
-        }
+        
 
         const productId = productInfo.find("#ProductId").text();
 
@@ -222,8 +220,6 @@ $(document).ready(function () {
                 if (response.includes('|')) {
                     const [amount, id] = response.split('|');
                     $('#ProductAmount').html(amount);
-                    console.log("Số lượng:", amount);
-                    console.log("ID chi tiết sản phẩm:", id);
                 } else {
                     console.log("Hãy chung cấp đủ thông tin!");
                 }
@@ -274,7 +270,12 @@ $(document).ready(function () {
                 },
                 success: function (response) {
                     console.log(response);
-                    alert(response); // Hiển thị thông báo từ server
+                    $(".add_product_item").addClass("block_product"); 
+                    setTimeout(() => {
+                        $(".add_product_item").removeClass("block_product");
+                    }, 500);
+                    
+                    
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.log("Lỗi: " + textStatus + " - " + errorThrown);

@@ -30,6 +30,8 @@
 
 
 <div class="container-fluid mx-auto mt-0 wrapper">
+    
+    
     <header class="header">
         <img src="../public/assets/images/logo_trang.jpg" class="header_logo" alt="logo_trang">
         <p class="header_title">Hãy đăng nhập tài khoản của bạn để dễ dàng mua sắm cùng HKN store</p>
@@ -56,19 +58,12 @@
                 <label for="input_password">Password *</label>
             </div>
         </div>
-        
-        
-
-        <!-- <div class="main_checkbox">
-            <input type="checkbox" class="main_checkbox_box">
-            <p class="main_checkbox_text">Lưu lại mật khẩu</p>
-        </div> -->
 
         <p class="main_title">HKN Store – Mua thông minh, sắm chất lượng.</p>
 
         <div class="main_btn_group">
             <a href="index.php" tabindex="4" class="main_btn_group_back text-black">Trở về</a>
-            <input type="submit" class="button main_btn_group_login" tabindex="3" value="Đăng nhập">
+            <button class="button main_btn_group_login" tabindex="3">Đăng nhập <div class="btn_login "></div></button>
         </div>
     
     </main>

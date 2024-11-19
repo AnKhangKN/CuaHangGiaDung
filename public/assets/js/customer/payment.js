@@ -68,12 +68,8 @@ $(document).ready(function () {
         }
     
         // Nếu tất cả kiểm tra đều hợp lệ
-        return true;
+        return isValid;
     }
-    
-    
-    
-    
     
     let allPrice = 0; // Khởi tạo bên ngoài vòng lặp
 
@@ -118,23 +114,6 @@ $(document).ready(function () {
         }
     });
 
-    // Xử lý sự kiện khi bấm nút tiếp tục
-    $(".infor_payment_btn_continue").click(function (e) {
-        e.preventDefault();  // Ngừng hành động mặc định của nút (nếu có)
-    
-    
-        // Kiểm tra thông tin thanh toán
-        if (checkInfo()) {
-            // Nếu thông tin hợp lệ, tiếp tục với hành động tiếp theo
-            console.log("Thông tin hợp lệ, tiếp tục thanh toán...");
-            // Tiến hành tiếp tục với các bước tiếp theo, ví dụ: gửi form, thực hiện Ajax,...
-        } else {
-            // Nếu thông tin không hợp lệ, không làm gì thêm
-            console.log("Thông tin không hợp lệ, vui lòng kiểm tra lại.");
-        }
-    });
-    
-
 
     $(".list_infor_products_payment_item").each(function () {
         const listProduct = $(this);
@@ -166,6 +145,93 @@ $(document).ready(function () {
                 rowProduct.find('#ProductAmount').html("Có lỗi xảy ra");
             }
         });
+    });
+
+    // xử lý thanh toán------------------------------------------------------------
+    
+    $(".infor_payment_btn_continue").click(function (e) {
+        e.preventDefault();  // Prevent default button action
+    
+        if (checkInfo()) {
+            const container_payment = $(this).closest('#container_payment_info');
+    
+            const idKhachHang = container_payment.find('.idKhachHang').text();
+            const tongtien = container_payment.find('.total_bill_due_price').text();
+            const cleanTotalPrice = parseFloat(tongtien.replace(/\./g, '').replace(',', '.')) || 0;
+            const ghichu = container_payment.find('#exampleFormControlTextarea1').val();
+            
+            let products = [];  // Array to store product details
+            $('.list_infor_products_payment_item').each(function () {
+                const lstProduct = $(this);
+                const soluong = lstProduct.find('#soluong_item').text();
+                const idChiTietSanPham = lstProduct.find('#idChiTietSanPham').text();
+    
+                // Push product details into the array
+                products.push({ soluong: soluong, idChiTietSanPham: idChiTietSanPham });
+            });
+    
+            if (idKhachHang) {
+                // Existing customer
+                $.ajax({
+                    type: "POST",
+                    url: "/CuaHangDungCu/app/controllers/customer/add_bill_customer.php",
+                    data: {
+                        action: 'CustomerId',
+                        tongtien: cleanTotalPrice,
+                        ghichu: ghichu,
+                        idKhachHang: idKhachHang,
+                        products: JSON.stringify(products)  // Send product details as JSON
+                    },
+                    success: function(response) {
+                        console.log(response); // Kiểm tra dữ liệu trả về từ server
+                        var data = JSON.parse(response);
+                        if (data.status === 'success') {
+                            alert('Hóa đơn đã được thêm thành công! ID Hóa đơn: ' + data.idHoaDon);
+                        } else {
+                            alert('Lỗi: ' + data.message);
+                        }
+                    },
+                    error: function() {
+                        alert('Có lỗi xảy ra trong quá trình gửi dữ liệu!');
+                    }
+                });
+            } else {
+                // New customer
+                const email = container_payment.find('#email').val();
+                const tenkhachhang = container_payment.find('#name').val();
+                const sdt = container_payment.find('#phone').val();
+                const diachi = container_payment.find('#address').val();
+    
+                $.ajax({
+                    type: "POST",
+                    url: "/CuaHangDungCu/app/controllers/customer/add_bill_guest.php",
+                    data: {
+                        action: 'NoCustomerId',
+                        email: email,
+                        tenkhachhang: tenkhachhang,
+                        sdt: sdt,
+                        diachi: diachi,
+                        tongtien: cleanTotalPrice,
+                        ghichu: ghichu,
+                        products: JSON.stringify(products)  // Send product details as JSON
+                    },
+                    success: function(response) {
+                        console.log(response); // Kiểm tra dữ liệu trả về từ server
+                        var data = JSON.parse(response);
+                        if (data.status === 'success') {
+                            alert('Hóa đơn đã được thêm thành công! ID Hóa đơn: ' + data.idHoaDon);
+                        } else {
+                            alert('Lỗi: ' + data.message);
+                        }
+                    },
+                    error: function() {
+                        alert('Có lỗi xảy ra trong quá trình gửi dữ liệu!');
+                    }
+                });
+            }
+        } else {
+            console.log("Thông tin không hợp lệ, kiểm tra lại!");
+        }
     });
     
 });

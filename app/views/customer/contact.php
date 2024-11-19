@@ -59,7 +59,7 @@
                     </div>
 
                     <div class="introduce_img">
-                        <img src="./public/assets/images/logo_trang.jpg" alt="">
+                        <img src="../public/assets/images/logo_trang.jpg" alt="">
                         <h2>HKN store xin chào</h2>
                     </div>
                 </div>

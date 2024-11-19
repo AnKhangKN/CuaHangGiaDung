@@ -237,6 +237,7 @@
                                     </div>
                                     <div class="products_details_info_add_btn col-lg-8">
                                         <button class="add_cart">Thêm vào giỏ hàng</button>
+                                        
                                     </div>
                                 </div>
                                 

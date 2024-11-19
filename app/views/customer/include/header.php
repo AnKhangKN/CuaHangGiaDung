@@ -137,7 +137,7 @@
                     <div class="nav_tool_mark">
                         <a href="index.php?page=cart">
                             <div class="nav_tool_cart">
-                                <i class="fa-solid fa-cart-shopping text-white"></i>
+                                <i class="fa-solid fa-cart-shopping text-white add_product_item"></i>
                             </div>
                         </a>
                         

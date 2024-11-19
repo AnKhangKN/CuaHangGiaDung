@@ -25,7 +25,7 @@ $(document).ready(function() {
         $.ajax({
             url: '/CuaHangDungCu/app/controllers/others/controllerLogin.php',
             type: 'POST',
-            dataType: 'json', // Đảm bảo phản hồi là JSON
+            dataType: 'json', 
             data: {
                 email: $email,
                 password: $password
@@ -33,13 +33,22 @@ $(document).ready(function() {
         })
         .done(function(response) {
             if (response.success) {
-                // Chuyển hướng nếu đăng nhập thành công
-                window.location.href = response.redirect; // Sử dụng đường dẫn từ phản hồi
+                // Hiển thị thông báo thành công
+                $('.result').html('<span style="color: green;">Đăng nhập thành công!</span>');
+                
+                $(".btn_login").addClass("loading-circle");
+
+                setTimeout(() => {
+                    $(".btn_login").removeClass("loading-circle");
+
+                    window.location.href = response.redirect;
+                }, 2000); 
             } else {
                 // Hiển thị thông báo lỗi
                 $('.result').html(response.message);
             }
         })
+        
         .fail(function(jqXHR, textStatus, errorThrown) {
             console.error("AJAX error: ", textStatus, errorThrown);
             $('.result').html('*Có lỗi xảy ra. Vui lòng thử lại.');

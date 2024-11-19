@@ -38,7 +38,7 @@ if(isset($_SESSION['user_id'])) {
                             </li> 
                         </ul>
 
-            <div class="container">
+            <div class="container" id="container_payment_info">
                 <div class="row">
                     <div class="col-lg-7 container_left">
                         
@@ -57,6 +57,7 @@ if(isset($_SESSION['user_id'])) {
                                 ?>
                                 
                             <form>
+                                <div class="idKhachHang"><?php echo htmlentities($Customer['idKhachHang'])?></div>
                                 <div class="form-group" style="margin-top: 30px;">
                                     <label for="name">Họ và Tên</label>
                                     <input type="name" value="<?php echo htmlentities($Customer['tenkhachhang'])?>" class="form-control" placeholder="Họ và Tên" name="name" id="name" required>
