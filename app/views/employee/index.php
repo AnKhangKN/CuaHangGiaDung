@@ -17,7 +17,6 @@ if (!isset($_GET['page']) || empty($_GET['page'])) {
     if (file_exists($pagePath) && strpos($page, '..') === false) {
         include($pagePath); // Bao gồm trang được yêu cầu
     } else {
-        // Nếu không tìm thấy trang, hiển thị thông báo 404
         echo '<h2>Không tìm thấy trang</h2>';
     }
 }
