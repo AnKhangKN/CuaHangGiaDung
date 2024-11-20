@@ -165,9 +165,9 @@ $(document).ready(function () {
                 const lstProduct = $(this);
                 const soluong = lstProduct.find('#soluong_item').text();
                 const idChiTietSanPham = lstProduct.find('#idChiTietSanPham').text();
+                const soluongconlai = lstProduct.find('#SoLuongConLai').text();
     
-                // Push product details into the array
-                products.push({ soluong: soluong, idChiTietSanPham: idChiTietSanPham });
+                products.push({ soluong: soluong, idChiTietSanPham: idChiTietSanPham, soluongconlai: soluongconlai});
             });
     
             if (idKhachHang) {

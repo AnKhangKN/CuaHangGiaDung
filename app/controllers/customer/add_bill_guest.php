@@ -2,73 +2,80 @@
 require_once "../../../config/connectdb.php"; // Gọi file kết nối cơ sở dữ liệu
 
 if (isset($_POST['action']) && $_POST['action'] == 'NoCustomerId') {
-    // Kết nối cơ sở dữ liệu
     $conn = connectBD();
-    
-    // Bắt đầu giao dịch
     $conn->begin_transaction(MYSQLI_TRANS_START_READ_WRITE);
 
     try {
-        // Lấy dữ liệu từ AJAX
-        // account
-        $email = $_POST['email'];
+        $email = $conn->real_escape_string($_POST['email']);
         $password = '123';
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT); // mật khẩu đã mã hóa
-        // customer
-        $tenkhachhang = $_POST['tenkhachhang'];
-        $sdt = $_POST['sdt'];
-        $diachi = $_POST['diachi'];
-        // bill and billdetails
-        $tongtien = $_POST['tongtien'];
-        $ghichu = $_POST['ghichu'];
-        $idNhanVien = 3; 
-        $detail = json_decode($_POST['products'], true); // Array chứa các chi tiết hóa đơn
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $tenkhachhang = $conn->real_escape_string($_POST['tenkhachhang']);
+        $sdt = intval($_POST['sdt']);
+        $diachi = $conn->real_escape_string($_POST['diachi']);
+        $tongtien = floatval($_POST['tongtien']);
+        $ghichu = $conn->real_escape_string($_POST['ghichu']);
+        $idNhanVien = 3;
+        $detail = json_decode($_POST['products'], true);
 
-        // insert account
-        $stmt = $conn->prepare("INSERT INTO taikhoan (email, matkhau) VALUES (?, ?)");
-        $stmt->bind_param('ss',$email, $hashedPassword);
-        $stmt->execute();
-        
-        $idAccount = $conn->insert_id;
-
-        // insert customer
-        $stmt = $conn->prepare("INSERT INTO khachhang (tenkhachhang, sdt, diachi, idTaiKhoan) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param('sisi',$tenkhachhang,$sdt,$diachi,$idAccount);
-        $stmt->execute();
-
-        $idCustomer = $conn->insert_id;
-        // insert bill
-        $stmt = $conn->prepare("INSERT INTO hoadon (tongtien, ghichu, idNhanVien, idKhachHang) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("isii", $tongtien, $ghichu, $idNhanVien, $idCustomer);
-        $stmt->execute();
-
-        // Lấy ID của hóa đơn vừa insert
-        $idHoaDon = $conn->insert_id;
-
-        // Bước 2: Insert chi tiết hóa đơn
-        $stmt = $conn->prepare("INSERT INTO chitiethoadon (soluong, idHoaDon, idChiTietSanPham) VALUES (?, ?, ?)");
-
-        foreach ($detail as $item) {
-            $stmt->bind_param("iii", $item['soluong'], $idHoaDon, $item['idChiTietSanPham']);
-            $stmt->execute();
+        if (empty($email) || empty($tenkhachhang) || empty($sdt) || empty($tongtien)) {
+            throw new Exception("Thiếu thông tin cần thiết từ client.");
         }
 
-        // Commit giao dịch
-        $conn->commit();
+        $stmtCheckEmail = $conn->prepare("SELECT email FROM taikhoan WHERE email = ?");
+        $stmtCheckEmail->bind_param('s', $email);
+        $stmtCheckEmail->execute();
+        $result = $stmtCheckEmail->get_result();
 
-        // Trả về ID hóa đơn cho AJAX
+        if ($result->num_rows > 0) {
+            throw new Exception("Email đã tồn tại.");
+        }
+
+        $stmtInsertAccount = $conn->prepare("INSERT INTO taikhoan (email, matkhau) VALUES (?, ?)");
+        $stmtInsertAccount->bind_param('ss', $email, $hashedPassword);
+        $stmtInsertAccount->execute();
+        $idAccount = $conn->insert_id;
+
+        $stmtInsertCustomer = $conn->prepare("INSERT INTO khachhang (tenkhachhang, sdt, diachi, idTaiKhoan) VALUES (?, ?, ?, ?)");
+        $stmtInsertCustomer->bind_param('sisi', $tenkhachhang, $sdt, $diachi, $idAccount);
+        $stmtInsertCustomer->execute();
+        $idCustomer = $conn->insert_id;
+
+        $stmtInsertBill = $conn->prepare("INSERT INTO hoadon (tongtien, ghichu, idNhanVien, idKhachHang) VALUES (?, ?, ?, ?)");
+        $stmtInsertBill->bind_param("dsii", $tongtien, $ghichu, $idNhanVien, $idCustomer);
+        $stmtInsertBill->execute();
+        $idHoaDon = $conn->insert_id;
+
+        $stmtInsertDetail = $conn->prepare("INSERT INTO chitiethoadon (soluong, idHoaDon, idChiTietSanPham) VALUES (?, ?, ?)");
+        $stmtUpdateSanPham = $conn->prepare("UPDATE chitietsanpham SET soluongconlai = ? WHERE idChiTietSanPham = ?");
+
+        foreach ($detail as $item) {
+            $soLuong = intval($item['soluong']);
+            $idChiTietSanPham = intval($item['idChiTietSanPham']);
+            $soLuongConLai = intval($item['soluongconlai']);
+
+            if ($soLuongConLai < $soLuong) {
+                throw new Exception("Số lượng không đủ cho sản phẩm ID: $idChiTietSanPham");
+            }
+
+            $stmtInsertDetail->bind_param("iii", $soLuong, $idHoaDon, $idChiTietSanPham);
+            $stmtInsertDetail->execute();
+
+            $newAmount = $soLuongConLai - $soLuong;
+            $stmtUpdateSanPham->bind_param("ii", $newAmount, $idChiTietSanPham);
+            $stmtUpdateSanPham->execute();
+        }
+
+        $conn->commit();
         echo json_encode(["status" => "success", "idHoaDon" => $idHoaDon]);
 
     } catch (Exception $e) {
-        // Nếu có lỗi, rollback giao dịch
         $conn->rollback();
         echo json_encode(["status" => "error", "message" => $e->getMessage()]);
+    } finally {
+        $conn->close();
     }
-
-    // Đóng kết nối sau khi xong
-    mysqli_close($conn);
-
 } else {
     echo json_encode(["status" => "error", "message" => "Yêu cầu không hợp lệ!"]);
 }
+
 ?>
