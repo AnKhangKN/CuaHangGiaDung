@@ -121,19 +121,44 @@
                     </li>
                 </ul>
                 <div class="nav_tool">
-                    <form action="">
-                        <div class="nav_tool_search" id="nav_tool_search_box">
-                            <input type="text" placeholder="Tìm kiếm" id="nav_tool_search_input">
+                    
+                        
+                    <div class="nav_tool_search_icon_box" id="nav_tool_search_icon_box_btn">
+                        <span class="nav_tool_search_icon_box_text">Tìm kiếm sản phẩm</span>
+                        <i class="fa-solid fa-magnifying-glass" id="nav_tool_search_icon"></i> 
+                    </div>
+
+                    <div id="search_box">
+                        <div class="box_container">
+                            <div class="search_box_container">
+                                <div class="search_box_logo">
+                                    <img src="../public/assets/images/logo_trang.jpg" class="nav_logo_img" alt="HKN store">                  
+                                </div>
+                                
+                                <input type="text" id="search_box_input">
+                                <div id="search_box_close">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </div>
+
+                                
+                            </div>
+                            <!-- sản phẩm hiện -->
+                            <div class="product_search">
+                                <p>Áo polo</p>
+                            </div>
+                            <div class="product_search">
+                                <p>Áo polo</p>
+                            </div>
+                            <div class="product_search">
+                                <p>Áo polo</p>
+                            </div>
+                            
+                            
                         </div>
-                        <div class="nav_tool_search_icon_box" id="nav_tool_search_icon_box_btn">
-                            <span class="nav_tool_search_icon_box_text">Tìm kiếm sản phẩm</span>
-                            <i class="fa-solid fa-magnifying-glass" id="nav_tool_search_icon"></i> 
-                        </div>
-                        <button class="close_search_top" id="close_search_top_element">
-                            <i class="fa-solid fa-xmark"></i>
-                        </button>
-                        <div class="nav_tool_box" id="nav_tool_box_recommend"></div>
-                    </form>
+                        
+                    </div>
+                    
+                
                     <div class="nav_tool_mark">
                         <a href="index.php?page=cart">
                             <div class="nav_tool_cart">
@@ -222,7 +247,7 @@
                             </div>
                         </a>
 
-                        <a href="#" style="text-decoration: none; color: black;">
+                        <a href="signup.php" style="text-decoration: none; color: black;">
                             <div class="option_sub">
                                 <i class="fa-solid fa-user-plus"></i>
                                 <p>Đăng ký</p>

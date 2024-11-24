@@ -42,7 +42,7 @@ $(document).ready(function() {
                     $(".btn_login").removeClass("loading-circle");
 
                     window.location.href = response.redirect;
-                }, 2000); 
+                }, 500); 
             } else {
                 // Hiển thị thông báo lỗi
                 $('.result').html(response.message);

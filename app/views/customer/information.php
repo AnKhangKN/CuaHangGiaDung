@@ -44,6 +44,7 @@ if(isset($_SESSION['user_id'])) {
                             <div id="overview" class="content-section">
                                 <div class="title_infor">
                                     <span>Xin chào, </span>
+                                    
                                     <span class="title_infor_name"><?php echo htmlentities($Customer['tenkhachhang'])?></span>
                                 </div>
                                 <div class="purchase_history">
@@ -71,14 +72,14 @@ if(isset($_SESSION['user_id'])) {
                                                     ?>
                                             <tr>
                                                 <td><?php echo htmlentities($rowBill['idHoaDon'])?></td>
-                                                <td><?php echo htmlentities($rowBill['tongtien'])?></td>
+                                                <td><?php echo number_format($rowBill['tongtien'])?></td>
                                                 <td><?php echo htmlentities($rowBill['ngayxuathoadon'])?></td>
                                                 <td><?php 
                                                 
                                                     if($rowBill['trangthai'] == 0){
-                                                        $trangthai = 'Hoàn thành';
-                                                    } elseif($rowBill['trangthai'] == 2){
                                                         $trangthai = 'Đang chờ xử lý';
+                                                    } elseif($rowBill['trangthai'] == 2){
+                                                        $trangthai = 'Hoàn thành';
                                                     } elseif ($rowBill['trangthai']== 1){
                                                         $trangthai = 'Đang giao hàng';
                                                     } else {
@@ -123,25 +124,25 @@ if(isset($_SESSION['user_id'])) {
                                     <div class="infor_update_item">
                                         <span>Họ và tên</span>
                                         <p class="infor_update_item_text"><?php echo htmlentities($Customer['tenkhachhang'])?></p>
-                                        <i class="fa-regular fa-pen-to-square" onclick="showChangeBox('change_name', this)"></i>
+                                        <i class="fa-regular fa-pen-to-square" id="clickChangeName"></i>
                                     </div>
                                     
                                     <div class="infor_update_item">
                                         <span>Số điện thoại</span>
                                         <p class="infor_update_item_text">0<?php echo htmlentities($Customer['sdt'])?></p>
-                                        <i class="fa-regular fa-pen-to-square" onclick="showChangeBox('change_phone', this)"></i>
+                                        <i class="fa-regular fa-pen-to-square" id="clickChangePhone"></i>
                                     </div>
                                     
                                     <div class="infor_update_item">
                                         <span>Địa chỉ</span>
                                         <p class="infor_update_item_text"><?php echo htmlentities($Customer['diachi'])?></p>
-                                        <i class="fa-regular fa-pen-to-square" onclick="showChangeBox('change_address', this)"></i>
+                                        <i class="fa-regular fa-pen-to-square" id="clickChangeAddress"></i>
                                     </div>
             
                                     <div class="infor_update_item">
                                         <span>email</span>
                                         <p class="infor_update_item_text"><?php echo htmlentities($Account['email'])?></p>
-                                        <i class="fa-regular fa-pen-to-square" onclick="showChangeBox('change_email', this)"></i>
+                                        <i class="fa-regular fa-pen-to-square" id="clickChangeEmail"></i>
                                     </div>
             
                                     <div class="infor_update_item">
@@ -151,79 +152,104 @@ if(isset($_SESSION['user_id'])) {
                                         $maskedPassword = str_repeat('*', strlen($password));
                                         echo htmlentities($maskedPassword);
                                         ?></p>
-                                        <i class="fa-regular fa-pen-to-square" onclick="showChangeBox('change_password', this)"></i>
+                                        <i class="fa-regular fa-pen-to-square" id="clickChangePass"></i>
                                     </div>
                                 </div>
                                 
                                 <!-- hiện để chỉnh sửa thông tin -->
-                                <div class="change_info_box">
-                                    <div class="change_info_box_content changeBox" id="change_name">
-                                        <div class="close_change">
+                                <div class="modal_change">
+                                    <div class="modal_container" id="changeName">
+                                        <div class="modal_header">
+                                            <div class="modal_header_remove">
                                             <i class="fa-solid fa-xmark"></i>
+                                            </div>
+                                            <p>Họ và Tên</p>
                                         </div>
-                                        <p>Họ và tên <span>*</span></p>
-                                        <div class="change_item">
-                                            <input type="text" id="customerNameInput">
+                                        <div class="modal_body">
+                                            <input type="text" >
                                         </div>
-                                        
-                                        <button id="customerNameSubmit">Lưu thay đổi</button>
+                                        <div class="modal_footer">
+                                            <button>Lưu lại thay đổi</button>
+                                        </div>
                                     </div>
-                                
-                                    <div class="change_info_box_content changeBox" id="change_phone">
-                                        <div class="close_change">
-                                            <i class="fa-solid fa-xmark"></i>
-                                        </div>
-                                        <p>Số điện thoại <span>*</span></p>
-                                        <div class="change_item">
-                                            <input type="text">
-                                        </div>
-                                        
-                                        <button>Lưu thay đổi</button>
-                                    </div>
-                                
-                                    
-                            
-                                    <div class="change_info_box_content changeBox" id="change_address">
-                                        <div class="close_change">
-                                            <i class="fa-solid fa-xmark"></i>
-                                        </div>
-                                        <p>Địa chỉ <span>*</span></p>
-                                        <div class="change_item">
-                                            <input type="text">
-                                        </div>
-                                        
-                                        <button>Lưu thay đổi</button>
-                                    </div>
-                                
 
-                                
-                                    <div class="change_info_box_content changeBox" id="change_email">
-                                        <div class="close_change">
+                                    <div class="modal_container" id="changePhone">
+                                        <div class="modal_header">
+                                            <div class="modal_header_remove">
                                             <i class="fa-solid fa-xmark"></i>
+                                            </div>
+                                            <p>Số điện thoại</p>
                                         </div>
-                                        <p>Email <span>*</span></p>
-                                        <div class="change_item">
-                                            <input type="text">
+                                        <div class="modal_body">
+                                            <input type="text" >
                                         </div>
-                                        
-                                        <button>Lưu thay đổi</button>
+                                        <div class="modal_footer">
+                                            <button>Lưu lại thay đổi</button>
+                                        </div>
                                     </div>
-                                
+
+                                    <div class="modal_container" id="changeAddress">
+                                        <div class="modal_header">
+                                            <div class="modal_header_remove">
+                                            <i class="fa-solid fa-xmark"></i>
+                                            </div>
+                                            <p>Địa chỉ</p>
+                                        </div>
+                                        <div class="modal_body">
+                                            <input type="text" >
+                                        </div>
+                                        <div class="modal_footer">
+                                            <button>Lưu lại thay đổi</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal_container" id="changeEmail">
+                                        <div class="modal_header">
+                                            <div class="modal_header_remove">
+                                            <i class="fa-solid fa-xmark"></i>
+                                            </div>
+                                            <p>Email</p>
+                                        </div>
+                                        <div class="modal_body">
+                                            <input type="text" >
+                                        </div>
+                                        <div class="modal_footer">
+                                            <button>Lưu lại thay đổi</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal_container" id="changePassword">
+                                        <div class="modal_header">
+                                            <div class="modal_header_remove">
+                                            <i class="fa-solid fa-xmark"></i>
+                                            </div>
+                                            <p>Mật Khẩu</p>
+                                        </div>
+                                        <div class="modal_body">
+
+                                            <div class="modal_body_pass">
+                                                <span>Mật khẩu cũ *</span>
+                                                <input type="password" id="PassLate">
+                                                <i class="fa-solid fa-eye-slash " id="showPassLate"></i>
+                                            </div>
+                                            <div class="modal_body_pass" style="margin: 25px 0px;">
+                                                <span>Mật khẩu mới *</span>
+                                                <input type="password" id="PassNew">
+                                                <i class="fa-solid fa-eye-slash " id="showPassNew"></i>
+                                            </div>
+                                            <div class="modal_body_pass">
+                                                <span>Xác nhận lại *</span>
+                                                <input type="password" id="PassConfirm">
+                                                <i class="fa-solid fa-eye-slash " id="showPassConfirm"></i>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="modal_footer">
+                                            <button>Lưu lại thay đổi</button>
+                                        </div>
+                                    </div>
+
                                     
-                                
-                                    <div class="change_info_box_content_pass changeBox" id="change_password">
-                                        <div class="close_change">
-                                            <i class="fa-solid fa-xmark"></i>
-                                        </div>
-                                        <p>Mật khẩu <span>*</span></p>
-                                        <div class="change_item_pass">
-                                            <input type="text">
-                                            <input type="text">
-                                            <input type="text">
-                                        </div>
-                                        
-                                        <button>Lưu thay đổi</button>
-                                    </div>
 
                                 </div>
                             </div>

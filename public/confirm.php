@@ -10,13 +10,13 @@
     <link rel="stylesheet" href="../vendor/bootstrap-5.3.3/dist/css/bootstrap.min.css">
     <script src="../vendor/bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- css sign up -->
-    <link rel="stylesheet" href="../public/assets/css/others/signup.css">
-
     <!-- css login -->
     <link rel="stylesheet" href="../public/assets/css/others/login.css">
 
-    <title>Đăng ký</title>
+    <!-- css signup -->
+    <link rel="stylesheet" href="../public/assets/css/others/signup.css">
+
+    <title>Xác nhận</title>
 </head>
 <body>
     
@@ -29,28 +29,25 @@
     </header>
     <main class="main">
 
-        <div class="result_signup">lỗi các loại khác</div>
-
-        <div class="input_container">
+        <div class="result_error"></div>
+        <span class="result_error"></span>
+        <div style="margin-bottom: 120px;" class="input_container">
             <div class="input_group">
-                <input type="text" class="input_container_item" id="email" autocomplete="off">
-                <label for="email">Email *</label>
+                <input type="text" class="input_container_item" id="code" autocomplete="off">
+                <label for="code">Code *</label>
             </div>
         </div>
 
-        <span>lỗi chưa nhập email</span>
+        <p  class="main_title">HKN Store – Mua thông minh, sắm chất lượng.</p>
 
-        <div class="input_container">
-            <div class="input_group">
-                <input type="text" class="input_container_item" id="password" autocomplete="off">
-                <label for="password">Password *</label>
-            </div>
+        <div class="btn_container">
+            <a href="http://localhost/CuaHangDungCu/public/signup.php" style="text-decoration: none; color: #333;" class="back">Trở lại</a>
+            <button id="Confirm" class="continue">Hoàn thành đăng kí</button>
         </div>
-
-        <span>lỗi chưa nhập pass</span>
+        
         
     </main>
     </div>
-    <script src="../public/assets/js/others/signup.js"></script>
+    <script src="../public/assets/js/others/confirm.js"></script>
 </body>
 </html>
