@@ -67,12 +67,10 @@ if(isset($_SESSION['user_id'])) {
                                                 
                                                 foreach($Bill as $rowBill){
 
-                                                    
-                                                    
                                                     ?>
                                             <tr>
                                                 <td><?php echo htmlentities($rowBill['idHoaDon'])?></td>
-                                                <td><?php echo number_format($rowBill['tongtien'])?></td>
+                                                <td><?php echo number_format($rowBill['tongtien'], 0, ',', '.')?></td>
                                                 <td><?php echo htmlentities($rowBill['ngayxuathoadon'])?></td>
                                                 <td><?php 
                                                 
@@ -166,10 +164,10 @@ if(isset($_SESSION['user_id'])) {
                                             <p>Họ và Tên</p>
                                         </div>
                                         <div class="modal_body">
-                                            <input type="text" >
+                                            <input type="text" name="name" class="change_input">
                                         </div>
                                         <div class="modal_footer">
-                                            <button>Lưu lại thay đổi</button>
+                                            <button class="btnChange">Lưu lại thay đổi</button>
                                         </div>
                                     </div>
 
@@ -181,10 +179,10 @@ if(isset($_SESSION['user_id'])) {
                                             <p>Số điện thoại</p>
                                         </div>
                                         <div class="modal_body">
-                                            <input type="text" >
+                                            <input type="text" name="phone" class="change_input">
                                         </div>
                                         <div class="modal_footer">
-                                            <button>Lưu lại thay đổi</button>
+                                            <button class="btnChange">Lưu lại thay đổi</button>
                                         </div>
                                     </div>
 
@@ -196,10 +194,10 @@ if(isset($_SESSION['user_id'])) {
                                             <p>Địa chỉ</p>
                                         </div>
                                         <div class="modal_body">
-                                            <input type="text" >
+                                            <input type="text" name="address" class="change_input">
                                         </div>
                                         <div class="modal_footer">
-                                            <button>Lưu lại thay đổi</button>
+                                            <button class="btnChange">Lưu lại thay đổi</button>
                                         </div>
                                     </div>
 
@@ -211,10 +209,10 @@ if(isset($_SESSION['user_id'])) {
                                             <p>Email</p>
                                         </div>
                                         <div class="modal_body">
-                                            <input type="text" >
+                                            <input type="text" name="email" class="change_input">
                                         </div>
                                         <div class="modal_footer">
-                                            <button>Lưu lại thay đổi</button>
+                                            <button class="btnChange">Lưu lại thay đổi</button>
                                         </div>
                                     </div>
 

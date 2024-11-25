@@ -432,5 +432,40 @@
     }
     
 
+    // Tìm kiếm sản phẩm
+    function searchProductByName($ProductName){
+        $conn = connectBD();
+
+        // Câu SQL
+        $sql = "SELECT sp.*, MIN(hasp.urlhinhanh) AS urlhinhanh
+                FROM sanpham sp
+                JOIN hinhanhsanpham hasp ON sp.idSanPham = hasp.idSanPham
+                WHERE sp.tensanpham LIKE ?
+                GROUP BY sp.idSanPham;";
+
+        if ($ProductName) {
+            // Thêm ký tự '%' vào từ khóa tìm kiếm
+            $ProductName = '%' . $ProductName . '%';
+
+            // Chuẩn bị và thực thi câu lệnh
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param('s', $ProductName);
+            $stmt->execute();
+
+            // Lấy kết quả
+            $row_product = [];
+            $result = $stmt->get_result();
+            while ($row = $result->fetch_assoc()) {
+                $row_product[] = $row;
+            }
+
+            // Trả về danh sách sản phẩm
+            return $row_product;
+        }
+
+        // Trường hợp không có từ khóa tìm kiếm
+        return [];
+    }
+
 ?>
 

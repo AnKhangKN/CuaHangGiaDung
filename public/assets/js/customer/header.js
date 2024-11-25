@@ -78,3 +78,29 @@ document.addEventListener('click', function(event) {
     }
 });
 
+$(document).ready(function () {
+    $('#search_box_input').on('input', function () {
+        const query = $(this).val();
+
+        if (query.length > 0) {
+            // Gửi yêu cầu AJAX để tìm kiếm sản phẩm
+            $.ajax({
+                url: '/CuaHangDungCu/app/controllers/customer/search_products.php', // Đường dẫn tới file xử lý tìm kiếm
+                method: 'GET',
+                data: { query: query },
+                success: function (data) {
+                    // Hiển thị kết quả tìm kiếm
+                    $('.search_container').html(data);
+                    console.log(data);
+                },
+                error: function () {
+                    console.error('Lỗi xảy ra khi tìm kiếm.');
+                }
+            });
+        } else {
+            // Nếu không có nội dung tìm kiếm, xóa kết quả
+            $('.search_container').html('');
+        }
+    });
+});
+

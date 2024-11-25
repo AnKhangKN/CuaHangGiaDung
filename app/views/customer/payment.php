@@ -11,6 +11,8 @@ if(isset($_SESSION['user_id'])) {
     $id = $_SESSION['user_id'];
     $Customer = getCustomerById($id);
     $Account = getAccountById($id);
+
+    $_SESSION['idKhachHang'] = $Customer['idKhachHang'];
     
 } else{
     echo "";
@@ -56,8 +58,6 @@ if(isset($_SESSION['user_id'])) {
 
                                 ?>
                                 
-                            <form>
-                                <div class="idKhachHang"><?php echo htmlentities($Customer['idKhachHang'])?></div>
                                 <div class="form-group" style="margin-top: 30px;">
                                     <label for="name">Họ và Tên</label>
                                     <input type="name" value="<?php echo htmlentities($Customer['tenkhachhang'])?>" class="form-control" placeholder="Họ và Tên" name="name" id="name" required>
@@ -83,7 +83,7 @@ if(isset($_SESSION['user_id'])) {
                                     <input type="address" value="<?php echo htmlentities($Customer['diachi'])?>" class="form-control" placeholder="Địa chỉ" name="address" id="address" required>
                                 </div>
                                 
-                            </form>
+                            
                                 
                                 <?php
                             }else{
@@ -101,19 +101,29 @@ if(isset($_SESSION['user_id'])) {
                                     <p class="error_name" style="color: red; font-size: 12px;"></p>
                                 </div>
 
+                                <div class="form-group" style="margin-top: 30px;">
+                                    <label for="name">Email</label>
+                                    <input type="email" class="form-control" name="email" id="email" >
+                                    <p class="error_email" style="color: red; font-size: 12px;"></p>
+                                </div>
+
                                 <div class="row">
-                                    <div class="col">
-                                        <div class="form-group" style="margin-top: 10px;">
-                                            <label for="email">Email</label>
-                                            <input type="email" class="form-control" name="email" id="email" >
-                                            <p class="error_email" style="color: red; font-size: 12px;"></p>
-                                        </div>
-                                    </div>
                                     <div class="col">
                                         <div class="form-group" style="margin-top: 10px;">
                                             <label for="phone">Số điện thoại</label>
                                             <input type="phone" class="form-control" name="phone" id="phone" >
                                             <p class="error_phone" style="color: red; font-size: 12px;"></p>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group" style="margin-top: 10px;">
+                                            <label for="code"></label>
+                                            <div class="code_confirm">
+                                                <i class="fa-solid fa-arrows-rotate" id="btn_code"></i>
+                                                <input type="code" class="form-control" name="code" id="code" placeholder="Code">
+                                            </div>
+                                            
+                                            <p class="error_code" style="color: red; font-size: 12px;"></p>
                                         </div>
                                     </div>
                                 </div>
@@ -252,8 +262,21 @@ if(isset($_SESSION['user_id'])) {
                             <div class="infor_payment_btn">
                                 
                                 <a class="infor_payment_btn_cart" href="index.php?page=cart">Giỏ hàng</a>
+                                <?php
+                                if(isset($_SESSION['user_id']) && isset($_SESSION['idKhachHang'])){
+                                    ?>
+                                    <button class="infor_payment_btn_continue">Hoàn thành đơn hàng</button>
+
+                                    <?php
+                                }else{
+                                    ?>
+                                    
+                                <button id="btn_confirm_account">Xác nhận để đặt hàng</button>
+                                    
+                                    <?php
+                                }
+                                ?>
                                 
-                                <button class="infor_payment_btn_continue">Hoàn thành đơn hàng</button>
                                 
                             </div>
                         </div>

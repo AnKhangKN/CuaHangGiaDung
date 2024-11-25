@@ -121,3 +121,27 @@
     font-weight: 400;
     margin: 0 10px;
 }
+
+#btn_confirm_account{
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    color: white;
+    line-height: 45px;
+    font-weight: 500;
+    width: 195px;
+    border-radius: 5px;
+    outline: none;
+    background-color: #333;
+}
+
+.code_confirm{
+    position: relative;
+}
+
+#btn_code{
+    position: absolute;
+    right: 15px;
+    top: 12px;
+    cursor: pointer;
+}

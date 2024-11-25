@@ -51,7 +51,7 @@
                         <div class="detail_bill">
                             <p>Họ tên khách hàng: <span><?php echo htmlentities($Customer['tenkhachhang'])?></span></p>
                             <p>Mã đơn hàng: <span><?php echo htmlentities($Bill['idHoaDon'])?></span></p>
-                            <p>Tổng tiền hóa đơn: <span><?php echo number_format($Bill['tongtien'])?></span></p>
+                            <p>Tổng tiền hóa đơn: <span><?php echo number_format($Bill['tongtien'] , 0, ',', '.')?></span></p>
                             <p>Ngày xuất hóa đơn : <span><?php echo htmlentities($Bill['ngayxuathoadon'])?></span></p>
                             <p>Ghi chú: <span><?php echo htmlentities($Bill['ghichu'])?></span></p>
                             <p>Trạng thái: <span>

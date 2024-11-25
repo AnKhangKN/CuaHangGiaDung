@@ -105,3 +105,28 @@ showPassWord('showPassLate', 'PassLate');
 showPassWord('showPassNew', 'PassNew');
 showPassWord('showPassConfirm', 'PassConfirm');
 
+$(document).ready(function () {
+    $(".btnChange").click(function (e) { 
+        e.preventDefault();
+        
+        const container = $(this).closest('.modal_container'); 
+        
+        const inputName = container.find(".change_input").attr('name');
+        const inputChange = container.find(".change_input").val();
+        
+        $.ajax({
+            type: "POST",
+            url: "url",
+            data: {
+                inputName: inputName,
+                inputChange: inputChange
+            },
+            success: function (response) {
+                console.log(response);
+            }
+        });
+
+
+    });
+});
+

@@ -29,7 +29,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "POST",
-            url: "/CuaHangDungCu/vendor/sendmail.php",
+            url: "/CuaHangDungCu/vendor/register_user.php",
             data: {
                 email: email,
                 pass: pass

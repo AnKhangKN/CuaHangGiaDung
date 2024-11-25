@@ -76,6 +76,12 @@
                           <input type="text" class="form-control" id="address" placeholder="Nhập địa chỉ" name="address">
                         </div>
                       </div>
+                      <div class="form-group">
+                        <label class="control-label col-sm-2" for="phone">Email:</label>
+                        <div class="col-sm-10">          
+                          <input type="text" class="form-control" id="address" placeholder="Nhập email" name="address">
+                        </div>
+                      </div>
                       <div class="form-group">        
                         <div class="col-sm-offset-2 col-sm-10">
                           <button type="button" class="btn_kh btn-dark center">Thêm</button>

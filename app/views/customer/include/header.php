@@ -143,15 +143,16 @@
                                 
                             </div>
                             <!-- sản phẩm hiện -->
+                            
+
                             <div class="product_search">
-                                <p>Áo polo</p>
+                                <div class="search_container">
+                                    
+
+                                    
+                                </div>
                             </div>
-                            <div class="product_search">
-                                <p>Áo polo</p>
-                            </div>
-                            <div class="product_search">
-                                <p>Áo polo</p>
-                            </div>
+                            
                             
                             
                         </div>
