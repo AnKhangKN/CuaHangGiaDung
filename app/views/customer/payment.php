@@ -119,7 +119,7 @@ if(isset($_SESSION['user_id'])) {
                                         <div class="form-group" style="margin-top: 10px;">
                                             <label for="code"></label>
                                             <div class="code_confirm">
-                                                <i class="fa-solid fa-arrows-rotate" id="btn_code"></i>
+                                                <i class="fa-solid fa-arrows-rotate sent_code" id="btn_code"></i>
                                                 <input type="code" class="form-control" name="code" id="code" placeholder="Code">
                                             </div>
                                             

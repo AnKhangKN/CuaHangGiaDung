@@ -25,6 +25,7 @@ if (isset($_POST['email'])) {
 
         if ($result->num_rows > 0) {
             throw new Exception("Email đã tồn tại trong hệ thống.");
+            exit;
         }
 
         // Tạo mã OTP ngẫu nhiên
@@ -44,7 +45,7 @@ if (isset($_POST['email'])) {
         }
 
         // Gửi email xác thực
-        $tieuDe = 'Xác Thực Tài Khoản';
+        $tieuDe = 'Confirm Account';
         $noiDung = "Mã OTP của bạn là: <b>$otp</b>. Mã này sẽ hết hạn sau 10 phút.";
         $emailGuiThanhCong = sendEmail($email, $tieuDe, $noiDung, 'minecraftcopyright1302@gmail.com');
 
@@ -65,6 +66,7 @@ if (isset($_POST['email'])) {
     } catch (Exception $e) {
         // Phản hồi lỗi
         echo "Đã xảy ra lỗi: " . $e->getMessage();
+        exit;
     }
 } else {
     // Phản hồi khi không tìm thấy email

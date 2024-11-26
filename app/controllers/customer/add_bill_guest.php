@@ -1,6 +1,8 @@
 <?php
 require_once "../../../config/connectdb.php"; 
 
+require_once "../../../vendor/sendmail.php";
+
 if (isset($_POST['action']) && $_POST['action'] == 'NoCustomerId') {
     $conn = connectBD();
     $conn->begin_transaction(MYSQLI_TRANS_START_READ_WRITE);
@@ -71,6 +73,13 @@ if (isset($_POST['action']) && $_POST['action'] == 'NoCustomerId') {
             $stmtUpdateSanPham->bind_param("ii", $newAmount, $idChiTietSanPham);
             $stmtUpdateSanPham->execute();
         }
+
+        $tieuDe = 'Confirm Account';
+        $noiDung = "<b>HKN store xin chân thành cảm ơn bạn đã mua hàng</b><br><br>
+                    Mật khẩu của bạn: <b>$password</b><br>
+                    Email của bạn: $email<br><br>
+                    Hãy đăng nhập để có thể được hỗ trợ tốt hơn." ;
+        $emailGuiThanhCong = sendEmail($email, $tieuDe, $noiDung, 'minecraftcopyright1302@gmail.com');
 
         $conn->commit();
         $response = [

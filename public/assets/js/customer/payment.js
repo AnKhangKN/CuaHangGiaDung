@@ -309,11 +309,12 @@ $(document).ready(function () {
 
     $("#btn_code").click(function (e) { 
         e.preventDefault();
-
+    
         const container_payment = $(this).closest('#container_payment_info');
         const emailField = container_payment.find('#email');
         const email = emailField.val();
         const errorEmail = container_payment.find('.error_email'); 
+    
         if (!email) {
             emailField.css('border-color', 'red');
             errorEmail.text("Hãy nhập email của bạn!").show();
@@ -326,19 +327,29 @@ $(document).ready(function () {
             emailField.css('border-color', '');
             errorEmail.text("").hide();
         }
-
+    
         $.ajax({
             type: "POST",
             url: "/CuaHangDungCu/app/controllers/customer/get_code_confirm.php",
             data: { email: email },
+            beforeSend: function () {
+                // Hiển thị hiệu ứng tải trước khi gửi
+                $(".sent_code").addClass("key_frame_spin");
+            },
             success: function (response) {
-                console.log(response);
+                if(response === 'Đã xảy ra lỗi: Email đã tồn tại trong hệ thống.') { // Use === for comparison
+                    $(".sent_code").removeClass("key_frame_spin"); // Corrected selector syntax
+                    alert('Email đã tồn tại!');
+                }
+                $(".sent_code").removeClass("key_frame_spin"); // Corrected selector syntax
             },
             error: function (xhr, status, error) {
                 console.error("An error occurred: " + error);
+                $(".sent_code").removeClass("key_frame_spin"); // Corrected selector syntax
             }
         });
     });
+    
 
 
     // kiểm tra khách hàng mới
