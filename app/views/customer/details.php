@@ -223,7 +223,7 @@
                                     ?>
                                     
                                 </div>
-                                <div id="ProductAmount">0</div>
+                                <div id="ProductAmount" style="display: none;">0</div>
                                 <hr>
                                 <div class="products_details_info_add row">
                                     <div class="products_details_info_add_products row col-lg-4">

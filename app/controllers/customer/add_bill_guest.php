@@ -1,11 +1,12 @@
 <?php
-require_once "../../../config/connectdb.php"; // Gọi file kết nối cơ sở dữ liệu
+require_once "../../../config/connectdb.php"; 
 
 if (isset($_POST['action']) && $_POST['action'] == 'NoCustomerId') {
     $conn = connectBD();
     $conn->begin_transaction(MYSQLI_TRANS_START_READ_WRITE);
 
     try {
+        $code = $_POST['code'];
         $email = $conn->real_escape_string($_POST['email']);
         $password = '123';
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
@@ -21,30 +22,36 @@ if (isset($_POST['action']) && $_POST['action'] == 'NoCustomerId') {
             throw new Exception("Thiếu thông tin cần thiết từ client.");
         }
 
-        $stmtCheckEmail = $conn->prepare("SELECT email FROM taikhoan WHERE email = ?");
-        $stmtCheckEmail->bind_param('s', $email);
+        // Kiểm tra mã OTP
+        $stmtCheckEmail = $conn->prepare("SELECT * FROM email_verification WHERE otp = ? AND tgcode > NOW()");
+        $stmtCheckEmail->bind_param('s', $code);
         $stmtCheckEmail->execute();
         $result = $stmtCheckEmail->get_result();
+        $row = $result->fetch_assoc();
 
-        if ($result->num_rows > 0) {
-            throw new Exception("Email đã tồn tại.");
+        if (!$row || $row['otp'] != $code) {
+            throw new Exception("Mã OTP không hợp lệ hoặc đã hết hạn.");
         }
 
+        // Thêm tài khoản
         $stmtInsertAccount = $conn->prepare("INSERT INTO taikhoan (email, matkhau) VALUES (?, ?)");
         $stmtInsertAccount->bind_param('ss', $email, $hashedPassword);
         $stmtInsertAccount->execute();
         $idAccount = $conn->insert_id;
 
+        // Thêm khách hàng
         $stmtInsertCustomer = $conn->prepare("INSERT INTO khachhang (tenkhachhang, sdt, diachi, idTaiKhoan) VALUES (?, ?, ?, ?)");
         $stmtInsertCustomer->bind_param('sisi', $tenkhachhang, $sdt, $diachi, $idAccount);
         $stmtInsertCustomer->execute();
         $idCustomer = $conn->insert_id;
 
+        // Thêm hóa đơn
         $stmtInsertBill = $conn->prepare("INSERT INTO hoadon (tongtien, ghichu, idNhanVien, idKhachHang) VALUES (?, ?, ?, ?)");
         $stmtInsertBill->bind_param("dsii", $tongtien, $ghichu, $idNhanVien, $idCustomer);
         $stmtInsertBill->execute();
         $idHoaDon = $conn->insert_id;
 
+        // Thêm chi tiết hóa đơn và cập nhật số lượng
         $stmtInsertDetail = $conn->prepare("INSERT INTO chitiethoadon (soluong, idHoaDon, idChiTietSanPham) VALUES (?, ?, ?)");
         $stmtUpdateSanPham = $conn->prepare("UPDATE chitietsanpham SET soluongconlai = ? WHERE idChiTietSanPham = ?");
 
@@ -54,7 +61,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'NoCustomerId') {
             $soLuongConLai = intval($item['soluongconlai']);
 
             if ($soLuongConLai < $soLuong) {
-                throw new Exception("Số lượng không đủ cho sản phẩm ID: $idChiTietSanPham");
+                throw new Exception("Số lượng không đủ cho sản phẩm ID: $idChiTietSanPham.");
             }
 
             $stmtInsertDetail->bind_param("iii", $soLuong, $idHoaDon, $idChiTietSanPham);
@@ -66,16 +73,26 @@ if (isset($_POST['action']) && $_POST['action'] == 'NoCustomerId') {
         }
 
         $conn->commit();
-        echo json_encode(["status" => "success", "idHoaDon" => $idHoaDon]);
+        $response = [
+            'status' => 'success',
+            'message' => "Hóa đơn đã được tạo thành công với mã hóa đơn: $idHoaDon.",
+            'idHoaDon' => $idHoaDon
+        ];
+        echo json_encode($response);
 
     } catch (Exception $e) {
         $conn->rollback();
-        echo json_encode(["status" => "error", "message" => $e->getMessage()]);
+        echo json_encode([
+            'status' => 'error',
+            'message' => $e->getMessage()
+        ]);
     } finally {
         $conn->close();
     }
 } else {
-    echo json_encode(["status" => "error", "message" => "Yêu cầu không hợp lệ!"]);
+    echo json_encode([
+        'status' => 'error',
+        'message' => 'Yêu cầu không hợp lệ!'
+    ]);
 }
-
 ?>

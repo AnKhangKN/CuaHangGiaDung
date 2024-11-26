@@ -1,5 +1,8 @@
 <?php
 
+// Đặt múi giờ Việt Nam
+date_default_timezone_set('Asia/Ho_Chi_Minh');
+
 // Bao gồm file gửi email
 require_once 'sendmail.php';
 

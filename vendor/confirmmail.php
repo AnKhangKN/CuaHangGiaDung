@@ -11,7 +11,7 @@ if (isset($_POST['code'])) {
         $code = $_POST['code'];
 
         // Chuẩn bị truy vấn để tìm OTP trong cơ sở dữ liệu
-        $stmtEmailVerification = $conn->prepare('SELECT * FROM email_verification WHERE otp = ? AND tgcode < NOW()');
+        $stmtEmailVerification = $conn->prepare('SELECT * FROM email_verification WHERE otp = ? AND tgcode > NOW()');
         
         if ($stmtEmailVerification) {
             // Liên kết tham số

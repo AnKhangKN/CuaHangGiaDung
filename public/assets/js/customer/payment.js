@@ -6,6 +6,88 @@ $(document).ready(function () {
         const email = $('#email').val().trim();
         const phone = $('#phone').val().trim();
         const address = $('#address').val().trim();
+        const code = $('#code').val().trim();
+        
+        // Lấy các phần tử hiển thị lỗi
+        const errorName = $('.error_name');
+        const errorEmail = $('.error_email');
+        const errorPhone = $('.error_phone');
+        const errorAddress = $('.error_address');
+        const errorCode = $('.error_code');
+        
+        // Xóa thông báo lỗi cũ mỗi lần kiểm tra
+        errorName.text('');
+        errorEmail.text('');
+        errorPhone.text('');
+        errorAddress.text('');
+        errorCode.text('');
+        
+        // Biến xác định tính hợp lệ của form
+        let isValid = true;
+        
+        // Kiểm tra các trường thông tin bắt buộc
+        if (name == '') {
+            $('#name').css('border-color', 'red');
+            errorName.text("Hãy nhập họ và tên!");
+            isValid = false;
+        } else {
+            $('#name').css('border-color', '');
+        }
+    
+        if (email == '') {
+            $('#email').css('border-color', 'red');
+            errorEmail.text("Hãy nhập email của bạn!");
+            isValid = false;
+        } else {
+            $('#email').css('border-color', '');
+        }
+    
+        if (phone == '') {
+            $('#phone').css('border-color', 'red');
+            errorPhone.text("Hãy nhập số điện thoại của bạn!");
+            isValid = false;
+        } else {
+            $('#phone').css('border-color', '');
+        }
+    
+        if (address == '') {
+            $('#address').css('border-color', 'red');
+            errorAddress.text("Hãy nhập địa chỉ của bạn!");
+            isValid = false;
+        } else {
+            $('#address').css('border-color', '');
+        }
+    
+        if (code == '') {
+            $('#code').css('border-color', 'red');
+            errorCode.text("Hãy nhận mail để nhận code!");
+            isValid = false;
+        } else {
+            $('#code').css('border-color', '');
+        }
+
+        // Kiểm tra phương thức thanh toán sau khi tất cả các trường đã hợp lệ
+        if (isValid) {
+            const cod = $('#payment_by_cod');
+            const card = $('#payment_by_card');
+            if (!cod.is(':checked') && !card.is(':checked')) {
+                // Nếu phương thức thanh toán chưa được chọn, hiển thị modal lỗi
+                $('#modalErrorMessage').text("Bạn hãy chọn phương thức thanh toán!");
+                $('#errorModal').modal('show');  // Hiển thị modal
+                return false;  // Ngừng quá trình kiểm tra form
+            }
+        }
+    
+        // Nếu tất cả kiểm tra đều hợp lệ
+        return isValid;
+    }
+
+    function checkInfoHaveAcc() {
+        // Lấy giá trị và loại bỏ khoảng trắng thừa
+        const name = $('#name').val().trim();
+        const email = $('#email').val().trim();
+        const phone = $('#phone').val().trim();
+        const address = $('#address').val().trim();
         
         // Lấy các phần tử hiển thị lỗi
         const errorName = $('.error_name');
@@ -54,7 +136,7 @@ $(document).ready(function () {
         } else {
             $('#address').css('border-color', '');
         }
-    
+
         // Kiểm tra phương thức thanh toán sau khi tất cả các trường đã hợp lệ
         if (isValid) {
             const cod = $('#payment_by_cod');
@@ -70,6 +152,7 @@ $(document).ready(function () {
         // Nếu tất cả kiểm tra đều hợp lệ
         return isValid;
     }
+
     
     let allPrice = 0; // Khởi tạo bên ngoài vòng lặp
 
@@ -199,7 +282,7 @@ $(document).ready(function () {
     $(".infor_payment_btn_continue").click(function (e) {
         e.preventDefault();
     
-        if (checkInfo()) {
+        if (checkInfoHaveAcc()) {
             // Kiểm tra trạng thái khách hàng qua session
             $.ajax({
                 type: "POST",
@@ -222,6 +305,40 @@ $(document).ready(function () {
             console.log("Thông tin không hợp lệ, kiểm tra lại!");
         }
     });
+    // khách hàng mới -------------------------------------------------------------
+
+    $("#btn_code").click(function (e) { 
+        e.preventDefault();
+
+        const container_payment = $(this).closest('#container_payment_info');
+        const emailField = container_payment.find('#email');
+        const email = emailField.val();
+        const errorEmail = container_payment.find('.error_email'); 
+        if (!email) {
+            emailField.css('border-color', 'red');
+            errorEmail.text("Hãy nhập email của bạn!").show();
+            return;
+        } else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) { 
+            emailField.css('border-color', 'red');
+            errorEmail.text("Email không hợp lệ!").show();
+            return;
+        } else {
+            emailField.css('border-color', '');
+            errorEmail.text("").hide();
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "/CuaHangDungCu/app/controllers/customer/get_code_confirm.php",
+            data: { email: email },
+            success: function (response) {
+                console.log(response);
+            },
+            error: function (xhr, status, error) {
+                console.error("An error occurred: " + error);
+            }
+        });
+    });
 
 
     // kiểm tra khách hàng mới
@@ -231,7 +348,8 @@ $(document).ready(function () {
         const tongtien = container_payment.find('.total_bill_due_price').text();
         const cleanTotalPrice = parseFloat(tongtien.replace(/\./g, '').replace(',', '.')) || 0;
         const ghichu = container_payment.find('#exampleFormControlTextarea1').val();
-    
+        
+        const code = container_payment.find('#code').val();
         const email = container_payment.find('#email').val();
         const tenkhachhang = container_payment.find('#name').val();
         const sdt = container_payment.find('#phone').val();
@@ -252,6 +370,7 @@ $(document).ready(function () {
             url: "/CuaHangDungCu/app/controllers/customer/add_bill_guest.php",
             data: {
                 action: 'NoCustomerId',
+                code: code,
                 email: email,
                 tenkhachhang: tenkhachhang,
                 sdt: sdt,
