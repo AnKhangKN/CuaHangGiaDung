@@ -79,13 +79,14 @@
     /* height: 30px; */
 }
 
-.infor_update_item input{
+.infor_update_item_text{
     width: 75%;
     height: 45px;
     /* border-radius: 5px; */
     outline: none;
     border:none;
     padding: 10px;
+    margin: 0;
 }
 
 .infor_update_item i{
@@ -97,81 +98,87 @@
     position: relative;
 }
 
-.change_info_box{
-    position: absolute;
-    left: 33%;
-    top: 30%;
-}
-
-.change_info_box_content{
+.modal_change{
     display: none;
-    position: relative;
-    padding: 20px;
-    width: 500px;
-    background-color: rgba(255, 255, 255); /* Nền mờ */
-    height: 300px;
-    border: 0.5px solid rgb(183, 183, 183);
-    border-radius: 5px;
-}
-
-.close_change{
-    position: absolute;
+    position: fixed;
+    top: 0;
+    left: 0;
     right: 0;
-    border: 1px solid black;
-    width: 34.5px;
-    height: 34px;
-    font-size: 20px;
-    margin: 0px 10px;
-    border-radius: 50%;
-    text-align: center;
+    bottom: 0;
+    background-color: rgba(168, 168, 168, 0.5); 
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
 }
 
-.close_change:hover{
-    cursor: pointer;
-    transition: all 0.3s ease;
-    background-color: #333;
-    color: white;
-    
-}
-
-.change_info_box_content p{
-    font-size: 20px;
-    line-height: 32px;
-    font-weight: 500;
-}
-
-.change_item{
-    width: 100%;
-    height: 50px;
-    margin: 55px 0px;
-}
-
-.change_item input{
-    border-radius: 5px;
-    border: 0.5px solid rgb(194, 194, 194);
-    outline: none;
-    padding: 15px;
-    font-size: 16px;
-    width: 100%;
-    height: 100%;
-    
-}
-
-.change_info_box_content button{
-    outline: none;
-    border: 1px solid white;
-    background-color: #333;
-    color: white;
-    margin: 0px 156px;
-    width: 145px;
-    border-radius: 10px;
-    font-size: 18px;
-    height: 55px;
-}
-
-.change_info_box_content button:hover{
-    color: #333;
+.modal_container{
     background-color: white;
-    border: 1px solid #333;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+}
+
+.modal_header{
+    position: relative;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.modal_header_remove{
+    position: absolute;
+    right: 0px;
+    font-size: 16px;
+    background: #ffffff;
+    width: 30px;
+    height: 30px;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.modal_header_remove:hover{
+    background-color: #333;
+    color: white;
     transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.modal_body{
+    margin: 40px 0px;
+}
+
+.modal_body input{
+    width: 100%;
+    height: 45px;
+    border-radius: 5px;
+    outline: none;
+    border: 0.5px solid #a1a1a1;
+    padding: 10px
+}
+
+.modal_body_pass{
+    position: relative;
+}
+
+.modal_body_pass i{
+    position: absolute;
+    top: 39.5px;
+    right: 15px;
+    cursor: pointer;
+}
+
+.modal_footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal_footer button{
+    border: #333;
+    background: #333;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
 }

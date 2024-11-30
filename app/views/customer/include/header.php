@@ -1,52 +1,54 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- jquery -->
+    <script src="../vendor/jQuery/jquery-3.7.1.min.js"></script>
+    
     <!-- bootstrap -->
-    <link rel="stylesheet" href="./vendor/bootstrap-5.3.3/dist/css/bootstrap.min.css">
-    <script src="./vendor/bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../vendor/bootstrap-5.3.3/dist/css/bootstrap.min.css">
+    <script src="../vendor/bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- fontawesome -->
-    <link rel="stylesheet" href="./vendor/fontawesome-free-6.6.0-web/css/all.min.css">
+    <link rel="stylesheet" href="../vendor/fontawesome-free-6.6.0-web/css/all.min.css">
 
     <!-- css header -->
-    <link rel="stylesheet" href="./public/assets/css/customer/header.css">
+    <link rel="stylesheet" href="../public/assets/css/customer/header.css">
 
     <!-- css home -->
-    <link rel="stylesheet" href="./public/assets/css/customer/home.css">
+    <link rel="stylesheet" href="../public/assets/css/customer/home.css">
 
     <!-- css products -->
-    <link rel="stylesheet" href="./public/assets/css/customer/product.css">
+    <link rel="stylesheet" href="../public/assets/css/customer/product.css">
 
     <!-- css news -->
-    <link rel="stylesheet" href="./public/assets/css/customer/news.css">
+    <link rel="stylesheet" href="../public/assets/css/customer/news.css">
 
     <!-- css introduce -->
-    <link rel="stylesheet" href="./public/assets/css/customer/introduce.css">
+    <link rel="stylesheet" href="../public/assets/css/customer/introduce.css">
 
     <!-- css contact -->
-    <link rel="stylesheet" href="./public/assets/css/customer/contact.css">
+    <link rel="stylesheet" href="../public/assets/css/customer/contact.css">
 
     <!-- css cart -->
-    <link rel="stylesheet" href="./public/assets/css/customer/cart.css">
+    <link rel="stylesheet" href="../public/assets/css/customer/cart.css">
 
     <!-- details -->
-    <link rel="stylesheet" href="./public/assets/css/customer/details.css"> 
+    <link rel="stylesheet" href="../public/assets/css/customer/details.css"> 
     
     <!-- payment -->
-    <link rel="stylesheet" href="./public/assets/css/customer/payment.css">
+    <link rel="stylesheet" href="../public/assets/css/customer/payment.css">
 
     <!-- information -->
-    <link rel="stylesheet" href="./public/assets/css/customer/information.css">
+    <link rel="stylesheet" href="../public/assets/css/customer/information.css">
 
     <!-- detail bill -->
-    <link rel="stylesheet" href="./public/assets/css/customer/detail_bill.css">
+    <link rel="stylesheet" href="../public/assets/css/customer/detail_bill.css">
 
     <!-- css footer -->
-    <link rel="stylesheet" href="./public/assets/css/customer/footer.css">
+    <link rel="stylesheet" href="../public/assets/css/customer/footer.css">
 
     
 
@@ -59,12 +61,14 @@
                     <i class="fa-solid fa-bars fa-lg" id="menu_icon"></i>
                 </div>
                 <div class="nav_logo">
-                    <a href="index.php"><img src="./public/assets/images/logo_den.jpg" class="nav_logo_img" alt="HKN store"></a>                  
+                    <a href="index.php"><img src="../public/assets/images/logo_den.jpg" class="nav_logo_img" alt="HKN store"></a>                  
                 </div>
                 <ul class="nav_ul_list text-white" id="menu">
                     <li class="nav_ul_list_item header_link_next">
                         <a href="index.php" class="nav_ul_list_item_link">Trang chủ</a>
                     </li>
+
+
                     <?php
                     $conn = connectBD();
 
@@ -117,23 +121,49 @@
                     </li>
                 </ul>
                 <div class="nav_tool">
-                    <form action="">
-                        <div class="nav_tool_search" id="nav_tool_search_box">
-                            <input type="text" placeholder="Tìm kiếm" id="nav_tool_search_input">
+                    
+                        
+                    <div class="nav_tool_search_icon_box" id="nav_tool_search_icon_box_btn">
+                        <span class="nav_tool_search_icon_box_text">Tìm kiếm sản phẩm</span>
+                        <i class="fa-solid fa-magnifying-glass" id="nav_tool_search_icon"></i> 
+                    </div>
+
+                    <div id="search_box">
+                        <div class="box_container">
+                            <div class="search_box_container">
+                                <div class="search_box_logo">
+                                    <img src="../public/assets/images/logo_trang.jpg" class="nav_logo_img" alt="HKN store">                  
+                                </div>
+                                
+                                <input type="text" id="search_box_input">
+                                <div id="search_box_close">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </div>
+
+                                
+                            </div>
+                            <!-- sản phẩm hiện -->
+                            
+
+                            <div class="product_search">
+                                <div class="search_container">
+                                    
+
+                                    
+                                </div>
+                            </div>
+                            
+                            
+                            
                         </div>
-                        <div class="nav_tool_search_icon_box" id="nav_tool_search_icon_box_btn">
-                            <span class="nav_tool_search_icon_box_text">Tìm kiếm sản phẩm</span>
-                            <i class="fa-solid fa-magnifying-glass" id="nav_tool_search_icon"></i> 
-                        </div>
-                        <button class="close_search_top" id="close_search_top_element">
-                            <i class="fa-solid fa-xmark"></i>
-                        </button>
-                        <div class="nav_tool_box" id="nav_tool_box_recommend"></div>
-                    </form>
+                        
+                    </div>
+                    
+                
                     <div class="nav_tool_mark">
                         <a href="index.php?page=cart">
                             <div class="nav_tool_cart">
-                                <i class="fa-solid fa-cart-shopping text-white"></i>
+                                <i class="fa-solid fa-cart-shopping text-white add_product_item"></i>
                             </div>
                         </a>
                         
@@ -148,9 +178,10 @@
                     </div>
                     <div class="nav_tool_user_option" id="nav_tool_user_option_id_user">
                     <?php 
-                        if(isset($_SESSION['user_id'])){
-
-                        ?>
+                        if(isset($_SESSION['user_id']) && isset($_SESSION['quyen'])){
+                            if($_SESSION['quyen'] === 0){
+                                ?>
+                                
                         <a href="index.php?page=information" style="text-decoration: none; color: black;">
                             <div class="option_sub">
                                 <i class="fa-solid fa-user"></i>
@@ -158,24 +189,66 @@
                             </div>
                         </a>
 
-                        <a href="./app/views/others/logout.php" style="text-decoration: none; color: black;">
+                        <a href="../app/views/others/logout.php" style="text-decoration: none; color: black;">
                             <div class="option_sub">
                                 <i class="fa-solid fa-user"></i>
                                 <p>Đăng xuất</p>
                             </div>
                         </a>
+                                
+                            <?php
+                            } elseif ($_SESSION['quyen'] === 1){
+                                ?>
+                                
+                        <a href="admin/index.php" style="text-decoration: none; color: black;">
+                            <div class="option_sub">
+                                <i class="fa-solid fa-user"></i>
+                                <p>Trở về admin</p>
+                            </div>
+                        </a>
+
+                        <a href="../app/views/others/logout.php" style="text-decoration: none; color: black;">
+                            <div class="option_sub">
+                                <i class="fa-solid fa-user"></i>
+                                <p>Đăng xuất</p>
+                            </div>
+                        </a>
+                                
+                                <?php
+                            } elseif($_SESSION['quyen'] === 2){
+                                ?>
+                                
+                        <a href="employee/index.php" style="text-decoration: none; color: black;">
+                            <div class="option_sub">
+                                <i class="fa-solid fa-user"></i>
+                                <p>Trở về employee</p>
+                            </div>
+                        </a>
+
+                        <a href="../app/views/others/logout.php" style="text-decoration: none; color: black;">
+                            <div class="option_sub">
+                                <i class="fa-solid fa-user"></i>
+                                <p>Đăng xuất</p>
+                            </div>
+                        </a>
+                                
+                                <?php
+                            }  
+                        ?>
+                                
+                        
 
                         <?php
                         }else{
                             ?>
-                        <a href="./app/views/others/login.php" style="text-decoration: none; color: black;">
+                        <a href="login.php" style="text-decoration: none; color: black;">
                             <div class="option_sub">
                                 <i class="fa-solid fa-right-to-bracket"></i>
                                 <p>Đăng nhập</p>
                             </div>
                         </a>
 
-                        <a href="#" style="text-decoration: none; color: black;">
+                        <a href="signup.php" style="text-decoration: none; color: black;">
                             <div class="option_sub">
                                 <i class="fa-solid fa-user-plus"></i>
                                 <p>Đăng ký</p>

@@ -1,17 +1,3 @@
-document.querySelectorAll('.header_link_next > a').forEach(function(item) {
-    item.addEventListener('click', function() {
-        // Xóa class 'is_here' khỏi tất cả phần tử
-        document.querySelectorAll('.header_link_next').forEach(function(i) {
-            i.classList.remove('is_here');
-        });
-        
-        // Thêm class 'is_here' vào phần tử cha của thẻ <a> hiện tại
-        this.parentElement.classList.add('is_here');
-    });
-});
-
-
-
 
 // Ẩn hiện menu chính
 const iconMenu = document.getElementById('menu_icon'); // Không dùng '#'
@@ -34,33 +20,25 @@ iconMenu.addEventListener('click', function(){
 
 // --------------------------------------------------------------------
 // search
-// Lấy các phần tử từ DOM
-const boxIcon = document.querySelector('.nav_tool_search_icon_box');
-const boxRecommend = document.querySelector('.nav_tool_box');
-const boxClose = document.querySelector('.close_search_top');
-const boxSearch = document.querySelector('.nav_tool_search');
-const inputBox = document.getElementById('nav_tool_search_box');
+function searchBox(box_search, btn_search, btn_close) {
+    const search_Box = document.getElementById(box_search); // Correct method name
+    const search_Btn = document.getElementById(btn_search);
+    const closeBtn = document.getElementById(btn_close);
 
-// Hàm xử lý click vào biểu tượng tìm kiếm
-function showSearchBox() {
-    boxIcon.style.display = 'none'; // Ẩn biểu tượng tìm kiếm
-    boxRecommend.style.display = 'block'; // Hiện hộp gợi ý
-    boxClose.style.display = 'block'; // Hiện nút đóng
-    boxSearch.style.display = 'block'; // Hiện hộp tìm kiếm
+    // Ensure both elements exist
+    if (search_Box && search_Btn) {
+        search_Btn.addEventListener('click', () => {
+            search_Box.style.display = 'flex'; 
+        });
+        closeBtn.addEventListener('click', () => {
+            search_Box.style.display = 'none';
+        })
+    } 
 }
 
-// Hàm xử lý click vào nút đóng
-function hideSearchBox() {
-    boxIcon.style.display = 'block'; // Hiện lại biểu tượng tìm kiếm
-    boxRecommend.style.display = 'none'; // Ẩn hộp gợi ý
-    boxClose.style.display = 'none'; // Ẩn nút đóng
-    boxSearch.style.display = 'none'; // Ẩn hộp tìm kiếm
-}
+searchBox('search_box', 'nav_tool_search_icon_box_btn', 'search_box_close');
 
-// Gán sự kiện click cho các phần tử
-boxIcon.addEventListener('click', showSearchBox);
-inputBox.addEventListener('click', showSearchBox);
-boxClose.addEventListener('click', hideSearchBox);
+
 
 // --------------------------------------------------------------------
 
@@ -98,5 +76,31 @@ document.addEventListener('click', function(event) {
     if (!userOptionMark.contains(event.target) && !userOption.contains(event.target)) {
         hideUserOption(); // Ẩn phần tùy chọn người dùng
     }
+});
+
+$(document).ready(function () {
+    $('#search_box_input').on('input', function () {
+        const query = $(this).val();
+
+        if (query.length > 0) {
+            // Gửi yêu cầu AJAX để tìm kiếm sản phẩm
+            $.ajax({
+                url: '/CuaHangDungCu/app/controllers/customer/search_products.php', // Đường dẫn tới file xử lý tìm kiếm
+                method: 'GET',
+                data: { query: query },
+                success: function (data) {
+                    // Hiển thị kết quả tìm kiếm
+                    $('.search_container').html(data);
+                    console.log(data);
+                },
+                error: function () {
+                    console.error('Lỗi xảy ra khi tìm kiếm.');
+                }
+            });
+        } else {
+            // Nếu không có nội dung tìm kiếm, xóa kết quả
+            $('.search_container').html('');
+        }
+    });
 });
 

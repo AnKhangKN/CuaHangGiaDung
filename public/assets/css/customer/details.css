@@ -29,12 +29,11 @@
 }
 
 .main_img_show{
-    /* display: flex; */
-    position: relative;
     margin-top: 10px;
 }
 
 .main_img_show_list{
+    position: relative;
     display: flex;
     overflow: hidden;
 }
@@ -87,9 +86,9 @@
 
 .products_details_info_price{
     display: flex;
-    /* justify-content: center; */
     align-items: center;
     margin-top: 20px;
+    margin-bottom: 40px;
 }
 
 .products_details_info_price_under{
@@ -112,31 +111,18 @@
     font-weight: 600;
 }
 
+
 .products_details_info_size_group {
-    display: flex;
-    margin-top: 40px;
-}
-
-.products_details_info_size_group_clothes {
     align-items: center;
-    margin-left: 10px;
     display: flex;
-    /* display: none;  */
+    
 }
 
-.products_details_info_size_group_shoes {
-    /* display: flex;  */
-    display: none;
-    margin-left: 10px;
-}
-
-.products_details_info_size_group_shoes_item , 
-.products_details_info_size_group_clothes_item{
+.products_details_info_size_group_item{
     margin-left: 10px;
 } 
 
-.products_details_info_size_group_shoes_item label, 
-.products_details_info_size_group_clothes_item label {
+.products_details_info_size_group_item label {
     border: 1px solid #eaeaea;
     width: 25px;
     height: 25px;
@@ -156,21 +142,18 @@
     transition: background-color 0.3s ease;
 }
 
-/* Ẩn checkbox */
-.products_details_info_size_group_shoes_item input, 
-.products_details_info_size_group_clothes_item input {
+
+.products_details_info_size_group_item input {
     display: none;
 }
 
-/* Hiển thị dấu check khi chọn */
-.products_details_info_size_group_shoes_item input:checked + label, 
-.products_details_info_size_group_clothes_item input:checked + label {
+
+.products_details_info_size_group_item input:checked + label {
     background-color: #a7a7a7; /* Thay đổi màu nền khi được chọn */
     border-color: #000; /* Thay đổi màu viền khi được chọn */
 }
 
-.products_details_info_size_group_shoes_item input:checked + label::before, 
-.products_details_info_size_group_clothes_item input:checked + label::before {
+.products_details_info_size_group_item input:checked + label::before {
     content: '';
     position: absolute;
     top: 7px;
@@ -191,29 +174,29 @@
     margin-top: 20px;
 }
 
-.products_details_info_add_products_minus button, .products_details_info_add_products_plus button{
+.products_details_info_add_products{
+    margin-left: 5px;
+
+}
+
+.products_details_info_add_products_minus, .products_details_info_add_products_plus{
     width: 40px;
-    height: 40px;
-    border: none;
-    border: 1px solid rgb(231, 231, 231);
-    
-}
-
-.products_details_info_add_products_minus{
-    padding-left: 24px;
-}
-
-.products_details_info_add_products_number, .products_details_info_add_products_plus{
-    padding: 0;
-}
-
-.products_details_info_add_products_number input[type="text"]{
-    border: 1px solid rgb(231, 231, 231);
-    width: 65px;
-    height: 40px;
-    text-align: center;
-    /* border: none; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border:0.5px solid rgb(237, 237, 237);
+    border-radius: 5px;
     outline: none;
+    background-color: white;
+}
+
+.products_details_info_add_products_input{
+    width: 60px;
+    border-radius: 5px;
+    margin: 0px 5px;
+    border:0.5px solid rgb(237, 237, 237);
+    outline: none;
+    text-align: center;
 }
 
 .products_details_info_add_btn button{
@@ -294,4 +277,27 @@
     border-right-style: none;
     font-size: 0;
     transform: rotate(-45deg);
+}
+
+.block_product {
+    z-index: 3000;
+    width: 5px;
+    height: 5px;
+    border-radius: 3px;
+    background: #333;
+    position: relative;
+    animation: mymove 0.5s infinite;
+}
+
+@keyframes mymove {
+    
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(2);
+    }
+    100%{
+        transform: scale(1);
+    }
 }

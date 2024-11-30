@@ -1,20 +1,18 @@
-
-
 <main class="main">
             <div class="container-fluid">
                 <div class="home_slider">
                     <a href="#">
-                        <img src="./public/assets/images/sliders/slider_demo_1.jpg" alt="slider1" class="home_slider_img">
+                        <img src="../public/assets/images/sliders/slider_demo_1.jpg" alt="slider1" class="home_slider_img">
                     </a>
                 </div>
                 <div class="home_slider">
                     <a href="#"></a>
-                        <img src="./public/assets/images/sliders/slider_demo_2.jpg" alt="slider2" class="home_slider_img">
+                        <img src="../public/assets/images/sliders/slider_demo_2.jpg" alt="slider2" class="home_slider_img">
                     </a>
                 </div>
                 <div class="home_slider"></div>
                     <a href="#">
-                        <img src="./public/assets/images/sliders/slider_demo_3.jpg" alt="slider3" class="home_slider_img">
+                        <img src="../public/assets/images/sliders/slider_demo_3.jpg" alt="slider3" class="home_slider_img">
                     </a>
                 </div>
             </div>
@@ -46,6 +44,7 @@
                                                                     JOIN chitietsanpham AS ctsp ON sp.idSanpham = ctsp.idSanpham
                                                                     JOIN chitiethoadon AS cthd ON ctsp.idChiTietSanPham = cthd.idChiTietSanPham
                                                                     JOIN danhmucsanpham AS dm ON sp.idDanhMuc = dm.idDanhMuc
+                                                                    where sp.trangthai = 1
                                                                     GROUP BY sp.idSanpham, dm.tendanhmuc
                                                                     ORDER BY tongSoLuongBan DESC");
                 ?>
@@ -57,11 +56,11 @@
                     
                     <div class="best_sellers_products_list_card">
                         <a href="index.php?page=details&id=<?php echo $row_best_products['idSanPham'] ?>" style="text-decoration: none; color: #333">
-                        <img class="card-img-top best_sellers_list_card_img" src="./public/assets/images/products/<?php echo $row_best_products['urlHinhAnh']?>" alt="Card image" style="width:100%">
+                        <img class="card-img-top best_sellers_list_card_img" src="../public/assets/images/products/<?php echo $row_best_products['urlHinhAnh']?>" alt="Card image" style="width:100%">
                         <div class="best_sellers_list_card_body">
                             <p class="best_sellers_list_card_body_title"><?php echo $row_best_products['tensanpham']?></>
                             <p class="best_sellers_list_card_body_kind"><?php echo $row_best_products['tendanhmuc']?></p>
-                            <p class="best_sellers_list_card_body_price"><?php echo $row_best_products['dongia']?> đ</p>
+                            <p class="best_sellers_list_card_body_price"><?php echo number_format($row_best_products['dongia'], 0, ',', '.') ?> đ</p>
                         </div>
                         </a>
                     </div>
@@ -118,6 +117,7 @@
                                                             FROM sanpham AS sp
                                                             JOIN hinhanhsanpham AS ha ON sp.idSanpham = ha.idSanPham
                                                             JOIN danhmucsanpham AS dm ON sp.idDanhMuc = dm.idDanhMuc
+                                                            where sp.trangthai = 1  
                                                             GROUP BY sp.idSanpham, dm.tendanhmuc
                                                             ORDER BY sp.ngaytao DESC
 
@@ -129,7 +129,12 @@
                     <button class="new_products_list_btn_left" id="newPrevBtn">
                         <i class="fa-solid fa-chevron-left"></i>
                     </button>
+
                     <div class="new_products_list" id="newProductsList">
+
+                    
+
+
                         <?php 
                         while($row_new_products = mysqli_fetch_array($sql_new_products)){
                             
@@ -139,11 +144,11 @@
                         <!-- list new product -->
                         <div class="new_products_list_card">
                             <a href="index.php?page=details&id=<?php echo $row_new_products['idSanPham'] ?>" style="text-decoration: none; color: #333">
-                            <img class="card-img-top new_products_list_card_img" src="./public/assets/images/products/<?php echo $row_new_products['urlhinhanh']; ?>" alt="Card image" style="width:100%">
+                            <img class="card-img-top new_products_list_card_img" src="../public/assets/images/products/<?php echo $row_new_products['urlhinhanh']; ?>" alt="Card image" style="width:100%">
                             <div class="new_products_list_card_body">
                                 <p class="new_products_list_card_body_title"><?php echo $row_new_products['tensanpham']; ?></p>
                                 <p class="new_products_list_card_body_kind"><?php echo $row_new_products['tendanhmuc']; ?></p>
-                                <p class="new_products_list_card_body_price"><?php echo $row_new_products['dongia']; ?> đ</p>
+                                <p class="new_products_list_card_body_price"><?php echo number_format($row_new_products['dongia'], 0, ',', '.') ?> đ</p>
                             </div>
                             </a>
                         </div>
@@ -151,11 +156,15 @@
                         }
                         ?>
 
+                    
+
+
                     </div>
                     <!-- btnNext -->
                     <button class="new_products_list_btn_right" id="newNextBtn">
                         <i class="fa-solid fa-chevron-right"></i>
                     </button>
+                    
                 </div>
             </div>
         </main>

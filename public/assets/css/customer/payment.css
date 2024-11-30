@@ -25,38 +25,8 @@
     font-weight: 400;
 }   
 
-.infor_payment_content{
-    margin: 40px 0;
-}
-
-.row_infor_payment_content{
-    display: flex;
-}
-
-.infor_payment_content_text{
-    margin: 10px 0;
-}
-
-.infor_payment_content_text_email{
-    width: 60%;
-}
-
-.infor_payment_content_text_phone{
-    width: 33.2%;
-}
-
-
-
-.infor_payment_content_text input, .infor_payment_content_text_email input, .infor_payment_content_text_phone input{
-    padding: 10px;
-    width: 90%;
-    height: 45px;
-    border-radius: 5px;
-    border: 0.5px solid rgb(190, 190, 190);
-    outline: none;
-}
-
 .infor_payment_method_title p{
+    margin-top: 30px;
     font-size: 18px;
     font-weight: 500;
 }
@@ -66,8 +36,6 @@
 }
 
 .content_transfer{
-    display: none;
-    /* display: block; */
     margin: 20px 16px;
     text-align: center;
     width: 80%;
@@ -79,25 +47,18 @@
 .infor_payment_btn{
     margin-top: 70px;
     display: flex;
-    /* justify-content: center; */
     align-items: center;
+    justify-content: space-between;
 }
 
-.infor_payment_btn_cart, .infor_payment_btn_continue{
-    width: 50%;
-}
-
-.infor_payment_btn_cart a{
+.infor_payment_btn_cart{
     text-decoration: none;
     color: black;
 }
 
-.infor_payment_btn_continue{
-    text-align: right;
-    
-}
 
-.infor_payment_btn_continue button{
+.infor_payment_btn_continue{
+    text-align: center;
     border: none;
     color: white;
     height: 45px;
@@ -111,22 +72,27 @@
 .list_infor_products_payment_item{
     margin-top: 50px;
     display: flex;
+    justify-content: space-between;
 }
 
-.img_infor_payment_item,.text_infor_payment_item,.price_infor_payment_item{
-    width: calc(100%/3);
+.infor_payment_item_group_product{
+    display: flex;
 }
 
 .text_infor_payment_item{
     margin-left: 10px;
+    display: flex;
+    flex-flow: column;
 }
 
-.price_infor_payment_item{
-    text-align: right;
+.text_infor_payment_item span{
+    font-size: 14px;
+    color: rgb(144, 144, 144);
 }
 
 .img_infor_payment_item{
-    width: 90px;
+    width: 110px;
+    
 }
 
 .img_infor_payment_item img {
@@ -154,4 +120,41 @@
     font-size: 30px;
     font-weight: 400;
     margin: 0 10px;
+}
+
+#btn_confirm_account{
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    color: white;
+    line-height: 45px;
+    font-weight: 500;
+    width: 195px;
+    border-radius: 5px;
+    outline: none;
+    background-color: #333;
+}
+
+.code_confirm{
+    position: relative;
+}
+
+#btn_code{
+    position: absolute;
+    right: 15px;
+    top: 12px;
+    cursor: pointer;
+}
+
+.key_frame_spin{
+    animation: spin 1s linear infinite; 
+}
+
+@keyframes spin {
+    0% {
+    transform: rotate(0deg); 
+    }
+    100% {
+    transform: rotate(360deg); 
+    }
 }

@@ -1,17 +1,17 @@
 <?php 
-    include './app/controllers/customer/customerController.php';
+    include '../app/controllers/customer/customerController.php';
 
     if(isset($_GET['id'])){
         $id = $_GET['id'];
-        $ProductId = getProductById($id);
+        $ProductId = getProductByProductId($id);
 
         if(!$ProductId){
-            header('Location: http://localhost/CuaHangDungCu/index.php?page=products');
+            header('Location: http://localhost/CuaHangDungCu/public/index.php?page=products');
             exit;
         }
-
+        
     }  else{
-        header('Location: http://localhost/CuaHangDungCu/index.php?page=products');
+        header('Location: http://localhost/CuaHangDungCu/public/index.php?page=products');
         exit;
     }
 
@@ -39,7 +39,7 @@
             
             <!-- details -->
             <div class="container">
-                <div class="row">
+                <div class="row product_info_to_cart">
 
                     <div class="col-lg-6">
 
@@ -59,7 +59,7 @@
                             $imageUrls = [];
 
                                 foreach($imgAll as $rowImg){ 
-                                    $imageUrls[] = "./public/assets/images/products/" . htmlentities($rowImg['urlhinhanh']);
+                                    $imageUrls[] = "../public/assets/images/products/" . htmlentities($rowImg['urlhinhanh']);
                                     ?>
 
                                 <div class="all_img">
@@ -72,22 +72,25 @@
                             ?>
                             </div>
                             <div class="col-lg-10 main_img_show">
+                                
+                                <div class="main_img_show_list" id="main_img_show_list_id">
+
                                 <button class="main_img_show_btn_left" id="main_img_show_btn_left_id" onclick="prevImage()">
                                     <i class="fa-solid fa-arrow-left"></i>
                                 </button>
-                                <div class="main_img_show_list" id="main_img_show_list_id">
-
 
                                     <div class="img_main">
                                     <img id="largeImg" src="<?php echo $imageUrls[0]; ?>" 
                                     alt="Ảnh <?php echo htmlentities($ProductId['tensanpham'])?>">
                                     </div>
                             
-                                    
-                                </div>
                                 <button class="main_img_show_btn_right" id="main_img_show_btn_right_id" onclick="nextImage()">
                                     <i class="fa-solid fa-arrow-right"></i>
                                 </button>
+
+
+                                </div>
+                                
                             </div>
 
                                 
@@ -98,9 +101,9 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="products_details_info">
-                            <form action="">
+                            <form >
                                 <div class="products_details_info_title">
-                                    <span><?php echo htmlentities($ProductId['tensanpham'])?></span>
+                                    <span class="products_details_info_title_name"><?php echo htmlentities($ProductId['tensanpham'])?></span>
                                 </div>
                                 <div class="products_details_info_price">
                                     <!-- <div class="products_details_info_price_under">
@@ -114,147 +117,127 @@
                                     </div> -->
                                     <!-- giá hiệ tại -->
                                     <span class="products_details_info_price_new">
-                                        <?php echo htmlentities($ProductId['dongia'])?> đ
-                                    </span>
+                                    <?php echo number_format($ProductId['dongia'],0,',','.') ?> 
+                                    </span><span>đ</span>
                                 </div>
-                                
-                                
 
+                                
+                                <div id="Productsize">
+                                <?php 
+                                    $Category = getCategoryByProductId($id);
+                                    if($Category['tendanhmuc'] === 'Quần áo'){
+                                        ?>
+                                        
                                 <div class="products_details_info_size_group">
                                     <!-- title -->
                                     <div class="products_details_info_size_title">
-                                        <span>Size</span>
+                                        <span>Size </span>
                                     </div>
-                                
                                     <!-- clothes -->
-                                    <div class="products_details_info_size_group_clothes">
-                                        <div class="products_details_info_size_group_clothes_item">    
-                                            <input type="checkbox" id="sizeS_clothes">
-                                            <label for="sizeS_clothes">S</label>
-                                        </div>
-                                        <div class="products_details_info_size_group_clothes_item">
-                                            <input type="checkbox" id="sizeM_clothes">
-                                            <label for="sizeM_clothes">M</label>
-                                        </div>
-                                        <div class="products_details_info_size_group_clothes_item">
-                                            <input type="checkbox" id="sizeL_clothes">
-                                            <label for="sizeL_clothes">L</label>
-                                        </div>
-                                        <div class="products_details_info_size_group_clothes_item">
-                                            <input type="checkbox" id="sizeXL_clothes">
-                                            <label for="sizeXL_clothes">XL</label>
-                                        </div>
-                                        <div class="products_details_info_size_group_clothes_item">
-                                            <input type="checkbox" id="sizeXXL_clothes">
-                                            <label for="sizeXXL_clothes">XXL</label>
-                                        </div>
-                                    </div>
-                                
-                                    <!-- shoes -->
-                                    <div class="products_details_info_size_group_shoes">
-                                        <div class="products_details_info_size_group_shoes_item">
-                                            <input type="checkbox" id="size36_shoes">
-                                            <label for="size36_shoes">36</label>
-                                        </div>
-                                        <div class="products_details_info_size_group_shoes_item">
-                                            <input type="checkbox" id="size37_shoes">
-                                            <label for="size37_shoes">37</label>
-                                        </div>
-                                        <div class="products_details_info_size_group_shoes_item">
-                                            <input type="checkbox" id="size38_shoes">
-                                            <label for="size38_shoes">38</label>
-                                        </div>
-                                        <div class="products_details_info_size_group_shoes_item">
-                                            <input type="checkbox" id="size39_shoes">
-                                            <label for="size39_shoes">39</label>
-                                        </div>
-                                        <div class="products_details_info_size_group_shoes_item">
-                                            <input type="checkbox" id="size40_shoes">
-                                            <label for="size40_shoes">40</label>
-                                        </div>
-                                        <div class="products_details_info_size_group_shoes_item">
-                                            <input type="checkbox" id="size41_shoes">
-                                            <label for="size41_shoes">41</label>
-                                        </div>
-                                        <div class="products_details_info_size_group_shoes_item">
-                                            <input type="checkbox" id="size42_shoes">
-                                            <label for="size42_shoes">42</label>
-                                        </div>
-                                        <div class="products_details_info_size_group_shoes_item">
-                                            <input type="checkbox" id="size43_shoes">
-                                            <label for="size43_shoes">43</label>
-                                        </div>
-                                        <div class="products_details_info_size_group_shoes_item">
-                                            <input type="checkbox" id="size44_shoes">
-                                            <label for="size44_shoes">44</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                
+                                    <div class="products_details_info_size_group">
 
-                                <div class="products_details_info_color">
-                                    <span>Color</span>
-                                    <li class="products_details_info_color_item" >
-                                        <input type="checkbox" id="color-red">
-                                        <label for="" style="background-color: red;"></label>
-                                    </li>
-                                    <li class="products_details_info_color_item">
-                                        <input type="checkbox" id="color-blue" >
-                                        <label for="" style="background-color: blue;"></label>
-                                    </li>
-                                    <li class="products_details_info_color_item" >
-                                        <input type="checkbox" id="color-green" >
-                                        <label for="" style="background-color: green;"></label>
-                                    </li>
-                                    <li class="products_details_info_color_item" >
-                                        <input type="checkbox" id="color-yellow" >
-                                        <label for="" style="background-color: yellow;"></label>
-                                    </li>
-                                    <li class="products_details_info_color_item" >
-                                        <input type="checkbox" id="color-purple" >
-                                        <label for="" style="background-color: purple;"></label>
-                                    </li>
-                                    <li class="products_details_info_color_item" >
-                                        <input type="checkbox" id="color-orange" >
-                                        <label for="" style="background-color: orange;"></label>
-                                    </li>
-                                    <li class="products_details_info_color_item" >
-                                        <input type="checkbox" id="color-black" >
-                                        <label for="" style="background-color: rgb(0, 0, 0);"></label>
-                                    </li>
-                                    <li class="products_details_info_color_item" >
-                                        <input type="checkbox" id="color-pink" >
-                                        <label for="" style="background-color: rgb(255, 0, 204);"></label>
-                                    </li>
-                                    <li class="products_details_info_color_item" >
-                                        <input type="checkbox" id="color-white" >
-                                        <label for="" style="background-color: white;"></label>
-                                    </li>
-                                    <li class="products_details_info_color_item" >
-                                        <input type="checkbox" id="color-gray" >
-                                        <label for="" style="background-color: gray"></label>
-                                    </li>
+                                    <?php 
+                                        $Size = getProductsSizeByProductId($id);
+
+                                        foreach($Size as $rowSize){
+                                            ?>
+                                            
+                                            <div class="products_details_info_size_group_item">    
+                                                <input type="checkbox" value="<?php echo htmlentities($rowSize['kichthuoc'])?>" 
+                                                class="products_details_info_size_group_item_input" 
+                                                id="size<?php echo htmlentities($rowSize['kichthuoc'])?>_clothes">
+                                                <label for="size<?php echo htmlentities($rowSize['kichthuoc'])?>_clothes">
+                                                    <?php echo htmlentities($rowSize['kichthuoc'])?>
+                                                </label>
+                                            </div>
+                                            
+                                            <?php
+                                        }
+
+                                    ?>
+
+                                    </div>
                                 </div>
+                                        
+                                        <?php 
+                                    } elseif($Category['tendanhmuc'] === 'Giày dép'){
+                                        
+                                        ?>
+                                <div class="products_details_info_size_group">
+                                    <!-- title -->
+                                    <div class="products_details_info_size_title">
+                                        <span>Size </span>
+                                    </div>
+                                    <!-- clothes -->
+                                    <div class="products_details_info_size_group">
+
+                                    <?php 
+                                        $Size = getProductsSizeByProductId($id);
+
+                                        foreach($Size as $rowSize){
+                                            ?>
+                                            
+                                            <div class="products_details_info_size_group_item">    
+                                                <input type="checkbox" value="<?php echo htmlentities($rowSize['kichthuoc'])?>"
+                                                class="products_details_info_size_group_item_input"
+                                                id="size<?php echo htmlentities($rowSize['kichthuoc'])?>_clothes">
+                                                <label for="size<?php echo htmlentities($rowSize['kichthuoc'])?>_clothes">
+                                                    <?php echo htmlentities($rowSize['kichthuoc'])?>
+                                                </label>
+                                            </div>
+                                            
+                                            <?php
+                                        }
+                                    ?>
+                                        
+                                    </div>
+                                </div>
+                                        <?php
+                                    } else {
+
+                                        ?>
+                                        
+                                        <?php
+                                    }
+                                ?>
+                                </div>
+                                    
+                                <div class="products_details_info_color">
+                                <span>Color</span>
+                                <?php 
+                                    $Color = getProductColorByProductId($id);
+                                    
+                                    foreach($Color as $rowColor){
+                                        ?>
+                                        
+                                    <li class="products_details_info_color_item" >
+                                        <input type="checkbox"
+                                        value="<?php echo htmlentities($rowColor['mausac'])?>"
+                                        id="color-<?php echo htmlentities($rowColor['mausac'])?>"
+                                        class="products_details_info_color_item_input">
+                                        <label style="background-color: <?php echo htmlentities($rowColor['mausac'])?>;"></label>
+                                    </li>
+
+                                        <?php 
+                                    }
+                                    ?>
+                                    
+                                </div>
+                                <div id="ProductAmount" style="display: none;">0</div>
                                 <hr>
                                 <div class="products_details_info_add row">
                                     <div class="products_details_info_add_products row col-lg-4">
-                                        <div class="products_details_info_add_products_minus col-lg-4">
-                                            <button >
-                                                <i class="fa-solid fa-minus"></i>
-                                            </button>
-                                        </div>
-                                        <div class="products_details_info_add_products_number col-lg-4">
-                                            <input type="text">
-                                        </div>
-                                        <div class="products_details_info_add_products_plus col-lg-4">
-                                            <button>
-                                                <i class="fa-solid fa-plus"></i>
-                                            </button>
-                                        </div>
+                                        <button class="products_details_info_add_products_minus">
+                                            <i class="fa-solid fa-minus"></i>
+                                        </button>
+                                            <input type="text" value="0" class="products_details_info_add_products_input">
+                                        <button class="products_details_info_add_products_plus">
+                                        <i class="fa-solid fa-plus"></i>
+                                        </button>
                                     </div>
                                     <div class="products_details_info_add_btn col-lg-8">
-                                        <button>Thêm vào giỏ hàng</button>
+                                        <button class="add_cart">Thêm vào giỏ hàng</button>
+                                        
                                     </div>
                                 </div>
                                 
@@ -276,7 +259,11 @@
 
                         <div class="info_product">
                             <div class="info_product_title">
-                                Thông tin sản phẩm
+                                <p>Thông tin sản phẩm</p>
+                            </div>
+                            <div class="info_product_content">
+                                <div id="ProductId" style="display: none;"><?php echo htmlentities($id)?></div>
+                                <p><?php echo htmlentities($ProductId['mota'])?></p>
                             </div>
                         </div>
                     </div>
@@ -312,6 +299,7 @@
                                                                     JOIN chitietsanpham AS ctsp ON sp.idSanpham = ctsp.idSanpham
                                                                     JOIN chitiethoadon AS cthd ON ctsp.idChiTietSanPham = cthd.idChiTietSanPham
                                                                     JOIN danhmucsanpham AS dm ON sp.idDanhMuc = dm.idDanhMuc
+                                                                    WHERE sp.idSanPham > 0 AND sp.trangthai > 0
                                                                     GROUP BY sp.idSanpham, dm.tendanhmuc
                                                                     ORDER BY tongSoLuongBan DESC");
                 ?>
@@ -320,15 +308,18 @@
                     <?php 
                         while($row_best_products = mysqli_fetch_array($sql_best_products)){
                             ?>
+                    
                     <div class="best_sellers_products_list_card">
-                        <img class="card-img-top best_sellers_list_card_img" src="./public/assets/images/products/<?php echo $row_best_products['urlHinhAnh']?>" alt="Card image" style="width:100%">
+                    <a style="color: #333; text-decoration: none;" href="index.php?page=details&id=<?php echo htmlentities($row_best_products['idSanPham'])?>">
+                        <img class="card-img-top best_sellers_list_card_img" src="../public/assets/images/products/<?php echo $row_best_products['urlHinhAnh']?>" alt="Card image" style="width:100%">
                         <div class="best_sellers_list_card_body">
                             <p class="best_sellers_list_card_body_title"><?php echo $row_best_products['tensanpham']?></>
                             <p class="best_sellers_list_card_body_kind"><?php echo $row_best_products['tendanhmuc']?></p>
-                            <p class="best_sellers_list_card_body_price"><?php echo $row_best_products['dongia']?> đ</p>
+                            <p class="best_sellers_list_card_body_price"><?php echo number_format($row_best_products['dongia'],0,',','.') ?> đ</p>
                         </div>
+                        </a>
                     </div>
-                            
+                    
                             
                             <?php
                         }
@@ -344,4 +335,5 @@
         <script>
         // Xuất mảng ảnh sang một biến JavaScript toàn cục
         window.imageUrlsFromPhp = <?php echo json_encode($imageUrls); ?>; 
+
         </script>

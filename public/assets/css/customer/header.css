@@ -54,7 +54,6 @@
     font-weight: bold;
 }
 
-/* trang tiếp theo */
 .header_link_next{
     position: relative;
     display: inline-block;
@@ -180,31 +179,6 @@
     right: 20px;
 }
 
-.nav_tool_search{
-    height: 40px;
-    background-color: white;
-    cursor: pointer;
-    line-height: 35.5px;
-    width: 225px;
-    margin-top: 20px;
-    margin-right: 15px;
-    border-radius: 20px;
-    position: relative;
-    /* overflow: hidden; */
-    background-color: rgb(245, 245, 245);
-}
-
-#nav_tool_search_input{
-    padding:0 15px;
-    width: 195px;
-    outline: none;
-    position: absolute;
-    left: 5px;
-    top: 2px;
-    border: none;
-    background-color: rgb(245, 245, 245);
-    border-radius: 25px;
-}
 
 #nav_tool_search_icon{
     position: absolute;
@@ -231,7 +205,6 @@
 }
 
 .nav_tool_mark{
-    /* background-color: aqua; */
     border-radius: 50%;
     height: 35px;
     width: 35px;
@@ -291,26 +264,6 @@
     margin: 0px 10px;
 }
 
-.close_search_top{
-    display:none ;
-    z-index: 3000;
-    position: absolute;
-    margin-top: -40px;
-    right: 3%;
-    padding: 7px 13px;
-    border: 1px solid #ffffff;
-    border-radius: 50%;
-    background-color: white;
-}
-
-.close_search_top:hover{
-    background-color: #333;
-    color: white;
-    transition: all 0.3s ease;
-}
-
-
-/* test */
 .nav_tool_search_icon_box{
     background-color: white;
     margin: 19px 15px;
@@ -319,51 +272,13 @@
     border-radius: 25px;
     display: flex;
     position: relative;
+    cursor: pointer;
 }
 
 .nav_tool_search_icon_box_text{
     position: absolute;
     left: 15px;
     top: 8px;
-}
-
-.nav_tool_search{
-    /* display: block; */
-    display: none;
-    z-index: 3000;
-    width: 65vw;
-    position: relative;
-}
-
-#nav_tool_search_input{
-    width: 98%;
-}
-
-.nav_tool_box{
-    display: none;
-    /* display: block; */
-    height: 380px;
-    top: 0;
-    background-color: white;
-    width: 100%;
-    position: relative;
-    z-index: 2000;
-    position: fixed;
-    right: 0px;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
-}
-
-.close_search_top{
-    display:none ;
-    /* display: block; */
-    top: 60px;
-    z-index: 3000;
-    position: absolute;
-    margin-top: -40px;
-    right: 3%;
-    padding: 7px 13px;
-    border: 1px solid black;
-    border-radius: 50%;
 }
 
 .main{
@@ -392,7 +307,99 @@
     color: #a2a2a2;
 }
 
+/* search box */
+#search_box{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(240, 240, 240, 0.3);
+    /* display: flex; */
+    justify-content: center;
+    display: none;
+}
 
+.box_container{
+    width: 100%;
+}
+
+.search_box_container{
+    background-color: white;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 45px;
+}
+
+.search_box_logo{
+    width: 45px;
+}
+
+.search_box_logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#search_box_input{
+    border: 0.5px solid #333;
+    padding: 5px 20px;
+    border-radius: 22px;
+    outline: none;
+    height: 45px;
+    width: 40%;
+}
+
+#search_box_close{
+    border: 0.5px solid #333;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    border-radius: 50%;
+}
+
+#search_box_close:hover{
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+}
+
+.product_search{
+    background-color: white;
+    
+}
+
+.search_container{
+    margin:0px 475px;
+    
+}
+
+.product_card_search{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0px;
+}
+
+.card_search_left{
+    display: flex;
+    align-items: center;
+}
+
+.card_search_img{
+    width: 60px;
+}
+
+.card_search_img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 @media (min-width: 400px) and (max-width: 1060px) {
     .list_nav_after_hidden{
