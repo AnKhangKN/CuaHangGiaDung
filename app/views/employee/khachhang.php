@@ -15,7 +15,7 @@
                           <table class="table table-hover text-center">
                               <thead>
                                 <tr>
-                                  <th>Tên khách hàng</th>
+                                  <th>Tên khách hàng hh</th>
                                   <th>Số điện thoại</th>
                                 </tr>
                               </thead>
