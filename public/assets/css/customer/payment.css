@@ -58,12 +58,14 @@
 
 
 .infor_payment_btn_continue{
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: none;
     color: white;
     height: 45px;
     font-weight: 500;
-    width: 195px;
+    width: 210px;
     border-radius: 5px;
     outline: none;
     background-color: #333;
@@ -123,13 +125,14 @@
 }
 
 #btn_confirm_account{
-    text-align: center;
-    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: none;
     color: white;
     line-height: 45px;
     font-weight: 500;
-    width: 195px;
+    width: 205px;
     border-radius: 5px;
     outline: none;
     background-color: #333;
@@ -147,6 +150,53 @@
 }
 
 .key_frame_spin{
+    animation: spin 1s linear infinite; 
+}
+
+@keyframes spin {
+    0% {
+    transform: rotate(0deg); 
+    }
+    100% {
+    transform: rotate(360deg); 
+    }
+}
+
+
+/* confirm payment modal */
+.confirm_payment{
+    display: none;
+    /* display: flex; */
+    position: fixed;
+    background-color: rgb(170, 170, 170, 0.5);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.container_comfirm{
+    width: 200px;
+    background-color: rgb(255, 255, 255);
+    color:  rgb(0, 255, 0);
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px;
+    border-radius: 50%;
+    border: 0.5px solid #ffffff;
+}
+
+.loading-circle {
+    margin-left: 5px;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3; 
+    border-top: 2px solid #333;
+    border-radius: 50%; 
     animation: spin 1s linear infinite; 
 }
 

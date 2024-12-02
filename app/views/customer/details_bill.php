@@ -11,6 +11,8 @@
 
         $Customer = getCustomerById($_SESSION['user_id']);
 
+        $_SESSION['idKhachHang'] = $Customer['idKhachHang'];
+
         $Bill = getBillById($idBill);
 
         if(!$DetailBillid){
@@ -100,13 +102,30 @@
                                         foreach($detailsBill as $rowDetailBill){
                                             ?>
 
-                                    <tr>
-                                        <td><?php echo htmlentities($rowDetailBill['tensanpham'])?></td>
-                                        <td><?php echo htmlentities($rowDetailBill['soluong'])?></td>
-                                        <td><?php echo htmlentities($rowDetailBill['mausac'])?></td>
-                                        <td><?php echo htmlentities($rowDetailBill['kichthuoc'])?></td>
+                                    <tr class="row_product">
                                         <td>
-                                            <button class="btn_reorder">Mua lại</button>
+                                            <span class="idSanPham"><?php echo htmlentities($rowDetailBill['idSanPham'])?></span>
+                                            <span class="tensanpham"><?php echo htmlentities($rowDetailBill['tensanpham'])?></span>
+                                        </td>
+                                        <td>
+                                            <?php echo htmlentities($rowDetailBill['soluong'])?>
+                                        </td>
+                                        <td>
+                                            <?php echo htmlentities($rowDetailBill['mausac'])?>
+                                        </td>
+                                        <td>
+                                            <?php echo htmlentities($rowDetailBill['kichthuoc'])?>
+                                        </td>
+                                        <td>
+                                            <?php 
+                                            if($Bill['trangthai'] == 2){
+                                                ?> 
+                                                <button class="btn_comment btn_get_comment">Nhận xét</button>
+                                                <?php 
+                                            } else{
+
+                                                ?>
+                                            <?php }?>
                                         </td>
                                     </tr>
 
@@ -125,6 +144,41 @@
                 </div>
                 
                 
+            </div>
+
+
+            <!-- modal comment -->
+            <div id="container_comment" class=" position-fixed top-0 start-0 end-0 bottom-0  justify-content-center align-items-center">
+                
+                <div class="content_comment bg-white h-75 w-50 rounded p-3 position-relative">
+                    <div class="header_comment">
+                        <p class="fs-3 text">Đánh giá sản phẩm</p>
+                    </div>
+                    
+                    <div class="content_comment mt-4">
+                        <div class="img_title d-flex align-content-center">
+                            <div class="content_comment_img" style="width: 100px;">
+                                <img id="product_img" src="" class="w-100 h-100 object-fit-cover" alt="">
+                            </div>
+                            <span class="d-none" id="product_id">id san pham</span>
+                            <p style="font-size: 17px;" id="product_name">Ten san pham</p>
+                        </div>
+                        
+                        <div class="text mt-4">
+                            <div class="form-floating">
+                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 200px"></textarea>
+                                <label for="floatingTextarea2">Comments</label>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="footer_comment d-flex align-content-center">
+                        <button id="cancel_comment" class="position-absolute btn btn-light bg-white" style="bottom: 20px; right: 200px;">Trở lại</button>
+                        <button id="send_comment" class="position-absolute btn btn-dark" style="bottom: 20px; right: 20px;">Hoàn thành</button>
+                    </div>
+                    
+                </div>
             </div>
             
         </main>

@@ -105,28 +105,269 @@ showPassWord('showPassLate', 'PassLate');
 showPassWord('showPassNew', 'PassNew');
 showPassWord('showPassConfirm', 'PassConfirm');
 
+// change info
+
+
+
 $(document).ready(function () {
-    $(".btnChange").click(function (e) { 
-        e.preventDefault();
+
+    // Hàm thay đổi thông tin của khách hàng
+    function changeInfo(idKhachHang) {
+        const container = $('.modal_container.active'); // Chỉ thao tác với modal hiện tại (đã có class active)
         
-        const container = $(this).closest('.modal_container'); 
-        
-        const inputName = container.find(".change_input").attr('name');
-        const inputChange = container.find(".change_input").val();
-        
+        if (container.length === 0) {
+            console.error("Không tìm thấy modal_container.");
+            return;
+        }
+    
+        const inputElem = container.find('.change_input');
+        if (inputElem.length === 0) {
+            console.error("Không tìm thấy input.");
+            return;
+        }
+    
+        const inputValue = inputElem.val();
+        const inputName = inputElem.attr('name');
+        if (!inputName) {
+            console.warn("Không tìm thấy thuộc tính name.");
+            return;
+        }
+    
+        // Gửi yêu cầu AJAX để thay đổi thông tin khách hàng
         $.ajax({
             type: "POST",
-            url: "url",
+            url: "/CuaHangDungCu/app/controllers/customer/update_info.php",
             data: {
+                action: 'changeInfo',
+                inputValue: inputValue,
                 inputName: inputName,
-                inputChange: inputChange
+                idKhachHang: idKhachHang
+            },
+            beforeSend: function () {
+                $(".btnChange").prop("disabled", true).text("Đang xử lý...");
+            },
+            success: function (response) {
+                try {
+                    const data = JSON.parse(response);
+                    if (data.success) {
+                        alert("Cập nhật thông tin thành công!");
+                        
+                        // Lưu trạng thái modal vào localStorage để sau khi tải lại trang có thể mở modal lại
+                        localStorage.setItem('modalState', 'open'); 
+            
+                        // Tải lại trang
+                        location.reload();
+                    } else {
+                        alert("Cập nhật thất bại: " + data.message);
+                    }
+                } catch (e) {
+                    console.error("Phản hồi không hợp lệ:", response);
+                }
+            }
+            ,
+            error: function (xhr, status, error) {
+                console.error("Lỗi:", status, error);
+                alert("Đã xảy ra lỗi khi gửi dữ liệu!");
+            },
+            complete: function () {
+                $(".btnChange").prop("disabled", false).text("Lưu lại thay đổi");
+            }
+        });
+    }
+
+    // Khi người dùng click vào nút Lưu thay đổi
+    $(".btnChange").click(function (e) {
+        e.preventDefault();
+    
+        const currentModal = $(this).closest('.modal_container'); 
+        
+        
+        $(".modal_container").removeClass("active"); 
+        currentModal.addClass("active"); // Thêm class 'active' vào modal hiện tại
+    
+        // Kiểm tra trạng thái đăng nhập của khách hàng
+        $.ajax({
+            type: "POST",
+            url: "/CuaHangDungCu/app/controllers/customer/check_customer_status.php",
+            dataType: "json",
+            success: function (response) {
+                if (response.status === 'logged_in') {
+                    changeInfo(response.idKhachHang);
+                } else {
+                    alert("Không thể xác định trạng thái khách hàng.");
+                    console.log(response.status);
+                }
+            },
+            error: function () {
+                alert("Lỗi khi kiểm tra trạng thái khách hàng.");
+            }
+        });
+    });
+
+    $("#send_code").click(function (e) { 
+        e.preventDefault(); 
+        const container = $(this).closest("#changeEmail");
+    
+        const newEmail = container.find("#new_email").val(); 
+
+        if(!newEmail){
+            alert("Hãy nhập email để nhận mã xác thực");
+            return;
+        }
+    
+        $.ajax({
+            type: "POST",
+            url: "/CuaHangDungCu/app/controllers/customer/updateEmail.php",
+            data: {
+                action: "sendCode",
+                newEmail: newEmail
             },
             success: function (response) {
                 console.log(response);
             }
         });
+    });
 
+    function changeEmail(idKhachHang) {
+        // Ensure that the container is correctly identified
+        const container = $("#changeEmail");
+    
+        const newEmail = container.find("#new_email").val();
+        const code = container.find("#codeNewEmail").val();
+    
+        // Validate inputs
+        if (!newEmail || !code) {
+            alert("Vui lòng nhập email và mã xác thực.");
+            return;
+        }
+    
+        // AJAX request to update email
+        $.ajax({
+            type: "POST",
+            url: "/CuaHangDungCu/app/controllers/customer/updateEmail.php",
+            data: {
+                action: "updateEmail",
+                newEmail: newEmail,
+                code: code,
+                idKhachHang: idKhachHang
+            },
+            success: function (response) {
+                console.log(response);
+                alert(response); // Notify the user about the result
+                localStorage.setItem('modalState', 'open'); 
+            
+                location.reload();
+            },
+            error: function () {
+                alert("Đã xảy ra lỗi khi cập nhật email.");
+            }
+        });
+    }
+    
+    $("#changeEmail_btn").click(function (e) {
+        e.preventDefault();
+    
+        // Check customer status
+        $.ajax({
+            type: "POST",
+            url: "/CuaHangDungCu/app/controllers/customer/check_customer_status.php",
+            dataType: "json",
+            success: function (response) {
+                if (response.status === "logged_in") {
+                    changeEmail(response.idKhachHang);
+                } else {
+                    alert("Không thể xác định trạng thái khách hàng.");
+                    console.log(response.status);
+                }
+            },
+            error: function () {
+                alert("Lỗi khi kiểm tra trạng thái khách hàng.");
+            }
+        });
+    });
+    
+
+    function changePassword(idKhachHang) {
+        const container = $("#changePassword");
+    
+        const PassWordLate = container.find("#PassLate").val(); // Lấy giá trị từ input
+        const PassWordNew = container.find("#PassNew").val(); // Lấy giá trị từ input
+        const PassWordConfirm = container.find("#PassConfirm").val(); // Lấy giá trị từ input
+    
+        // Kiểm tra mật khẩu cũ và mới không được giống nhau
+        if (PassWordLate === PassWordNew) {
+            alert('Mật khẩu mới không được trùng với mật khẩu cũ!');
+            return;
+        }
+    
+        // Kiểm tra mật khẩu mới và mật khẩu xác nhận phải giống nhau
+        if (PassWordNew !== PassWordConfirm) {
+            alert('Mật khẩu xác nhận không đúng!');
+            return;
+        }
+    
+        // Gửi yêu cầu AJAX để thay đổi mật khẩu
+        $.ajax({
+            type: "POST",
+            url: "/CuaHangDungCu/app/controllers/customer/updatePassword.php",
+            data: {
+                action: 'ChangePassWord',
+                idKhachHang: idKhachHang,
+                PassWordLate: PassWordLate,
+                PassWordNew: PassWordNew,
+                PassWordConfirm: PassWordConfirm
+            },
+            success: function (response) {
+                const data = JSON.parse(response)
+                alert(data.message);
+                console.log(response); 
+            },
+            error: function(xhr, status, error) {
+                console.error("Lỗi:", error);
+                alert("Đã có lỗi xảy ra khi thay đổi mật khẩu.");
+            }
+        });
+    }
+
+    $("#changePassword_btn").click(function (e) { 
+        e.preventDefault();
+        
+
+        $.ajax({
+            type: "POST",
+            url: "/CuaHangDungCu/app/controllers/customer/check_customer_status.php",
+            dataType: "json",
+            success: function (response) {
+                if(response.status === 'logged_in'){
+                    changePassword(response.idKhachHang);
+                }else {
+                    alert("Không thể xác định trạng thái khách hàng.");
+                    console.log(response.status);
+                }
+            },
+            error: function () {
+                alert("Lỗi khi kiểm tra trạng thái khách hàng.");
+            }
+        });
 
     });
+
 });
+
+$(document).ready(function () {
+    // Kiểm tra trạng thái modal sau khi tải lại trang
+    if (localStorage.getItem('modalState') === 'open') {
+        const modal = $('#setting'); 
+        const overviewModal = $('#overview');
+        if (modal.length > 0) {
+            modal.css('display', 'block'); // Đảm bảo modal được hiển thị
+            overviewModal.css('display', 'none')
+            window.location.hash = '#setting'; // Giữ vị trí phần tử modal trong URL
+            
+            // Sau khi mở modal, xóa trạng thái modal khỏi localStorage
+            localStorage.removeItem('modalState');
+        }
+    }
+});
+
 

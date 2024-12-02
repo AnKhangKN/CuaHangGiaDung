@@ -239,6 +239,7 @@ $(document).ready(function () {
         const tongtien = container_payment.find('.total_bill_due_price').text();
         const cleanTotalPrice = parseFloat(tongtien.replace(/\./g, '').replace(',', '.')) || 0;
         const ghichu = container_payment.find('#exampleFormControlTextarea1').val();
+
     
         let products = [];
         $('.list_infor_products_payment_item').each(function () {
@@ -260,15 +261,29 @@ $(document).ready(function () {
                 idKhachHang: idKhachHang,
                 products: JSON.stringify(products)
             },
+            beforeSend: function () {
+                
+                $(".loader").addClass("loading-circle");
+                
+            },
             success: function (response) {
-                console.log(response);
                 const data = JSON.parse(response);
                 if (data.status === 'success') {
-                    alert('Hóa đơn đã được thêm thành công! ID Hóa đơn: ' + data.idHoaDon);
+                    $('.loader').removeClass('loading-circle');
+                    const modal = $('.confirm_payment')[0];  // Truy cập phần tử DOM thực sự
+                    if (modal) {
+                        modal.style.display = 'flex';
+                        setTimeout(function() {
+                            modal.style.display = 'none';  // Hiển thị modal sau 300ms
+                        }, 1500);
+                    } else {
+                        console.log("Modal không được tìm thấy");
+                    }
                 } else {
                     alert('Lỗi: ' + data.message);
                 }
-            },
+            }            
+            ,
             error: function () {
                 alert('Có lỗi xảy ra trong quá trình gửi dữ liệu!');
             }
@@ -337,9 +352,10 @@ $(document).ready(function () {
                 $(".sent_code").addClass("key_frame_spin");
             },
             success: function (response) {
-                if(response === 'Đã xảy ra lỗi: Email đã tồn tại trong hệ thống.') { // Use === for comparison
-                    $(".sent_code").removeClass("key_frame_spin"); // Corrected selector syntax
-                    alert('Email đã tồn tại!');
+                if(response === 'Đã xảy ra lỗi: Email đã tồn tại trong hệ thống.') { 
+                    $(".sent_code").removeClass("key_frame_spin"); 
+                    $('#modalErrorMessage').text("Email đã tồn tại!");
+                    $('#errorModal').modal('show');
                 }
                 $(".sent_code").removeClass("key_frame_spin"); // Corrected selector syntax
             },
@@ -390,17 +406,30 @@ $(document).ready(function () {
                 ghichu: ghichu,
                 products: JSON.stringify(products)
             },
+            beforeSend: function () {
+                // Hiển thị hiệu ứng tải trước khi gửi
+                $(".loader").addClass("loading-circle");
+            },
             success: function (response) {
-                console.log(response);
+                $('.loader').removeClass('loading-circle');
                 const data = JSON.parse(response);
                 if (data.status === 'success') {
-                    alert('Hóa đơn đã được thêm thành công! ID Hóa đơn: ' + data.idHoaDon);
+                    const modal = $('.confirm_payment')[0];  // Truy cập phần tử DOM thực sự
+                    if (modal) {
+                        modal.style.display = 'flex';
+                        setTimeout(function() {
+                            modal.style.display = 'none';  // Hiển thị modal sau 300ms
+                        }, 1500);
+                    } else {
+                        console.log("Modal không được tìm thấy");
+                    }
                 } else {
                     alert('Lỗi: ' + data.message);
                 }
-            },
+            }  ,
             error: function () {
-                alert('Có lỗi xảy ra trong quá trình gửi dữ liệu!');
+                $('#modalErrorMessage').text("Có lỗi xảy ra trong quá trình gửi dữ liệu!");
+                $('#errorModal').modal('show');
             }
         });
     }
@@ -421,7 +450,8 @@ $(document).ready(function () {
                         handleGuestCustomer();
                         
                     } else {
-                        alert("Không thể xác định trạng thái khách hàng.");
+                        $('#modalErrorMessage').text("Không thể xác định trạng thái khách hàng.");
+                        $('#errorModal').modal('show');
                         console.log(response.status);
                     }
                 },

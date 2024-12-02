@@ -10,7 +10,8 @@ if(isset($_SESSION['user_id'])) {
     $id = $_SESSION['user_id'];
     $Customer = getCustomerById($id);
     $Account = getAccountById($id);
-    
+
+    $_SESSION['idKhachHang'] = $Customer['idKhachHang'];
 } 
 
 ?>
@@ -127,7 +128,7 @@ if(isset($_SESSION['user_id'])) {
                                     
                                     <div class="infor_update_item">
                                         <span>Số điện thoại</span>
-                                        <p class="infor_update_item_text">0<?php echo htmlentities($Customer['sdt'])?></p>
+                                        <p class="infor_update_item_text"><?php echo htmlentities($Customer['sdt'])?></p>
                                         <i class="fa-regular fa-pen-to-square" id="clickChangePhone"></i>
                                     </div>
                                     
@@ -164,7 +165,7 @@ if(isset($_SESSION['user_id'])) {
                                             <p>Họ và Tên</p>
                                         </div>
                                         <div class="modal_body">
-                                            <input type="text" name="name" class="change_input">
+                                            <input type="text" name="tenkhachhang" class="change_input">
                                         </div>
                                         <div class="modal_footer">
                                             <button class="btnChange">Lưu lại thay đổi</button>
@@ -179,7 +180,7 @@ if(isset($_SESSION['user_id'])) {
                                             <p>Số điện thoại</p>
                                         </div>
                                         <div class="modal_body">
-                                            <input type="text" name="phone" class="change_input">
+                                            <input type="text" name="sdt" class="change_input">
                                         </div>
                                         <div class="modal_footer">
                                             <button class="btnChange">Lưu lại thay đổi</button>
@@ -194,7 +195,7 @@ if(isset($_SESSION['user_id'])) {
                                             <p>Địa chỉ</p>
                                         </div>
                                         <div class="modal_body">
-                                            <input type="text" name="address" class="change_input">
+                                            <input type="text" name="diachi" class="change_input">
                                         </div>
                                         <div class="modal_footer">
                                             <button class="btnChange">Lưu lại thay đổi</button>
@@ -209,10 +210,16 @@ if(isset($_SESSION['user_id'])) {
                                             <p>Email</p>
                                         </div>
                                         <div class="modal_body">
-                                            <input type="text" name="email" class="change_input">
+                                            <span>Email *</span>
+                                            <input type="text" name="email" id="new_email">
+                                            <div style="margin-top: 30px; position:relative;">
+                                                <span>Code *</span>
+                                                <i id="send_code" style="position: absolute; top: 40px; right: 15px; cursor: pointer;" class="fa-solid fa-repeat"></i>
+                                                <input type="text" name="code" id="codeNewEmail">
+                                            </div>
                                         </div>
                                         <div class="modal_footer">
-                                            <button class="btnChange">Lưu lại thay đổi</button>
+                                            <button id="changeEmail_btn">Lưu lại thay đổi</button>
                                         </div>
                                     </div>
 
@@ -243,7 +250,7 @@ if(isset($_SESSION['user_id'])) {
                                             
                                         </div>
                                         <div class="modal_footer">
-                                            <button>Lưu lại thay đổi</button>
+                                            <button id="changePassword_btn">Lưu lại thay đổi</button>
                                         </div>
                                     </div>
 

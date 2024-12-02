@@ -23,7 +23,7 @@
     <!-- css -->
     <link rel="stylesheet" href="../public/assets/css/others/login.css">
 
-    <title>Đăng nhập</title>
+    <title>Quên mật khẩu</title>
 </head>
 <body>
     
@@ -42,6 +42,8 @@
 
         <div class="errorPassword" id="password_error" style="margin-bottom: 10px;"></div>
 
+        <div class="errorCode" id="code_error" style="margin-bottom: 10px;"></div>
+
         <div class="errorEmail" id="email_error" style="margin-bottom: 10px;"></div>
 
         <div class="input_container">
@@ -51,26 +53,33 @@
             </div>
         </div>
         
-
         <div class="input_container">
             <div class="input_group">
-                <input type="password" class=" password" id="input_password" tabindex="2" autocomplete="off">
-                <label for="input_password">Password *</label>
+                <input type="code" class=" code" id="input_code" tabindex="2" autocomplete="off">
+                <label for="input_code">Code *</label>
+                <button id="getCode"> Nhận code * <div class="btn_code "></button>
+
             </div>
         </div>
 
-        <a href="http://localhost/CuaHangDungCu/public/forgot.php">Quên mật khẩu?</a>
+
+        <div class="input_container">
+            <div class="input_group">
+                <input type="password" class=" password" id="input_password" tabindex="3" autocomplete="off">
+                <label for="input_password">New Password *</label>
+            </div>
+        </div>
 
         <p class="main_title">HKN Store – Mua thông minh, sắm chất lượng.</p>
 
         <div class="main_btn_group">
             <a href="index.php" tabindex="4" class="main_btn_group_back text-black">Trở về</a>
-            <button class="button main_btn_group_login" tabindex="3">Đăng nhập <div class="btn_login "></div></button>
+            <button id="btn_changePass" class="button main_btn_group_login" tabindex="4">Trở lại đăng nhập <div class="btn_login "></div></button>
         </div>
     
     </main>
 </div>
 
-<script src="../public/assets/js/others/login.js"></script>
+<script src="../public/assets/js/others/forgot.js"></script>
 </body>
 </html>

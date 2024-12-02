@@ -265,13 +265,13 @@ if(isset($_SESSION['user_id'])) {
                                 <?php
                                 if(isset($_SESSION['user_id']) && isset($_SESSION['idKhachHang'])){
                                     ?>
-                                    <button class="infor_payment_btn_continue">Hoàn thành đơn hàng</button>
+                                    <button class="infor_payment_btn_continue">Hoàn thành đơn hàng <div class="loader "></div></button>
 
                                     <?php
                                 }else{
                                     ?>
                                     
-                                <button id="btn_confirm_account">Xác nhận để đặt hàng</button>
+                                    <button id="btn_confirm_account">Xác nhận để đặt hàng <div class="loader "></div></button>
                                     
                                     <?php
                                 }
@@ -281,6 +281,13 @@ if(isset($_SESSION['user_id'])) {
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- Modal Confirm -->
+            <div class="confirm_payment">
+                <div class="container_comfirm">
+                    <i class="fa-solid fa-check"></i>
                 </div>
             </div>
 

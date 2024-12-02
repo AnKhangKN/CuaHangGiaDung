@@ -55,5 +55,8 @@
 
     <script src="../public/assets/js/customer/payment.js"></script>
 
+    <script src="../public/assets/js/customer/details_bill.js"></script>
+
+
 </body>
 </html>

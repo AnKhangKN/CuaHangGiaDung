@@ -31,8 +31,6 @@
             return 0;
         }
     }
-    
-    
 
     // get img product detail
     function getImageUrlsByProductId($product_id) {
@@ -195,7 +193,7 @@
     
         $idBill = (int)$idBill;
         if ($idBill > 0) {
-            $sql = 'SELECT sp.tensanpham, SUM(cthd.soluong) soluong ,  ms.mausac,  kt.kichthuoc
+            $sql = 'SELECT sp.idSanPham, sp.tensanpham, SUM(cthd.soluong) soluong ,  ms.mausac,  kt.kichthuoc
                     FROM chitiethoadon cthd
                     JOIN chitietsanpham ctsp ON ctsp.idChiTietSanPham = cthd.idChiTietSanPham
                     JOIN sanpham sp ON sp.idSanPham = ctsp.idSanPham
@@ -467,5 +465,36 @@
         return [];
     }
 
+
+    // update information
+    function updateInfo($ChangeItem, $Item, $CustomerId) {
+        $conn = connectBD();
+    
+        $allowedColumns = ['tenkhachhang', 'sdt', 'diachi'];
+        if (!in_array($ChangeItem, $allowedColumns)) {
+            return "Tên cột không hợp lệ.";
+        }
+    
+        $sql = "UPDATE khachhang SET $ChangeItem = ? WHERE idKhachHang = ?";
+        $stmt = $conn->prepare($sql);
+    
+        if ($stmt === false) {
+            return "Lỗi khi chuẩn bị câu lệnh: " . $conn->error;
+        }
+    
+        $stmt->bind_param('si', $Item, $CustomerId);
+        $stmt->execute();
+    
+        if ($stmt->error) {
+            return "Lỗi khi thực thi câu lệnh: " . $stmt->error;
+        }
+    
+        $stmt->close();
+        $conn->close();
+    
+        return "Cập nhật thành công!";
+    }
+    
+    
 ?>
 
