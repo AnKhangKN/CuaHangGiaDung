@@ -1,3 +1,10 @@
+<?php
+include_once "../../app/controllers/employee/all_function.php";
+
+?>
+
+
+
 <main class="main">
         <div class="container-fluid">
             <div class="row">
@@ -9,29 +16,91 @@
                                 <input type="text" id="search" placeholder="Nhập từ khóa tìm kiếm">                    
                             </div>
                         </div>
+<!-- ---------------------------------------------------------------- -->
                         <div class="container_table">
-                            <table class="table table-hover text-center">
+                            <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                    <th>Tên sản phẩm</th>
-                                    <th>Mã sản phẩm</th>
-                                    <th>Hình ảnh</th>
-                                    <th>Giá bán</th>
+                                        <th>Mã sản phẩm</th>
+                                        <th>Tên sản phẩm</th>
+                                        <th>Hình ảnh</th>
+                                        <th>Giá</th>
                                     </tr>
                                 </thead>
+
                                 <tbody>
-                                    <tr>
-                                    <td>Giày Nike Đỏ</td>
-                                    <td>GiayNike123</td>
-                                    <td>                                                 
-                                        <div class="header_img">
-                                            <img src="../../public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
-                                        </div>
-                                    <td>1000000</td>
+                                    <?php
+                                    $Product = getProduct();
+
+                                    foreach ($Product as $Row){
+                                        ?>
+                                        
+                                    <tr class="cell_product">
+                                        <td class="idSanPham"><?php echo htmlentities($Row['idSanPham'])?></td>
+                                        <td class="tenSanPham"><?php echo htmlentities($Row['tensanpham'])?></td>
+                                        <td >
+                                            <div class="product_img" style="width: 90px;">
+                                                <img class="w-100 h-100 object-fit-cover imgSanPham" 
+                                                src="../../public/assets/images/products/<?php echo htmlentities($Row['urlHinhAnh'])?>" alt="">
+                                            </div>
+                                        </td>
+                                        <td class="giaSanPham"><?php echo number_format($Row['dongia'], 0, ',', '.')?></td>
                                     </tr>
+                                        
+                                        <?php
+                                    }
+                                    
+                                    ?>
+                                    
                                 </tbody>
                             </table>
                         </div>
+
+                        <!-- modal detail -->
+                        <div id="modal_product_detail">
+                            <div class="container_product w-50 h-75 bg-white rounded-2">
+                                <div class="product_detail p-5  ">
+                                    <div class="product_detail_header d-flex align-content-center">
+                                        <div class="product_img w-25">
+                                            <img id="imgProduct" class="w-100 h-100 object-fit-cover" src="../../public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
+                                        </div>
+                                        <div class="product_name">
+                                            <p id="ProductName">áo thun</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="product_detail_body">
+                                        <div class="detail_size d-flex align-content-center">
+                                            <span>Kích thước</span>
+                                            <div class="size_checkbox " style="margin-left: 30px;">
+                                                <div id="sizeList"></div>
+
+                                            <input type="checkbox" class="size" value="" name="" id="">
+                                            
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="detail_color d-flex align-content-center">
+                                            <span>Màu sắc</span>
+                                            <div class="color_checkbox " style="margin-left: 46px;">
+                                            <div id="colorList"></div>
+                                            <input type="checkbox" class="color" value="" name="" id="">
+                                            
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="product_detail_footer d-flex justify-content-between align-content-center">
+                                        <button id="close">Trở lại</button>
+                                        <button id="add">Thêm vào mua hàng</button>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+<!-- ---------------------------------------------------------------- -->
                     </div>
                 </div>
                 <div class="col-lg-6">

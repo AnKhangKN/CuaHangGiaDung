@@ -1,5 +1,7 @@
 <?php
 
+include "../../config/connectdb.php";
+
 include '../../app/views/employee/include/header.php';
 
 // Kiểm tra và xử lý giá trị 'page'

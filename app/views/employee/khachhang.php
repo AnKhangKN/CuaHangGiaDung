@@ -1,3 +1,10 @@
+<?php
+include_once "../../app/controllers/employee/all_function.php";
+?>
+
+
+
+
 <main class="main">
       <div class="container-fluid">
           <div class="row">
@@ -15,35 +22,27 @@
                           <table class="table table-hover text-center">
                               <thead>
                                 <tr>
+                                  <th>Mã khách hàng</th>
                                   <th>Tên khách hàng</th>
                                   <th>Số điện thoại</th>
                                 </tr>
                               </thead>
                               <tbody>
+                              <?php
+                              $Customer = getCustomer();
+                              foreach($Customer as $row){
+                                  ?>    
                                 <tr>
-                                  <td>An Khang</td>
-                                  <td>0987654321</td>
+                                  <td><?php echo htmlentities($row['idKhachHang'])?></td>
+                                  <td><?php echo htmlentities($row['tenkhachhang'])?></td>
+                                  <td><?php echo htmlentities($row['sdt'])?></td>
                                 </tr>
-                                <tr>
-                                  <td>Khánh Ngọc</td>
-                                  <td>0123456789</td>
-                                </tr>
-                                <tr>
-                                  <td>Văn Hiếu</td>
-                                  <td>0987612345</td>
-                                </tr>
-                                <tr>
-                                  <td>A</td>
-                                  <td>049394138</td>
-                                </tr>
-                                <tr>
-                                  <td>B</td>
-                                  <td>054123414</td>
-                                </tr>
-                                <tr>
-                                  <td>C</td>
-                                  <td>098767896</td>
-                                </tr>
+                                <?php
+                              }
+                              ?>
+
+                            
+                                
                                
                               </tbody>
                             </table>
