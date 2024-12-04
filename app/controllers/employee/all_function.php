@@ -79,7 +79,7 @@ function getColorByProductId($ProductId) {
 
     // Lặp qua các kết quả và thêm vào mảng
     while ($row = $result->fetch_assoc()) {
-        $colors[] = $row['mausac']; // Lấy giá trị màu sắc và thêm vào mảng
+        $colors[] = $row; // Lấy giá trị màu sắc và thêm vào mảng
     }
 
     // Đóng kết nối
@@ -114,7 +114,10 @@ function getSizeByProductId($ProductId) {
 
     // Lặp qua các kết quả và thêm vào mảng
     while ($row = $result->fetch_assoc()) {
-        $sizes[] = $row['kichthuoc']; // Lấy giá trị kích thước và thêm vào mảng
+        // Đảm bảo rằng mỗi phần tử trong mảng có khóa 'kichthuoc'
+        if (isset($row['kichthuoc'])) {
+            $sizes[] = $row; // Thêm vào mảng kết quả
+        }
     }
 
     // Đóng kết nối
@@ -129,6 +132,7 @@ function getInfo($Info) {
     // Kết nối tới cơ sở dữ liệu
     $conn = connectBD();
 
+<<<<<<< HEAD
     // Câu lệnh SQL để lấy dữ liệu
     $sql = "SELECT nhanvien.idNhanVien, nhanvien.tennhanvien, nhanvien.sdt, nhanvien.cccd, nhanvien.luong, nhanvien.thuong
             FROM `nhanvien`
@@ -163,3 +167,7 @@ function getInfo($Info) {
 
 
 ?>
+=======
+
+?>
+>>>>>>> c60f8a6ed4098b22cf9bc7d3116f04b2d020fb43
