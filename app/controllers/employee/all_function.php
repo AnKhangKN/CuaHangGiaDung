@@ -125,5 +125,41 @@ function getSizeByProductId($ProductId) {
     return $sizes;
 }
 
+function getInfo($Info) {
+    // Kết nối tới cơ sở dữ liệu
+    $conn = connectBD();
+
+    // Câu lệnh SQL để lấy dữ liệu
+    $sql = "SELECT nhanvien.idNhanVien, nhanvien.tennhanvien, nhanvien.sdt, nhanvien.cccd, nhanvien.luong, nhanvien.thuong
+            FROM `nhanvien`
+            JOIN taikhoan ON taikhoan.idTaiKhoan = nhanvien.idTaiKhoan
+            WHERE taikhoan.idTaiKhoan = ?";
+
+    // Chuẩn bị câu lệnh SQL
+    if ($stmt = $conn->prepare($sql)) {
+        // Gán tham số vào truy vấn
+        $stmt->bind_param('i', $Info);
+
+        // Thực thi câu truy vấn
+        $stmt->execute();
+
+        // Lấy kết quả
+        $result = $stmt->get_result();
+
+        // Trích xuất kết quả
+        $data = $result->fetch_assoc();
+
+        // Đóng câu lệnh và kết nối
+        $stmt->close();
+        $conn->close();
+
+        // Trả về kết quả
+        return $data;
+    } else {
+        // Xử lý lỗi nếu chuẩn bị câu lệnh thất bại
+        die("Chuẩn bị câu lệnh thất bại: " . $conn->error);
+    }
+}
+
 
 ?>
