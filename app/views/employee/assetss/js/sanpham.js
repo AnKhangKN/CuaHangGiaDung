@@ -8,7 +8,13 @@ $(document).ready(function () {
 
     $(close).click(function (e) {
         e.preventDefault();
-        ChiTietSanPham.css({ display: 'none' });
+        ChiTietSanPham.css({
+            display: 'none'
+            
+        });
+        $('#late_amount').html(0);
+        $('#idchitietsanpham').html(0);
+        
     });
 
     // Thêm sự kiện click cho từng dòng sản phẩm
@@ -73,3 +79,61 @@ $(document).ready(function () {
         });
     });
 });
+
+
+
+$(document).ready(function () {
+    $(document).on("change", ".size_input, .color_input", function (e) {
+        e.preventDefault();
+
+        const container = $(this).closest("#modal_product_detail");
+
+        // Đảm bảo chỉ một checkbox được chọn trong nhóm size_input
+        if ($(this).hasClass("size_input")) {
+            container.find(".size_input").not(this).prop("checked", false);
+        }
+
+        // Đảm bảo chỉ một checkbox được chọn trong nhóm color_input
+        if ($(this).hasClass("color_input")) {
+            container.find(".color_input").not(this).prop("checked", false);
+        }
+
+        // Lấy giá trị của checkbox được chọn
+        const size_product = container.find(".size_input:checked").val();
+
+        if (!size_product) {
+            size_product = "Không có kích thước";
+        }
+
+        const color_product = container.find(".color_input:checked").val();
+        const idProduct = container.find("#idSanPham").text();
+
+        $.ajax({
+            type: "POST",
+            url: "/CuaHangDungCu/app/controllers/employee/get_product_detail.php",
+            data: {
+                action: "select",
+                size: size_product,
+                color: color_product,
+                productId: idProduct
+            },
+            success: function (response) {
+
+                if (response.includes('|')) {
+                    const [amount, id] = response.split('|');
+                    $('#late_amount').html(amount);
+                    $('#idchitietsanpham').html(id);
+                } 
+
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                $('#late_amount').html("Có lỗi xảy ra");
+            }
+        });
+
+        
+    });
+});
+
+
+
