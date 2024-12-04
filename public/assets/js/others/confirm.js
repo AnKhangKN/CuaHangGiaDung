@@ -15,12 +15,16 @@ $(document).ready(function () {
                 code: code,
             },
             success: function (response) {
-                setTimeout(() => {
-                    // Chuyển hướng trang sau 500ms
-                    window.location.href = "http://localhost/CuaHangDungCu/public/login.php"; 
-                }, 500);
-                
-                console.log(response);
+                if(response === 'Xác thực thành công. Bạn đã được đăng ký tài khoản!'){
+                    setTimeout(function(){
+                        window.location.href = "http://localhost/CuaHangDungCu/public/login.php";
+                    },500)
+                }else{
+                    alert(response);
+                }
+            },error: function (xhr, status, error) {
+                console.error("AJAX Error: ", status, error);
+                alert("Có lỗi xảy ra. Vui lòng thử lại sau.");
             }
             
         });

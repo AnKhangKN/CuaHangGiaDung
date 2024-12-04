@@ -8,6 +8,7 @@ include '../app/controllers/customer/customerController.php';
 if(isset($_SESSION['user_id'])) {
 
     $id = $_SESSION['user_id'];
+
     $Customer = getCustomerById($id);
     $Account = getAccountById($id);
 

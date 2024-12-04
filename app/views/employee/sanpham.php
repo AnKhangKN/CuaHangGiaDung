@@ -1,6 +1,14 @@
 <?php
+if(session_status() === PHP_SESSION_NONE){
+    session_start();
+}
+
+
 include_once "../../app/controllers/employee/all_function.php";
 
+if(isset($_SESSION['user_id'])){
+    $id = $_SESSION['user_id'];
+}
 ?>
 
 
@@ -65,31 +73,17 @@ include_once "../../app/controllers/employee/all_function.php";
                                             <img id="imgProduct" class="w-100 h-100 object-fit-cover" src="../../public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
                                         </div>
                                         <div class="product_name">
-                                            <p id="ProductName">áo thun</p>
+                                            <span id="idSanPham" class="d-block"></span>
+                                            <p id="ProductName"></p>
                                         </div>
                                     </div>
 
-                                    <div class="product_detail_body">
-                                        <div class="detail_size d-flex align-content-center">
-                                            <span>Kích thước</span>
-                                            <div class="size_checkbox " style="margin-left: 30px;">
-                                                <div id="sizeList"></div>
-
-                                            <input type="checkbox" class="size" value="" name="" id="">
-                                            
-                                            </div>
-                                            
-                                        </div>
-                                        <div class="detail_color d-flex align-content-center">
-                                            <span>Màu sắc</span>
-                                            <div class="color_checkbox " style="margin-left: 46px;">
-                                            <div id="colorList"></div>
-                                            <input type="checkbox" class="color" value="" name="" id="">
-                                            
-                                            </div>
-                                            
-                                        </div>
+                                    <div id="product_detail_body">
+                                        
+                                        
+                                        
                                     </div>
+                                    <div>Giá sản phẩm: <span  id="ProductPrice"></span></div>
 
                                     <div class="product_detail_footer d-flex justify-content-between align-content-center">
                                         <button id="close">Trở lại</button>
