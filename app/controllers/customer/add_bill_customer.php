@@ -8,10 +8,18 @@ if (isset($_POST['action']) && $_POST['action'] == 'CustomerId') {
 
     try {
         $idKhachHang = intval($_POST['idKhachHang']);
+        $tenKhachHang = $_POST['tenkhachhang'];
+        $sodienthoai = $_POST['sodienthoai'];
+        $diachi = $_POST['diachi'];
         $tongtien = floatval($_POST['tongtien']);
         $ghichu = $conn->real_escape_string($_POST['ghichu']);
         $idNhanVien = 3; 
         $detail = json_decode($_POST['products'], true); // Chuyển đổi JSON sang mảng
+
+        // Cập nhật thông tin khách hàng
+        $stmtUpdateKhachHang = $conn->prepare("UPDATE khachhang SET tenkhachhang = ?,sdt = ?,diachi = ? WHERE idKhachHang = ?;");
+        $stmtUpdateKhachHang->bind_param('sssi',$tenKhachHang, $sodienthoai, $diachi, $idKhachHang);
+        $stmtUpdateKhachHang->execute();
 
         // Tạo hóa đơn
         $stmtInsertHoaDon = $conn->prepare("INSERT INTO hoadon (tongtien, ghichu, idNhanVien, idKhachHang) VALUES (?, ?, ?, ?)");

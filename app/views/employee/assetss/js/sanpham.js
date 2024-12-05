@@ -8,27 +8,20 @@ $(document).ready(function () {
 
     $(close).click(function (e) {
         e.preventDefault();
-        ChiTietSanPham.css({
-            display: 'none'
-            
-        });
+        ChiTietSanPham.css({ display: 'none' });
         $('#late_amount').html(0);
         $('#idchitietsanpham').html(0);
-        
     });
 
     // Thêm sự kiện click cho từng dòng sản phẩm
     allRowProduct.on('click', function () {
-        // Hiển thị modal chi tiết sản phẩm
         ChiTietSanPham.css({ display: 'flex' });
 
-        // Lấy thông tin từ dòng được click
         const idSanPham = $(this).find(".idSanPham").text();
         const tenSanPham = $(this).find(".tenSanPham").text();
         const giaSanPham = $(this).find(".giaSanPham").text();
         const imgSanPham = $(this).find(".imgSanPham").attr("src");
 
-        // Gửi thông tin chi tiết sản phẩm qua AJAX
         $.ajax({
             type: "POST",
             url: "/CuaHangDungCu/app/controllers/employee/add_product_detail.php",
@@ -42,9 +35,7 @@ $(document).ready(function () {
             success: function (response) {
                 try {
                     const data = JSON.parse(response);
-
                     if (data.status === 'success') {
-                        // Hiển thị thông tin chi tiết trong modal
                         $("#idSanPham").text(data.idSanPham);
                         $("#ProductName").text(data.tenSanPham);
                         $("#ProductPrice").text(data.giaSanPham);
@@ -61,16 +52,12 @@ $(document).ready(function () {
             }
         });
 
-         // Gửi yêu cầu AJAX tới server
         $.ajax({
             type: "POST",
-            url: "/CuaHangDungCu/app/controllers/employee/size_color_show.php", // Đường dẫn tới file PHP
+            url: "/CuaHangDungCu/app/controllers/employee/size_color_show.php",
             data: { idSanPham: idSanPham },
             success: function(response) {
-                // Gán nội dung trả về vào phần tử #sizeContainer
                 $("#product_detail_body").html(response);
-                
-
             },
             error: function(xhr, status, error) {
                 console.error("AJAX Error:", status, error);
@@ -79,8 +66,6 @@ $(document).ready(function () {
         });
     });
 });
-
-
 
 $(document).ready(function () {
     $(document).on("change", ".size_input, .color_input", function (e) {
@@ -98,9 +83,7 @@ $(document).ready(function () {
             container.find(".color_input").not(this).prop("checked", false);
         }
 
-        // Lấy giá trị của checkbox được chọn
-        const size_product = container.find(".size_input:checked").val();
-
+        let size_product = container.find(".size_input:checked").val();
         if (!size_product) {
             size_product = "Không có kích thước";
         }
@@ -118,22 +101,138 @@ $(document).ready(function () {
                 productId: idProduct
             },
             success: function (response) {
-
                 if (response.includes('|')) {
                     const [amount, id] = response.split('|');
                     $('#late_amount').html(amount);
                     $('#idchitietsanpham').html(id);
-                } 
-
+                }
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 $('#late_amount').html("Có lỗi xảy ra");
             }
         });
-
-        
     });
+
+    $(document).on("click", "#up_product", function (e) {
+        e.preventDefault();
+
+        const container = $(this).closest("#modal_product_detail");
+
+        const amount = parseInt(container.find("#late_amount").text()) || 0;
+
+        if (amount === 0) {
+            alert("Sản phẩm này đã hết hàng!");
+        } else {
+            let soluong = parseInt(container.find("#amount_product").val()) || 0;
+
+            let newCount = soluong + 1;
+
+            if (soluong >= amount) {
+                newCount = amount;
+            }
+
+            container.find("#amount_product").val(newCount);
+        }
+    });
+
+    $(document).on("click", "#down_product", function (e) {
+        e.preventDefault();
+
+        const container = $(this).closest("#modal_product_detail");
+
+        let soluong = parseInt(container.find("#amount_product").val()) || 0;
+
+        if (soluong > 0) {
+            soluong--;
+            container.find("#amount_product").val(soluong);
+        }
+    });
+
+    $(document).on("change", "#amount_product", function (e) {
+        e.preventDefault();
+
+        const container = $(this).closest("#modal_product_detail");
+        const amount = parseInt(container.find("#late_amount").text()) || 0;
+
+        let soluong = parseInt(container.find("#amount_product").val()) || 0;
+
+        if (soluong > amount) {
+            soluong = amount;
+        }
+
+        container.find("#amount_product").val(soluong);
+    });
+
+    $(document).on("click", "#add", function (e) {
+        e.preventDefault();
+    
+        const container = $(this).closest("#modal_product_detail");
+    
+        const idSanPham = container.find("#idSanPham").text();
+        const tenSanPham = container.find("#ProductName").text();
+        let soluong = container.find("#amount_product").val();
+        const dongia = container.find("#ProductPrice").text();
+        const idChiTietSanPham = container.find("#idchitietsanpham").text();
+        const mau = container.find(".color_input:checked").val();
+        let kichthuoc = container.find(".size_input:checked").val();
+
+        if(!kichthuoc){
+            kichthuoc = "Không có kích thước";
+        }
+    
+        $.ajax({
+            type: "POST",
+            url: "/CuaHangDungCu/app/controllers/employee/add_to_cart.php",
+            data: {
+                action: 'add_cart',
+                idSanPham: idSanPham,
+                tenSanPham: tenSanPham,
+                soluong: soluong,
+                dongia: dongia,
+                idChiTietSanPham: idChiTietSanPham,
+                mau: mau,
+                kichthuoc: kichthuoc
+            },
+            success: function (response) {
+                console.log(response);
+                container.css('display', 'none');  
+                location.reload();
+            }
+        });
+    });
+
+
+    $(document).on("click", ".remove_cart", function () {
+        const container_cart = $(this).closest(".SanPham_buy");
+    
+        const idSanPham = container_cart.find(".idSanPham_buy").text();
+        const idChiTietSanPham = container_cart.find(".idChiTietSanPham_buy").text();
+        const tenSanPham = container_cart.find(".tenSanPham_buy").text();
+        const mau = container_cart.find(".mau_buy").text();
+        const kichthuoc = container_cart.find(".kichthuoc_buy").text();
+    
+        // Send AJAX request to delete the item
+        $.ajax({
+            type: "POST",
+            url: "/CuaHangDungCu/app/controllers/employee/delete_item_cart.php",
+            data: {
+                action: "remove_cart",
+                idSanPham: idSanPham,
+                idChiTietSanPham: idChiTietSanPham,
+                tenSanPham: tenSanPham,
+                mau: mau,
+                kichthuoc: kichthuoc
+            },
+            success: function (response) {
+                container_cart.remove();
+                console.log(response);
+            },
+            error: function (xhr, status, error) {
+                console.error("Failed to remove item:", error);
+                alert("Error removing item. Please try again.");
+            }
+        });
+    });
+    
+    
 });
-
-
-

@@ -88,23 +88,25 @@ if(isset($_SESSION['user_id'])){
                                     
                                     <div class="idchitietsanpham">
                                         <span>Id chi tiết sản phẩm: </span>
-                                        <span id="idchitietsanpham"></span>
+                                        <span id="idchitietsanpham">0</span>
                                     </div>
                                     <div class="soluongconlai">
                                         
                                         <span>Số lượng còn lại: </span>
-                                        <span id="late_amount"></span>
+                                        <span id="late_amount">0</span>
                                     </div>
                                         
                                     <div class="amount d-flex">
                                     <span>Số lượng: </span>
-                                        <button>
-                                        <i class="fa-solid fa-plus"></i>
+                                        <button id="down_product">
+                                            <i class="fa-solid fa-minus"></i>
                                         </button>
-                                        <input type="text" value="0">
-                                        <button>
-                                        <i class="fa-solid fa-minus"></i>
-                                        </button>
+
+                                        <input type="text" id="amount_product" value="0">
+                                        
+                                        <button id="up_product">
+                                            <i class="fa-solid fa-plus"></i>
+                                        </button >
                                     </div>
                                     
 
@@ -129,32 +131,72 @@ if(isset($_SESSION['user_id'])){
                         </div>
                         <div class="container_payment ">
                             <h5 class="text-center">THANH TOÁN</h5>
-                          <div class="title_payment">
+                            <div class="title_payment">
                             <p>Tên khách hàng: </p>
                             <p>Số điện thoại: </p>
-                            <p>Nhân viên bán hàng:</p> 
-                          </div>
-                          <div class="content_payment">
+                            <p>Nhân viên bán hàng: <?php echo htmlentities($info['tennhanvien'])?></> 
+                            </div>
+                            <div class="content_payment">
                             <table class="table">
-                              <thead>
-                                <th>Tên sản phẩm</th>
-                                <th>Giá </th>
-                                <th>Số lượng</th>
-                                <th>Thành tiền</th>
-                              </thead>
-                              <tbody>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                              </tbody>
-                            </table>
-                          </div>
+                                <thead>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Giá </th>
+                                    <th>Số lượng</th>
+                                    <th>Thành tiền</th>
+                                    <th></th>
+                                </thead>
+                                <tbody>
+                                <?php 
+                                if (isset($_COOKIE['cart_e'])) {  
+                                    $cart = json_decode($_COOKIE['cart_e'], true);
 
-                          <div class="action_payment">
-                            <button type="button" class="btn bg-dark text-white">Tạm tính</button>
-                            <button type="button" class="btn bg-dark text-white">Thanh toán</button>
-                          </div>  
+                                    if (!empty($cart)) {
+                                        foreach ($cart as $key => $product) {
+                                ?>
+                                <tr class="SanPham_buy">
+                                    <td class="d-flex flex-column">
+                                        <span class="idSanPham_buy"><?php echo htmlentities($product['idSanPham']); ?></span>
+                                        <span class="idChiTietSanPham_buy"><?php echo htmlentities($product['idChiTietSanPham']); ?></span >
+                                        <span class="tenSanPham_buy"><?php echo htmlentities($product['tenSanPham']); ?></span>
+                                        <span class="mau_buy"><?php echo htmlentities($product['mau']); ?></span>
+                                        <span class="kichthuoc_buy"><?php echo htmlentities($product['kichthuoc']); ?></span>
+                                        
+                                    </td>
+                                    <td>
+                                        <?php echo htmlentities($product['dongia']); ?> 
+                                    </td>
+                                    <td>
+                                        <?php echo htmlentities($product['soluong']); ?>
+                                    </td>
+                                    <td>
+                                        <?php echo htmlentities($product['dongia'] * $product['soluong']); ?> 
+                                    </td>
+                                    <td>
+                                        <button class="remove_cart">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <?php
+                                        }
+                                    }
+                                }
+                                ?>
+
+                                </tbody>
+                                
+                            </table>
+                            </div>
+
+                            <div id="total_price" style="margin: 0px 30px; text-align: end;">
+                                <span>Tổng tiền: </span>
+                                <span>600000</span>
+                            </div>
+
+                            <div class="action_payment">
+                                <button type="button" class="btn bg-dark text-white">Tạm tính</button>
+                                <button type="button" class="btn bg-dark text-white">Thanh toán</button>
+                            </div>  
 
                         </div>    
                                     

@@ -236,10 +236,22 @@ $(document).ready(function () {
     function handleExistingCustomer(idKhachHang) {
         const container_payment = $('#container_payment_info');
     
+        const tenkhachhang = container_payment.find("#name").val();
+        const sodienthoai = container_payment.find("#phone").val();
+        const diachi = container_payment.find("#address").val();
         const tongtien = container_payment.find('.total_bill_due_price').text();
         const cleanTotalPrice = parseFloat(tongtien.replace(/\./g, '').replace(',', '.')) || 0;
         const ghichu = container_payment.find('#exampleFormControlTextarea1').val();
 
+        if(tenkhachhang === "Hãy thêm tên của bạn" || tenkhachhang === ""){
+            alert("Hãy kiểm tra lại tên của bạn");
+            return;
+        }
+
+        if(sodienthoai === "0" || sodienthoai === ""){
+            alert("Hãy nhập đúng số điện thoại của bạn!");
+            return;
+        }
     
         let products = [];
         $('.list_infor_products_payment_item').each(function () {
@@ -256,6 +268,9 @@ $(document).ready(function () {
             url: "/CuaHangDungCu/app/controllers/customer/add_bill_customer.php",
             data: {
                 action: 'CustomerId',
+                tenkhachhang: tenkhachhang,
+                sodienthoai: sodienthoai,
+                diachi: diachi,
                 tongtien: cleanTotalPrice,
                 ghichu: ghichu,
                 idKhachHang: idKhachHang,
