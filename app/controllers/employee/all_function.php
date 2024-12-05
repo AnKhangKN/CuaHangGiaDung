@@ -132,7 +132,6 @@ function getInfo($Info) {
     // Kết nối tới cơ sở dữ liệu
     $conn = connectBD();
 
-<<<<<<< HEAD
     // Câu lệnh SQL để lấy dữ liệu
     $sql = "SELECT nhanvien.idNhanVien, nhanvien.tennhanvien, nhanvien.sdt, nhanvien.cccd, nhanvien.luong, nhanvien.thuong
             FROM `nhanvien`
@@ -163,11 +162,69 @@ function getInfo($Info) {
         // Xử lý lỗi nếu chuẩn bị câu lệnh thất bại
         die("Chuẩn bị câu lệnh thất bại: " . $conn->error);
     }
+
+
 }
 
+function getBrowse(){
+        $conn = connectBD();
+        $sql ="SELECT hoadon.idHoaDon, hoadon.ngayxuathoadon,hoadon.idKhachHang, khachhang.tenkhachhang,  hoadon.tongtien, hoadon.ghichu, hoadon.trangthai 
+FROM hoadon
+JOIN khachhang ON khachhang.idKhachHang = hoadon.idKhachHang
+";
+        $stmt = $conn->prepare($sql);
 
-?>
-=======
+        // Kiểm tra nếu không chuẩn bị được câu lệnh
+        if (!$stmt) {
+            die("Chuẩn bị câu lệnh thất bại: " . $conn->error);
+        }
+    
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        $rows = [];
+    
+        // Lặp qua từng dòng kết quả
+        while ($rowBrowse = $result->fetch_assoc()) {
+            $rows[] = $rowBrowse;
+        }
+    
+        $stmt->close();
+        $conn->close();
+    
+        // Trả về danh sách sản phẩm
+        return $rows;
+    }
+function getStatistical() {
+    $conn = connectBD();
+    $sql ="SELECT sanpham.tensanpham, SUM(chitiethoadon.soluong) AS total_quantity
+FROM chitiethoadon 
+JOIN chitietsanpham ON chitietsanpham.idChiTietSanPham = chitiethoadon.idChiTietSanPham
+JOIN sanpham ON sanpham.idSanPham = chitietsanpham.idSanPham
+GROUP BY sanpham.tensanpham
+ORDER BY total_quantity;
+";
+    $stmt = $conn->prepare($sql);
 
+    // Kiểm tra nếu không chuẩn bị được câu lệnh
+    if (!$stmt) {
+        die("Chuẩn bị câu lệnh thất bại: " . $conn->error);
+    }
+
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $rows = [];
+
+    // Lặp qua từng dòng kết quả
+    while ($rowStatistical = $result->fetch_assoc()) {
+        $rows[] = $rowStatistical;
+    }
+
+    $stmt->close();
+    $conn->close();
+
+    // Trả về danh sách sản phẩm
+    return $rows;
+}
 ?>
->>>>>>> c60f8a6ed4098b22cf9bc7d3116f04b2d020fb43
