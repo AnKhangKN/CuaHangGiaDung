@@ -1,3 +1,17 @@
+<?php
+if(session_status() === PHP_SESSION_NONE){
+    session_start();
+}
+
+
+include_once "../../app/controllers/employee/all_function.php";
+
+if(isset($_SESSION['user_id'])){
+    $id = $_SESSION['user_id'];
+}
+?>
+
+
 <main class="main">
         <div class="container-fluid">
             <div class="row">
@@ -5,21 +19,29 @@
                     <div class="container_left">
                         <!-- Phan lam -->
                         <table class="table table-bordered text-center">
+                            <h4 style="margin: 30px;">Danh sách sản phẩm bán chạy</h4>
                             <thead>
                               <tr>
-                                <th>Danh sách sản phẩm bán chạy</th>                                         
+                                <th>Tên sản phẩm</th>
+                                <th>Số lượng</th>                                         
                               </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                <td></td>                                         
-                              </tr>
-                              <tr>
-                                <td></td>                                           
-                              </tr>
-                              <tr>
-                                <td></td>
-                              </tr>
+                              <?php
+                               $Statistical = getStatistical();
+                               foreach ($Statistical as $Row){
+                                ?>
+                                <tr>
+                                <td class="tensanpham"><?php echo htmlentities($Row['tensanpham'])?></td>    
+                                <td class="total_quantity"><?php echo htmlentities($Row['total_quantity'])?></td>                                     
+                                </tr>
+                                <?php
+
+                               }
+                              ?>
+                              
+                              
+                             
                             </tbody>
                           </table>
                             
@@ -40,24 +62,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="container_right">
-                        <table class="table table-bordered text-center">
-                            <thead>
-                              <tr>
-                                <th>Danh sách đổi trả trong tháng</th>                                         
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td></td>                                         
-                              </tr>
-                              <tr>
-                                <td></td>                                           
-                              </tr>
-                              <tr>
-                                <td></td>
-                              </tr>
-                            </tbody>
-                          </table>
+                        
                           <div class="container_report">   
                           <button type="button" class="btn_report bg-dark text-white">Xuất báo cáo</button>
                           </div>              
