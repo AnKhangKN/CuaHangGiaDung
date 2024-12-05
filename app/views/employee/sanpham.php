@@ -39,7 +39,7 @@ if(isset($_SESSION['user_id'])){
                                     </tr>
                                 </thead>
 
-                                <tbody>
+                                <tbody id="product_container">
                                     <?php
                                     $Product = getProduct();
 
@@ -126,23 +126,14 @@ if(isset($_SESSION['user_id'])){
                     <div class="container_right">
                         <div class="search-container">
                             <div class="search-box-pay">
-                              <input class="form-control" id="myInput" type="text" placeholder="Nhập số điện khách hàng">
-                              <br>
-                              <ul class="list-group" id="myList">
-                              <li class="list-group-item"></li>
-                              </ul>      
+                                <input class="form-control" id="myInput" type="text" placeholder="Nhập số điện khách hàng">
+                                <br>
+                                <ul class="list-group" id="myList">
+                                    
+                                </ul>      
                                             
                             </div>
-                            <script>
-                                $(document).ready(function(){
-                                    $("#myInput").on("keyup", function() {
-                                    var value = $(this).val().toLowerCase();
-                                        $("#myList li").filter(function() {
-                                            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-                            </script>                          
+                                                    
                         </div>
                     </div>
                         <div class="container_payment ">

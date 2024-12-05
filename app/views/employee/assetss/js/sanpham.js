@@ -106,9 +106,11 @@ $(document).ready(function () {
                     $('#late_amount').html(amount);
                     $('#idchitietsanpham').html(id);
                 }
+                console.log(response);
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 $('#late_amount').html("Có lỗi xảy ra");
+                
             }
         });
     });
@@ -234,5 +236,49 @@ $(document).ready(function () {
         });
     });
     
+    
+    
+});
+
+$(document).ready(function () {
+    $('#search').on('input', function () {
+        const query = $(this).val(); // Lấy giá trị input
+    
+        $.ajax({
+            url: '/CuaHangDungCu/app/controllers/employee/search_product.php',
+            method: 'POST',
+            data: { query: query },  // Gửi cả khi là chuỗi trống
+            success: function (data) {
+                $('#product_container').html(data);
+            },
+            error: function () {
+                console.error('Lỗi xảy ra khi tìm kiếm.');
+            }
+        });
+    });
+
+    $("#myInput").on("input", function () {
+        const phone = $(this).val().trim();
+    
+        // Kiểm tra nếu ô input không trống
+        if (phone.length > 0) {
+            // Gửi yêu cầu AJAX nếu có giá trị trong input
+            $.ajax({
+                url: '/CuaHangDungCu/app/controllers/employee/search_customer.php',
+                method: 'POST',
+                data: { phone: phone },
+                success: function (data) {
+                    $('#myList').html(data); // Cập nhật kết quả tìm kiếm
+                    console.log(data);
+                },
+                error: function () {
+                    console.error('Lỗi xảy ra khi tìm kiếm.');
+                }
+            });
+        } else {
+            // Nếu ô input trống, có thể xóa kết quả hiển thị
+            $('#myList').html('');
+        }
+    });
     
 });

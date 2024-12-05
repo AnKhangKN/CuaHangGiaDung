@@ -34,7 +34,7 @@ if(isset($_SESSION['user_id'])){
                     $Browse = getBrowse();
                     foreach ($Browse as $Row){
                         ?>
-                   
+                    
                     <tr class="cell_product text-center">
                         <td class="idHoaDon"><?php echo htmlentities($Row['idHoaDon'])?></td>
                         <td class="ngayxuathoadon"><?php echo htmlentities($Row['ngayxuathoadon'])?></td>
@@ -65,7 +65,7 @@ if(isset($_SESSION['user_id'])){
                     
                     ?>
                                     
-     
+
                     </tbody>
                 </table>
             

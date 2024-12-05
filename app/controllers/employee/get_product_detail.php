@@ -2,7 +2,7 @@
 require_once "../../../config/connectdb.php";
 require_once "all_function.php";
 
-if (isset($_POST['action']) && $_POST['action'] == 'select') {
+if (isset($_POST['action']) && $_POST['action'] === 'select') {
 
     // Kiểm tra các tham số đầu vào
     $size = isset($_POST['size']) ? $_POST['size'] : "không có kích thước";
