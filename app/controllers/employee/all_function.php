@@ -166,6 +166,7 @@ function getInfo($Info) {
 
 }
 
+<<<<<<< HEAD
 function getBrowse(){
         $conn = connectBD();
         $sql ="SELECT hoadon.idHoaDon, hoadon.ngayxuathoadon,hoadon.idKhachHang, khachhang.tenkhachhang,  hoadon.tongtien, hoadon.ghichu, hoadon.trangthai 
@@ -227,4 +228,56 @@ ORDER BY total_quantity;
     // Trả về danh sách sản phẩm
     return $rows;
 }
+=======
+function getProductAmount($ProductId, $Size = "không có kích thước", $Color) {
+    $conn = connectBD(); 
+    
+    // Kiểm tra nếu ProductId và Color hợp lệ
+    if (!$ProductId || !$Color) {
+        return null; // Trả về null nếu không có productId hoặc color
+    }
+
+    // Câu truy vấn linh hoạt dựa trên giá trị của $Size
+    $sql = "SELECT ctsp.soluongconlai AS amount, ctsp.idChiTietSanPham AS id 
+            FROM chitietsanpham ctsp
+            JOIN mausacsanpham mssp ON mssp.idMauSac = ctsp.idMauSac";
+
+    // Nếu $Size không phải là "không có kích thước", thêm JOIN và điều kiện kích thước
+    if ($Size !== "không có kích thước") {
+        $sql .= " JOIN kichthuocsanpham ktsp ON ktsp.idKichThuoc = ctsp.idKichThuoc
+                WHERE ctsp.idSanPham = ? AND ktsp.kichthuoc = ? AND mssp.mausac = ?";
+    } else {
+        $sql .= " WHERE ctsp.idSanPham = ? AND mssp.mausac = ?";
+    }
+
+    // Chuẩn bị câu truy vấn
+    $stmt = $conn->prepare($sql);
+
+    // Kiểm tra nếu chuẩn bị không thành công
+    if (!$stmt) {
+        return null; // Trả về null nếu không thể chuẩn bị truy vấn
+    }
+
+    // Gán tham số dựa trên trường hợp của $Size
+    if ($Size !== "không có kích thước") {
+        $stmt->bind_param("iss", $ProductId, $Size, $Color);
+    } else {
+        $stmt->bind_param("is", $ProductId, $Color);
+    }
+
+    // Thực thi truy vấn
+    $stmt->execute();
+
+    // Lấy kết quả
+    $stmt->bind_result($amount, $id);
+
+    if ($stmt->fetch()) {
+        return ['amount' => $amount, 'id' => $id]; // Trả về mảng chứa số lượng và ID
+    } else {
+        return null; // Trả về null nếu không tìm thấy kết quả
+    }
+}
+
+
+>>>>>>> 47fdca7971ac04890fe1a7021fe45c2db8c2bd28
 ?>

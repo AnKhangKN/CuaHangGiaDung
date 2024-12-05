@@ -24,7 +24,7 @@ if (isset($_POST['idSanPham']) && is_numeric($_POST['idSanPham']) && $_POST['idS
         <?php
         foreach ($size as $row) {
             ?>
-            <input type="checkbox" class="size" value="<?php echo htmlentities($row['kichthuoc']); ?>" name="size[]" id="size_<?php echo htmlentities($row['kichthuoc']); ?>">
+            <input type="checkbox" class="size_input" value="<?php echo htmlentities($row['kichthuoc']); ?>" name="size[]" id="size_<?php echo htmlentities($row['kichthuoc']); ?>">
             <label for="size_<?php echo htmlentities($row['kichthuoc']); ?>"><?php echo htmlentities($row['kichthuoc']); ?></label>
             <?php
         }
@@ -51,7 +51,7 @@ if (isset($_POST['idSanPham']) && is_numeric($_POST['idSanPham']) && $_POST['idS
         <?php
         foreach ($color as $row_color) {
             ?>
-            <input type="checkbox" class="color" value="<?php echo htmlentities($row_color['mausac']); ?>" name="color[]" id="color_<?php echo htmlentities($row_color['mausac']); ?>">
+            <input type="checkbox" class="color_input" value="<?php echo htmlentities($row_color['mausac']);?>" name="color[]" id="color_<?php echo htmlentities($row_color['mausac']); ?>">
             <label for="color_<?php echo htmlentities($row_color['mausac']); ?>"><?php echo htmlentities($row_color['mausac']); ?></label>
             <?php
         }

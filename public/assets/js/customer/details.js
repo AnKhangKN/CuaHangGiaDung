@@ -135,11 +135,6 @@ $(document).ready(function () {
         checkValue($(this));
     });
 
-    $().change(function (e) { 
-        e.preventDefault();
-        
-    });
-
     // Event listener for decreasing quantity
     $(".products_details_info_add_products_minus").click(function (e) { 
         e.preventDefault();
@@ -221,7 +216,7 @@ $(document).ready(function () {
                     const [amount, id] = response.split('|');
                     $('#ProductAmount').html(amount);
                 } else {
-                    console.log("Hãy chung cấp đủ thông tin!");
+                    console.log("Hãy cung cấp đủ thông tin!");
                 }
 
             },

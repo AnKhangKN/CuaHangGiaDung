@@ -8,7 +8,10 @@ include_once "../../app/controllers/employee/all_function.php";
 
 if(isset($_SESSION['user_id'])){
     $id = $_SESSION['user_id'];
+    $info = getInfo($id);
 }
+
+
 ?>
 
 
@@ -80,10 +83,30 @@ if(isset($_SESSION['user_id'])){
 
                                     <div id="product_detail_body">
                                         
-                                        
-                                        
                                     </div>
                                     <div>Giá sản phẩm: <span  id="ProductPrice"></span></div>
+                                    
+                                    <div class="idchitietsanpham">
+                                        <span>Id chi tiết sản phẩm: </span>
+                                        <span id="idchitietsanpham"></span>
+                                    </div>
+                                    <div class="soluongconlai">
+                                        
+                                        <span>Số lượng còn lại: </span>
+                                        <span id="late_amount"></span>
+                                    </div>
+                                        
+                                    <div class="amount d-flex">
+                                    <span>Số lượng: </span>
+                                        <button>
+                                        <i class="fa-solid fa-plus"></i>
+                                        </button>
+                                        <input type="text" value="0">
+                                        <button>
+                                        <i class="fa-solid fa-minus"></i>
+                                        </button>
+                                    </div>
+                                    
 
                                     <div class="product_detail_footer d-flex justify-content-between align-content-center">
                                         <button id="close">Trở lại</button>
