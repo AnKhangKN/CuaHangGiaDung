@@ -23,6 +23,7 @@ if(isset($_SESSION['user_id'])){
                     <div class="container_left">
                         <!-- Phan lam -->
                         <div class="search-container">
+                            <h5 style="margin-left: 200px;">SẢN PHẨM</h5>
                             <div class="search-box-sp">
                                 <input type="text" id="search" placeholder="Nhập từ khóa tìm kiếm">                    
                             </div>
@@ -76,15 +77,15 @@ if(isset($_SESSION['user_id'])){
                                             <img id="imgProduct" class="w-100 h-100 object-fit-cover" src="../../public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
                                         </div>
                                         <div class="product_name">
-                                            <span id="idSanPham" class="d-block"></span>
+                                            <span  id="idSanPham" class="d-block"></span>
                                             <p id="ProductName"></p>
                                         </div>
                                     </div>
 
                                     <div id="product_detail_body">
                                         
-                                    </div>
-                                    <div>Giá sản phẩm: <span  id="ProductPrice"></span></div>
+                                    </div >
+                                    <div >Giá sản phẩm: <span  id="ProductPrice"></span></div>
                                     
                                     <div class="idchitietsanpham">
                                         <span>Id chi tiết sản phẩm: </span>
@@ -98,21 +99,21 @@ if(isset($_SESSION['user_id'])){
                                         
                                     <div class="amount d-flex">
                                     <span>Số lượng: </span>
-                                        <button id="down_product">
-                                            <i class="fa-solid fa-minus"></i>
+                                        <button style="background-color:rgb(255, 255, 255);" id="down_product">
+                                            <i  class="fa-solid fa-minus "></i>
                                         </button>
 
-                                        <input type="text" id="amount_product" value="0">
+                                        <input style="width: 7%; margin: center;" type="text" id="amount_product" value="0">
                                         
-                                        <button id="up_product">
-                                            <i class="fa-solid fa-plus"></i>
+                                        <button style="background-color:rgb(255, 255, 255) ;"  id="up_product">
+                                            <i class="fa-solid fa-plus "></i>
                                         </button >
                                     </div>
                                     
 
                                     <div class="product_detail_footer d-flex justify-content-between align-content-center">
-                                        <button id="close">Trở lại</button>
-                                        <button style="background-color:black;  ;" id="add">Thêm vào mua hàng</button>
+                                        <button style="border-radius: 5px; background-color:rgb(25, 26, 33);color:aliceblue; margin-top: 50px; width: 100px; height: 35px;" id="close">Trở lại</button>
+                                        <button style="border-radius: 5px; background-color:rgb(25, 26, 33); margin-top: 50px; width: 180px; color:aliceblue; height: 35px;" id="add">Thêm vào mua hàng</button>
                                     </div>
                                     
                                 </div>

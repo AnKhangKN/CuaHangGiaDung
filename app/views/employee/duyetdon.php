@@ -46,7 +46,7 @@ if(isset($_SESSION['user_id'])){
                             
                             if($tinhtrang === 0){
                                 ?>
-                                <button class="btn btn-dark">Xác nhận</button>
+                                <button class="btn btn-dark">Chi tiết</button>
                                 <?php
                             }else{
                                 ?>
@@ -75,7 +75,10 @@ if(isset($_SESSION['user_id'])){
 
             <div class="container_model" style="width: 500px; height: 500px;">
                     <div class="model w-100 h-100 bg-white">
-                        kk
+                        <p style="margin: 10px; font-weight: 600;">Mã đơn:</p>
+                        <p style="margin: 10px; font-weight: 600;">Tên khách hàng:</p>
+                        <p style="margin: 10px; font-weight: 600;">Địa chỉ:</p>
+                        <p style="margin: 10px; font-weight: 600;">Số điện thoại:</p>
                     </div>
             </div>
         </div>
