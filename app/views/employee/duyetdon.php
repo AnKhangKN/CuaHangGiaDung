@@ -71,3 +71,12 @@ if(isset($_SESSION['user_id'])){
             
             </div>
         </div>
+        <div class="chitiet d-flex justify-content-center align-items-center position-fixed top-0 bottom-0 start-0 end-0">
+
+            <div class="container_model" style="width: 500px; height: 500px;">
+                    <div class="model w-100 h-100 bg-white">
+                        kk
+                    </div>
+            </div>
+        </div>
+</main>

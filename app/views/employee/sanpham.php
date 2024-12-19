@@ -112,7 +112,7 @@ if(isset($_SESSION['user_id'])){
 
                                     <div class="product_detail_footer d-flex justify-content-between align-content-center">
                                         <button id="close">Trở lại</button>
-                                        <button id="add">Thêm vào mua hàng</button>
+                                        <button style="background-color:black;  ;" id="add">Thêm vào mua hàng</button>
                                     </div>
                                     
                                 </div>
