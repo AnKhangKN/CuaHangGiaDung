@@ -268,8 +268,7 @@ $(document).ready(function () {
                 method: 'POST',
                 data: { phone: phone },
                 success: function (data) {
-                    $('#myList').html(data); // Cập nhật kết quả tìm kiếm
-                    console.log(data);
+                    $('#myList').html(data); 
                 },
                 error: function () {
                     console.error('Lỗi xảy ra khi tìm kiếm.');
@@ -281,4 +280,98 @@ $(document).ready(function () {
         }
     });
     
+    // Tổng tiền
+    let tongTien = 0; 
+
+    $(".SanPham_buy").each(function () {
+        const container = $(this);
+        const giaText = container.find(".don_gia").text().trim(); 
+        const giaSo = parseFloat(giaText.replace(/[^\d.-]/g, "")); 
+
+        if (!isNaN(giaSo)) {
+            tongTien += giaSo; 
+        } else {
+            console.warn("Không thể chuyển đổi giá trị thành số:", giaText);
+        }
+    });
+
+    $("#tong_don_gia").text(tongTien);
+
+// -----------------------------------------------------------------------
+
+$(document).on("click", ".list-group-item", function () {
+    const container = $(this);
+    const idKhach = container.find(".idKhach").text().trim();
+    const ten = container.find(".tenKhach").text().trim();
+    const sdt = container.find(".Sdt").text().trim();
+    
+    $("#idKhach").text(idKhach);
+    $("#tenKhach").text(ten);
+    $("#sdtKhach").text(sdt);
+
+    
+});
+
+function dsDonHangCoIdKH() {
+    const container_payment = $('#Payment_send');
+
+    const idKhachHang = container_payment.find('#idKhach').text().trim();
+    const idNhanVien = container_payment.find('#idNhanVien').text().trim();
+    const tongtien = container_payment.find('#tong_don_gia').text().trim();
+
+    console.log(idKhachHang, idNhanVien, tongtien);
+
+    if (!idKhachHang || !idNhanVien || !tongtien) {
+        alert("Vui lòng kiểm tra lại giá trị của 'idKhachHang', 'idNhanVien', và 'tongtien'.");
+        return;
+    }
+
+    let products = [];
+    $('.SanPham_buy').each(function () {
+        const lstProduct = $(this);
+        const soluong = lstProduct.find('.soluongSP').text().trim();
+        const idChiTietSanPham = lstProduct.find('.idChiTietSanPham_buy').text().trim();
+
+        if (soluong && idChiTietSanPham) {
+            products.push({ soluong, idChiTietSanPham });
+        }
+    });
+
+    if (products.length === 0) {
+        alert("Danh sách sản phẩm không được để trống!");
+        return;
+    }
+
+    console.log("Danh sách sản phẩm:", products);
+
+    $.ajax({
+        type: "POST",
+        url: "/CuaHangDungCu/app/controllers/employee/payment_customer.php",
+        data: {
+            action: "CustomerId",
+            idKhachHang: idKhachHang,
+            idNhanVien: idNhanVien,
+            tongtien: tongtien,
+            products: JSON.stringify(products),
+        },
+        success: function (response) {
+            console.log(response);
+            alert("Yêu cầu đã thành công!");
+        },
+        error: function (xhr, status, error) {
+            console.error("Yêu cầu không thành công:", error);
+            alert("Đã có lỗi xảy ra. Vui lòng thử lại.");
+        }
+    });
+}
+
+$("#ThanhToan").click(function (e) {
+    e.preventDefault();
+    dsDonHangCoIdKH();
+});
+
+    
+    
+    
+
 });

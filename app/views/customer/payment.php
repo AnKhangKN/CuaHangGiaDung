@@ -6,18 +6,31 @@ if (session_status() === PHP_SESSION_NONE) {
 
 include '../app/controllers/customer/customerController.php';
 
-if(isset($_SESSION['user_id'])) {
-
-    $id = $_SESSION['user_id'];
+if (isset($_SESSION['user_id'])) {
+    $id = intval($_SESSION['user_id']); // Chuyển đổi ID sang số nguyên
     $Customer = getCustomerById($id);
     $Account = getAccountById($id);
 
-    $_SESSION['idKhachHang'] = $Customer['idKhachHang'];
-    
-} else{
-    echo "";
+    if ($Customer && $Account) {
+        $_SESSION['idKhachHang'] = $Customer['idKhachHang'];
+
+        // Kiểm tra trạng thái cookie giỏ hàng
+        if (!isset($_COOKIE['cart']) || trim($_COOKIE['cart']) === '') {
+            header('Location: index.php?page=cart');
+            exit();
+        }
+    } else {
+        error_log("Không tìm thấy thông tin tài khoản hoặc khách hàng với ID: $id");
+        header('Location: index.php?page=404');
+        exit();
+    }
+} else {
+    header('Location: index.php?page=login');
+    exit();
 }
 ?>
+
+
 
 <main class="main">
             
@@ -73,7 +86,7 @@ if(isset($_SESSION['user_id'])) {
                                     <div class="col">
                                         <div class="form-group" style="margin-top: 10px;">
                                             <label for="phone">Số điện thoại</label>
-                                            <input type="phone" value="0<?php echo htmlentities($Customer['sdt'])?>" class="form-control" placeholder="Số điện thoại" name="phone" id="phone" required>
+                                            <input type="phone" value="<?php echo htmlentities($Customer['sdt'])?>" class="form-control" placeholder="Số điện thoại" name="phone" id="phone" required>
                                         </div>
                                     </div>
                                 </div>
@@ -155,11 +168,11 @@ if(isset($_SESSION['user_id'])) {
                                 </div>
                                 <div class="infor_payment_method_content">
                                     <div class="infor_payment_method_content_choose">
-                                        <input type="checkbox" id="payment_by_cod">
+                                        <input type="checkbox" id="payment_by_cod" class="payment_method_chBox" value="0">
                                         <span>Thanh toán khi giao hàng (COD)</span>
                                     </div>
                                     <div class="infor_payment_method_content_choose">
-                                        <input type="checkbox" id="payment_by_card">
+                                        <input type="checkbox" id="payment_by_card" class="payment_method_chBox" value="1">
                                         <i class="fa-regular fa-credit-card"></i>
                                         <span>Chuyển khoản qua ngân hàng</span>
                                         <div class="content_transfer" style="display: none;">
@@ -286,8 +299,16 @@ if(isset($_SESSION['user_id'])) {
 
             <!-- Modal Confirm -->
             <div class="confirm_payment">
-                <div class="container_comfirm">
-                    <i class="fa-solid fa-check"></i>
+                <div class="container_comfirm p-5">
+                    <div class="content_success d-flex justify-content-center align-items-center" style="margin-top: 10%;">
+                        <i class="fa-solid fa-check"></i>
+                        <span style="margin-left: 20px;">Đặt hàng thành công</span>
+                    </div>
+                    <div class="btn_action d-flex justify-content-between align-items-center " style="margin-top: 10%;">
+                        <button id="close_success" class="btn btn-light ">Tiếp tục mua sắm</button>
+                        <button id="check_bill" class="btn btn-dark  ">Kiểm tra đơn hàng</button>
+                    </div>
+                    
                 </div>
             </div>
 

@@ -240,6 +240,9 @@ $(document).ready(function () {
         const sodienthoai = container_payment.find("#phone").val();
         const diachi = container_payment.find("#address").val();
         const tongtien = container_payment.find('.total_bill_due_price').text();
+
+        let method = $(".payment_method_chBox:checked").val();
+
         const cleanTotalPrice = parseFloat(tongtien.replace(/\./g, '').replace(',', '.')) || 0;
         const ghichu = container_payment.find('#exampleFormControlTextarea1').val();
 
@@ -262,6 +265,8 @@ $(document).ready(function () {
     
             products.push({ soluong, idChiTietSanPham, soluongconlai });
         });
+
+        console.log(method);
     
         $.ajax({
             type: "POST",
@@ -272,6 +277,7 @@ $(document).ready(function () {
                 sodienthoai: sodienthoai,
                 diachi: diachi,
                 tongtien: cleanTotalPrice,
+                method: method,
                 ghichu: ghichu,
                 idKhachHang: idKhachHang,
                 products: JSON.stringify(products)
@@ -288,9 +294,7 @@ $(document).ready(function () {
                     const modal = $('.confirm_payment')[0];  // Truy cập phần tử DOM thực sự
                     if (modal) {
                         modal.style.display = 'flex';
-                        setTimeout(function() {
-                            modal.style.display = 'none';  // Hiển thị modal sau 300ms
-                        }, 1500);
+                        
                     } else {
                         console.log("Modal không được tìm thấy");
                     }
@@ -388,6 +392,9 @@ $(document).ready(function () {
         const container_payment = $('#container_payment_info');
     
         const tongtien = container_payment.find('.total_bill_due_price').text();
+
+        let method = $(".payment_method_chBox:checked").val();
+
         const cleanTotalPrice = parseFloat(tongtien.replace(/\./g, '').replace(',', '.')) || 0;
         const ghichu = container_payment.find('#exampleFormControlTextarea1').val();
         
@@ -418,6 +425,7 @@ $(document).ready(function () {
                 sdt: sdt,
                 diachi: diachi,
                 tongtien: cleanTotalPrice,
+                method: method,
                 ghichu: ghichu,
                 products: JSON.stringify(products)
             },
@@ -432,9 +440,7 @@ $(document).ready(function () {
                     const modal = $('.confirm_payment')[0];  // Truy cập phần tử DOM thực sự
                     if (modal) {
                         modal.style.display = 'flex';
-                        setTimeout(function() {
-                            modal.style.display = 'none';  // Hiển thị modal sau 300ms
-                        }, 1500);
+                        
                     } else {
                         console.log("Modal không được tìm thấy");
                     }
@@ -479,5 +485,30 @@ $(document).ready(function () {
         }
     });
     
+    $("#close_success").click(function (e) { 
+        e.preventDefault();
+        
+        const modal = $('.confirm_payment')[0];  // Truy cập phần tử DOM thực sự
+        if (modal) {
+            modal.style.display = 'none';
+            window.location.href = "http://localhost/CuaHangDungCu/public/index.php?page=products";
+        } else {
+            console.log("Modal không được tìm thấy");
+        }
+    });
+
+    $("#check_bill").click(function (e) { 
+        e.preventDefault();  // Ngăn hành động mặc định của sự kiện
+        
+        const modal = $('.confirm_payment')[0];  
+        
+        if (modal) {
+            modal.style.display = 'none';  // Ẩn modal
+            window.location.href = "http://localhost/CuaHangDungCu/public/index.php?page=information"; 
+            
+        } else {
+            console.error("Modal không được tìm thấy");
+        }
+    });
     
 });

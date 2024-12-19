@@ -178,16 +178,16 @@
 }
 
 .container_comfirm{
-    width: 200px;
+    width: 35%;
     background-color: rgb(255, 255, 255);
     color:  rgb(0, 255, 0);
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 80px;
-    border-radius: 50%;
+    height: 50%;
+    font-size: 30px;
     border: 0.5px solid #ffffff;
+}
+
+.btn_action{
+    font-size: 20px;
 }
 
 .loading-circle {

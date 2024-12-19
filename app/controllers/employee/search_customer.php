@@ -15,8 +15,9 @@ if (isset($_POST['phone']) && !empty($_POST['phone'])) {
         foreach ($rowCustomer as $Row) {
             ?>
             <li class="list-group-item">
-                <span><?php echo htmlentities($Row['tenkhachhang']); ?></span>
-                <span><?php echo htmlentities($Row['sdt']); ?></span>
+                <span class="idKhach"><?php echo htmlentities($Row['idKhachHang'])?></span>
+                <span class="tenKhach"><?php echo htmlentities($Row['tenkhachhang']); ?></span>
+                <span class="Sdt"><?php echo htmlentities($Row['sdt']); ?></span>
             </li>
             <?php
         }

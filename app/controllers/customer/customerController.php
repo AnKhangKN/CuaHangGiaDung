@@ -115,7 +115,7 @@
     
         $idCustomer = (int)$idCustomer;
         if ($idCustomer > 0) {
-            $sql = 'SELECT * FROM hoadon WHERE idKhachHang = ?';
+            $sql = 'SELECT * FROM hoadon WHERE idKhachHang = ? ORDER BY ngayxuathoadon DESC';
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("i", $idCustomer);
             $stmt->execute();
@@ -144,7 +144,8 @@
         // Nếu id hợp lệ, thực hiện truy vấn
         if ($idBill > 0) {
             // Câu truy vấn
-            $sql = "SELECT * FROM hoadon WHERE idHoaDon = ?";
+            $sql = "SELECT * FROM hoadon
+            WHERE idHoaDon = ?";
 
             // Chuẩn bị và thực thi câu truy vấn
             $stmt = $conn->prepare($sql);
@@ -160,7 +161,38 @@
         }
     }
     
+    function checkComment($idBill) {
+        $conn = connectBD();
     
+        // Đảm bảo idBill là số nguyên
+        $idBill = (int)$idBill;
+    
+        if ($idBill > 0) {
+            // SQL query để kiểm tra bình luận của hóa đơn
+            $sql = "SELECT * FROM binhluan WHERE idHoaDon = ?";
+    
+            // Chuẩn bị câu lệnh SQL
+            if ($stmt = $conn->prepare($sql)) {
+                // Liên kết tham số
+                $stmt->bind_param('i', $idBill);
+                $stmt->execute();
+                $result = $stmt->get_result();
+    
+                if ($result->num_rows > 0) {
+                    return $result->fetch_assoc();
+                } else {
+                    return null;
+                }
+            } else {
+                return false;
+            }
+        } else {
+            return 0;
+        }
+    
+        // Đóng kết nối cơ sở dữ liệu
+        $conn->close();
+    }
     
 
     // get all detail bill
