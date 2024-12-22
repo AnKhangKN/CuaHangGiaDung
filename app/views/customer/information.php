@@ -65,7 +65,17 @@ if(isset($_SESSION['user_id'])) {
                                         </thead>
                                         <tbody>
                                             <?php 
-                                                $Bill = getBillsByIdCustomer($Customer['idKhachHang']);
+                                            if(isset($_GET['trang'])){
+                                                $page = $_GET['trang'];
+                                            }else{
+                                                $page = '';
+                                            }
+                                            if($page == '' || $page == 1){
+                                                $begin = 0;
+                                            }else{
+                                                $begin= ($page*10)-10;
+                                            }
+                                                $Bill = getBillsByIdCustomer($Customer['idKhachHang'], $begin);
                                                 
                                                 foreach($Bill as $rowBill){
 
@@ -105,6 +115,24 @@ if(isset($_SESSION['user_id'])) {
                                             
                                         </tbody>
                                     </table>
+
+                                    
+                                    <ul class="d-flex " style="list-style: none;">
+                                        <?php
+                                        $trang = countTotalPagesByCustomer($Customer['idKhachHang']);
+                                        for ($i = 1; $i <= $trang; $i++)
+                                        { 
+                                            ?>
+                                                <li style="width: 30px; height: 30px; border: 1px solid black" >
+                                                    <a href="index.php?page=information&trang=<?php echo htmlentities($i)?>"><?php echo htmlentities($i)?></a>
+                                                </li>
+                                                <?php
+                                            }?>
+                                    </ul>
+                                    
+
+
+
                                 </div>
                                 <div class="promotion">
                                     <p>Các chương trình khuyến mãi dành cho bạn <i class="fa-solid fa-arrow-pointer"></i></p>

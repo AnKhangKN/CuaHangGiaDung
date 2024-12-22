@@ -77,31 +77,8 @@
 
             <!-- banner -->
                 
-                <div class="container_banner">
-                    <div class="banner text-center">
-                        <div class="banner_title">
-                            <p>giảm mạnh 40%</p>
-                        </div>
-                        <div class="banner_content">
-                            <p>lựa chọn theo phong cách của bạn</p>
-                        </div>
-                        <?php
-                        $conn = connectBD();
-
-                        $sql_category = mysqli_query($conn, "select * from danhmucsanpham");
-
-                        
-                            while ($row_categories = mysqli_fetch_array($sql_category)) {
-                                ?>
-                                <div class="banner_btn">
-                                    <button class="banner_btn_item"><?php echo htmlspecialchars($row_categories['tendanhmuc']); ?></button>
-                                </div>
-                                <?php
-                            }
-                        
-                        ?>
-
-                    </div>
+                <div class="container_banner d-flex align-items-center justify-content-center">
+                    <h3 style="color: white;">Lựa chọn theo phông cách của bạn</h3>
                 </div>
             
 

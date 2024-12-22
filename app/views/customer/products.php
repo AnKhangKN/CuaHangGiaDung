@@ -262,7 +262,19 @@
                 <!-- all products container -->
                 <div class="row row-cols-1 row-cols-xxl-5 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 g-2 filter_data">
                     <?php
-                        $row = getAllProducts();
+
+                        if(isset($_GET['trang'])){
+                            $page = $_GET['trang'];
+                        }else{
+                            $page = '';
+                        }
+                        if($page == '' || $page == 1){
+                            $begin = 0;
+                        }else{
+                            $begin= ($page*20)-20;
+                        }
+
+                        $row = getAllProducts(1, $begin);
                         foreach($row as $product){
                             ?>
                             <div class="col">
@@ -303,16 +315,21 @@
                 <!-- pre and next page -->
                 <div class="page_nav">
                     <div class="page_nav_list">
-                        <a href="#" class="page_nav_list_item"><i class="fa-solid fa-chevron-left"></i></a>
-                        <a href="#" class="page_nav_list_item">1</a>
-                        <a href="#" class="page_nav_list_item">2</a>
-                        <a href="#" class="page_nav_list_item">3</a>
-                        <a href="#" class="page_nav_list_item">...</a>
-                        <a href="#" class="page_nav_list_item">8</a>
-                        <a href="#" class="page_nav_list_item">9</a>
-                        <a href="#" class="page_nav_list_item">10</a>
-                        <a href="#" class="page_nav_list_item"><i class="fa-solid fa-chevron-right"></i></a>
+                        <?php 
+                            $trang = countTotalProduct();
+
+                            for($i=1; $i<=$trang; $i++){
+                                ?>
+
+                                <a href="index.php?page=products&trang=<?php echo htmlentities($i)?>" 
+                                class="page_nav_list_item"><?php echo htmlentities($i)?></a>
+                                
+                                <?php
+                            }
+                        ?>
+                        
                     </div>
                 </div>
+                
             </div>            
         </main>

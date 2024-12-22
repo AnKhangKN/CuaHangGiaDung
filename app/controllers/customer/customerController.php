@@ -54,31 +54,60 @@
 
 // --------------------------------------------------------------------------------
 
-// get product page
-    function getAllProducts(){
-        // Connect to the database
-        $conn = connectBD();
-        
-        // Query to select all products from the 'sanpham' table
-        $sql_all_products = mysqli_query($conn,
-        "SELECT sp.*, ha.urlhinhanh AS urlhinhanh, dm.tendanhmuc
-        FROM sanpham sp
-        JOIN hinhanhsanpham ha ON ha.idSanPham = sp.idSanPham
-        JOIN danhmucsanpham dm ON dm.idDanhMuc = sp.idDanhMuc
-        WHERE sp.trangthai = 1
-        GROUP BY sp.idSanPham");
-        
-        // Initialize an array to store all rows
-        $rows = [];
+function getAllProducts($status = 1, $offset) {
+    // Kết nối cơ sở dữ liệu
+    $conn = connectBD();
 
-        // Loop through the result set and fetch all rows
-        while($row_all_products = mysqli_fetch_assoc($sql_all_products)){
-            $rows[] = $row_all_products;
-        }
-
-        // Return the array of all products
-        return $rows;
+    // Câu lệnh SQL với LIMIT và OFFSET
+    $sql = "SELECT sp.*, ha.urlhinhanh AS urlhinhanh, dm.tendanhmuc
+            FROM sanpham sp
+            JOIN hinhanhsanpham ha ON ha.idSanPham = sp.idSanPham
+            JOIN danhmucsanpham dm ON dm.idDanhMuc = sp.idDanhMuc
+            WHERE sp.trangthai = ?
+            GROUP BY sp.idSanPham
+            LIMIT ?, 20";  
+    
+    // Chuẩn bị truy vấn
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ii", $status, $offset); 
+    $stmt->execute();
+    
+    // Lấy kết quả
+    $result = $stmt->get_result();
+    $rows = [];
+    
+    while ($row = $result->fetch_assoc()) {
+        $rows[] = $row;
     }
+    
+    // Đóng kết nối
+    $stmt->close();
+    $conn->close();
+    
+    return $rows;
+}
+
+
+
+function countTotalProduct($status = 1, $itemsPerPage = 20) {
+    // Kết nối cơ sở dữ liệu
+    $conn = connectBD();
+    
+    // Sử dụng COUNT để tính tổng số sản phẩm
+    $sql = "SELECT COUNT(*) as total FROM sanpham WHERE trangthai = ?";
+    
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $status); // Gán giá trị trạng thái
+    $stmt->execute();
+
+    // Lấy kết quả
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+
+    // Tính tổng số trang
+    $totalBills = (int)$row['total']; 
+    return ceil($totalBills / $itemsPerPage); 
+}
 
 // --------------------------------------------------------------------------------
 
@@ -109,30 +138,54 @@
     }
 
 
-    // get all bills by customer id
-    function getBillsByIdCustomer($idCustomer) {
+    // get all bills by customer id with pagination
+function getBillsByIdCustomer($idCustomer, $begin) {
+    $conn = connectBD();
+    
+    $idCustomer = (int)$idCustomer;
+    $begin = (int)$begin;
+    
+    if ($idCustomer > 0) {
+        // Câu lệnh SQL với LIMIT và OFFSET
+        $sql = 'SELECT * FROM hoadon WHERE idKhachHang = ? ORDER BY ngayxuathoadon DESC LIMIT ?, 10';
+        $stmt = $conn->prepare($sql);
+        
+        // Gán tham số cho câu truy vấn
+        $stmt->bind_param("ii", $idCustomer, $begin);
+        $stmt->execute();
+        
+        $result = $stmt->get_result();
+        $bills = [];
+        
+        // Lấy kết quả và đưa vào mảng
+        while ($row = $result->fetch_assoc()) {
+            $bills[] = $row;
+        }
+        
+        return $bills;
+    } else {
+        return null;
+    }
+}
+
+    // Hàm đếm tổng số hóa đơn
+    function countTotalPagesByCustomer($idCustomer, $itemsPerPage = 10) {
         $conn = connectBD();
     
-        $idCustomer = (int)$idCustomer;
-        if ($idCustomer > 0) {
-            $sql = 'SELECT * FROM hoadon WHERE idKhachHang = ? ORDER BY ngayxuathoadon DESC';
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("i", $idCustomer);
-            $stmt->execute();
-        
-            $result = $stmt->get_result();
-            $bills = [];
-        
-            while ($row = $result->fetch_assoc()) {
-                $bills[] = $row;
-            }
-        
-            return $bills;
-        } else {
-            return null;
-        }
-    }
+        // Đếm tổng số hóa đơn
+        $sql = 'SELECT COUNT(*) as total FROM hoadon WHERE idKhachHang = ?';
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $idCustomer);
+        $stmt->execute();
     
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+    
+        // Tính tổng số trang
+        $totalBills = (int)$row['total']; 
+        return ceil($totalBills / $itemsPerPage); 
+    }
+    // ----------------------------------------------------
 
     function getBillById($idBill) {
         // Kết nối đến cơ sở dữ liệu
