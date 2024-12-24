@@ -217,9 +217,10 @@ function getInfo($Info) {
 
 function getBrowse(){
         $conn = connectBD();
-        $sql ="SELECT hoadon.idHoaDon, hoadon.ngayxuathoadon,hoadon.idKhachHang, khachhang.tenkhachhang,  hoadon.tongtien, hoadon.ghichu, hoadon.trangthai 
+        $sql ="SELECT hoadon.idHoaDon, hoadon.ngayxuathoadon,hoadon.idKhachHang, khachhang.tenkhachhang, khachhang.sdt, khachhang.diachi,  hoadon.tongtien, hoadon.ghichu, hoadon.trangthai 
 FROM hoadon
-JOIN khachhang ON khachhang.idKhachHang = hoadon.idKhachHang
+JOIN khachhang ON khachhang.idKhachHang = hoadon.idKhachHang 
+ORDER BY hoadon.trangthai
 ";
         $stmt = $conn->prepare($sql);
 
