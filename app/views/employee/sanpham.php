@@ -23,6 +23,7 @@ if(isset($_SESSION['user_id'])){
                     <div class="container_left">
                         <!-- Phan lam -->
                         <div class="search-container">
+                            <h5 style="margin-left: 200px;">SẢN PHẨM</h5>
                             <div class="search-box-sp">
                                 <input type="text" id="search" placeholder="Nhập từ khóa tìm kiếm">                    
                             </div>
@@ -76,43 +77,48 @@ if(isset($_SESSION['user_id'])){
                                             <img id="imgProduct" class="w-100 h-100 object-fit-cover" src="../../public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
                                         </div>
                                         <div class="product_name">
-                                            <span id="idSanPham" class="d-block"></span>
-                                            <p id="ProductName"></p>
+                                            <span  id="idSanPham" class="d-none"></span>
+                                            <p id="ProductName" style="font-weight: 500;font-size: 22px; margin-left: 40px;"></p>
                                         </div>
                                     </div>
 
                                     <div id="product_detail_body">
                                         
-                                    </div>
-                                    <div>Giá sản phẩm: <span  id="ProductPrice"></span></div>
+                                    </div >
+                                    <div style="font-weight: 500; margin-top: 7px;" >Giá sản phẩm: <span  id="ProductPrice" style="font-weight: 400;"></span></div>
                                     
-                                    <div class="idchitietsanpham">
-                                        <span>Id chi tiết sản phẩm: </span>
+                                    <div class="idchitietsanpham" style="margin-top: 7px;">
+                                        <span style="font-weight: 500;">Id chi tiết sản phẩm: </span>
                                         <span id="idchitietsanpham">0</span>
                                     </div>
-                                    <div class="soluongconlai">
+                                    <div class="soluongconlai" style="margin-top: 7px;" >
                                         
-                                        <span>Số lượng còn lại: </span>
+                                        <span style="font-weight: 500;">Số lượng còn lại: </span>
                                         <span id="late_amount">0</span>
                                     </div>
                                         
-                                    <div class="amount d-flex">
-                                    <span>Số lượng: </span>
-                                        <button id="down_product">
-                                            <i class="fa-solid fa-minus"></i>
+                                    <div class="amount d-flex" style="margin-top: 7px;">
+                                    <span style="font-weight: 500; margin-top: 7px;">Số lượng: </span>
+                                        <button style="background-color:rgb(255, 255, 255); margin-left: 10px;" id="down_product">
+                                            <i  class="fa-solid fa-minus "></i>
                                         </button>
 
-                                        <input type="text" id="amount_product" value="0">
+                                        <input style="width: 5%; margin: center;" type="text" id="amount_product" value="0">
                                         
-                                        <button id="up_product">
-                                            <i class="fa-solid fa-plus"></i>
+                                        <button style="background-color:rgb(255, 255, 255) ;"  id="up_product">
+                                            <i class="fa-solid fa-plus " ></i>
                                         </button >
                                     </div>
                                     
 
                                     <div class="product_detail_footer d-flex justify-content-between align-content-center">
+<<<<<<< HEAD
+                                        <button style="border-radius: 5px; background-color:rgb(25, 26, 33);color:aliceblue; margin-top: 50px; width: 100px; height: 35px;" id="close">Trở lại</button>
+                                        <button style="border-radius: 5px; background-color:rgb(25, 26, 33); margin-top: 50px; width: 180px; color:aliceblue; height: 35px;" id="add">Thêm vào mua hàng</button>
+=======
                                         <button id="close">Trở lại</button>
                                         <button style="background-color:black; " id="add">Thêm vào mua hàng</button>
+>>>>>>> 89654d673ab7bbeceb056065af004fade7f258fb
                                     </div>
                                     
                                 </div>
@@ -141,11 +147,11 @@ if(isset($_SESSION['user_id'])){
                             <span>Khách hàng không có thông tin</span>
                             <input type="checkbox" >
                             <div class="title_payment">
-                                <span id="idKhach" class=""></span>
+                                <span id="idKhach" class="d-none"></span>
                             <p>Tên khách hàng: <span id="tenKhach"></span> </p> 
                             <p>Số điện thoại: <span id="sdtKhach"></span> </p>  
                             <p>Nhân viên bán hàng: <?php echo htmlentities($info['tennhanvien'])?></p>
-                            <span id="idNhanVien" class=""><?php echo htmlentities($info['idNhanVien'])?></span> 
+                            <span id="idNhanVien" class="d-none"><?php echo htmlentities($info['idNhanVien'])?></span> 
                             </div>
                             <div class="content_payment">
                             <table class="table">
@@ -177,8 +183,8 @@ if(isset($_SESSION['user_id'])){
                                         <?php echo htmlentities($product['dongia']); ?> 
                                     </td>
                                     <td >
-                                        <span class="soluongSP" ><?php echo htmlentities($product['soluong']); ?></span>
-                                        <span class="soluongconlai">90</span>
+                                        <span class="soluongSP text-center" ><?php echo htmlentities($product['soluong']); ?></span>
+                                        <span class="soluongconlai d-none">90</span>
                                         
 
                                     </td>

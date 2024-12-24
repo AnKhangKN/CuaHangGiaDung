@@ -51,8 +51,12 @@ if(isset($_SESSION['user_id'])){
                             
                             if($tinhtrang === 0){
                                 ?>
+<<<<<<< HEAD
+                                <button class="btn btn-dark">Chi tiết</button>
+=======
                                 <span class="status"><?php echo htmlentities($Row['trangthai'])?></span>
                                 <button class="show_confirm_bill btn btn-dark">Chi tiết</button>
+>>>>>>> 89654d673ab7bbeceb056065af004fade7f258fb
                                 <?php
                             }
                             if($tinhtrang === 2){
@@ -85,6 +89,16 @@ if(isset($_SESSION['user_id'])){
         </div>
         <div id="model_detail_confirm_bill" class=" chitiet justify-content-center align-items-center position-fixed top-0 bottom-0 start-0 end-0">
 
+<<<<<<< HEAD
+            <div class="container_model" style="width: 500px; height: 500px;">
+                    <div class="model w-100 h-100 bg-white">
+                        <p style="margin: 10px; font-weight: 600;">Mã đơn:</p>
+                        <p style="margin: 10px; font-weight: 600;">Tên khách hàng:</p>
+                        <p style="margin: 10px; font-weight: 600;">Địa chỉ:</p>
+                        <p style="margin: 10px; font-weight: 600;">Số điện thoại:</p>
+                       
+                        
+=======
             <div class="container_model">
                     <div class="model w-100 h-100 bg-white p-4 rounded-2">
                         <div class="model_title mb-5 d-flex justify-content-between align-items-center">
@@ -121,6 +135,7 @@ if(isset($_SESSION['user_id'])){
                             <button class="btn btn-light" id="cancel_bill">Hủy đơn</button>
                             <button class="btn btn-dark" id="confirm_bill">Xác nhận</button>
                         </div>
+>>>>>>> 89654d673ab7bbeceb056065af004fade7f258fb
                     </div>
             </div>
         </div>
