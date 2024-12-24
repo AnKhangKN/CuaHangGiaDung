@@ -112,8 +112,13 @@ if(isset($_SESSION['user_id'])){
                                     
 
                                     <div class="product_detail_footer d-flex justify-content-between align-content-center">
+<<<<<<< HEAD
                                         <button style="border-radius: 5px; background-color:rgb(25, 26, 33);color:aliceblue; margin-top: 50px; width: 100px; height: 35px;" id="close">Trở lại</button>
                                         <button style="border-radius: 5px; background-color:rgb(25, 26, 33); margin-top: 50px; width: 180px; color:aliceblue; height: 35px;" id="add">Thêm vào mua hàng</button>
+=======
+                                        <button id="close">Trở lại</button>
+                                        <button style="background-color:black; " id="add">Thêm vào mua hàng</button>
+>>>>>>> 89654d673ab7bbeceb056065af004fade7f258fb
                                     </div>
                                     
                                 </div>
