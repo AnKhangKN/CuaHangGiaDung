@@ -312,16 +312,15 @@ $(document).on("click", ".list-group-item", function () {
     
 });
 
+// Function for processing orders with Customer ID
 function dsDonHangCoIdKH() {
     const container_payment = $('#Payment_send');
 
     const idKhachHang = container_payment.find('#idKhach').text().trim();
     const idNhanVien = container_payment.find('#idNhanVien').text().trim();
-    const tongtien = container_payment.find('#tong_don_gia').text().trim();
+    const tongtien = parseFloat(container_payment.find('#tong_don_gia').text().trim()); // Convert to number
 
-    console.log(idKhachHang, idNhanVien, tongtien);
-
-    if (!idKhachHang || !idNhanVien || !tongtien) {
+    if (!idKhachHang || !idNhanVien || isNaN(tongtien)) {
         alert("Vui lòng kiểm tra lại giá trị của 'idKhachHang', 'idNhanVien', và 'tongtien'.");
         return;
     }
@@ -329,7 +328,7 @@ function dsDonHangCoIdKH() {
     let products = [];
     $('.SanPham_buy').each(function () {
         const lstProduct = $(this);
-        const soluong = lstProduct.find('.soluongSP').text().trim();
+        const soluong = parseInt(lstProduct.find('.soluongSP').text().trim());
         const idChiTietSanPham = lstProduct.find('.idChiTietSanPham_buy').text().trim();
 
         if (soluong && idChiTietSanPham) {
@@ -355,7 +354,7 @@ function dsDonHangCoIdKH() {
             products: JSON.stringify(products),
         },
         success: function (response) {
-            const data = JSON.parse(response); // Parse JSON nếu response chưa được tự động parse
+            const data = JSON.parse(response);
             if (data.status === "success") {
                 alert(`Yêu cầu thành công! Mã hóa đơn: ${data.idHoaDon}`);
                 location.reload();
@@ -363,7 +362,6 @@ function dsDonHangCoIdKH() {
                 alert("Đã xảy ra lỗi: " + data.message);
             }
         },
-        
         error: function (xhr, status, error) {
             console.error("Yêu cầu không thành công:", error);
             alert("Đã có lỗi xảy ra. Vui lòng thử lại.");
@@ -371,13 +369,73 @@ function dsDonHangCoIdKH() {
     });
 }
 
+// Trigger payment process
 $("#ThanhToan").click(function (e) {
     e.preventDefault();
-    dsDonHangCoIdKH();
+
+    const status = $("#status_customer:checked").val();
+    if (status === "0") {  // Ensuring string check here
+        dsDonHangKhongCoThongTin();
+        console.log("Chưa có thông tin khách hàng:", status);
+    } else {
+        dsDonHangCoIdKH();
+    }
 });
 
-    
-    
-    
+// Function for processing orders without Customer ID
+function dsDonHangKhongCoThongTin() {
+    const container_payment = $('#Payment_send');
+
+    const idNhanVien = container_payment.find('#idNhanVien').text().trim();
+    const tongtien = parseFloat(container_payment.find('#tong_don_gia').text().trim()); // Convert to number
+
+    if (isNaN(tongtien) || !idNhanVien) {
+        alert("Vui lòng kiểm tra lại thông tin nhân viên hoặc tổng tiền.");
+        return;
+    }
+
+    let products = [];
+    $('.SanPham_buy').each(function () {
+        const lstProduct = $(this);
+        const soluong = parseInt(lstProduct.find('.soluongSP').text().trim());
+        const idChiTietSanPham = lstProduct.find('.idChiTietSanPham_buy').text().trim();
+
+        if (soluong && idChiTietSanPham) {
+            products.push({ soluong, idChiTietSanPham });
+        }
+    });
+
+    if (products.length === 0) {
+        alert("Danh sách sản phẩm không được để trống!");
+        return;
+    }
+
+    console.log("Danh sách sản phẩm:", products);
+
+    $.ajax({
+        type: "POST",
+        url: "/CuaHangDungCu/app/controllers/employee/payment_no_acc.php",
+        data: {
+            action: "NoAcc",
+            idNhanVien: idNhanVien,
+            tongtien: tongtien,
+            products: JSON.stringify(products),
+        },
+        success: function (response) {
+            const data = JSON.parse(response);
+            if (data.status === "success") {
+                alert(`Yêu cầu thành công! Mã hóa đơn: ${data.idHoaDon}`);
+                location.reload();
+            } else {
+                alert("Đã xảy ra lỗi: " + data.message);
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error("Yêu cầu không thành công:", error);
+            alert("Đã có lỗi xảy ra. Vui lòng thử lại.");
+        }
+    });
+}
+
 
 });

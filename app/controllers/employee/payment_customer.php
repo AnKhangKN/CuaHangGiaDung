@@ -11,11 +11,12 @@ if (isset($_POST['action']) && $_POST['action'] == 'CustomerId') {
         $idKhachHang = intval($_POST['idKhachHang']);
         $tongtien = floatval($_POST['tongtien']);
         $idNhanVien = $_POST['idNhanVien']; 
+        $bill_status = 2;
         $detail = json_decode($_POST['products'], true); 
 
         // Tạo hóa đơn
-        $stmtInsertHoaDon = $conn->prepare("INSERT INTO hoadon (tongtien, idNhanVien, idKhachHang) VALUES (?, ?, ?)");
-        $stmtInsertHoaDon->bind_param("dsi", $tongtien, $idNhanVien, $idKhachHang);
+        $stmtInsertHoaDon = $conn->prepare("INSERT INTO hoadon (tongtien, trangthai, idNhanVien, idKhachHang) VALUES (?, ?, ?, ?)");
+        $stmtInsertHoaDon->bind_param("dii", $tongtien, $bill_status, $idNhanVien, $idKhachHang);
         $stmtInsertHoaDon->execute();
         $idHoaDon = $conn->insert_id; // Lấy ID hóa đơn vừa tạo
 

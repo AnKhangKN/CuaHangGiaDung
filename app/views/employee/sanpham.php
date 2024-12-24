@@ -85,40 +85,38 @@ if(isset($_SESSION['user_id'])){
                                     <div id="product_detail_body">
                                         
                                     </div >
-                                    <div style="font-weight: 500; margin-top: 7px;" >Giá sản phẩm: <span  id="ProductPrice" style="font-weight: 400;"></span></div>
+                                    <div style="font-weight: 500; " class="d-flex">
+                                        <p style="width: 155px">Giá sản phẩm: </p>
+                                        <span  id="ProductPrice" style="font-weight: 400;"></span>
+                                    </div>
                                     
-                                    <div class="idchitietsanpham" style="margin-top: 7px;">
-                                        <span style="font-weight: 500;">Id chi tiết sản phẩm: </span>
+                                    <div class="idchitietsanpham d-none">
+                                        <p style="font-weight: 500;">Id chi tiết sản phẩm: </p>
                                         <span id="idchitietsanpham">0</span>
                                     </div>
-                                    <div class="soluongconlai" style="margin-top: 7px;" >
+                                    <div class="soluongconlai d-flex">
                                         
-                                        <span style="font-weight: 500;">Số lượng còn lại: </span>
+                                        <p style="font-weight: 500; width: 155px" >Số lượng còn lại: </p>
                                         <span id="late_amount">0</span>
                                     </div>
                                         
-                                    <div class="amount d-flex" style="margin-top: 7px;">
-                                    <span style="font-weight: 500; margin-top: 7px;">Số lượng: </span>
-                                        <button style="background-color:rgb(255, 255, 255); margin-left: 10px;" id="down_product">
+                                    <div class="amount d-flex">
+                                    <p style="font-weight: 500; margin-top: 7px; width: 155px">Số lượng: </p>
+                                        <button class="btn btn-light" id="down_product">
                                             <i  class="fa-solid fa-minus "></i>
                                         </button>
 
-                                        <input style="width: 5%; margin: center;" type="text" id="amount_product" value="0">
+                                        <input style="width: 8%; text-align: center; border: none;" type="text" id="amount_product" value="0">
                                         
-                                        <button style="background-color:rgb(255, 255, 255) ;"  id="up_product">
+                                        <button class="btn btn-light"  id="up_product">
                                             <i class="fa-solid fa-plus " ></i>
                                         </button >
                                     </div>
                                     
 
-                                    <div class="product_detail_footer d-flex justify-content-between align-content-center">
-<<<<<<< HEAD
-                                        <button style="border-radius: 5px; background-color:rgb(25, 26, 33);color:aliceblue; margin-top: 50px; width: 100px; height: 35px;" id="close">Trở lại</button>
-                                        <button style="border-radius: 5px; background-color:rgb(25, 26, 33); margin-top: 50px; width: 180px; color:aliceblue; height: 35px;" id="add">Thêm vào mua hàng</button>
-=======
-                                        <button id="close">Trở lại</button>
-                                        <button style="background-color:black; " id="add">Thêm vào mua hàng</button>
->>>>>>> 89654d673ab7bbeceb056065af004fade7f258fb
+                                    <div class="product_detail_footer d-flex justify-content-between align-content-center mt-4">
+                                        <button class="btn btn-light" id="close">Trở lại</button>
+                                        <button class="btn btn-dark" id="add">Thêm vào mua hàng</button>
                                     </div>
                                     
                                 </div>
@@ -144,8 +142,8 @@ if(isset($_SESSION['user_id'])){
                     </div>
                         <div id="container_payment ">
                             <h5 class="text-center">THANH TOÁN</h5>
-                            <span>Khách hàng không có thông tin</span>
-                            <input type="checkbox" >
+                            <span class="d-none">Khách hàng không có thông tin</span>
+                            <input type="checkbox" class="d-none" id="status_customer" value="0">
                             <div class="title_payment">
                                 <span id="idKhach" class="d-none"></span>
                             <p>Tên khách hàng: <span id="tenKhach"></span> </p> 
