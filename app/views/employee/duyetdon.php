@@ -79,6 +79,8 @@ if(isset($_SESSION['user_id'])){
                         <p style="margin: 10px; font-weight: 600;">Tên khách hàng:</p>
                         <p style="margin: 10px; font-weight: 600;">Địa chỉ:</p>
                         <p style="margin: 10px; font-weight: 600;">Số điện thoại:</p>
+                       
+                        
                     </div>
             </div>
         </div>

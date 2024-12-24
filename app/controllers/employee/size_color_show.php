@@ -18,13 +18,22 @@ if (isset($_POST['idSanPham']) && is_numeric($_POST['idSanPham']) && $_POST['idS
 
     ?>
     
-    <div class="detail_size d-flex align-content-center">
-        <span>Kích thước</span>
-        <div id="sizeContainer" style="margin-left: 30px;">
+    <div class="detail_size d-flex align-content-center" >
+        <span style="font-weight: 500; margin-top: 10px;">Kích thước:</span>
+        <div id="sizeContainer" style="margin-left: 30px; margin-top: 10px;">
         <?php
         foreach ($size as $row) {
             ?>
+            
+
+            
+
+
             <input type="checkbox" class="size_input" value="<?php echo htmlentities($row['kichthuoc']); ?>" name="size[]" id="size_<?php echo htmlentities($row['kichthuoc']); ?>">
+            
+            
+            
+            
             <label for="size_<?php echo htmlentities($row['kichthuoc']); ?>"><?php echo htmlentities($row['kichthuoc']); ?></label>
             <?php
         }
@@ -46,13 +55,22 @@ if (isset($_POST['idSanPham']) && is_numeric($_POST['idSanPham']) && $_POST['idS
     ?>
     
     <div class="detail_color d-flex align-content-center">
-        <span>Màu sắc</span>
-        <div class="colorContainer" style="margin-left: 46px;">
+        <span style="font-weight: 500; margin-top: 7px;">Màu sắc:</span>
+        <div class="colorContainer d-flex" style="margin-left: 46px;">
         <?php
         foreach ($color as $row_color) {
             ?>
-            <input type="checkbox" class="color_input" value="<?php echo htmlentities($row_color['mausac']);?>" name="color[]" id="color_<?php echo htmlentities($row_color['mausac']); ?>">
-            <label for="color_<?php echo htmlentities($row_color['mausac']); ?>"><?php echo htmlentities($row_color['mausac']); ?></label>
+
+
+            <div class="content m-2 d-flex">
+              <label class="checkBox" style="box-shadow: 0px 0px 0px 2px <?php echo htmlentities($row_color['mausac']);?>;">
+                <input name="color[]" id="color_<?php echo htmlentities($row_color['mausac']); ?>" type="checkbox" class="color_input" value="<?php echo htmlentities($row_color['mausac']);?>">
+                <div class="transition" style="background-color: <?php echo htmlentities($row_color['mausac']);?>;"></div>
+              </label>
+            </div>
+
+
+            
             <?php
         }
         ?>

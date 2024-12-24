@@ -77,36 +77,36 @@ if(isset($_SESSION['user_id'])){
                                             <img id="imgProduct" class="w-100 h-100 object-fit-cover" src="../../public/assets/images/products/ao-the-thao-nam-demo.jpg" alt="">
                                         </div>
                                         <div class="product_name">
-                                            <span  id="idSanPham" class="d-block"></span>
-                                            <p id="ProductName"></p>
+                                            <span  id="idSanPham" class="d-none"></span>
+                                            <p id="ProductName" style="font-weight: 500;font-size: 22px; margin-left: 40px;"></p>
                                         </div>
                                     </div>
 
                                     <div id="product_detail_body">
                                         
                                     </div >
-                                    <div >Giá sản phẩm: <span  id="ProductPrice"></span></div>
+                                    <div style="font-weight: 500; margin-top: 7px;" >Giá sản phẩm: <span  id="ProductPrice" style="font-weight: 400;"></span></div>
                                     
-                                    <div class="idchitietsanpham">
-                                        <span>Id chi tiết sản phẩm: </span>
+                                    <div class="idchitietsanpham" style="margin-top: 7px;">
+                                        <span style="font-weight: 500;">Id chi tiết sản phẩm: </span>
                                         <span id="idchitietsanpham">0</span>
                                     </div>
-                                    <div class="soluongconlai">
+                                    <div class="soluongconlai" style="margin-top: 7px;" >
                                         
-                                        <span>Số lượng còn lại: </span>
+                                        <span style="font-weight: 500;">Số lượng còn lại: </span>
                                         <span id="late_amount">0</span>
                                     </div>
                                         
-                                    <div class="amount d-flex">
-                                    <span>Số lượng: </span>
-                                        <button style="background-color:rgb(255, 255, 255);" id="down_product">
+                                    <div class="amount d-flex" style="margin-top: 7px;">
+                                    <span style="font-weight: 500; margin-top: 7px;">Số lượng: </span>
+                                        <button style="background-color:rgb(255, 255, 255); margin-left: 10px;" id="down_product">
                                             <i  class="fa-solid fa-minus "></i>
                                         </button>
 
-                                        <input style="width: 7%; margin: center;" type="text" id="amount_product" value="0">
+                                        <input style="width: 5%; margin: center;" type="text" id="amount_product" value="0">
                                         
                                         <button style="background-color:rgb(255, 255, 255) ;"  id="up_product">
-                                            <i class="fa-solid fa-plus "></i>
+                                            <i class="fa-solid fa-plus " ></i>
                                         </button >
                                     </div>
                                     
@@ -123,7 +123,7 @@ if(isset($_SESSION['user_id'])){
 <!-- ---------------------------------------------------------------- -->
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6" id="Payment_send">
                     <div class="container_right">
                         <div class="search-container">
                             <div class="search-box-pay">
@@ -137,12 +137,16 @@ if(isset($_SESSION['user_id'])){
                                                     
                         </div>
                     </div>
-                        <div class="container_payment ">
+                        <div id="container_payment ">
                             <h5 class="text-center">THANH TOÁN</h5>
+                            <span>Khách hàng không có thông tin</span>
+                            <input type="checkbox" >
                             <div class="title_payment">
-                            <p>Tên khách hàng: </p>
-                            <p>Số điện thoại: </p>
-                            <p>Nhân viên bán hàng: <?php echo htmlentities($info['tennhanvien'])?></> 
+                                <span id="idKhach" class="d-none"></span>
+                            <p>Tên khách hàng: <span id="tenKhach"></span> </p> 
+                            <p>Số điện thoại: <span id="sdtKhach"></span> </p>  
+                            <p>Nhân viên bán hàng: <?php echo htmlentities($info['tennhanvien'])?></p>
+                            <span id="idNhanVien" class="d-none"><?php echo htmlentities($info['idNhanVien'])?></span> 
                             </div>
                             <div class="content_payment">
                             <table class="table">
@@ -163,21 +167,24 @@ if(isset($_SESSION['user_id'])){
                                 ?>
                                 <tr class="SanPham_buy">
                                     <td class="d-flex flex-column">
-                                        <span class="idSanPham_buy"><?php echo htmlentities($product['idSanPham']); ?></span>
-                                        <span class="idChiTietSanPham_buy"><?php echo htmlentities($product['idChiTietSanPham']); ?></span >
+                                        <span class="idSanPham_buy d-none"><?php echo htmlentities($product['idSanPham']); ?></span>
+                                        <span class="idChiTietSanPham_buy d-none"><?php echo htmlentities($product['idChiTietSanPham']); ?></span >
                                         <span class="tenSanPham_buy"><?php echo htmlentities($product['tenSanPham']); ?></span>
                                         <span class="mau_buy"><?php echo htmlentities($product['mau']); ?></span>
                                         <span class="kichthuoc_buy"><?php echo htmlentities($product['kichthuoc']); ?></span>
                                         
                                     </td>
-                                    <td>
+                                    <td >
                                         <?php echo htmlentities($product['dongia']); ?> 
                                     </td>
-                                    <td>
-                                        <?php echo htmlentities($product['soluong']); ?>
+                                    <td >
+                                        <span class="soluongSP text-center" ><?php echo htmlentities($product['soluong']); ?></span>
+                                        <span class="soluongconlai d-none">90</span>
+                                        
+
                                     </td>
-                                    <td>
-                                        <?php echo htmlentities($product['dongia'] * $product['soluong']); ?> 
+                                    <td class="don_gia">
+                                        <?php echo htmlentities($product['dongia'] * $product['soluong']);?>000
                                     </td>
                                     <td>
                                         <button class="remove_cart">
@@ -198,12 +205,12 @@ if(isset($_SESSION['user_id'])){
 
                             <div id="total_price" style="margin: 0px 30px; text-align: end;">
                                 <span>Tổng tiền: </span>
-                                <span>600000</span>
+                                <span id="tong_don_gia">0</span>
                             </div>
 
                             <div class="action_payment">
                                 <button type="button" class="btn bg-dark text-white">Tạm tính</button>
-                                <button type="button" class="btn bg-dark text-white">Thanh toán</button>
+                                <button id="ThanhToan" type="button" class="btn bg-dark text-white">Thanh toán</button>
                             </div>  
 
                         </div>    

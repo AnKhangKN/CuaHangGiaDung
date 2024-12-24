@@ -339,7 +339,7 @@ function searchCustomerByPhone($CustomerPhone) {
         }
 
         // Câu SQL tìm kiếm khách hàng dựa trên số điện thoại
-        $sql = "SELECT tenkhachhang, sdt
+        $sql = "SELECT tenkhachhang, sdt, idKhachHang
                 FROM khachhang kh
                 WHERE sdt LIKE ?";
 

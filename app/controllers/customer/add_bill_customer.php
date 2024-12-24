@@ -7,23 +7,30 @@ if (isset($_POST['action']) && $_POST['action'] == 'CustomerId') {
     $conn->begin_transaction(MYSQLI_TRANS_START_READ_WRITE); // Bắt đầu giao dịch
 
     try {
+        // Lấy dữ liệu từ client
         $idKhachHang = intval($_POST['idKhachHang']);
         $tenKhachHang = $_POST['tenkhachhang'];
         $sodienthoai = $_POST['sodienthoai'];
         $diachi = $_POST['diachi'];
         $tongtien = floatval($_POST['tongtien']);
+        $method = $_POST['method'];
         $ghichu = $conn->real_escape_string($_POST['ghichu']);
-        $idNhanVien = 3; 
+        $idNhanVien = 3; // Nhân viên ID mặc định
         $detail = json_decode($_POST['products'], true); // Chuyển đổi JSON sang mảng
+
+        // Kiểm tra các trường bắt buộc
+        if (empty($tenKhachHang) || empty($sodienthoai) || empty($diachi) || empty($tongtien) || !is_array($detail)) {
+            throw new Exception("Thông tin cần thiết không đầy đủ.");
+        }
 
         // Cập nhật thông tin khách hàng
         $stmtUpdateKhachHang = $conn->prepare("UPDATE khachhang SET tenkhachhang = ?,sdt = ?,diachi = ? WHERE idKhachHang = ?;");
-        $stmtUpdateKhachHang->bind_param('sssi',$tenKhachHang, $sodienthoai, $diachi, $idKhachHang);
+        $stmtUpdateKhachHang->bind_param('sssi', $tenKhachHang, $sodienthoai, $diachi, $idKhachHang);
         $stmtUpdateKhachHang->execute();
 
         // Tạo hóa đơn
-        $stmtInsertHoaDon = $conn->prepare("INSERT INTO hoadon (tongtien, ghichu, idNhanVien, idKhachHang) VALUES (?, ?, ?, ?)");
-        $stmtInsertHoaDon->bind_param("dsii", $tongtien, $ghichu, $idNhanVien, $idKhachHang);
+        $stmtInsertHoaDon = $conn->prepare("INSERT INTO hoadon (tongtien, payment_method, ghichu, idNhanVien, idKhachHang) VALUES (?, ?, ?, ?, ?)");
+        $stmtInsertHoaDon->bind_param("dsisi", $tongtien, $method, $ghichu, $idNhanVien, $idKhachHang);
         $stmtInsertHoaDon->execute();
         $idHoaDon = $conn->insert_id; // Lấy ID hóa đơn vừa tạo
 
@@ -36,6 +43,11 @@ if (isset($_POST['action']) && $_POST['action'] == 'CustomerId') {
             $idChiTietSanPham = intval($item['idChiTietSanPham']);
             $soLuongConLai = intval($item['soluongconlai']);
 
+            // Kiểm tra tính hợp lệ số lượng
+            if ($soLuong <= 0 || $soLuongConLai <= 0) {
+                throw new Exception("Số lượng không hợp lệ cho sản phẩm ID: $idChiTietSanPham");
+            }
+
             // Thêm chi tiết hóa đơn
             $stmtInsertChiTietHoaDon->bind_param("iii", $soLuong, $idHoaDon, $idChiTietSanPham);
             $stmtInsertChiTietHoaDon->execute();
@@ -47,6 +59,12 @@ if (isset($_POST['action']) && $_POST['action'] == 'CustomerId') {
             }
             $stmtUpdateSanPham->bind_param("ii", $newAmount, $idChiTietSanPham);
             $stmtUpdateSanPham->execute();
+        }
+
+        // Xóa cookie giỏ hàng
+        if (isset($_COOKIE['cart'])) {
+            setcookie('cart', '', time() - 3600, '/'); 
+            unset($_COOKIE['cart']); 
         }
 
         // Commit giao dịch
@@ -68,6 +86,6 @@ if (isset($_POST['action']) && $_POST['action'] == 'CustomerId') {
     }
 
 } else {
-    echo json_encode(["status" => "error", "message" => "Yêu cầu không hợp lệ!"]);
+    echo json_encode(["status" => "error", "message" => "Yêu cầu không hợp lệ!"]); 
 }
 ?>

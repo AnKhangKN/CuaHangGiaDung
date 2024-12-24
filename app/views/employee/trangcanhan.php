@@ -28,7 +28,8 @@ if(isset($_SESSION['user_id'])) {
                           <p>Lương: <span style="font-weight: 400;"><?php echo htmlentities($employee['luong'])?></span></p>
                           <p>Thưởng:<span style="font-weight: 400;"><?php echo htmlentities($employee['thuong'])?></span></p> 
                         </div>
-                            
+                       
+
                     </div>
                     <div class="container">
                     

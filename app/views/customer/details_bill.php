@@ -15,6 +15,8 @@
 
         $Bill = getBillById($idBill);
 
+        $comment = checkComment($idBill);
+
         if(!$DetailBillid){
             header('Location: http://localhost/CuaHangDungCu/index.php?page=information');
         }
@@ -52,7 +54,7 @@
                     <div class="col-lg-5">
                         <div class="detail_bill">
                             <p>Họ tên khách hàng: <span><?php echo htmlentities($Customer['tenkhachhang'])?></span></p>
-                            <p>Mã đơn hàng: <span><?php echo htmlentities($Bill['idHoaDon'])?></span></p>
+                            <p>Mã đơn hàng: <span id="idHoaDon_ct"><?php echo htmlentities($Bill['idHoaDon'])?></span></p>
                             <p>Tổng tiền hóa đơn: <span><?php echo number_format($Bill['tongtien'] , 0, ',', '.')?></span></p>
                             <p>Ngày xuất hóa đơn : <span><?php echo htmlentities($Bill['ngayxuathoadon'])?></span></p>
                             <p>Ghi chú: <span><?php echo htmlentities($Bill['ghichu'])?></span></p>
@@ -117,15 +119,21 @@
                                             <?php echo htmlentities($rowDetailBill['kichthuoc'])?>
                                         </td>
                                         <td>
-                                            <?php 
-                                            if($Bill['trangthai'] == 2){
+                                        <?php 
+                                        if($Bill['trangthai'] == 2) {
+                                            // Kiểm tra nếu cả 'idSanPham' và 'idBinhLuan' đều không tồn tại
+                                            if(!isset($comment['idSanPham']) && !isset($comment['idBinhLuan'])) {
                                                 ?> 
                                                 <button class="btn_comment btn_get_comment">Nhận xét</button>
                                                 <?php 
-                                            } else{
+                                            }else{
+                                                echo "Đã bình luận";
+                                            }
+                                        } else {
+                                        }
+                                        ?>
 
-                                                ?>
-                                            <?php }?>
+
                                         </td>
                                     </tr>
 
