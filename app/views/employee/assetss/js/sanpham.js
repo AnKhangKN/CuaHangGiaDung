@@ -355,9 +355,15 @@ function dsDonHangCoIdKH() {
             products: JSON.stringify(products),
         },
         success: function (response) {
-            console.log(response);
-            alert("Yêu cầu đã thành công!");
+            const data = JSON.parse(response); // Parse JSON nếu response chưa được tự động parse
+            if (data.status === "success") {
+                alert(`Yêu cầu thành công! Mã hóa đơn: ${data.idHoaDon}`);
+                location.reload();
+            } else {
+                alert("Đã xảy ra lỗi: " + data.message);
+            }
         },
+        
         error: function (xhr, status, error) {
             console.error("Yêu cầu không thành công:", error);
             alert("Đã có lỗi xảy ra. Vui lòng thử lại.");

@@ -15,9 +15,9 @@ if(isset($_SESSION['user_id'])){
 <main class="main">
         <div class="container-fluid">
             <div class="row">
+                
             <div class="container">
-                <input class="form-control" id="myInput" type="text" placeholder="Nhập tìm kiếm" style="margin-top: 20px; width: 50%;margin-left: 30px;">
-                <br>
+                
                 <table class="table table-bordered table-striped text-center">
                     <thead>
                         <tr>

@@ -56,9 +56,9 @@ if (isset($_POST['action']) && $_POST['action'] == 'CustomerId') {
         }
 
         // Xóa cookie giỏ hàng
-        if (isset($_COOKIE['cart'])) {
-            setcookie('cart', '', time() - 3600, '/'); 
-            unset($_COOKIE['cart']); 
+        if (isset($_COOKIE['cart_e'])) {
+            setcookie('cart_e', '', time() - 3600, '/'); 
+            unset($_COOKIE['cart_e']); 
         }
 
         // Commit giao dịch
