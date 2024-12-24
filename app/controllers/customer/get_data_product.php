@@ -88,7 +88,7 @@ if (isset($_POST['action'])) {
         $arrange_condition = "";
     }
 
-    $Product .= ' GROUP BY sp.idSanPham ' . $arrange_condition;
+    $Product .= ' GROUP BY sp.idSanPham ' . $arrange_condition ;
 
 
     $conn = connectBD();
