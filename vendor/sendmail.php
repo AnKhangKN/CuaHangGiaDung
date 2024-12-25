@@ -13,7 +13,7 @@ function sendEmail($toEmail, $subject, $body, $ccEmail = null) {
 
     try {
         // Cấu hình SMTP
-        $mail->SMTPDebug = 0;  // Để debug chọn 2 (bình thường chọn 0 để tắt debug)
+        $mail->SMTPDebug = 0;  // Tắt debug (đặt 2 để bật debug chi tiết)
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
@@ -31,6 +31,9 @@ function sendEmail($toEmail, $subject, $body, $ccEmail = null) {
             $mail->addCC($ccEmail);
         }
 
+        // Đảm bảo mã hóa UTF-8
+        $mail->CharSet = 'UTF-8';
+
         // Nội dung email
         $mail->isHTML(true);
         $mail->Subject = $subject;
@@ -44,4 +47,3 @@ function sendEmail($toEmail, $subject, $body, $ccEmail = null) {
         return false;
     }
 }
-?>

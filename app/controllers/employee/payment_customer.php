@@ -16,7 +16,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'CustomerId') {
 
         // Tạo hóa đơn
         $stmtInsertHoaDon = $conn->prepare("INSERT INTO hoadon (tongtien, trangthai, idNhanVien, idKhachHang) VALUES (?, ?, ?, ?)");
-        $stmtInsertHoaDon->bind_param("dii", $tongtien, $bill_status, $idNhanVien, $idKhachHang);
+        $stmtInsertHoaDon->bind_param("dsii", $tongtien, $bill_status, $idNhanVien, $idKhachHang);
         $stmtInsertHoaDon->execute();
         $idHoaDon = $conn->insert_id; // Lấy ID hóa đơn vừa tạo
 

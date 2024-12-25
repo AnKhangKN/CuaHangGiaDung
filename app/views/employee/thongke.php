@@ -46,16 +46,7 @@ if(isset($_SESSION['user_id'])){
                           </table>
                             
                     </div>
-                    <div class="container_statistical">
-                      
-                          <button type="button" class="btn_statistical bg-dark text-white">Ngày</button>
-                          <button type="button" class="btn_statistical bg-dark text-white">Tuần</button>
-                          <button type="button" class="btn_statistical bg-dark text-white">Tháng</button>
-                      
-                    </div>
-                    <div class="text">
-                      <h4>Doanh thu:</h4>                                        
-                    </div>
+                    
               
                       
                 

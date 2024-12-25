@@ -64,7 +64,7 @@ function getColorByProductId($ProductId) {
     $sql = "SELECT DISTINCT mausacsanpham.mausac
             FROM mausacsanpham
             JOIN chitietsanpham ON mausacsanpham.idMauSac = chitietsanpham.idMauSac
-            WHERE chitietsanpham.idSanPham = ?";
+            WHERE chitietsanpham.idSanPham = ? AND chitietsanpham.soluongconlai > 0";
 
     // Chuẩn bị câu lệnh SQL
     $stmt = $conn->prepare($sql);

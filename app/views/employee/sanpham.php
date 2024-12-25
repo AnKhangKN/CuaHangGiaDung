@@ -23,7 +23,7 @@ if(isset($_SESSION['user_id'])){
                     <div class="container_left">
                         <!-- Phan lam -->
                         <div class="search-container">
-                            <h5 style="margin-left: 200px;">SẢN PHẨM</h5>
+                            <h5 class="text-center p-4">SẢN PHẨM</h5>
                             <div class="search-box-sp">
                                 <input type="text" id="search" placeholder="Nhập từ khóa tìm kiếm">                    
                             </div>
@@ -141,16 +141,23 @@ if(isset($_SESSION['user_id'])){
                         </div>
                     </div>
                         <div id="container_payment ">
-                            <h5 class="text-center">THANH TOÁN</h5>
-                            <span class="d-none">Khách hàng không có thông tin</span>
-                            <input type="checkbox" class="d-none" id="status_customer" value="0">
+                            <h5 class="text-center mb-5">THANH TOÁN</h5>
+
+                            <div class="text-end">
+                                <p class="">Khách hàng không có thông tin</p>
+                                <input type="checkbox" class="" id="status_customer" value="0">
+                            </div>
+                            
                             <div class="title_payment">
                                 <span id="idKhach" class="d-none"></span>
-                            <p>Tên khách hàng: <span id="tenKhach"></span> </p> 
-                            <p>Số điện thoại: <span id="sdtKhach"></span> </p>  
-                            <p>Nhân viên bán hàng: <?php echo htmlentities($info['tennhanvien'])?></p>
-                            <span id="idNhanVien" class="d-none"><?php echo htmlentities($info['idNhanVien'])?></span> 
+                                <p>Tên khách hàng: <span id="tenKhach"></span> </p> 
+                                <p>Số điện thoại: <span id="sdtKhach"></span> </p>  
+                                <p>Nhân viên bán hàng: <?php echo htmlentities($info['tennhanvien'])?></p>
+                                <span id="idNhanVien" class="d-none"><?php echo htmlentities($info['idNhanVien'])?></span> 
                             </div>
+
+                            <hr>
+
                             <div class="content_payment">
                             <table class="table">
                                 <thead>
@@ -190,7 +197,7 @@ if(isset($_SESSION['user_id'])){
                                         <?php echo htmlentities($product['dongia'] * $product['soluong']);?>000
                                     </td>
                                     <td>
-                                        <button class="remove_cart">
+                                        <button class="remove_cart" style="border: none;">
                                             <i class="fa-solid fa-trash"></i>
                                         </button>
                                     </td>

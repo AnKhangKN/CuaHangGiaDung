@@ -8,20 +8,12 @@ if (isset($_POST['action']) && $_POST['action'] == 'NoAcc') {
 
     try {
         // Khai báo giá trị mặc định
-        $tenKH = "Khách vãng lai";
+        $idKhachHang = 1;
         $status = 0;
         $bill_status = 2;
         $tongtien = floatval($_POST['tongtien']);
         $idNhanVien = $_POST['idNhanVien']; 
         $detail = json_decode($_POST['products'], true);
-
-        // Tạo khách hàng
-        $stmtInsertKhachHang = $conn->prepare("INSERT INTO khachhang (tenkhachhang, trangthaithongtin, idTaiKhoan) VALUES (?, ?, ?)");
-        $stmtInsertKhachHang->bind_param('sii', $tenKH, $status, $taiKhoan);
-        if (!$stmtInsertKhachHang->execute()) {
-            throw new Exception("Không thể tạo khách hàng vãng lai.");
-        }
-        $idKhachHang = $conn->insert_id;
 
         // Tạo hóa đơn
         $stmtInsertHoaDon = $conn->prepare("INSERT INTO hoadon (tongtien, trangthai, idNhanVien, idKhachHang) VALUES (?, ?, ?, ?)");

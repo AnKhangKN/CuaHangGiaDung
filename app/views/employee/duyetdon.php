@@ -15,7 +15,7 @@ if(isset($_SESSION['user_id'])){
 <main class="main">
         <div class="container-fluid">
             <div class="row">
-
+            <h3>Duyệt đơn đặt hàng</h3>
             <div class="container">
                 
                 <table class="table table-bordered table-striped text-center">
@@ -51,7 +51,7 @@ if(isset($_SESSION['user_id'])){
                             
                             if($tinhtrang === 0){
                                 ?>
-                                <span class="status"><?php echo htmlentities($Row['trangthai'])?></span>
+                                <span class="status d-none"><?php echo htmlentities($Row['trangthai'])?></span>
                                 <button class="show_confirm_bill btn btn-dark">Chi tiết</button>
                                 <?php
                             }
