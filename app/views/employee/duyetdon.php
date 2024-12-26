@@ -116,6 +116,7 @@ if(isset($_SESSION['user_id'])){
                                 <p id="trangthai_xn"  style="min-width: 155px;">đang xử lý</p>
                             </div>
                             
+                            
                         </div>
                         <div class="model_action d-flex justify-content-between mt-5 align-items-center">
                             <button class="btn btn-light" id="cancel_bill">Hủy đơn</button>
