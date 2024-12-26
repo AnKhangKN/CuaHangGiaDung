@@ -11,19 +11,15 @@ if (isset($_SESSION['user_id'])) {
     $Customer = getCustomerById($id);
     $Account = getAccountById($id);
 
-    if ($Customer && $Account) {
-        $_SESSION['idKhachHang'] = $Customer['idKhachHang'];
 
-        // Kiểm tra trạng thái cookie giỏ hàng
-        if (!isset($_COOKIE['cart']) || trim($_COOKIE['cart']) === '') {
-            header('Location: index.php?page=cart');
-            exit();
-        }
-    } else {
-        error_log("Không tìm thấy thông tin tài khoản hoặc khách hàng với ID: $id");
-        header('Location: index.php?page=404');
+    $_SESSION['idKhachHang'] = $Customer['idKhachHang'];
+
+    // Kiểm tra trạng thái cookie giỏ hàng
+    if (!isset($_COOKIE['cart']) || trim($_COOKIE['cart']) === '') {
+        header('Location: index.php?page=cart');
         exit();
     }
+
 } else {
     header('Location: index.php?page=login');
     exit();
