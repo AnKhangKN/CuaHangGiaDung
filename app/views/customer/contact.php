@@ -37,25 +37,7 @@
 
                         <h5>Liên hệ với chúng tôi</h5>
 
-                        <div class="group_contact">
-                            <form action="">
-                                <div class="row">
-                                    <div class="contact_name col-lg-6 col-md-6 col-sm-12 col-12 g-3">
-                                        <input placeholder="Họ và tên" type="text" class="form-control  form-control-lg" required="" value="" name="contact[Name]">
-                                    </div>
-                                    <div class="contact_email col-lg-6 col-md-6 col-sm-12 col-12 g-3">
-                                        <input placeholder="Email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required="" id="email1" class="form-control form-control-lg" value="" name="contact[email]">
-                                    </div>
-                                    <div class="contact_phone col-lg-12 col-md-12 col-sm-12 col-12 g-3" >
-                                        <input type="number" placeholder="Điện thoại" name="contact[phone]" class="form-control form-control-lg" required="">
-                                    </div>
-                                    <div class="contact_contents_text col-lg-12 col-md-12 col-sm-12 col-12 g-3">
-                                        <textarea placeholder="Nội dung" name="contact[body]" id="comment" class="form-control content-area form-control-lg" rows="5" required=""></textarea>
-                                        <button type="submit" class="btn bg-dark text-white" style="margin-top: 15px;">Gửi thông tin</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                        
                     </div>
 
                     <div class="introduce_img">

@@ -21,9 +21,8 @@
                 </div>
                 <div class="footer_content">
                     <p>HƯỚNG DẪN</p>  
-                    <a href="#" class="footer_content_item">Hướng dẫn mua hàng</a>
-                    <a href="#" class="footer_content_item">Hướng dẫn thanh toán</a>
-                    <a href="#" class="footer_content_item">Hướng dẫn đổi trả</a>
+                    <a href="index.php?page=buying_guide" class="footer_content_item">Hướng dẫn mua hàng</a>
+                    <a href="index.php?page=create_account" class="footer_content_item">Hướng dẫn tạo tài khoản</a>
                 </div>
                 <div class="footer_content">
                     <p>MẠNG XÃ HỘI</p>

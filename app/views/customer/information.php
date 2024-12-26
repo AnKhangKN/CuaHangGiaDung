@@ -117,14 +117,14 @@ if(isset($_SESSION['user_id'])) {
                                     </table>
 
                                     
-                                    <ul class="d-flex " style="list-style: none;">
+                                    <ul class="d-flex " style="list-style: none; padding: 0;">
                                         <?php
                                         $trang = countTotalPagesByCustomer($Customer['idKhachHang']);
                                         for ($i = 1; $i <= $trang; $i++)
                                         { 
                                             ?>
-                                                <li style="width: 30px; height: 30px; border: 1px solid black" >
-                                                    <a href="index.php?page=information&trang=<?php echo htmlentities($i)?>"><?php echo htmlentities($i)?></a>
+                                                <li class="d-flex justify-content-center align-items-center" style="width: 30px; height: 30px; border: 1px solid black" >
+                                                    <a style="text-decoration: none; color: #333;" href="index.php?page=information&trang=<?php echo htmlentities($i)?>"><?php echo htmlentities($i)?></a>
                                                 </li>
                                                 <?php
                                             }?>
