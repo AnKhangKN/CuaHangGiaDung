@@ -99,6 +99,7 @@ if(isset($_SESSION['user_id'])){
                                     <div class="model_item mt-2 d-flex">
                                         <p class="fw-bold" style="width: 355px;">Mã hóa đơn: </p>
                                         <p id="idHoaDon_xn" style="min-width: 100px;">1</p>
+                                        
                                     </div>
                                     <div class="model_item mt-2 d-flex">
                                         <p class="fw-bold" style="width: 355px;">Tên khách hàng: </p>
@@ -126,35 +127,45 @@ if(isset($_SESSION['user_id'])){
                                         <i class="fa-solid fa-xmark"></i>
                                 </div>
                                 <div class="table_bill_detail">
-                                    <table class="table">
+                                    <table class="table table-hover">
                                         <thead>
                                             <tr>
-                                                <th scope="col">Mã Sản Phẩm</th>
-                                                <th scope="col">Tên sản phẩm</th>
-                                                <th scope="col">Số lượng</th>
-                                                <th scope="col">Thành tiền</th>
+                                                <th>Mã Sản Phẩm</th>
+                                                <th>Tên sản phẩm</th>
+                                                <th>Kích thước</th>
+                                                <th>Màu sắc</th>
+                                                <th>Số lượng</th>
+                                                <th>Thành tiền</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-                                                <td>@mdo</td>
+                                        <tbody id="product_container">
+                                            <?php
+                                            $Product = getApprove_orders($idHoaDon);
+
+                                            foreach ($Product as $Row){
+                                                ?>
+                                              
+                                            <tr class="order_product">
+                                                <td class="idSanPham"><?php echo htmlentities($Row['idSanPham'])?></td>
+                                                <td class="tensanpham"><?php echo htmlentities($Row['tensanpham'])?></td>
+                                                <td class="kichthuoc"><?php echo htmlentities($Row['kichthuoc'])?></td>
+                                                <td class="mausac"><?php echo htmlentities($Row['mausac'])?></td>
+                                                <td class="giaSanPham"><?php echo number_format($Row['dongia'], 0, ',', '.')?></td>
+                                                <td class="soLuong"><?php echo htmlentities($Row['soluong']); ?></td>
+                                                <td class="thanhTien"><?php echo number_format($Row['thanhtien'], 0, ',', '.'); ?> VND</td>
+                                                
                                             </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>Jacob</td>
-                                                <td>Thornton</td>
-                                                <td>@fat</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">3</th>
-                                                <td colspan="2">Larry the Bird</td>
-                                                <td>@twitter</td>
-                                            </tr>
+                                       
+                                                <?php
+                                            }
+                                    
+                                            ?>
                                         </tbody>
                                     </table>
+                                </div>
+                                <div id="tongtien" style="margin: 0px 30px; text-align: end;">
+                                <span>Tổng tiền: </span>
+                                <span class="tongtien"><?php echo number_format($Row['tongtien'], 0, ',', '.'); ?> VND</span>
                                 </div>
                                 
                                 <div class="model_action d-flex justify-content-between mt-5 align-items-center">

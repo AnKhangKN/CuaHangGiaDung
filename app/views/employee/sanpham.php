@@ -156,7 +156,7 @@ if(isset($_SESSION['user_id'])){
                                 <span id="idNhanVien" class="d-none"><?php echo htmlentities($info['idNhanVien'])?></span> 
                             </div>
 
-                            <hr>
+                           
 
                             <div class="content_payment">
                             <table class="table">
