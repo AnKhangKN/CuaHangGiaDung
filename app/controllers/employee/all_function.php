@@ -379,8 +379,8 @@ function searchCustomerByPhone($CustomerPhone) {
 function getApprove_orders($idHoaDon) {
     $conn = connectBD();
 
-    // Truy vấn chỉ tính tổng doanh thu theo sản phẩm, dựa trên mã hóa đơn được truyền vào
-    $sql = "
+    // Truy vấn chi tiết hóa đơn
+    $sqlChiTiet = "
     SELECT 
         sanpham.idSanPham, 
         sanpham.tensanpham, 
@@ -388,13 +388,7 @@ function getApprove_orders($idHoaDon) {
         mausacsanpham.mausac, 
         sanpham.dongia, 
         chitiethoadon.soluong, 
-        (sanpham.dongia * chitiethoadon.soluong) AS thanhtien,
-        (SELECT SUM(sanpham.dongia * chitiethoadon.soluong) 
-         FROM chitiethoadon
-         JOIN hoadon ON chitiethoadon.idHoaDon = hoadon.idHoaDon
-         JOIN chitietsanpham ON chitiethoadon.idChiTietSanPham = chitietsanpham.idChiTietSanPham
-         JOIN sanpham ON chitietsanpham.idSanPham = sanpham.idSanPham
-         WHERE hoadon.idHoaDon = ?) AS tongtien
+        (sanpham.dongia * chitiethoadon.soluong) AS thanhtien
     FROM 
         chitiethoadon
     JOIN 
@@ -411,30 +405,25 @@ function getApprove_orders($idHoaDon) {
         hoadon.idHoaDon = ?;
     ";
 
-    $stmt = $conn->prepare($sql);
+    $stmtChiTiet = $conn->prepare($sqlChiTiet);
 
-    // Kiểm tra nếu không chuẩn bị được câu lệnh
-    if (!$stmt) {
-        die("Chuẩn bị câu lệnh thất bại: " . $conn->error);
+    if (!$stmtChiTiet) {
+        die("Chuẩn bị câu lệnh truy vấn chi tiết thất bại: " . $conn->error);
     }
 
-    // Gán giá trị cho tham số
-    $stmt->bind_param('i', $idHoaDon);
-
-    $stmt->execute();
-    $result = $stmt->get_result();
+    $stmtChiTiet->bind_param('i', $idHoaDon);
+    $stmtChiTiet->execute();
+    $resultChiTiet = $stmtChiTiet->get_result();
 
     $rows = [];
-
-    // Lặp qua từng dòng kết quả
-    while ($rowStatistical = $result->fetch_assoc()) {
-        $rows[] = $rowStatistical;
+    while ($row = $resultChiTiet->fetch_assoc()) {
+        $rows[] = $row;
     }
 
-    $stmt->close();
+    $stmtChiTiet->close();
     $conn->close();
 
-    // Trả về danh sách thống kê
+    // Trả về chỉ chi tiết hóa đơn
     return $rows;
 }
 

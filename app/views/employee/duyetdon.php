@@ -98,24 +98,24 @@ if(isset($_SESSION['user_id'])){
                                 <div class="model_content">
                                     <div class="model_item mt-2 d-flex">
                                         <p class="fw-bold" style="width: 355px;">Mã hóa đơn: </p>
-                                        <p id="idHoaDon_xn" style="min-width: 100px;">1</p>
+                                        <p id="idHoaDon_xn" style="min-width: 150px;">1</p>
                                         
                                     </div>
                                     <div class="model_item mt-2 d-flex">
                                         <p class="fw-bold" style="width: 355px;">Tên khách hàng: </p>
-                                        <p id="ten_xn" style="min-width: 100px;" >Phan An Khang</p>
+                                        <p id="ten_xn" style="min-width: 150px;" >Phan An Khang</p>
                                     </div>
                                     <div class="model_item mt-2 d-flex">
                                         <p class="fw-bold" style="width: 355px;">Số điện thoại: </p>
-                                        <p id="sdt_xn" style="min-width: 100px;" >0992493</p>
+                                        <p id="sdt_xn" style="min-width: 150px;" >0992493</p>
                                     </div>
                                     <div class="model_item mt-2 d-flex">
                                         <p class="fw-bold" style="width: 355px;">Địa chỉ: </p>
-                                        <p id="diachi_xn" style="min-width: 100px;" >cà mau</p>
+                                        <p id="diachi_xn" style="min-width: 150px;" >cà mau</p>
                                     </div>
                                     <div class="model_item mt-2 d-flex">
                                         <p class="fw-bold" style="width: 355px;">Trạng thái: </p>
-                                        <p id="trangthai_xn" style="min-width: 100px;" >đang xử lý</p>
+                                        <p id="trangthai_xn" style="min-width: 150px;" >đang xử lý</p>
                                     </div>
                                 </div>
 
@@ -132,46 +132,30 @@ if(isset($_SESSION['user_id'])){
                                             <tr>
                                                 <th>Mã Sản Phẩm</th>
                                                 <th>Tên sản phẩm</th>
-                                                <th>Kích thước</th>
-                                                <th>Màu sắc</th>
                                                 <th>Số lượng</th>
                                                 <th>Thành tiền</th>
                                             </tr>
                                         </thead>
                                         <tbody id="product_container">
-                                            <?php
-                                            $Product = getApprove_orders($idHoaDon);
-
-                                            foreach ($Product as $Row){
-                                                ?>
-                                              
-                                            <tr class="order_product">
-                                                <td class="idSanPham"><?php echo htmlentities($Row['idSanPham'])?></td>
-                                                <td class="tensanpham"><?php echo htmlentities($Row['tensanpham'])?></td>
-                                                <td class="kichthuoc"><?php echo htmlentities($Row['kichthuoc'])?></td>
-                                                <td class="mausac"><?php echo htmlentities($Row['mausac'])?></td>
-                                                <td class="giaSanPham"><?php echo number_format($Row['dongia'], 0, ',', '.')?></td>
-                                                <td class="soLuong"><?php echo htmlentities($Row['soluong']); ?></td>
-                                                <td class="thanhTien"><?php echo number_format($Row['thanhtien'], 0, ',', '.'); ?> VND</td>
-                                                
-                                            </tr>
-                                       
-                                                <?php
-                                            }
-                                    
-                                            ?>
+                                            
                                         </tbody>
                                     </table>
                                 </div>
-                                <div id="tongtien" style="margin: 0px 30px; text-align: end;">
-                                <span>Tổng tiền: </span>
-                                <span class="tongtien"><?php echo number_format($Row['tongtien'], 0, ',', '.'); ?> VND</span>
+                                
+                                <div class="container text-end">
+                                    <span>Tổng hóa đơn: </span>
+                                    <span id="tong_tien">
+                                    </span>
                                 </div>
                                 
-                                <div class="model_action d-flex justify-content-between mt-5 align-items-center">
-                                    <button class="btn btn-light" id="cancel_bill">Hủy đơn</button>
-                                    <button class="btn btn-dark" id="confirm_bill">Xác nhận</button>
+
+                                <div class="container">
+                                    <div class="model_action d-flex justify-content-between mt-5 align-items-center">
+                                        <button class="btn btn-light" id="cancel_bill">Hủy đơn</button>
+                                        <button class="btn btn-dark" id="confirm_bill">Xác nhận</button>
+                                    </div>
                                 </div>
+                                
 
 
                             </div>

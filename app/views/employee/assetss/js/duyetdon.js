@@ -24,6 +24,7 @@ $(document).ready(function () {
         const phone = model.find(".sdt").text().trim();
         const address = model.find(".diachi").text().trim();
         const status = model.find(".status").text().trim();
+        const tongtien = model.find(".tongtien").text();
     
         // Kiểm tra nếu dữ liệu không trống
         if (!BillId || !CustomerName || !CustomerId || !phone || !address || !status) {
@@ -40,6 +41,21 @@ $(document).ready(function () {
         $("#sdt_xn").text(phone);
         $("#diachi_xn").text(address);
         $("#trangthai_xn").text(status);
+        $("#tong_tien").text(tongtien);
+
+
+        $.ajax({
+            type: "POST",
+            url: "/CuaHangDungCu/app/controllers/employee/ct_duyet_don.php",
+            data: {
+                action: "ct_duyet_don",
+                BillId: BillId
+            },
+            success: function (response) {
+                
+                $("#product_container").html(response);
+            }
+        });
 
     
     });
