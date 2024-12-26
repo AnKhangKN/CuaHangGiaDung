@@ -23,8 +23,6 @@
     <!-- css sản phẩm -->
     <link rel="stylesheet" href="../../app/views/employee/assetss/css/sanpham.css">
 
-    <!-- css thống kê -->
-    <link rel="stylesheet" href="../../app/views/employee/assetss/css/thongke.css">
     <!-- css duyệt đơn -->
     <link rel="stylesheet" href="../../app/views/employee/assetss/css/duyetdon.css">
     <!-- css trang cá nhân -->
@@ -73,15 +71,11 @@
           <a href="index.php?page=khachhang" class="">KHÁCH HÀNG</a>
         </li>
         <li class="list_tool_item">
-          <i class="fa-solid fa-chart-simple"></i>
-          <a href="index.php?page=thongke" class=""> THỐNG KÊ</a>
-        </li>
-        <li class="list_tool_item">
           <i class="fa-solid fa-check"></i>
           <a href="index.php?page=duyetdon" class=""> DUYỆT ĐƠN</a>
         </li>
 
-        <li class="list_tool_item" style="margin-top: 135px;">
+        <li class="list_tool_item" style="margin-top: 250px;">
           <i class="fa-solid fa-door-open"></i>
           <a href="../../app/views/others/logout.php" style="text-decoration: none; color: white;" class="logout">Đăng xuất</a>
         </li>
