@@ -7,10 +7,9 @@ if (session_status() === PHP_SESSION_NONE) {
 include '../app/controllers/customer/customerController.php';
 
 if (isset($_SESSION['user_id'])) {
-    $id = intval($_SESSION['user_id']); // Chuyển đổi ID sang số nguyên
+    $id = intval($_SESSION['user_id']); 
     $Customer = getCustomerById($id);
     $Account = getAccountById($id);
-
 
     $_SESSION['idKhachHang'] = $Customer['idKhachHang'];
 
@@ -20,10 +19,7 @@ if (isset($_SESSION['user_id'])) {
         exit();
     }
 
-} else {
-    header('Location: index.php?page=login');
-    exit();
-}
+} 
 ?>
 
 
