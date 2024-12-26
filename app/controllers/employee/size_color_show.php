@@ -54,7 +54,7 @@ if (isset($_POST['idSanPham']) && is_numeric($_POST['idSanPham']) && $_POST['idS
 
 
             <div class="content d-flex align-items-center me-2">
-              <label class="checkBox" style="box-shadow: 0px 0px 0px 2px <?php echo htmlentities($row_color['mausac']);?>;">
+              <label class="checkBox" style="margin-bottom: 20px; box-shadow: 0px 0px 0px 2px <?php echo htmlentities($row_color['mausac']);?>;">
                 <input name="color[]" id="color_<?php echo htmlentities($row_color['mausac']); ?>" type="checkbox" class="color_input" value="<?php echo htmlentities($row_color['mausac']);?>">
                 <div class="transition" style="background-color: <?php echo htmlentities($row_color['mausac']);?>;"></div>
               </label>
