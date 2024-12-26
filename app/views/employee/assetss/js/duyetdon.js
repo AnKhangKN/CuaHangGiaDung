@@ -40,6 +40,8 @@ $(document).ready(function () {
         $("#sdt_xn").text(phone);
         $("#diachi_xn").text(address);
         $("#trangthai_xn").text(status);
+
+    
     });
     
     // Xác nhận hóa đơn

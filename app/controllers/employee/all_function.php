@@ -376,6 +376,67 @@ function searchCustomerByPhone($CustomerPhone) {
         return [];
     }
 }
+function getApprove_orders($idHoaDon) {
+    $conn = connectBD();
+
+    // Truy vấn chỉ tính tổng doanh thu theo sản phẩm, dựa trên mã hóa đơn được truyền vào
+    $sql = "
+    SELECT 
+        sanpham.idSanPham, 
+        sanpham.tensanpham, 
+        kichthuocsanpham.kichthuoc, 
+        mausacsanpham.mausac, 
+        sanpham.dongia, 
+        chitiethoadon.soluong, 
+        (sanpham.dongia * chitiethoadon.soluong) AS thanhtien,
+        (SELECT SUM(sanpham.dongia * chitiethoadon.soluong) 
+         FROM chitiethoadon
+         JOIN hoadon ON chitiethoadon.idHoaDon = hoadon.idHoaDon
+         JOIN chitietsanpham ON chitiethoadon.idChiTietSanPham = chitietsanpham.idChiTietSanPham
+         JOIN sanpham ON chitietsanpham.idSanPham = sanpham.idSanPham
+         WHERE hoadon.idHoaDon = ?) AS tongtien
+    FROM 
+        chitiethoadon
+    JOIN 
+        hoadon ON chitiethoadon.idHoaDon = hoadon.idHoaDon
+    JOIN 
+        chitietsanpham ON chitiethoadon.idChiTietSanPham = chitietsanpham.idChiTietSanPham
+    JOIN 
+        sanpham ON chitietsanpham.idSanPham = sanpham.idSanPham
+    JOIN 
+        mausacsanpham ON mausacsanpham.idMauSac = chitietsanpham.idMauSac
+    JOIN 
+        kichthuocsanpham ON kichthuocsanpham.idKichThuoc = chitietsanpham.idKichThuoc
+    WHERE 
+        hoadon.idHoaDon = ?;
+    ";
+
+    $stmt = $conn->prepare($sql);
+
+    // Kiểm tra nếu không chuẩn bị được câu lệnh
+    if (!$stmt) {
+        die("Chuẩn bị câu lệnh thất bại: " . $conn->error);
+    }
+
+    // Gán giá trị cho tham số
+    $stmt->bind_param('i', $idHoaDon);
+
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $rows = [];
+
+    // Lặp qua từng dòng kết quả
+    while ($rowStatistical = $result->fetch_assoc()) {
+        $rows[] = $rowStatistical;
+    }
+
+    $stmt->close();
+    $conn->close();
+
+    // Trả về danh sách thống kê
+    return $rows;
+}
 
 
 
