@@ -57,7 +57,7 @@ if ($result->num_rows > 0) {
                 }
                 break;
             case 1:
-                $response['redirect'] = '/CuaHangDungCu/public/admin/index.php';
+                $response['redirect'] = '/CuaHangDungCu/public/manager/index.php';
                 break;
             case 2:
                 $response['redirect'] = '/CuaHangDungCu/public/employee/index.php';

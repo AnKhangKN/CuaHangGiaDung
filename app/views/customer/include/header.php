@@ -200,7 +200,7 @@
                             } elseif ($_SESSION['quyen'] === 1){
                                 ?>
                                 
-                        <a href="admin/index.php" style="text-decoration: none; color: black;">
+                        <a href="manager/index.php" style="text-decoration: none; color: black;">
                             <div class="option_sub">
                                 <i class="fa-solid fa-user"></i>
                                 <p>Trở về admin</p>
