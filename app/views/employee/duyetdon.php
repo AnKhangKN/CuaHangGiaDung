@@ -144,8 +144,7 @@ if(isset($_SESSION['user_id'])){
                                 
                                 <div class="container text-end">
                                     <span>Tổng hóa đơn: </span>
-                                    <span id="tong_tien">
-                                    </span>
+                                    <span id="tong_tien"></span>
                                 </div>
                                 
 
