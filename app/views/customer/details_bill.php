@@ -82,7 +82,20 @@
                         </div>
                         <div class="detail_bill_active">
                             <a href="index.php?page=information"><i class="fa-solid fa-arrow-left"></i> Quay lại </a>
-                            <button>Xuất hóa đơn</button>
+                            <?php 
+                            
+                                if($Bill['trangthai'] == 2){
+                                    ?>
+
+                                    <a href="/CuaHangDungCu/app/controllers/customer/paint_bill.php?idBill=<?php echo htmlentities($idBill)?>">Xuất hóa đơn</a>
+                                    
+                                    <?php
+                                }else{
+                                    echo "";
+                                }
+
+                            ?>
+                            
                         </div>
                     </div>
                     <div class="col-lg-7">
