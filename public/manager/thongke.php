@@ -1,6 +1,6 @@
 <?php
 
-include($_SERVER['DOCUMENT_ROOT'] . "/CHDDTTHKN/assets/view/QuanLy/includes/connect.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/config/connect.php");
 
 // Biến mặc định
 $startDate = isset($_POST['start_date']) ? $_POST['start_date'] : '';
@@ -195,5 +195,5 @@ $topCustomers = $conn->query($sql_top_customers)->fetch_all(MYSQLI_ASSOC);
     </div>
 
     <?php
-    include($_SERVER['DOCUMENT_ROOT'] . "/CHDDTTHKN/assets/view/QuanLy/includes/footer.php");
+    include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/app/views/manager/includes/footer.php");
     ?>

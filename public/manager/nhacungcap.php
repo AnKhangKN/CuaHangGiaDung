@@ -1,6 +1,6 @@
 <?php
 
-include($_SERVER['DOCUMENT_ROOT'] . "/CHDDTTHKN/assets/view/QuanLy/includes/connect.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/config/connect.php");
 
 function test_input($data)
 {
@@ -22,7 +22,10 @@ if (isset($_POST["product__sumit"])) {
     $stmt->bind_param("ssssis", $tennhacungcap, $email, $sdt, $diachi, $trangthai, $ghichu);
     $stmt->execute();
 
-    header("location: /CHDDTTHKN/assets/view/QuanLy/index.php?page=nhacungcap");
+    echo "<script>
+            alert('Thêm nhà cung cấp thành công.');
+            window.location.href = '/CuaHangDungCu/public/manager/index.php?page=nhacungcap';
+            </script>";
 }
 
 $search_nhacungcap = isset($_GET["search_nhacungcap"]) ? $_GET["search_nhacungcap"] : "";
@@ -32,7 +35,7 @@ $current_page = !empty($_GET["pages"]) ? $_GET["pages"] : 1;
 $offset = ($current_page - 1) * $item_per_page;
 
 if ($search_nhacungcap) {
-    include($_SERVER['DOCUMENT_ROOT'] . "/CHDDTTHKN/assets/view/QuanLy/includes/header.php");
+    include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/app/views/manager/includes/header.php");
     $sql_nhacungcap = "SELECT * FROM nhacungcap WHERE tennhacungcap LIKE '%" . $search_nhacungcap . "%' ORDER BY idNhaCungCap ASC LIMIT $item_per_page OFFSET $offset";
     $result_nhacungcap = mysqli_query($conn, $sql_nhacungcap);
     $totalRecords = mysqli_query($conn, "SELECT * FROM nhacungcap WHERE tennhacungcap LIKE '%" . $search_nhacungcap . "%'");
@@ -62,7 +65,7 @@ $totalPages = ceil($totalNumber / $item_per_page);
                 Thêm nhà cung cấp
             </button>
 
-            <form action="/CHDDTTHKN/assets/view/QuanLy/nhacungcap.php" class="content__header-form-search">
+            <form action="/CuaHangDungCu/public/manager/nhacungcap.php" class="content__header-form-search">
                 <input type="text" name="search_nhacungcap" required class="content__header-form-search-text" placeholder="Tìm kiếm nhà cung cấp">
 
                 <button type="submit" class="content__header-form-search-submit">
@@ -116,12 +119,12 @@ $totalPages = ceil($totalNumber / $item_per_page);
                                 </td>
                                 <td class="content__body-td"><?php echo $row_nhacungcap["ghichu"] ?></td>
                                 <td class="content__body-td">
-                                    <form action='/CHDDTTHKN/assets/controller/deleteNhaCungCap.php' class="content__body-td-form" method='POST'>
+                                    <form action='/CuaHangDungCu/app/controllers/manager/deleteNhaCungCap.php' class="content__body-td-form" method='POST'>
                                         <input type='hidden' name='idNhaCungCap' value="<?php echo $row_nhacungcap["idNhaCungCap"] ?>">
                                         <input type='submit' class="content__body-td__btn-delete" onclick="return confirm('Bạn có chắc chắn muốn xóa nhà cung cấp này không?')" value="xóa">
                                     </form>
 
-                                    <form action="/CHDDTTHKN/assets/controller/editNhaCungCap.php" class="content__body-td-form" method="POST">
+                                    <form action="/CuaHangDungCu/app/controllers/manager/editNhaCungCap.php" class="content__body-td-form" method="POST">
                                         <input type="hidden" name="idNhaCungCap" value="<?php echo $row_nhacungcap["idNhaCungCap"] ?>">
                                         <input type="submit" class="content__body-td__btn-edit" value="sửa">
                                     </form>
@@ -138,7 +141,7 @@ $totalPages = ceil($totalNumber / $item_per_page);
                 </tbody>
             </table>
 
-            <?php include $_SERVER['DOCUMENT_ROOT'] . "/CHDDTTHKN/assets/controller/paginationNhaCungCap.php" ?>
+            <?php include $_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/app/controllers/manager/paginationNhaCungCap.php" ?>
 
         </div>
     </div>
@@ -161,7 +164,7 @@ $totalPages = ceil($totalNumber / $item_per_page);
         </div>
 
         <div class="content__modal-body">
-            <form action="/CHDDTTHKN/assets/view/QuanLy/nhacungcap.php" class="content__modal-body-form" method="POST">
+            <form action="/CuaHangDungCu/public/manager/nhacungcap.php" class="content__modal-body-form" method="POST">
                 <label for="" class="content__modal-body-label">Tên nhà cung cấp: </label>
                 <input type="text" name="tennhacungcap" id="" class="content__modal-body-input" placeholder="Nhập tên nhà cung cấp">
 
@@ -193,5 +196,5 @@ $totalPages = ceil($totalNumber / $item_per_page);
 </div>
 
 <?php
-include($_SERVER['DOCUMENT_ROOT'] . "/CHDDTTHKN/assets/view/QuanLy/includes/footer.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/app/views/manager/includes/footer.php");
 ?>

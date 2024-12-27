@@ -1,6 +1,6 @@
 <?php
 
-include($_SERVER['DOCUMENT_ROOT'] . "/CHDDTTHKN/assets/view/QuanLy/includes/connect.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/config/connect.php");
 
 function test_input($data)
 {
@@ -44,11 +44,17 @@ if (isset($_POST["product__sumit"])) {
         // Xác nhận giao dịch
         $conn->commit();
 
-        header("location: /CHDDTTHKN/assets/view/QuanLy/index.php?page=khachhang");
+        echo "<script>
+            alert('Thêm khách thành công.');
+            window.location.href = '/CuaHangDungCu/public/manager/index.php?page=khachhang';
+            </script>";
     } catch (Exception $e) {
         // Hủy giao dịch nếu có lỗi
         $conn->rollback();
-        echo "Có lỗi xảy ra: " . $e->getMessage();
+        echo "<script>
+            alert('Lỗi thêm khách.');
+            window.location.href = '/CuaHangDungCu/public/manager/index.php?page=khachhang';
+            </script>";
     }
 }
 
@@ -59,7 +65,7 @@ $current_page = !empty($_GET["pages"]) ? $_GET["pages"] : 1;
 $offset = ($current_page - 1) * $item_per_page;
 
 if ($search_khachhang) {
-    include($_SERVER['DOCUMENT_ROOT'] . "/CHDDTTHKN/assets/view/QuanLy/includes/header.php");
+    include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/app/views/manager/includes/header.php");
     $sql_khachhang = "SELECT * FROM khachhang kh JOIN taikhoan tk ON kh.idTaiKhoan = tk.idTaiKhoan
                     WHERE kh.tenkhachhang LIKE '%" . $search_khachhang . "%' 
                     OR kh.sdt LIKE '%" . $search_khachhang . "%' 
@@ -97,7 +103,7 @@ $totalPages = ceil($totalNumber / $item_per_page);
                 Thêm khách hàng
             </button> -->
 
-            <form action="/CHDDTTHKN/assets/view/QuanLy/khachhang.php" class="content__header-form-search">
+            <form action="/CuaHangDungCu/public/manager/khachhang.php" class="content__header-form-search">
                 <input type="text" name="search_khachhang" required class="content__header-form-search-text" placeholder="Tìm kiếm tên, sdt, email khách hàng">
 
                 <button type="submit" class="content__header-form-search-submit">
@@ -160,7 +166,7 @@ $totalPages = ceil($totalNumber / $item_per_page);
                                 <td class="content__body-td">
                                 <!-- <button class="content__body-td__btn-see view-details js_content__body-td__btn-see" data-id="<?php echo $row_khachhang['idKhachHang'] ?>">xem</button> -->
 
-                                    <form action="/CHDDTTHKN/assets/controller/editKhachHang.php" class="content__body-td-form" method="POST">
+                                    <form action="/CuaHangDungCu/app/controllers/manager/editKhachHang.php" class="content__body-td-form" method="POST">
                                         <input type="hidden" name="idKhachHang" value="<?php echo $row_khachhang["idKhachHang"] ?>">
                                         <input type="hidden" name="idTaiKhoan" value="<?php echo $row_khachhang["idTaiKhoan"] ?>">
                                         <input type="submit" class="content__body-td__btn-edit" value="sửa">
@@ -177,7 +183,7 @@ $totalPages = ceil($totalNumber / $item_per_page);
                 </tbody>
             </table>
 
-            <?php include $_SERVER['DOCUMENT_ROOT'] . "/CHDDTTHKN/assets/controller/paginationKhachHang.php" ?>
+            <?php include $_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/app/controllers/manager/paginationKhachHang.php" ?>
 
         </div>
     </div>
@@ -256,5 +262,5 @@ $totalPages = ceil($totalNumber / $item_per_page);
 </div> -->
 
 <?php
-include($_SERVER['DOCUMENT_ROOT'] . "/CHDDTTHKN/assets/view/QuanLy/includes/footer.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/app/views/manager/includes/footer.php");
 ?>

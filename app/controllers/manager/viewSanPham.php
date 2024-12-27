@@ -1,5 +1,5 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT'] . "/CHDDTTHKN/assets/view/QuanLy/includes/connect.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/config/connect.php");
 
 if (isset($_GET['idSanPham'])) {
     $idSanPham = $_GET['idSanPham'];
@@ -51,7 +51,7 @@ if (isset($_GET['idSanPham'])) {
                         <div class="content__body-td-modal-img">
                             <div class="image-container">
                                 <?php foreach ($images as $image): ?>
-                                    <img src="/CHDDTTHKN/assets/img/products/<?php echo htmlspecialchars($image); ?>" alt="Hình ảnh sản phẩm">
+                                    <img src="http://localhost/CuaHangDungCu/public/assets/images/products/<?php echo htmlspecialchars($image); ?>" alt="Hình ảnh sản phẩm">
                                 <?php endforeach; ?>
                             </div>
                         </div>
@@ -134,6 +134,6 @@ if (isset($_GET['idSanPham'])) {
     echo '<div style="text-align: center; font-family: Arial, sans-serif; color: #333;">ID sản phẩm không hợp lệ.</div>';
 }
 
-include($_SERVER['DOCUMENT_ROOT'] . "/CHDDTTHKN/assets/view/QuanLy/includes/footer.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/app/views/manager/includes/footer.php");
 
 ?>

@@ -1,6 +1,6 @@
 <?php
 
-include($_SERVER['DOCUMENT_ROOT'] . "/CHDDTTHKN/assets/view/QuanLy/includes/connect.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/config/connect.php");
 
 function test_input($data)
 {
@@ -17,7 +17,10 @@ if (isset($_POST["product__sumit"])) {
     $stmt->bind_param("s", $tendanhmuc);
     $stmt->execute();
 
-    header("location: /CHDDTTHKN/assets/view/QuanLy/index.php?page=danhmuc");
+    echo "<script>
+            alert('Thêm danh mục thành công.');
+            window.location.href = '/CuaHangDungCu/public/manager/index.php?page=danhmuc';
+            </script>";
 }
 
 $search_danhmuc = isset($_GET["search_danhmuc"]) ? $_GET["search_danhmuc"] : "";
@@ -27,7 +30,7 @@ $current_page = !empty($_GET["pages"]) ? $_GET["pages"] : 1;
 $offset = ($current_page - 1) * $item_per_page;
 
 if ($search_danhmuc) {
-    include($_SERVER['DOCUMENT_ROOT'] . "/CHDDTTHKN/assets/view/QuanLy/includes/header.php");
+    include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/app/views/manager/includes/header.php");
     $sql_danhmuc = "SELECT * FROM danhmucsanpham WHERE tendanhmuc LIKE '%" . $search_danhmuc . "%' ORDER BY idDanhMuc ASC LIMIT $item_per_page OFFSET $offset";
     $result_danhmuc = mysqli_query($conn, $sql_danhmuc);
     $totalRecords = mysqli_query($conn, "SELECT * FROM danhmucsanpham WHERE tendanhmuc LIKE '%" . $search_danhmuc . "%'");
@@ -57,7 +60,7 @@ $totalPages = ceil($totalNumber / $item_per_page);
                 Thêm danh mục
             </button>
 
-            <form action="/CHDDTTHKN/assets/view/QuanLy/danhmuc.php" class="content__header-form-search">
+            <form action="/CuaHangDungCu/public/manager/danhmuc.php" class="content__header-form-search">
                 <input type="text" name="search_danhmuc" required class="content__header-form-search-text" placeholder="Tìm kiếm tên danh mục">
 
                 <button type="submit" class="content__header-form-search-submit">
@@ -93,12 +96,12 @@ $totalPages = ceil($totalNumber / $item_per_page);
                                 <td class="content__body-td"><?php echo $row_danhmuc["idDanhMuc"] ?></td>
                                 <td class="content__body-td"><?php echo $row_danhmuc["tendanhmuc"] ?></td>
                                 <td class="content__body-td">
-                                    <form action='/CHDDTTHKN/assets/controller/deleteDanhMuc.php' class="content__body-td-form" method='POST'>
+                                    <form action='/CuaHangDungCu/app/controllers/manager/deleteDanhMuc.php' class="content__body-td-form" method='POST'>
                                         <input type='hidden' name='idDanhMuc' value="<?php echo $row_danhmuc["idDanhMuc"] ?>">
                                         <input type='submit' class="content__body-td__btn-delete" onclick="return confirm('Bạn có chắc chắn muốn xóa danh mục này không?')" value="xóa">
                                     </form>
 
-                                    <form action="/CHDDTTHKN/assets/controller/editDanhMuc.php" class="content__body-td-form" method="POST">
+                                    <form action="/CuaHangDungCu/app/controllers/manager/editDanhMuc.php" class="content__body-td-form" method="POST">
                                         <input type="hidden" name="idDanhMuc" value="<?php echo $row_danhmuc["idDanhMuc"] ?>">
                                         <input type="submit" class="content__body-td__btn-edit" value="sửa">
                                     </form>
@@ -115,7 +118,7 @@ $totalPages = ceil($totalNumber / $item_per_page);
                 </tbody>
             </table>
 
-            <?php include $_SERVER['DOCUMENT_ROOT'] . "/CHDDTTHKN/assets/controller/paginationDanhMuc.php" ?>
+            <?php include $_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/app/controllers/manager/paginationDanhMuc.php" ?>
 
         </div>
     </div>
@@ -138,7 +141,7 @@ $totalPages = ceil($totalNumber / $item_per_page);
         </div>
 
         <div class="content__modal-body">
-            <form action="/CHDDTTHKN/assets/view/QuanLy/danhmuc.php" class="content__modal-body-form" method="POST">
+            <form action="/CuaHangDungCu/public/manager/danhmuc.php" class="content__modal-body-form" method="POST">
                 <label for="" class="content__modal-body-label">Tên danh mục: </label>
                 <input type="text" name="tendanhmuc" id="" class="content__modal-body-input" placeholder="Nhập tên danh mục">
 
@@ -153,5 +156,5 @@ $totalPages = ceil($totalNumber / $item_per_page);
 </div>
 
 <?php
-include($_SERVER['DOCUMENT_ROOT'] . "/CHDDTTHKN/assets/view/QuanLy/includes/footer.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/app/views/manager/includes/footer.php");
 ?>

@@ -40,7 +40,7 @@ buttons.forEach(button => {
         const idSanPham = this.getAttribute('data-id'); // Lấy ID sản phẩm từ thuộc tính data-id
 
         // Gửi yêu cầu AJAX tới server để lấy thông tin chi tiết sản phẩm
-        fetch(`/CHDDTTHKN/assets/controller/viewSanPham.php?idSanPham=${idSanPham}`)
+        fetch(`/CuaHangDungCu/app/controllers/manager/viewSanPham.php?idSanPham=${idSanPham}`)
             .then(response => response.text()) // Chuyển phản hồi từ server thành text
             .then(data => {
                 document.getElementById('product-details').innerHTML = data; // Chèn dữ liệu vào modal
@@ -53,45 +53,45 @@ buttons.forEach(button => {
     });
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-    const form = document.querySelector('.content__modal-body-form');
-    form.addEventListener('submit', function (e) {
-        e.preventDefault(); // Ngăn chặn load lại trang
+// document.addEventListener('DOMContentLoaded', function () {
+//     const form = document.querySelector('.content__modal-body-form');
+//     form.addEventListener('submit', function (e) {
+//         e.preventDefault(); // Ngăn chặn load lại trang
 
-        let errors = [];
+//         let errors = [];
 
-        // Lấy các giá trị của các trường
-        const tensanpham = form.querySelector('input[name="tensanpham"]');
-        const dongia = form.querySelector('input[name="dongia"]');
-        const mota = form.querySelector('input[name="mota"]');
-        const soluongconlai = form.querySelector('input[name="soluongconlai"]');
-        const urlhinhanh = form.querySelector('input[name="urlhinhanh"]');
+//         // Lấy các giá trị của các trường
+//         const tensanpham = form.querySelector('input[name="tensanpham"]');
+//         const dongia = form.querySelector('input[name="dongia"]');
+//         const mota = form.querySelector('input[name="mota"]');
+//         const soluongconlai = form.querySelector('input[name="soluongconlai"]');
+//         const urlhinhanh = form.querySelector('input[name="urlhinhanh"]');
 
-        // Kiểm tra các trường
-        if (!tensanpham.value.trim()) {
-            errors.push('Tên sản phẩm không được để trống.');
-        }
-        if (!dongia.value || parseInt(dongia.value) <= 0) {
-            errors.push('Đơn giá phải là số lớn hơn 0.');
-        }
-        if (!mota.value.trim()) {
-            errors.push('Mô tả không được để trống.');
-        }
-        if (!soluongconlai.value || parseInt(soluongconlai.value) <= 0) {
-            errors.push('Số lượng sản phẩm phải là số lớn hơn 0.');
-        }
-        if (!urlhinhanh.value) {
-            errors.push('Hình ảnh sản phẩm không được để trống.');
-        }
+//         // Kiểm tra các trường
+//         if (!tensanpham.value.trim()) {
+//             errors.push('Tên sản phẩm không được để trống.');
+//         }
+//         if (!dongia.value || parseInt(dongia.value) <= 0) {
+//             errors.push('Đơn giá phải là số lớn hơn 0.');
+//         }
+//         if (!mota.value.trim()) {
+//             errors.push('Mô tả không được để trống.');
+//         }
+//         if (!soluongconlai.value || parseInt(soluongconlai.value) <= 0) {
+//             errors.push('Số lượng sản phẩm phải là số lớn hơn 0.');
+//         }
+//         if (!urlhinhanh.value) {
+//             errors.push('Hình ảnh sản phẩm không được để trống.');
+//         }
 
-        // Nếu có lỗi, hiển thị lỗi và không gửi form
-        if (errors.length > 0) {
-            alert(errors.join('\n')); // Hiển thị lỗi
-        } else {
-            // Không có lỗi, gửi form
-            form.submit();
-            window.location.href = '/CHDDTTHKN/assets/view/QuanLy/index.php?page=sanpham';
-        }
+//         // Nếu có lỗi, hiển thị lỗi và không gửi form
+//         if (errors.length > 0) {
+//             alert(errors.join('\n')); // Hiển thị lỗi
+//         } else {
+//             // Không có lỗi, gửi form
+//             form.submit();
+//             window.location.href = '/CHDDTTHKN/assets/view/QuanLy/index.php?page=sanpham';
+//         }
 
-    });
-});
+//     });
+// });

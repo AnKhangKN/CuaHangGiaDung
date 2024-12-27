@@ -59,11 +59,13 @@ if (isset($_POST["product__sumit"])) {
         // Commit giao dịch
         $conn->commit();
 
+        move_uploaded_file($image_tmp_name, 'C:/xampp/htdocs/CuaHangDungCu/public/assets/images/product/' . $image);
+
         // Thêm nhiều ảnh
         $uploaded_files = $_FILES['hinhanhurl'];
 
         // Đường dẫn thư mục lưu trữ ảnh
-        $image_path = 'C:/xampp/htdocs/CHDDTTHKN/assets/img/products/';
+        $image_path = 'C:/xampp/htdocs/CuaHangDungCu/public/assets/images/products/';
 
         // Kiểm tra nếu có tệp được tải lên
         if (!empty($uploaded_files['name'][0])) {
@@ -88,13 +90,15 @@ if (isset($_POST["product__sumit"])) {
         $conn->rollback();
         echo "<script>
             alert('Không thể thêm sản phẩm.');
-            window.location.href = '/CHDDTTHKN/assets/view/QuanLy/index.php?page=sanpham';
+            window.location.href = '/CuaHangDungCu/public/manager/index.php?page=sanpham';
             </script>";
     }
     // end
-    move_uploaded_file($image_tmp_name, 'C:/xampp/htdocs/CHDDTTHKN/assets/img/product/' . $image);
 
-    header("location: /CHDDTTHKN/assets/view/QuanLy/index.php?page=sanpham");
+    echo "<script>
+            alert('Thêm sản phẩm thành công.');
+            window.location.href = '/CuaHangDungCu/public/manager/index.php?page=sanpham';
+            </script>";
 }
 
 // search sản phẩm
@@ -255,12 +259,13 @@ $totalPages = ceil($totalNumber / $item_per_page);
 
                                     <button class="content__body-td__btn-see view-details js_content__body-td__btn-see" data-id="<?php echo $row_sp_ctsp['idSanPham'] ?>">xem</button>
 
-                                    <form action='/CHDDTTHKN/assets/controller/deleteSanPham.php' class="content__body-td-form" method='POST'>
+                                    <form action='/CuaHangDungCu/app/controllers/manager/deleteSanPham.php' class="content__body-td-form" method='POST'>
                                         <input type='hidden' name='idSanPham' value="<?php echo $row_sp_ctsp["idSanPham"] ?>">
+                                        <input type="hidden" name="idChiTietSanPham" value="<?php echo $row_sp_ctsp["idChiTietSanPham"] ?>">
                                         <input type='submit' class="content__body-td__btn-delete" onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')" value="xóa">
                                     </form>
 
-                                    <form action="/CHDDTTHKN/assets/controller/editSanPham.php" class="content__body-td-form" method="POST">
+                                    <form action="/CuaHangDungCu/app/controllers/manager/editSanPham.php" class="content__body-td-form" method="POST">
                                         <input type="hidden" name="idSanPham" value="<?php echo $row_sp_ctsp["idSanPham"] ?>">
                                         <input type="hidden" name="idChiTietSanPham" value="<?php echo $row_sp_ctsp["idChiTietSanPham"] ?>">
                                         <input type="submit" class="content__body-td__btn-edit" value="sửa">
