@@ -60,7 +60,7 @@ $(document).ready(function () {
     
         if (code == '') {
             $('#code').css('border-color', 'red');
-            errorCode.text("Hãy nhận mail để nhận code!");
+            errorCode.text("Hãy nhập mail để nhận code!");
             isValid = false;
         } else {
             $('#code').css('border-color', '');
@@ -253,6 +253,16 @@ $(document).ready(function () {
 
         if(sodienthoai === "0" || sodienthoai === ""){
             alert("Hãy nhập đúng số điện thoại của bạn!");
+            return;
+        }
+
+        if (!/^\d{10}$/.test(sodienthoai)) {
+            alert("Số điện thoại phải là 10 chữ số!");
+            return;
+        }
+
+        if(diachi === "Chưa nhập địa chỉ" || diachi === ""){
+            alert("Hãy nhập đúng địa chỉ để giao hàng!");
             return;
         }
     
