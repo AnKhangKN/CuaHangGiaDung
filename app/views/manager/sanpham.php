@@ -440,5 +440,5 @@ $totalPages = ceil($totalNumber / $item_per_page);
 </div>
 
 <?php
-include($_SERVER['DOCUMENT_ROOT'] . "/CHDDTTHKN/assets/view/QuanLy/includes/footer.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/app/views/manager/includes/footer.php");
 ?>
