@@ -20,28 +20,27 @@
                 </div>
                 <div class="introduce_contents m-lg-5">
                     <div class="container">
-                        <div class="row">
-                            <div class="col-sm-6">
+                        
                                 <div class="container_img">
                                     <h5>Bước 1: </h5>
                                     <div class="img_tutorial">
-                                        <img src="../public/assets/images/tutorial/buying/buoc_(1).jpg" class="object-fit-cover w-100 h-100" alt="">
+                                        <img src="../public/assets/images/tutorial/buying/buoc_(1).png" class="object-fit-cover w-100 h-100" alt="">
                                     </div>
 
                                     <hr>
 
-                                    <h5>Bước 3: </h5>
-                                    <div class="img_tutorial">
-                                        <img src="../public/assets/images/tutorial/buying/buoc_(3).jpg" class="object-fit-cover w-100 h-100" alt="">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6">
-                                <div class="container_img">
                                     <h5>Bước 2: </h5>
                                     <div class="img_tutorial">
-                                        <img src="../public/assets/images/tutorial/buying/buoc_(2).jpg" class="object-fit-cover w-100 h-100" alt="">
+                                        <img src="../public/assets/images/tutorial/buying/buoc_(2).png" class="object-fit-cover w-100 h-100" alt="">
+                                    </div>
+                                </div>
+                            
+
+                            
+                                <div class="container_img">
+                                    <h5>Bước 3: </h5>
+                                    <div class="img_tutorial">
+                                        <img src="../public/assets/images/tutorial/buying/buoc_(3).png" class="object-fit-cover w-100 h-100" alt="">
                                     </div>
 
                                     <hr>
@@ -51,8 +50,8 @@
                                         <img src="../public/assets/images/tutorial/buying/buoc_(4).jpg" class="object-fit-cover w-100 h-100" alt="">
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                            
+                        
                     </div>
                     
                 </div>
