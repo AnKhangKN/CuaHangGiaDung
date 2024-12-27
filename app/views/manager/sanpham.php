@@ -108,7 +108,7 @@ $current_page = !empty($_GET["pages"]) ? $_GET["pages"] : 1;
 $offset = ($current_page - 1) * $item_per_page;
 
 if ($search_sanpham) {
-        include '../../app/views/manager/includes/header.php';
+        include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/app/views/manager/includes/header.php");
     $sql_sp_ctsp = "SELECT * FROM sanpham sp JOIN chitietsanpham ctsp ON sp.idSanPham = ctsp.idSanPham 
                     WHERE sp.tensanpham LIKE '%" . $search_sanpham . "%'
                     ORDER BY sp.idSanPham ASC LIMIT $item_per_page OFFSET $offset";
@@ -116,7 +116,7 @@ if ($search_sanpham) {
     $totalRecords = mysqli_query($conn, "SELECT * FROM sanpham sp JOIN chitietsanpham ctsp ON sp.idSanPham = ctsp.idSanPham 
                     WHERE sp.tensanpham LIKE '%" . $search_sanpham . "%' OR sp.dongia LIKE '%" . $search_sanpham . "%'");
 } else if ($search_gia_from && $search_gia_to) {
-        include '../../app/views/manager/includes/header.php';
+        include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/app/views/manager/includes/header.php");
     $sql_sp_ctsp = "SELECT * FROM sanpham sp JOIN chitietsanpham ctsp ON sp.idSanPham = ctsp.idSanPham 
                     WHERE (sp.dongia BETWEEN $search_gia_from AND $search_gia_to) OR (sp.dongia = 0 AND sp.dongia = 0)
                     ORDER BY sp.idSanPham ASC LIMIT $item_per_page OFFSET $offset";
