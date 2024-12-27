@@ -4,9 +4,9 @@
 </div>
 
 <!-- javascript -->
-<script src="/CHDDTTHKN/assets/js/main.js"></script>
-<script src="/CHDDTTHKN/assets/js/sanpham.js"></script>
-<script src="/CHDDTTHKN/assets/js/nhanvien.js"></script>
+<script src="/CuaHangDungCu/app/views/manager/assets/js/main.js"></script>
+<script src="/CuaHangDungCu/app/views/manager/assets/js/sanpham.js"></script>
+<script src="/CuaHangDungCu/app/views/manager/assets/js/nhanvien.js"></script>
 </body>
 
 </html>
