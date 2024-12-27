@@ -6,7 +6,7 @@
     <title>Admin HKN store</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="icon" type="image/x-icon" href="/CHDDTTHKN/assets/img/logo.jpg">
-    <link rel="stylesheet" href="/CHDDTTHKN/assets/css/style.css">
+    <link rel="stylesheet" href="/CuaHangDungCu/app/views/manager/assets/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="/CHDDTTHKN/assets/fonts/fontawesome-free-6.6.0-web/css/all.css">
 </head>
