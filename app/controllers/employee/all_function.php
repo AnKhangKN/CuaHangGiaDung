@@ -380,30 +380,14 @@ function getApprove_orders($idHoaDon) {
     $conn = connectBD();
 
     // Truy vấn chi tiết hóa đơn
-    $sqlChiTiet = "
-    SELECT 
-        sanpham.idSanPham, 
-        sanpham.tensanpham, 
-        kichthuocsanpham.kichthuoc, 
-        mausacsanpham.mausac, 
-        sanpham.dongia, 
-        chitiethoadon.soluong, 
-        (sanpham.dongia * chitiethoadon.soluong) AS thanhtien
-    FROM 
-        chitiethoadon
-    JOIN 
-        hoadon ON chitiethoadon.idHoaDon = hoadon.idHoaDon
-    JOIN 
-        chitietsanpham ON chitiethoadon.idChiTietSanPham = chitietsanpham.idChiTietSanPham
-    JOIN 
-        sanpham ON chitietsanpham.idSanPham = sanpham.idSanPham
-    JOIN 
-        mausacsanpham ON mausacsanpham.idMauSac = chitietsanpham.idMauSac
-    JOIN 
-        kichthuocsanpham ON kichthuocsanpham.idKichThuoc = chitietsanpham.idKichThuoc
-    WHERE 
-        hoadon.idHoaDon = ?;
-    ";
+    $sqlChiTiet = "SELECT sanpham.idSanPham, sanpham.tensanpham, kichthuocsanpham.kichthuoc, mausacsanpham.mausac, sanpham.dongia, chitiethoadon.soluong, (sanpham.dongia * chitiethoadon.soluong) AS thanhtien
+    FROM chitiethoadon
+    JOIN hoadon ON chitiethoadon.idHoaDon = hoadon.idHoaDon
+    JOIN chitietsanpham ON chitiethoadon.idChiTietSanPham = chitietsanpham.idChiTietSanPham
+    JOIN sanpham ON chitietsanpham.idSanPham = sanpham.idSanPham
+    JOIN mausacsanpham ON mausacsanpham.idMauSac = chitietsanpham.idMauSac
+    JOIN kichthuocsanpham ON kichthuocsanpham.idKichThuoc = chitietsanpham.idKichThuoc
+    WHERE hoadon.idHoaDon = ?;";
 
     $stmtChiTiet = $conn->prepare($sqlChiTiet);
 

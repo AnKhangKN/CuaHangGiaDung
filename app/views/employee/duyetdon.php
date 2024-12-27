@@ -15,7 +15,7 @@ if(isset($_SESSION['user_id'])){
 <main class="main">
         <div class="container-fluid">
             <div class="row">
-            <h3>Duyệt đơn đặt hàng</h3>
+            <h3 style="margin: 20px;">Duyệt đơn đặt hàng</h3>
             <div class="container">
                 
                 <table class="table table-bordered table-striped text-center">
