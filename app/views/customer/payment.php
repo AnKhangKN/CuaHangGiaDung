@@ -169,14 +169,14 @@ if (isset($_SESSION['user_id'])) {
                                         <span>Chuyển khoản qua ngân hàng</span>
                                         <div class="content_transfer" style="display: none;">
                                             <p>Nội dung chuyển khoản bạn vui lòng điền theo CÚ PHÁP như sau: 
-                                                MÃ ĐƠN HÀNG + SĐT + TÊN để Degrey xác nhận thanh toán nhanh chóng cho bạn.
+                                                <br>
+                                                MÃ ĐƠN HÀNG + SĐT + TÊN để HKN store xác nhận thanh toán nhanh chóng cho bạn.
                                             </p>
                                             <p>TÀI KHOẢN CỦA SHOP :</p>
                                             <p>Ngân hàng Vietinbank chi nhánh Lâm Đồng</p>
-                                            <p>Số tài khoản: 110884899999</p>
-                                            <p>Tên tài khoản: CONG TY TNHH DEGREY</p>
-                                            <p>Nếu có vấn đề vui lòng chat qua http://m.me/degrey.saigon hoặc 
-                                                hotline: 03363.11117 để gặp nhân viên hỗ trợ
+                                            <p>Số tài khoản: 12345676756</p>
+                                            <p>Tên tài khoản: CONG TY HKN STORE</p>
+                                            <p>Nếu có vấn đề vui lòng liên hệ hotline: 03363.11117 để gặp nhân viên hỗ trợ
                                             </p>
                                         </div>
                                     </div>

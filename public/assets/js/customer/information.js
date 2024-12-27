@@ -128,8 +128,14 @@ $(document).ready(function () {
     
         const inputValue = inputElem.val();
         const inputName = inputElem.attr('name');
+
         if (!inputName) {
             console.warn("Không tìm thấy thuộc tính name.");
+            return;
+        }
+
+        if(inputValue === "") {
+            alert("Thay đổi không được trống");
             return;
         }
     
@@ -215,6 +221,12 @@ $(document).ready(function () {
             return;
         }
     
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(newEmail)) {
+            alert("Định dạng email không hợp lệ. Vui lòng nhập lại!");
+            return;
+        }
+
         $.ajax({
             type: "POST",
             url: "/CuaHangDungCu/app/controllers/customer/updateEmail.php",
@@ -238,6 +250,12 @@ $(document).ready(function () {
         // Validate inputs
         if (!newEmail || !code) {
             alert("Vui lòng nhập email và mã xác thực.");
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(newEmail)) {
+            alert("Định dạng email không hợp lệ. Vui lòng nhập lại!");
             return;
         }
     
@@ -303,6 +321,11 @@ $(document).ready(function () {
         // Kiểm tra mật khẩu mới và mật khẩu xác nhận phải giống nhau
         if (PassWordNew !== PassWordConfirm) {
             alert('Mật khẩu xác nhận không đúng!');
+            return;
+        }
+
+        if(!PassWordConfirm || !PassWordLate || !PassWordNew){
+            alert('Mật khẩu không được trống');
             return;
         }
     

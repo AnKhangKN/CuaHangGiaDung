@@ -278,7 +278,7 @@ function getBillsByIdCustomer($idCustomer, $begin) {
     
         $idBill = (int)$idBill;
         if ($idBill > 0) {
-            $sql = 'SELECT sp.idSanPham, sp.tensanpham, SUM(cthd.soluong) soluong ,  ms.mausac,  kt.kichthuoc
+            $sql = 'SELECT sp.idSanPham, sp.tensanpham, SUM(cthd.soluong) soluong ,  ms.mausac,  kt.kichthuoc,  sp.dongia
                     FROM chitiethoadon cthd
                     JOIN chitietsanpham ctsp ON ctsp.idChiTietSanPham = cthd.idChiTietSanPham
                     JOIN sanpham sp ON sp.idSanPham = ctsp.idSanPham
@@ -580,6 +580,41 @@ function getBillsByIdCustomer($idCustomer, $begin) {
         return "Cập nhật thành công!";
     }
     
+    // In hóa đơn
+    function getCustomerInfoByBillId($idHoaDon) {
+        // Kết nối cơ sở dữ liệu
+        $conn = connectBD();
+    
+        // Câu lệnh SQL
+        $sql = "SELECT kh.tenkhachhang, kh.sdt, kh.diachi , hd.tongtien
+                FROM hoadon hd
+                JOIN khachhang kh ON kh.idKhachHang = hd.idKhachHang
+                WHERE hd.idHoaDon = ?";
+    
+        // Chuẩn bị statement
+        $stmt = $conn->prepare($sql);
+        if (!$stmt) {
+            die("Lỗi truy vấn: " . $conn->error);
+        }
+    
+        $stmt->bind_param('i', $idHoaDon);
+    
+        $stmt->execute();
+    
+        // Nhận kết quả
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            $data = $result->fetch_assoc(); 
+        } else {
+            $data = null; 
+        }
+    
+        // Đóng statement và connection
+        $stmt->close();
+        $conn->close();
+    
+        return $data;
+    }
     
 ?>
 
