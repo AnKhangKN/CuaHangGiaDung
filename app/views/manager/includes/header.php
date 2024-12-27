@@ -14,51 +14,51 @@
 <div class="l-navbar" id="navbar">
         <div class="nav">
             <div>
-                <a href="index.php" class="nav__logo">
-                    <img src="/CHDDTTHKN/assets/img/logo.jpg" alt="" class="nav__logo-icon">
+                <a href="/CuaHangDungCu/public/manager/index.php" class="nav__logo">
+                    <img src="/CuaHangDungCu/public/assets/images/logo_trang.jpg" alt="" class="nav__logo-icon">
                     <span class="nav__logo-text">HKN store</span>
                 </a>
 
                 <ul class="nav__list">
 
-                    <a href="index.php?page=sanpham" class="nav__link">
+                    <a href="/CuaHangDungCu/public/manager/index.php?page=sanpham" class="nav__link">
                         <i class='fa-solid fa-basketball nav__icon'></i>
                         <span class="nav__text">Sản phẩm</span>
                     </a>
 
-                    <a href="index.php?page=danhmuc" class="nav__link">
+                    <a href="/CuaHangDungCu/public/manager/index.php?page=danhmuc" class="nav__link">
                         <i class='fa-solid fa-list nav__icon'></i>
                         <span class="nav__text">DM sản phẩm</span>
                     </a>
 
-                    <a href="index.php?page=nhanvien" class="nav__link">
+                    <a href="/CuaHangDungCu/public/manager/index.php?page=nhanvien" class="nav__link">
                         <i class='fa-regular fa-user nav__icon'></i>
                         <span class="nav__text">Nhân viên</span>
                     </a>
 
-                    <a href="index.php?page=khachhang" class="nav__link">
+                    <a href="/CuaHangDungCu/public/manager/index.php?page=khachhang" class="nav__link">
                         <i class='fa-solid fa-person nav__icon'></i>
                         <span class="nav__text">Khách hàng</span>
                     </a>
 
-                    <a href="index.php?page=nhacungcap" class="nav__link">
+                    <a href="/CuaHangDungCu/public/manager/index.php?page=nhacungcap" class="nav__link">
                         <i class="fa-solid fa-house nav__icon"></i>
                         <span class="nav__text">Nhà cung cấp</span>
                     </a>
 
-                    <a href="index.php?page=donhang" class="nav__link">
+                    <a href="/CuaHangDungCu/public/manager/index.php?page=donhang" class="nav__link">
                         <i class='fa-solid fa-box nav__icon'></i>
                         <span class="nav__text">Đơn hàng</span>
                     </a>
 
-                    <a href="index.php?page=thongke" class="nav__link">
+                    <a href="/CuaHangDungCu/public/manager/index.php?page=thongke" class="nav__link">
                         <i class='fa-solid fa-chart-pie nav__icon'></i>
                         <span class="nav__text">Thống kê</span>
                     </a>
                 </ul>
             </div>
 
-            <a href="index.php?page=dangxuat" class="nav__link">
+            <a href="/CuaHangDungCu/public/manager/index.php?page=dangxuat" class="nav__link">
                 <i class='fa-solid fa-right-from-bracket nav__icon'></i>
                 <span class="nav__text">Đăng xuất</span>
             </a>
@@ -72,7 +72,7 @@
             </div>
 
             <div class="header__home">
-                <a href="index.php">
+                <a href="/CuaHangDungCu/public/manager/index.php">
                     <h3>Trang chủ</h3>
                 </a>
             </div>

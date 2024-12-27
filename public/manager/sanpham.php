@@ -148,7 +148,7 @@ $totalPages = ceil($totalNumber / $item_per_page);
             </button>
 
             <div class="content__header-form">
-                <form action="/CuaHangDungCu/app/views/manager/sanpham.php" class="content__header-form-search" method="GET">
+                <form action="/CuaHangDungCu/public/manager/sanpham.php" class="content__header-form-search" method="GET">
                     <input name="search_sanpham" type="text" class="content__header-form-search-text" required placeholder="Tìm kiếm tên sản phẩm">
 
                     <button type="submit" class="content__header-form-search-submit">
@@ -157,7 +157,7 @@ $totalPages = ceil($totalNumber / $item_per_page);
                     </button>
                 </form>
 
-                <form action="/CuaHangDungCu/app/views/manager/sanpham.php" class="content__header-form-search-cost" method="GET">
+                <form action="/CuaHangDungCu/public/manager/sanpham.php" class="content__header-form-search-cost" method="GET">
                     <label for="" class="content__header-form-search-cost-label">giá từ: </label>
                     <input type="number" class="content__header-form-search-cost-input" required min="1" name="search_gia_from" id="" placeholder="Nhập giá từ">
                     <label for="" class="content__header-form-search-cost-label">đến: </label>
