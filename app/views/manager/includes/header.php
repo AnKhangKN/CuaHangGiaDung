@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin HKN store</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="icon" type="image/x-icon" href="/CHDDTTHKN/assets/img/logo.jpg">
+    <link rel="icon" type="image/x-icon" href="/CuaHangDungCu/public/assets/images/logo_trang.jpg">
     <link rel="stylesheet" href="/CuaHangDungCu/app/views/manager/assets/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="/CHDDTTHKN/assets/fonts/fontawesome-free-6.6.0-web/css/all.css">
+    <link rel="stylesheet" href="/CuaHangDungCu/vendor/fontawesome-free-6.6.0-web/css/all.css">
 </head>
 <body id="body">
 <div class="l-navbar" id="navbar">
