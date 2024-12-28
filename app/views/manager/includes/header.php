@@ -58,7 +58,7 @@
                 </ul>
             </div>
 
-            <a href="/CuaHangDungCu/public/manager/index.php?page=dangxuat" class="nav__link">
+            <a href="/CuaHangDungCu/public/manager/dangxuat.php" class="nav__link">
                 <i class='fa-solid fa-right-from-bracket nav__icon'></i>
                 <span class="nav__text">Đăng xuất</span>
             </a>
