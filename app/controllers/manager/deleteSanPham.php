@@ -20,7 +20,6 @@ $result_ctsp_cthd = $stmt_ctsp_cthd->get_result();
 
 
 
-
 if (!$result_ctsp_cthd->num_rows > 0) {
     $stmt3 = $conn->prepare("DELETE hasp FROM hinhanhsanpham hasp JOIN chitietsanpham ctsp 
     ON hasp.idSanPham = ctsp.idSanPham

@@ -46,8 +46,12 @@ if (isset($_POST["product__sumit"])) {
     $result_check_sdt = $stmt_check_sdt->get_result();
 
     // test
-
-    if ($result_check_cccd->num_rows > 0) {
+    if ($result_check_sdt->num_rows > 0) {
+        echo "<script>
+        alert('Số điện thoại đã tồn tại.');
+        window.location.href = '/CuaHangDungCu/public/manager/index.php?page=nhanvien';
+        </script>";
+    }else if ($result_check_cccd->num_rows > 0) {
         echo "<script>
         alert('Số căn cước công dân đã tồn tại.');
         window.location.href = '/CuaHangDungCu/public/manager/index.php?page=nhanvien';
@@ -55,11 +59,6 @@ if (isset($_POST["product__sumit"])) {
     } else if ($result_check_email->num_rows > 0) {
         echo "<script>
         alert('Email đã tồn tại.');
-        window.location.href = '/CuaHangDungCu/public/manager/index.php?page=nhanvien';
-        </script>";
-    } else if ($result_check_sdt->num_rows > 0) {
-        echo "<script>
-        alert('Số điện thoại đã tồn tại.');
         window.location.href = '/CuaHangDungCu/public/manager/index.php?page=nhanvien';
         </script>";
     } else {

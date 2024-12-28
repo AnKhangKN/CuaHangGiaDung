@@ -37,10 +37,11 @@ const buttons = document.querySelectorAll('.view-details');
 
 buttons.forEach(button => {
     button.addEventListener('click', function () {
-        const idSanPham = this.getAttribute('data-id'); // Lấy ID sản phẩm từ thuộc tính data-id
+        const idSanPham = this.getAttribute('data-idsp'); // Lấy ID sản phẩm từ thuộc tính data-idsp
+        const idChiTietSanPham = this.getAttribute('data-idctsp'); // Lấy ID chi tiết sản phẩm từ thuộc tính data-idctsp
 
         // Gửi yêu cầu AJAX tới server để lấy thông tin chi tiết sản phẩm
-        fetch(`/CuaHangDungCu/app/controllers/manager/viewSanPham.php?idSanPham=${idSanPham}`)
+        fetch(`/CuaHangDungCu/app/controllers/manager/viewSanPham.php?idSanPham=${idSanPham}&idChiTietSanPham=${idChiTietSanPham}`)
             .then(response => response.text()) // Chuyển phản hồi từ server thành text
             .then(data => {
                 document.getElementById('product-details').innerHTML = data; // Chèn dữ liệu vào modal
@@ -50,6 +51,56 @@ buttons.forEach(button => {
                 console.error('Lỗi khi lấy chi tiết sản phẩm:', error);
                 alert('Có lỗi xảy ra. Vui lòng thử lại!');
             });
+    });
+});
+
+// Xem trước hình ảnh đơn
+const singleImageInput = document.getElementById('singleImage');
+const singleImagePreview = document.getElementById('singleImagePreview');
+
+singleImageInput.addEventListener('change', function () {
+    // Xóa ảnh xem trước cũ
+    singleImagePreview.innerHTML = '';
+
+    // Lấy file được chọn
+    const file = this.files[0];
+    if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+            // Tạo thẻ img để hiển thị ảnh
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            singleImagePreview.appendChild(img);
+        };
+
+        reader.readAsDataURL(file);
+    }
+});
+
+// Xem trước nhiều hình ảnh
+const multipleImagesInput = document.getElementById('multipleImages');
+const multipleImagesPreview = document.getElementById('multipleImagesPreview');
+
+multipleImagesInput.addEventListener('change', function () {
+    // Xóa ảnh xem trước cũ
+    multipleImagesPreview.innerHTML = '';
+
+    // Lặp qua tất cả các file được chọn
+    const files = this.files;
+    Array.from(files).forEach(file => {
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                // Tạo thẻ img để hiển thị ảnh
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                multipleImagesPreview.appendChild(img);
+            };
+
+            reader.readAsDataURL(file);
+        }
     });
 });
 
