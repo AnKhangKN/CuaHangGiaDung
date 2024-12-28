@@ -148,7 +148,7 @@ if (isset($_POST["product__sumit"])) {
                 <div class="content__header">
                     <div class="content__header-namepage">
                         <h2 class="content__header-namepage-text">
-                            Sửa danh mục
+                            Sửa danh mục: <p style="color: red; display: inline;"><?php echo $row_danhmuc["tendanhmuc"] ?></p>
                         </h2>
                         <hr class="content__header-namepage-bottom-line">
                     </div>
