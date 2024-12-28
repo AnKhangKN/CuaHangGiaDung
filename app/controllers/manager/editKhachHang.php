@@ -214,7 +214,7 @@ if (isset($_POST["product__sumit"])) {
                                     </div>
                                 </div>
 
-                                <input class="content__modal-body-submit" name="product__sumit" type="submit" value="Lưu">
+                                <input class="content__modal-body-submit" name="product__sumit" type="submit" value="Lưu khách hàng đã sửa">
                             </form>
                         </div>
 

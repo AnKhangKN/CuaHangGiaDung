@@ -186,7 +186,7 @@ if (isset($_POST["product__sumit"])) {
 
                                 <label for="" class="content__modal-body-label">Ghi chu: </label>
                                 <textarea name="ghichu" class="content__modal-body-input" id=""><?php echo $row_nhacungcap["ghichu"] ?></textarea>
-                                <input class="content__modal-body-submit" name="product__sumit" type="submit" value="Sửa nhà cung cấp">
+                                <input class="content__modal-body-submit" name="product__sumit" type="submit" value="Lưu nhà cung cấp đã sửa">
                             </form>
                         </div>
 
