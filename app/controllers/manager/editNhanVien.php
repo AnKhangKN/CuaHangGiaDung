@@ -170,7 +170,7 @@ if (isset($_POST["product__sumit"])) {
                 <div class="content__header">
                     <div class="content__header-namepage">
                         <h2 class="content__header-namepage-text">
-                            Sửa thông tin nhân viên
+                            Sửa thông tin nhân viên: <p style="color: red; display: inline;"><?php echo $row_nv_tk["tennhanvien"] ?></p>
                         </h2>
                         <hr class="content__header-namepage-bottom-line">
                     </div>
