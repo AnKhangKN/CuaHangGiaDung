@@ -87,7 +87,7 @@
                                 if($Bill['trangthai'] == 2){
                                     ?>
 
-                                    <a href="/CuaHangDungCu/app/controllers/customer/paint_bill.php?idBill=<?php echo htmlentities($idBill)?>">Xuất hóa đơn</a>
+                                    <a class="btn btn-dark text-white" href="/CuaHangDungCu/app/controllers/customer/paint_bill.php?idBill=<?php echo htmlentities($idBill)?>">Xuất hóa đơn</a>
                                     
                                     <?php
                                 }else{
@@ -134,16 +134,16 @@
                                         <td>
                                         <?php 
                                         if($Bill['trangthai'] == 2) {
-                                            // Kiểm tra nếu cả 'idSanPham' và 'idBinhLuan' đều không tồn tại
-                                            if(!isset($comment['idSanPham']) && !isset($comment['idBinhLuan'])) {
-                                                ?> 
-                                                <button class="btn_comment btn_get_comment">Nhận xét</button>
-                                                <?php 
-                                            }else{
+                                            if(isset($comment['idSanPham']) && isset($comment['idBinhLuan'])) {
                                                 echo "Đã bình luận";
+                                            }else{
+                                                ?>
+                                                
+                                                <button class="btn_comment btn_get_comment">Nhận xét</button>
+                                                
+                                                <?php
                                             }
-                                        } else {
-                                        }
+                                        } 
                                         ?>
 
 

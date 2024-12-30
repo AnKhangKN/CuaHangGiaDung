@@ -47,6 +47,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'forgotPass') {
             }
         } else {
             echo "OTP không hợp lệ hoặc đã hết hạn!";
+            exit;
         }
     } else {
         echo "Email không tồn tại!";

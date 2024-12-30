@@ -102,6 +102,8 @@ $(document).ready(function () {
                 if (data.status === 'success') {
                     alert(data.message);
                     $("#floatingTextarea2").val(""); // Xóa nội dung sau khi gửi
+                    $("#container_comment").css('display', 'none');
+                    location.reload();
                 } else {
                     console.error(data.message);
                 }
