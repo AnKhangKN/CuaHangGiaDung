@@ -313,13 +313,13 @@ $totalPages = ceil($totalNumber / $item_per_page);
                     <div class="content__modal-body-form-1">
 
                         <label for="" class="content__modal-body-label">Tên sản phẩm: </label>
-                        <input require type="text" name="tensanpham" id="" class="content__modal-body-input" placeholder="Nhập tên sản phẩm">
+                        <input required type="text" name="tensanpham" id="" class="content__modal-body-input" placeholder="Nhập tên sản phẩm">
 
                         <label for="" class="content__modal-body-label">Đơn giá: </label>
-                        <input require type="number" name="dongia" id="" min="1" class="content__modal-body-input" placeholder="Nhập đơn giá">
+                        <input required type="number" name="dongia" id="" min="1" class="content__modal-body-input" placeholder="Nhập đơn giá">
 
                         <label for="" class="content__modal-body-label">Mô tả: </label>
-                        <input require type="text" name="mota" id="" class="content__modal-body-input" placeholder="Nhập mô tả">
+                        <input type="text" name="mota" id="" class="content__modal-body-input" placeholder="Nhập mô tả">
 
                         <br>
 
@@ -362,7 +362,7 @@ $totalPages = ceil($totalNumber / $item_per_page);
 
                     <div class="content__modal-body-form-2">
                         <label for="" class="content__modal-body-label">Số lượng sản phẩm: </label>
-                        <input require type="number" name="soluongconlai" min="1" id="" class="content__modal-body-input" placeholder="Nhập số lượng sản phẩm">
+                        <input required type="number" name="soluongconlai" min="1" id="" class="content__modal-body-input" placeholder="Nhập số lượng sản phẩm">
 
                         <br>
 

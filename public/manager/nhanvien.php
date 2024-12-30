@@ -252,19 +252,19 @@ $totalPages = ceil($totalNumber / $item_per_page);
                     <div class="content__modal-body-form-1">
 
                         <label for="" class="content__modal-body-label">Tên nhân viên: </label>
-                        <input type="text" name="tennhanvien" id="" class="content__modal-body-input" placeholder="Nhập tên nhân viên">
+                        <input required type="text" name="tennhanvien" id="" class="content__modal-body-input" placeholder="Nhập tên nhân viên">
 
                         <label for="" class="content__modal-body-label">Số điện thoại: </label>
-                        <input type="text" name="sdt" id="" class="content__modal-body-input" placeholder="Nhập số điện thoại">
+                        <input required type="text" name="sdt" id="" class="content__modal-body-input" placeholder="Nhập số điện thoại">
 
                         <label for="" class="content__modal-body-label">Căn cước công dân: </label>
-                        <input type="text" name="cccd" id="" class="content__modal-body-input" placeholder="Nhập căn cước công dân">
+                        <input required type="text" name="cccd" id="" class="content__modal-body-input" placeholder="Nhập căn cước công dân">
 
                         <label for="" class="content__modal-body-label">Lương: </label>
-                        <input type="number" name="luong" id="" class="content__modal-body-input" placeholder="Nhập lương">
+                        <input required type="number" name="luong" id="" class="content__modal-body-input" placeholder="Nhập lương">
 
                         <label for="" class="content__modal-body-label">Thưởng: </label>
-                        <input type="number" name="thuong" id="" class="content__modal-body-input" placeholder="Nhập thưởng">
+                        <input required type="number" name="thuong" id="" class="content__modal-body-input" placeholder="Nhập thưởng">
                         <br>
 
                         <label for="" class="content__modal-body-label">Trạng thái: </label>
@@ -277,10 +277,10 @@ $totalPages = ceil($totalNumber / $item_per_page);
 
                     <div class="content__modal-body-form-2">
                         <label for="" class="content__modal-body-label">Email: </label>
-                        <input type="email" name="email" id="" class="content__modal-body-input" placeholder="Nhập email">
+                        <input required type="email" name="email" id="" class="content__modal-body-input" placeholder="Nhập email">
 
                         <label for="" class="content__modal-body-label">Mật khẩu: </label>
-                        <input type="password" name="matkhau" id="" class="content__modal-body-input" placeholder="Nhập mật khẩu">
+                        <input required type="password" name="matkhau" id="" class="content__modal-body-input" placeholder="Nhập mật khẩu">
 
                         <br>
                         <br>
