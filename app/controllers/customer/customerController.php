@@ -65,7 +65,7 @@ function getAllProducts($status = 1, $offset) {
             JOIN danhmucsanpham dm ON dm.idDanhMuc = sp.idDanhMuc
             WHERE sp.trangthai = ?
             GROUP BY sp.idSanPham
-            LIMIT ?, 20";  
+            LIMIT ?, 15";  
     
     // Chuẩn bị truy vấn
     $stmt = $conn->prepare($sql);
@@ -89,7 +89,7 @@ function getAllProducts($status = 1, $offset) {
 
 
 
-function countTotalProduct($status = 1, $itemsPerPage = 20) {
+function countTotalProduct($status = 1, $itemsPerPage = 15) {
     // Kết nối cơ sở dữ liệu
     $conn = connectBD();
     
