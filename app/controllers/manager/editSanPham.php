@@ -51,9 +51,6 @@ if (isset($_POST["product__sumit"])) {
     $idKichThuoc = $_POST["idKichThuoc"];
     $idMauSac = $_POST["idMauSac"];
 
-    // Thêm nhiều ảnh
-    $uploaded_files = $_FILES['hinhanhurl'];
-
     // Bắt đầu giao dịch
     $conn->begin_transaction();
 
@@ -86,37 +83,66 @@ if (isset($_POST["product__sumit"])) {
             $stmt3->bind_param("si", $image, $idSanPham);
             $stmt3->execute();
 
-            move_uploaded_file($image_tmp_name, 'C:/xampp/htdocs/CHDDTTHKN/assets/img/product/' . $image);
+            // Đoạn mã xử lý phần thêm nhiều ảnh
+            $image_path = 'C:/xampp/htdocs/CuaHangDungCu/public/assets/images/products/';
+            if (isset($_FILES['hinhanhurl']) && !empty($_FILES['hinhanhurl']['name'][0])) {
+                foreach ($_FILES['hinhanhurl']['name'] as $key => $image_name) {
+                    if ($_FILES['hinhanhurl']['error'][$key] === UPLOAD_ERR_OK) {
+                        $image_tmp_name = $_FILES['hinhanhurl']['tmp_name'][$key];
+                        $final_image_path = $image_path . basename($image_name);
+
+                        if (move_uploaded_file($image_tmp_name, $final_image_path)) {
+                            $stmt = $conn->prepare("INSERT INTO hinhanhsanpham (urlhinhanh, idSanPham) VALUES (?, ?)");
+                            $stmt->bind_param("si", $image_name, $idSanPham);
+                            $stmt->execute();
+                        } else {
+                            echo "Không thể lưu tệp: " . $image_name;
+                            $conn->rollback();
+                            exit;
+                        }
+                    } else {
+                        echo "Lỗi tải tệp: " . $_FILES['hinhanhurl']['error'][$key];
+                    }
+                }
+            } else {
+                echo "<script>
+                alert('Vui lòng chọn ít nhất 1 ảnh');
+                window.location.href = '/CuaHangDungCu/app/controllers/manager/editSanPham.php';
+                </script>";
+            }
+
+            move_uploaded_file($image_tmp_name, 'C:/xampp/htdocs/CuaHangDungCu/public/assets/images/product/' . $image);
         } else {
             $stmt4 = $conn->prepare("INSERT INTO hinhanhsanpham (urlhinhanh, idSanPham) VALUES (?, ?)");
             $stmt4->bind_param("si", $image, $idSanPham);
             $stmt4->execute();
 
-            // Đường dẫn thư mục lưu trữ ảnh
-            $image_path = 'C:/xampp/htdocs/CHDDTTHKN/assets/img/products/';
+            // Đoạn mã xử lý phần thêm nhiều ảnh
+            $image_path = 'C:/xampp/htdocs/CuaHangDungCu/public/assets/images/products/';
+            if (isset($_FILES['hinhanhurl']) && !empty($_FILES['hinhanhurl']['name'][0])) {
+                foreach ($_FILES['hinhanhurl']['name'] as $key => $image_name) {
+                    if ($_FILES['hinhanhurl']['error'][$key] === UPLOAD_ERR_OK) {
+                        $image_tmp_name = $_FILES['hinhanhurl']['tmp_name'][$key];
+                        $final_image_path = $image_path . basename($image_name);
 
-            // Kiểm tra nếu có tệp được tải lên
-            if (!empty($uploaded_files['name'][0])) {
-                foreach ($uploaded_files['name'] as $key => $image_name) {
-                    $image_tmp_name = $uploaded_files['tmp_name'][$key];
-                    $final_image_path = $image_path . $image_name;
-
-                    // Di chuyển từng tệp vào thư mục lưu trữ
-                    if (move_uploaded_file($image_tmp_name, $final_image_path)) {
-                        // Lưu tên ảnh vào cơ sở dữ liệu
-                        $stmt = $conn->prepare("INSERT INTO hinhanhsanpham (urlhinhanh, idSanPham) VALUES (?, ?)");
-                        $stmt->bind_param("si", $image_name, $idSanPham);
-                        $stmt->execute();
+                        if (move_uploaded_file($image_tmp_name, $final_image_path)) {
+                            $stmt = $conn->prepare("INSERT INTO hinhanhsanpham (urlhinhanh, idSanPham) VALUES (?, ?)");
+                            $stmt->bind_param("si", $image_name, $idSanPham);
+                            $stmt->execute();
+                        } else {
+                            echo "Không thể lưu tệp: " . $image_name;
+                            $conn->rollback();
+                            exit;
+                        }
                     } else {
-                        echo "Không thể lưu tệp: " . $image_name;
-                        exit;
+                        echo "Lỗi tải tệp: " . $_FILES['hinhanhurl']['error'][$key];
                     }
                 }
             } else {
                 echo "<script>
-            alert('Vui lòng chọn ít nhất 1 ảnh');
-            window.location.href = '/CuaHangDungCu/app/controllers/manager/editSanPham.php';
-            </script>";
+                alert('Vui lòng chọn ít nhất 1 ảnh');
+                window.location.href = '/CuaHangDungCu/app/controllers/manager/editSanPham.php';
+                </script>";
             }
             move_uploaded_file($image_tmp_name, 'C:/xampp/htdocs/CuaHangDungCu/public/assets/images/product/' . $image);
         }
