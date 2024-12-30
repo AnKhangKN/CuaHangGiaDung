@@ -166,16 +166,16 @@ $totalPages = ceil($totalNumber / $item_per_page);
         <div class="content__modal-body">
             <form action="/CuaHangDungCu/public/manager/nhacungcap.php" class="content__modal-body-form" method="POST">
                 <label for="" class="content__modal-body-label">Tên nhà cung cấp: </label>
-                <input type="text" name="tennhacungcap" id="" class="content__modal-body-input" placeholder="Nhập tên nhà cung cấp">
+                <input required type="text" name="tennhacungcap" id="" class="content__modal-body-input" placeholder="Nhập tên nhà cung cấp">
 
                 <label for="" class="content__modal-body-label">Email: </label>
-                <input type="email" name="email" id="" class="content__modal-body-input" placeholder="Nhập email">
+                <input required type="email" name="email" id="" class="content__modal-body-input" placeholder="Nhập email">
 
                 <label for="" class="content__modal-body-label">Số điện thoại: </label>
-                <input type="text" name="sdt" id="" class="content__modal-body-input" placeholder="Nhập số điện thoại">
+                <input required type="text" name="sdt" id="" class="content__modal-body-input" placeholder="Nhập số điện thoại">
 
                 <label for="" class="content__modal-body-label">Địa chỉ: </label>
-                <input type="text" name="diachi" id="" class="content__modal-body-input" placeholder="Nhập địa chỉ">
+                <input required type="text" name="diachi" id="" class="content__modal-body-input" placeholder="Nhập địa chỉ">
 
                 <label for="" class="content__modal-body-label">Trạng thái: </label>
                 <select class="content__modal-body-select" name="trangthai" id="">

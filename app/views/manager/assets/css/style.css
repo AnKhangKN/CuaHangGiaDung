@@ -515,7 +515,6 @@ a {
 .image-container {
     display: flex;
     overflow-x: auto;
-    scrollbar-width: none;
     max-width: 300px;/* 50px * 5 ảnh + 4 khoảng cách giữa các ảnh (10px * 4) */
     gap: 10px;
 }
@@ -718,6 +717,12 @@ a {
     border: 1px solid;
 }
 
+.content__modal-body-input-images {
+    width: 400px;
+    outline: none;
+    padding: 4px;
+}
+
 .content__modal-body-select {
     width: 200px;
     outline: none;
@@ -746,10 +751,25 @@ a {
 
 }
 
-
-
 .content__modal-edit.open {
     display: flex;
+}
+
+.preview-container {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    max-width: 400px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.preview-container img {
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 #footer {

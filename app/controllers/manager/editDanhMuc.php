@@ -148,7 +148,7 @@ if (isset($_POST["product__sumit"])) {
                 <div class="content__header">
                     <div class="content__header-namepage">
                         <h2 class="content__header-namepage-text">
-                            Sửa danh mục
+                            Sửa danh mục: <p style="color: red; display: inline;"><?php echo $row_danhmuc["tendanhmuc"] ?></p>
                         </h2>
                         <hr class="content__header-namepage-bottom-line">
                     </div>
@@ -164,7 +164,7 @@ if (isset($_POST["product__sumit"])) {
                                 <label for="" class="content__modal-body-label">Tên danh mục: </label>
                                 <input type="text" name="tendanhmuc" id="" class="content__modal-body-input" placeholder="Nhập tên danh mục" value="<?php echo $row_danhmuc["tendanhmuc"] ?>">
 
-                                <input class="content__modal-body-submit" name="product__sumit" type="submit" value="Lưu">
+                                <input class="content__modal-body-submit" name="product__sumit" type="submit" value="Lưu danh mục đã sửa">
                             </form>
                         </div>
 

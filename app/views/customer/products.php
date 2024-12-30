@@ -271,7 +271,7 @@
                         if($page == '' || $page == 1){
                             $begin = 0;
                         }else{
-                            $begin= ($page*20)-20;
+                            $begin= ($page*15)-15;
                         }
 
                         $row = getAllProducts(1, $begin);

@@ -51,9 +51,6 @@ if (isset($_POST["product__sumit"])) {
     $idKichThuoc = $_POST["idKichThuoc"];
     $idMauSac = $_POST["idMauSac"];
 
-    // Thêm nhiều ảnh
-    $uploaded_files = $_FILES['hinhanhurl'];
-
     // Bắt đầu giao dịch
     $conn->begin_transaction();
 
@@ -70,49 +67,82 @@ if (isset($_POST["product__sumit"])) {
         // Commit giao dịch
         $conn->commit();
 
-        $sql_hinhanhsp = "SELECT * FROM sanpham sp JOIN hinhanhsanpham hasp ON sp.idSanPham = hasp.idSanPham WHERE sp.idSanPham = ?";
+        $sql_hinhanhsp = "SELECT * FROM sanpham sp,chitietsanpham ctsp, hinhanhsanpham hasp 
+                        WHERE sp.idSanPham = hasp.idSanPham 
+                        AND sp.idSanPham = ctsp.idSanPham 
+                        AND sp.idSanPham = ? 
+                        AND ctsp.idChiTietSanPham = ?";
         $stmt_hinhanhsp = $conn->prepare($sql_hinhanhsp);
-        $stmt_hinhanhsp->bind_param("i", $idSanPham);
+        $stmt_hinhanhsp->bind_param("ii", $idSanPham, $idChiTietSanPham);
         $stmt_hinhanhsp->execute();
         $result_hinhanhsp = $stmt_hinhanhsp->get_result();
 
 
         if ($result_hinhanhsp->num_rows > 0) {
-            $stmt3 = $conn->prepare("UPDATE hinhanhsanpham SET urlhinhanh = ? WHERE idSanPham = ?");
+            $stmt3 = $conn->prepare("UPDATE hinhanhsanpham SET urlhinhanh = ? WHERE idSanPham = ? AND $idChiTietSanPham");
             $stmt3->bind_param("si", $image, $idSanPham);
             $stmt3->execute();
 
-            move_uploaded_file($image_tmp_name, 'C:/xampp/htdocs/CHDDTTHKN/assets/img/product/' . $image);
+            // Đoạn mã xử lý phần thêm nhiều ảnh
+            $image_path = 'C:/xampp/htdocs/CuaHangDungCu/public/assets/images/products/';
+            if (isset($_FILES['hinhanhurl']) && !empty($_FILES['hinhanhurl']['name'][0])) {
+                foreach ($_FILES['hinhanhurl']['name'] as $key => $image_name) {
+                    if ($_FILES['hinhanhurl']['error'][$key] === UPLOAD_ERR_OK) {
+                        $image_tmp_name = $_FILES['hinhanhurl']['tmp_name'][$key];
+                        $final_image_path = $image_path . basename($image_name);
+
+                        if (move_uploaded_file($image_tmp_name, $final_image_path)) {
+                            $stmt = $conn->prepare("INSERT INTO hinhanhsanpham (urlhinhanh, idSanPham) VALUES (?, ?)");
+                            $stmt->bind_param("si", $image_name, $idSanPham);
+                            $stmt->execute();
+                        } else {
+                            echo "Không thể lưu tệp: " . $image_name;
+                            $conn->rollback();
+                            exit;
+                        }
+                    } else {
+                        echo "Lỗi tải tệp: " . $_FILES['hinhanhurl']['error'][$key];
+                    }
+                }
+            } else {
+                echo "<script>
+                alert('Vui lòng chọn ít nhất 1 ảnh');
+                window.location.href = '/CuaHangDungCu/app/controllers/manager/editSanPham.php';
+                </script>";
+            }
+
+            move_uploaded_file($image_tmp_name, 'C:/xampp/htdocs/CuaHangDungCu/public/assets/images/product/' . $image);
         } else {
             $stmt4 = $conn->prepare("INSERT INTO hinhanhsanpham (urlhinhanh, idSanPham) VALUES (?, ?)");
             $stmt4->bind_param("si", $image, $idSanPham);
             $stmt4->execute();
 
-            // Đường dẫn thư mục lưu trữ ảnh
-            $image_path = 'C:/xampp/htdocs/CHDDTTHKN/assets/img/products/';
+            // Đoạn mã xử lý phần thêm nhiều ảnh
+            $image_path = 'C:/xampp/htdocs/CuaHangDungCu/public/assets/images/products/';
+            if (isset($_FILES['hinhanhurl']) && !empty($_FILES['hinhanhurl']['name'][0])) {
+                foreach ($_FILES['hinhanhurl']['name'] as $key => $image_name) {
+                    if ($_FILES['hinhanhurl']['error'][$key] === UPLOAD_ERR_OK) {
+                        $image_tmp_name = $_FILES['hinhanhurl']['tmp_name'][$key];
+                        $final_image_path = $image_path . basename($image_name);
 
-            // Kiểm tra nếu có tệp được tải lên
-            if (!empty($uploaded_files['name'][0])) {
-                foreach ($uploaded_files['name'] as $key => $image_name) {
-                    $image_tmp_name = $uploaded_files['tmp_name'][$key];
-                    $final_image_path = $image_path . $image_name;
-
-                    // Di chuyển từng tệp vào thư mục lưu trữ
-                    if (move_uploaded_file($image_tmp_name, $final_image_path)) {
-                        // Lưu tên ảnh vào cơ sở dữ liệu
-                        $stmt = $conn->prepare("INSERT INTO hinhanhsanpham (urlhinhanh, idSanPham) VALUES (?, ?)");
-                        $stmt->bind_param("si", $image_name, $idSanPham);
-                        $stmt->execute();
+                        if (move_uploaded_file($image_tmp_name, $final_image_path)) {
+                            $stmt = $conn->prepare("INSERT INTO hinhanhsanpham (urlhinhanh, idSanPham) VALUES (?, ?)");
+                            $stmt->bind_param("si", $image_name, $idSanPham);
+                            $stmt->execute();
+                        } else {
+                            echo "Không thể lưu tệp: " . $image_name;
+                            $conn->rollback();
+                            exit;
+                        }
                     } else {
-                        echo "Không thể lưu tệp: " . $image_name;
-                        exit;
+                        echo "Lỗi tải tệp: " . $_FILES['hinhanhurl']['error'][$key];
                     }
                 }
             } else {
                 echo "<script>
-            alert('Vui lòng chọn ít nhất 1 ảnh');
-            window.location.href = '/CuaHangDungCu/app/controllers/manager/editSanPham.php';
-            </script>";
+                alert('Vui lòng chọn ít nhất 1 ảnh');
+                window.location.href = '/CuaHangDungCu/app/controllers/manager/editSanPham.php';
+                </script>";
             }
             move_uploaded_file($image_tmp_name, 'C:/xampp/htdocs/CuaHangDungCu/public/assets/images/product/' . $image);
         }
@@ -255,13 +285,13 @@ if (isset($_POST["product__sumit"])) {
 
                                     <label for="" class="content__modal-body-label">Tên sản phẩm: </label>
 
-                                    <input type="text" name="tensanpham" id="" class="content__modal-body-input" value="<?php echo $row_sp_ctsp["tensanpham"] ?>" placeholder="Nhập tên sản phẩm">
+                                    <input require type="text" name="tensanpham" id="" class="content__modal-body-input" value="<?php echo $row_sp_ctsp["tensanpham"] ?>" placeholder="Nhập tên sản phẩm">
 
                                     <label for="" class="content__modal-body-label">Đơn giá: </label>
-                                    <input type="text" name="dongia" id="" class="content__modal-body-input" value="<?php echo $row_sp_ctsp["dongia"] ?>" placeholder="Nhập đơn giá">
+                                    <input require type="text" name="dongia" id="" class="content__modal-body-input" value="<?php echo $row_sp_ctsp["dongia"] ?>" placeholder="Nhập đơn giá">
 
                                     <label for="" class="content__modal-body-label">Mô tả: </label>
-                                    <input type="text" name="mota" id="" class="content__modal-body-input" value="<?php echo $row_sp_ctsp["mota"] ?>" placeholder="Nhập mô tả">
+                                    <input require type="text" name="mota" id="" class="content__modal-body-input" value="<?php echo $row_sp_ctsp["mota"] ?>" placeholder="Nhập mô tả">
 
                                     <br>
 
@@ -314,7 +344,7 @@ if (isset($_POST["product__sumit"])) {
 
                                 <div class="content__modal-body-form-2">
                                     <label for="" class="content__modal-body-label">Số lượng sản phẩm: </label>
-                                    <input type="number" name="soluongconlai" id="" class="content__modal-body-input" value="<?php echo $row_sp_ctsp["soluongconlai"] ?>" placeholder="Nhập số lượng sản phẩm">
+                                    <input require type="number" name="soluongconlai" id="" class="content__modal-body-input" value="<?php echo $row_sp_ctsp["soluongconlai"] ?>" placeholder="Nhập số lượng sản phẩm">
 
                                     <br>
                                     <br>
@@ -328,9 +358,10 @@ if (isset($_POST["product__sumit"])) {
                                     $result_hinhanhsp = $stmt_hinhanhsp->get_result();
                                     $row__hinhanhsp = $result_hinhanhsp->fetch_assoc();
                                     ?>
+
                                     <label for="" class="content__modal-body-label">Hình ảnh sản phẩm: </label>
-                                    <img class="content__body-td-img" width="40" height="50" src="http://localhost/CuaHangDungCu/public/assets/images/product/<?php echo $row__hinhanhsp["urlhinhanh"]; ?>" alt="Hinh anh san pham">
-                                    <input type="file" name="urlhinhanh" id="" class="">
+                                    <img class="content__body-td-img" width="40" height="50" src="http://localhost/CuaHangDungCu/public/assets/images/products/<?php echo $row__hinhanhsp["urlhinhanh"]; ?>" alt="Hinh anh san pham">
+                                    <input require type="file" name="urlhinhanh" id="" class="">
 
 
                                     <br>
@@ -384,7 +415,7 @@ if (isset($_POST["product__sumit"])) {
                                     }
                                     ?>
                                     <label for="" class="content__modal-body-label">Hình ảnh sản phẩm: </label>
-                                    <input type="file" name="hinhanhurl[]" id="" class="" multiple> <!-- Chọn nhiều ảnh -->
+                                    <input require type="file" name="hinhanhurl[]" id="" class="" multiple> <!-- Chọn nhiều ảnh -->
                                     <div class="content__modal-body-image-gallery">
                                         <?php foreach ($images as $image): ?>
                                             <img class="content__modal-body-image-gallery_item" src="http://localhost/CuaHangDungCu/public/assets/images/products/<?php echo htmlspecialchars($image); ?>" alt="Hình ảnh sản phẩm">

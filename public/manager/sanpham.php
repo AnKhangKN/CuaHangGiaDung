@@ -112,7 +112,7 @@ $current_page = !empty($_GET["pages"]) ? $_GET["pages"] : 1;
 $offset = ($current_page - 1) * $item_per_page;
 
 if ($search_sanpham) {
-        include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/app/views/manager/includes/header.php");
+    include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/app/views/manager/includes/header.php");
     $sql_sp_ctsp = "SELECT * FROM sanpham sp JOIN chitietsanpham ctsp ON sp.idSanPham = ctsp.idSanPham 
                     WHERE sp.tensanpham LIKE '%" . $search_sanpham . "%'
                     ORDER BY sp.idSanPham ASC LIMIT $item_per_page OFFSET $offset";
@@ -120,7 +120,7 @@ if ($search_sanpham) {
     $totalRecords = mysqli_query($conn, "SELECT * FROM sanpham sp JOIN chitietsanpham ctsp ON sp.idSanPham = ctsp.idSanPham 
                     WHERE sp.tensanpham LIKE '%" . $search_sanpham . "%' OR sp.dongia LIKE '%" . $search_sanpham . "%'");
 } else if ($search_gia_from && $search_gia_to) {
-        include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/app/views/manager/includes/header.php");
+    include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/app/views/manager/includes/header.php");
     $sql_sp_ctsp = "SELECT * FROM sanpham sp JOIN chitietsanpham ctsp ON sp.idSanPham = ctsp.idSanPham 
                     WHERE (sp.dongia BETWEEN $search_gia_from AND $search_gia_to) OR (sp.dongia = 0 AND sp.dongia = 0)
                     ORDER BY sp.idSanPham ASC LIMIT $item_per_page OFFSET $offset";
@@ -215,7 +215,7 @@ $totalPages = ceil($totalNumber / $item_per_page);
                                     $result_hinhanhsp = $stmt_hinhanhsp->get_result();
                                     $row__hinhanhsp = $result_hinhanhsp->fetch_assoc();
                                     ?>
-                                    <img class="content__body-td-img" width="40" height="50" src="/CuaHangDungCu/public/assets/images/products/<?php echo $row__hinhanhsp["urlhinhanh"]; ?>" alt="Hình ảnh sản phẩm">
+                                    <img class="content__body-td-img" width="40" height="50" src="/CuaHangDungCu/public/assets/images/product/<?php echo $row__hinhanhsp["urlhinhanh"]; ?>" alt="Hình ảnh sản phẩm">
                                 </td>
 
                                 <td class="content__body-td"><?php echo number_format($row_sp_ctsp["dongia"], 0, ',', '.') ?></td>
@@ -257,7 +257,7 @@ $totalPages = ceil($totalNumber / $item_per_page);
                                 </td>
                                 <td class="content__body-td">
 
-                                    <button class="content__body-td__btn-see view-details js_content__body-td__btn-see" data-id="<?php echo $row_sp_ctsp['idSanPham'] ?>">xem</button>
+                                    <button class="content__body-td__btn-see view-details js_content__body-td__btn-see" data-idsp="<?php echo $row_sp_ctsp['idSanPham'] ?>" data-idctsp="<?php echo $row_sp_ctsp['idChiTietSanPham'] ?>">xem</button>
 
                                     <form action='/CuaHangDungCu/app/controllers/manager/deleteSanPham.php' class="content__body-td-form" method='POST'>
                                         <input type='hidden' name='idSanPham' value="<?php echo $row_sp_ctsp["idSanPham"] ?>">
@@ -313,13 +313,13 @@ $totalPages = ceil($totalNumber / $item_per_page);
                     <div class="content__modal-body-form-1">
 
                         <label for="" class="content__modal-body-label">Tên sản phẩm: </label>
-                        <input require type="text" name="tensanpham" id="" class="content__modal-body-input" placeholder="Nhập tên sản phẩm">
+                        <input required type="text" name="tensanpham" id="" class="content__modal-body-input" placeholder="Nhập tên sản phẩm">
 
                         <label for="" class="content__modal-body-label">Đơn giá: </label>
-                        <input require type="number" name="dongia" id="" min="1" class="content__modal-body-input" placeholder="Nhập đơn giá">
+                        <input required type="number" name="dongia" id="" min="1" class="content__modal-body-input" placeholder="Nhập đơn giá">
 
                         <label for="" class="content__modal-body-label">Mô tả: </label>
-                        <input require type="text" name="mota" id="" class="content__modal-body-input" placeholder="Nhập mô tả">
+                        <input type="text" name="mota" id="" class="content__modal-body-input" placeholder="Nhập mô tả">
 
                         <br>
 
@@ -362,15 +362,19 @@ $totalPages = ceil($totalNumber / $item_per_page);
 
                     <div class="content__modal-body-form-2">
                         <label for="" class="content__modal-body-label">Số lượng sản phẩm: </label>
-                        <input require type="number" name="soluongconlai" min="1" id="" class="content__modal-body-input" placeholder="Nhập số lượng sản phẩm">
+                        <input required type="number" name="soluongconlai" min="1" id="" class="content__modal-body-input" placeholder="Nhập số lượng sản phẩm">
 
                         <br>
 
-                        <label for="" class="content__modal-body-label">Hình ảnh sản phẩm: </label>
-                        <input require type="file" name="urlhinhanh" id="" class="content__modal-body-input"><!-- Chọn một ảnh -->
+                        <!-- Chọn một ảnh -->
+                        <label for="singleImage" class="content__modal-body-label">Hình ảnh sản phẩm: </label>
+                        <input required type="file" name="urlhinhanh" id="singleImage" class="content__modal-body-input-images" accept="image/*">
+                        <div id="singleImagePreview" class="preview-container"></div>
 
-                        <label for="" class="content__modal-body-label">Nhiều hình ảnh sản phẩm: </label>
-                        <input require type="file" name="hinhanhurl[]" id="" class="content__modal-body-input" multiple> <!-- Chọn nhiều ảnh -->
+                        <!-- Chọn nhiều ảnh -->
+                        <label for="multipleImages" class="content__modal-body-label">Nhiều hình ảnh sản phẩm: </label>
+                        <input required type="file" name="hinhanhurl[]" id="multipleImages" class="content__modal-body-input-images" accept="image/*" multiple>
+                        <div id="multipleImagesPreview" class="preview-container"></div>
 
 
                         <br>
@@ -400,9 +404,11 @@ $totalPages = ceil($totalNumber / $item_per_page);
                             $result_mausacsanpham = mysqli_query($conn, $sql_mausacsanpham);
 
                             while ($row_mausacsanpham = mysqli_fetch_array($result_mausacsanpham)) {
-
+                                $color = $row_mausacsanpham["mausac"]; // Lấy tên màu từ cơ sở dữ liệu
                             ?>
-                                <Option value="<?php echo $row_mausacsanpham["idMauSac"] ?>"><p style="color: red;"><?php echo $row_mausacsanpham["mausac"] ?></p></Option>
+                                <Option value="<?php echo $row_mausacsanpham["idMauSac"]; ?>" style="background-color: <?php echo $color; ?>;">
+                                    <p><?php echo $color ?></p>
+                                </Option>
 
                             <?php } ?>
                         </select>

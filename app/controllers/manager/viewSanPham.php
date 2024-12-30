@@ -1,13 +1,17 @@
 <?php
 include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/config/connect.php");
 
-if (isset($_GET['idSanPham'])) {
+if (isset($_GET['idSanPham']) && isset($_GET['idChiTietSanPham'])) {
     $idSanPham = $_GET['idSanPham'];
+    $idChiTietSanPham = $_GET['idChiTietSanPham'];
 
     // Hình ảnh sản phẩm
-    $sql_hinhanhsp = "SELECT * FROM sanpham sp JOIN hinhanhsanpham hasp ON sp.idSanPham = hasp.idSanPham WHERE sp.idSanPham = ?";
+    $sql_hinhanhsp = "SELECT * FROM sanpham sp,chitietsanpham ctsp, hinhanhsanpham hasp 
+                    WHERE sp.idSanPham = hasp.idSanPham 
+                    AND sp.idSanPham = ?
+                    AND ctsp.idChiTietSanPham = ?";
     $stmt_hinhanhsp = $conn->prepare($sql_hinhanhsp);
-    $stmt_hinhanhsp->bind_param("i", $idSanPham);
+    $stmt_hinhanhsp->bind_param("ii", $idSanPham, $idChiTietSanPham);
     $stmt_hinhanhsp->execute();
     $result_hinhanhsp = $stmt_hinhanhsp->get_result();
     $row__hinhanhsp = $result_hinhanhsp->fetch_assoc();
@@ -16,9 +20,9 @@ if (isset($_GET['idSanPham'])) {
     // Truy vấn chi tiết sản phẩm
     $sql_sanpham = "SELECT * FROM sanpham sp 
             JOIN chitietsanpham ctsp ON sp.idSanPham = ctsp.idSanPham
-            WHERE sp.idSanPham = ?";
+            WHERE sp.idSanPham = ? AND ctsp.idChiTietSanPham = ?";
     $stmt_sanpham = $conn->prepare($sql_sanpham);
-    $stmt_sanpham->bind_param("i", $idSanPham);
+    $stmt_sanpham->bind_param("ii", $idSanPham, $idChiTietSanPham);
     $stmt_sanpham->execute();
     $result_sanpham = $stmt_sanpham->get_result();
 
