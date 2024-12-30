@@ -11,7 +11,6 @@ if (isset($_POST['query']) && $_POST['query'] !== "") {
     // Gọi hàm tìm kiếm sản phẩm
     $rowProduct = searchProductByName($ProductName);
 
-    if (!empty($rowProduct) && is_array($rowProduct)) {
         // Nếu tìm thấy sản phẩm
         foreach ($rowProduct as $Row) {
             ?>
@@ -28,15 +27,11 @@ if (isset($_POST['query']) && $_POST['query'] !== "") {
             </tr>
             <?php
         }
-    } else {
-        // Nếu không tìm thấy sản phẩm, hiển thị thông báo
-        echo "<tr><td colspan='4'>Không tìm thấy sản phẩm phù hợp</td></tr>";
-    }
 } else {
     // Nếu không có từ khóa tìm kiếm (chuỗi trống hoặc không có giá trị), hiển thị tất cả sản phẩm
     $rowAllProduct = getProduct();
 
-    if (!empty($rowAllProduct)) {
+    
         // Hiển thị tất cả sản phẩm
         foreach ($rowAllProduct as $product) {
             ?>
@@ -53,9 +48,6 @@ if (isset($_POST['query']) && $_POST['query'] !== "") {
             </tr>
             <?php
         }
-    } else {
-        // Nếu không có sản phẩm nào trong hệ thống
-        echo "<tr><td colspan='4'>Không có sản phẩm nào trong hệ thống</td></tr>";
-    }
+    
 }
 ?>
