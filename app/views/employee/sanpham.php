@@ -219,8 +219,8 @@ if(isset($_SESSION['user_id'])){
                             </div>
 
                             <div class="action_payment">
-                                <button type="button" class="btn bg-dark text-white">Tạm tính</button>
-                                <button id="ThanhToan" type="button" class="btn bg-dark text-white">Thanh toán</button>
+                      
+                                <button style="margin-left: 430px;" id="ThanhToan" type="button" class="btn bg-dark text-white">Thanh toán</button>
                             </div>  
 
                         </div>    

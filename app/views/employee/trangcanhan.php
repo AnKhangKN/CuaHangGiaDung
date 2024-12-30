@@ -76,8 +76,8 @@ if(isset($_SESSION['user_id'])) {
                 
                 </div>
                 <div class="col-lg-6">
-                    <div class="container_right">
-                        <h4 style="margin-top: 40px;">"Thành công đến từ những nỗ lực không ngừng nghỉ."</h4>           
+                    <div class="container_right text-center">
+                        <h3 style="margin-top: 40px;">"HKN cửa hàng dụng cụ thể thao"</h3>           
                         <div style="margin-top: 90px; margin-left: 220px;" aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
                             <div class="wheel"></div>
                             <div class="hamster">
