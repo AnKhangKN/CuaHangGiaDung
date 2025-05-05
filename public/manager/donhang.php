@@ -1,6 +1,6 @@
 <?php
 
-include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/config/connect.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangGiaDung/config/connect.php");
 
 function test_input($data)
 {
@@ -21,7 +21,7 @@ $current_page = !empty($_GET["pages"]) ? $_GET["pages"] : 1;
 $offset = ($current_page - 1) * $item_per_page;
 
 if ($search_donhang) {
-    include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/app/views/manager/includes/header.php");
+    include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangGiaDung/app/views/manager/includes/header.php");
     $sql = "SELECT hd.idHoaDon, kh.tenkhachhang, sp.tensanpham, cthd.soluong, hd.tongtien, hd.ngayxuathoadon, hd.trangthai, nv.tennhanvien FROM hoadon hd, chitiethoadon cthd, nhanvien nv, khachhang kh, chitietsanpham ctsp, sanpham sp
         WHERE hd.idHoaDon = cthd.idHoaDon 
         AND hd.idNhanVien = nv.idNhanVien 
@@ -45,7 +45,7 @@ if ($search_donhang) {
         OR kh.tenkhachhang LIKE '%" . $search_donhang . "%')
         ORDER BY hd.idHoaDon ASC LIMIT $item_per_page OFFSET $offset");
 } else if ($start_date && $end_date) {
-    include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/app/views/manager/includes/header.php");
+    include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangGiaDung/app/views/manager/includes/header.php");
     $sql = "SELECT hd.idHoaDon, kh.tenkhachhang, sp.tensanpham, cthd.soluong, hd.tongtien, hd.ngayxuathoadon, hd.trangthai, nv.tennhanvien FROM hoadon hd, chitiethoadon cthd, nhanvien nv, khachhang kh, chitietsanpham ctsp, sanpham sp
         WHERE hd.idHoaDon = cthd.idHoaDon
         AND hd.idNhanVien = nv.idNhanVien 
@@ -95,7 +95,7 @@ $totalPages = ceil($totalNumber / $item_per_page);
                     </button> -->
 
             <div class="content__header-form">
-                <form action="/CuaHangDungCu/public/manager/donhang.php" class="content__header-form-search">
+                <form action="/CuaHangGiaDung/public/manager/donhang.php" class="content__header-form-search">
                     <input type="text" name="search_donhang" required class="content__header-form-search-text" placeholder="Tìm kiếm tên sp, kh, nv">
 
                     <button type="submit" class="content__header-form-search-submit">
@@ -104,7 +104,7 @@ $totalPages = ceil($totalNumber / $item_per_page);
                     </button>
                 </form>
 
-                <form action="/CuaHangDungCu/public/manager/donhang.php" class="content__header-form-search-cost" method="GET">
+                <form action="/CuaHangGiaDung/public/manager/donhang.php" class="content__header-form-search-cost" method="GET">
                     <label for="" class="content__header-form-search-cost-label">từ ngày: </label>
                     <input type="date" class="content__header-form-search-cost-input" name="start_date" required id="">
                     <label for="" class="content__header-form-search-cost-label">đến ngày: </label>
@@ -173,7 +173,7 @@ $totalPages = ceil($totalNumber / $item_per_page);
                     </tbody>
                 </table>
 
-                <?php include $_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/app/controllers/manager/paginationDonHang.php" ?>
+                <?php include $_SERVER['DOCUMENT_ROOT'] . "/CuaHangGiaDung/app/controllers/manager/paginationDonHang.php" ?>
 
             </div>
         </div>
@@ -181,5 +181,5 @@ $totalPages = ceil($totalNumber / $item_per_page);
 </div>
 
 <?php
-include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/app/views/manager/includes/footer.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangGiaDung/app/views/manager/includes/footer.php");
 ?>

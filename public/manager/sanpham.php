@@ -1,6 +1,11 @@
 <?php
 
-include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/config/connect.php");
+<<<<<<< HEAD
+include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangGiaDung/config/connect.php");
+=======
+    include "../../config/connect.php";
+
+>>>>>>> 5096cfbe63074b4db946ac854d3be1cfcf5c2769
 function test_input($data)
 {
     $data = trim($data);
@@ -59,13 +64,13 @@ if (isset($_POST["product__sumit"])) {
         // Commit giao dịch
         $conn->commit();
 
-        move_uploaded_file($image_tmp_name, 'C:/xampp/htdocs/CuaHangDungCu/public/assets/images/product/' . $image);
+        move_uploaded_file($image_tmp_name, 'C:/xampp/htdocs/CuaHangGiaDung/public/assets/images/product/' . $image);
 
         // Thêm nhiều ảnh
         $uploaded_files = $_FILES['hinhanhurl'];
 
         // Đường dẫn thư mục lưu trữ ảnh
-        $image_path = 'C:/xampp/htdocs/CuaHangDungCu/public/assets/images/products/';
+        $image_path = 'C:/xampp/htdocs/CuaHangGiaDung/public/assets/images/products/';
 
         // Kiểm tra nếu có tệp được tải lên
         if (!empty($uploaded_files['name'][0])) {
@@ -90,14 +95,14 @@ if (isset($_POST["product__sumit"])) {
         $conn->rollback();
         echo "<script>
             alert('Không thể thêm sản phẩm.');
-            window.location.href = '/CuaHangDungCu/public/manager/index.php?page=sanpham';
+            window.location.href = '/CuaHangGiaDung/public/manager/index.php?page=sanpham';
             </script>";
     }
     // end
 
     echo "<script>
             alert('Thêm sản phẩm thành công.');
-            window.location.href = '/CuaHangDungCu/public/manager/index.php?page=sanpham';
+            window.location.href = '/CuaHangGiaDung/public/manager/index.php?page=sanpham';
             </script>";
 }
 
@@ -112,7 +117,7 @@ $current_page = !empty($_GET["pages"]) ? $_GET["pages"] : 1;
 $offset = ($current_page - 1) * $item_per_page;
 
 if ($search_sanpham) {
-    include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/app/views/manager/includes/header.php");
+    include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangGiaDung/app/views/manager/includes/header.php");
     $sql_sp_ctsp = "SELECT * FROM sanpham sp JOIN chitietsanpham ctsp ON sp.idSanPham = ctsp.idSanPham 
                     WHERE sp.tensanpham LIKE '%" . $search_sanpham . "%'
                     ORDER BY sp.idSanPham ASC LIMIT $item_per_page OFFSET $offset";
@@ -120,7 +125,7 @@ if ($search_sanpham) {
     $totalRecords = mysqli_query($conn, "SELECT * FROM sanpham sp JOIN chitietsanpham ctsp ON sp.idSanPham = ctsp.idSanPham 
                     WHERE sp.tensanpham LIKE '%" . $search_sanpham . "%' OR sp.dongia LIKE '%" . $search_sanpham . "%'");
 } else if ($search_gia_from && $search_gia_to) {
-    include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/app/views/manager/includes/header.php");
+    include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangGiaDung/app/views/manager/includes/header.php");
     $sql_sp_ctsp = "SELECT * FROM sanpham sp JOIN chitietsanpham ctsp ON sp.idSanPham = ctsp.idSanPham 
                     WHERE (sp.dongia BETWEEN $search_gia_from AND $search_gia_to) OR (sp.dongia = 0 AND sp.dongia = 0)
                     ORDER BY sp.idSanPham ASC LIMIT $item_per_page OFFSET $offset";
@@ -152,7 +157,7 @@ $totalPages = ceil($totalNumber / $item_per_page);
             </button>
 
             <div class="content__header-form">
-                <form action="/CuaHangDungCu/public/manager/sanpham.php" class="content__header-form-search" method="GET">
+                <form action="/CuaHangGiaDung/public/manager/sanpham.php" class="content__header-form-search" method="GET">
                     <input name="search_sanpham" type="text" class="content__header-form-search-text" required placeholder="Tìm kiếm tên sản phẩm">
 
                     <button type="submit" class="content__header-form-search-submit">
@@ -161,7 +166,7 @@ $totalPages = ceil($totalNumber / $item_per_page);
                     </button>
                 </form>
 
-                <form action="/CuaHangDungCu/public/manager/sanpham.php" class="content__header-form-search-cost" method="GET">
+                <form action="/CuaHangGiaDung/public/manager/sanpham.php" class="content__header-form-search-cost" method="GET">
                     <label for="" class="content__header-form-search-cost-label">giá từ: </label>
                     <input type="number" class="content__header-form-search-cost-input" required min="1" name="search_gia_from" id="" placeholder="Nhập giá từ">
                     <label for="" class="content__header-form-search-cost-label">đến: </label>
@@ -215,7 +220,7 @@ $totalPages = ceil($totalNumber / $item_per_page);
                                     $result_hinhanhsp = $stmt_hinhanhsp->get_result();
                                     $row__hinhanhsp = $result_hinhanhsp->fetch_assoc();
                                     ?>
-                                    <img class="content__body-td-img" width="40" height="50" src="/CuaHangDungCu/public/assets/images/product/<?php echo $row__hinhanhsp["urlhinhanh"]; ?>" alt="Hình ảnh sản phẩm">
+                                    <img class="content__body-td-img" width="40" height="50" src="/CuaHangGiaDung/public/assets/images/product/<?php echo $row__hinhanhsp["urlhinhanh"]; ?>" alt="Hình ảnh sản phẩm">
                                 </td>
 
                                 <td class="content__body-td"><?php echo number_format($row_sp_ctsp["dongia"], 0, ',', '.') ?></td>
@@ -259,13 +264,13 @@ $totalPages = ceil($totalNumber / $item_per_page);
 
                                     <button class="content__body-td__btn-see view-details js_content__body-td__btn-see" data-idsp="<?php echo $row_sp_ctsp['idSanPham'] ?>" data-idctsp="<?php echo $row_sp_ctsp['idChiTietSanPham'] ?>">xem</button>
 
-                                    <form action='/CuaHangDungCu/app/controllers/manager/deleteSanPham.php' class="content__body-td-form" method='POST'>
+                                    <form action='/CuaHangGiaDung/app/controllers/manager/deleteSanPham.php' class="content__body-td-form" method='POST'>
                                         <input type='hidden' name='idSanPham' value="<?php echo $row_sp_ctsp["idSanPham"] ?>">
                                         <input type="hidden" name="idChiTietSanPham" value="<?php echo $row_sp_ctsp["idChiTietSanPham"] ?>">
                                         <input type='submit' class="content__body-td__btn-delete" onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')" value="xóa">
                                     </form>
 
-                                    <form action="/CuaHangDungCu/app/controllers/manager/editSanPham.php" class="content__body-td-form" method="POST">
+                                    <form action="/CuaHangGiaDung/app/controllers/manager/editSanPham.php" class="content__body-td-form" method="POST">
                                         <input type="hidden" name="idSanPham" value="<?php echo $row_sp_ctsp["idSanPham"] ?>">
                                         <input type="hidden" name="idChiTietSanPham" value="<?php echo $row_sp_ctsp["idChiTietSanPham"] ?>">
                                         <input type="submit" class="content__body-td__btn-edit" value="sửa">
@@ -284,7 +289,7 @@ $totalPages = ceil($totalNumber / $item_per_page);
                 </tbody>
             </table>
 
-            <?php include $_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/app/controllers/manager/paginationSanPham.php" ?>
+            <?php include $_SERVER['DOCUMENT_ROOT'] . "/CuaHangGiaDung/app/controllers/manager/paginationSanPham.php" ?>
         </div>
     </div>
 </div>
@@ -451,5 +456,9 @@ $totalPages = ceil($totalNumber / $item_per_page);
 </div>
 
 <?php
-include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/app/views/manager/includes/footer.php");
+<<<<<<< HEAD
+include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangGiaDung/app/views/manager/includes/footer.php");
+=======
+    include "../../app/views/manager/includes/footer.php"
+>>>>>>> 5096cfbe63074b4db946ac854d3be1cfcf5c2769
 ?>
