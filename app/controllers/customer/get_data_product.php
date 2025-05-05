@@ -1,5 +1,9 @@
 <?php 
+<<<<<<< HEAD
 include 'C:\xampp\htdocs\CuaHangGiaDung\config\connectdb.php';
+=======
+include '../../../config/connectdb.php';
+>>>>>>> b2f6cfd84423ea88131c163e446690d8d38d2e96
 
 if (isset($_POST['action'])) {
     $Product = 'SELECT DISTINCT sp.idSanPham, sp.tensanpham, sp.dongia, hasp.urlhinhanh, dmsp.tendanhmuc
