@@ -3,8 +3,8 @@
 session_start();
 
 // Bao gồm các tệp cần thiết cho quản lý session và kết nối cơ sở dữ liệu
-include 'C:/xampp/htdocs/CuaHangDungCu/config/session.php';
-include 'C:/xampp/htdocs/CuaHangDungCu/config/connectdb.php';
+include '../../../config/session.php';
+include '../../../config/connectdb.php';
 
 // Kết nối đến cơ sở dữ liệu
 $conn = connectBD();
@@ -51,19 +51,19 @@ if ($result->num_rows > 0) {
             case 0:
                 // Kiểm tra cookie giỏ hàng
                 if (!empty($_COOKIE['cart']) && json_decode($_COOKIE['cart'], true)) {
-                    $response['redirect'] = '/CuaHangDungCu/public/index.php?page=payment';
+                    $response['redirect'] = '/CuaHangGiaDung/public/index.php?page=payment';
                 } else {
-                    $response['redirect'] = '/CuaHangDungCu/public/index.php?page=information';
+                    $response['redirect'] = '/CuaHangGiaDung/public/index.php?page=information';
                 }
                 break;
             case 1:
-                $response['redirect'] = '/CuaHangDungCu/public/manager/index.php';
+                $response['redirect'] = '/CuaHangGiaDung/public/manager/index.php';
                 break;
             case 2:
-                $response['redirect'] = '/CuaHangDungCu/public/employee/index.php';
+                $response['redirect'] = '/CuaHangGiaDung/public/employee/index.php';
                 break;
             default:
-                $response['redirect'] = '/CuaHangDungCu/app/views/others/login.php';
+                $response['redirect'] = '/CuaHangGiaDung/app/views/others/login.php';
                 break;
         }
     } else {
