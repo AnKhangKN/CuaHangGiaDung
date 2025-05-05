@@ -2,17 +2,17 @@
             <div class="container-fluid">
                 <div class="home_slider">
                     <a href="#">
-                        <img src="../public/assets/images/sliders/slider_demo_1.jpg" alt="slider1" class="home_slider_img">
+                        <img src="../public/assets/images/sliders/banner10801.webp" alt="slider1" class="home_slider_img">
                     </a>
                 </div>
                 <div class="home_slider">
                     <a href="#"></a>
-                        <img src="../public/assets/images/sliders/slider_demo_2.jpg" alt="slider2" class="home_slider_img">
+                        <img src="../public/assets/images/sliders/cover-web-8_3-2048x635.webp" alt="slider2" class="home_slider_img">
                     </a>
                 </div>
                 <div class="home_slider"></div>
                     <a href="#">
-                        <img src="../public/assets/images/sliders/slider_demo_3.jpg" alt="slider3" class="home_slider_img">
+                        <img src="../public/assets/images/sliders/cover-web-scaled(1).webp" alt="slider3" class="home_slider_img">
                     </a>
                 </div>
             </div>
@@ -77,8 +77,8 @@
 
             <!-- banner -->
                 
-                <div class="container_banner d-flex align-items-center justify-content-center">
-                    <h3 style="color: white;">Lựa chọn theo phông cách của bạn</h3>
+                <div class="container_banner">
+                    <img class="w-100" src="../public/assets/images/sliders/banner10801.webp" alt="" srcset="">
                 </div>
             
 
