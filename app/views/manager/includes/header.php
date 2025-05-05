@@ -9,6 +9,8 @@
     <link rel="icon" type="image/x-icon" href="../../public/assets/images/logo_trang.jpg">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../../vendor/fontawesome-free-6.6.0-web/css/all.min.css">
+    <link rel="stylesheet" href="../../vendor/bootstrap-5.3.3/dist/css/bootstrap.min.css">
+    
 </head>
 <body id="body">
 <div class="l-navbar" id="navbar">
