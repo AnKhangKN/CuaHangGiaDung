@@ -10,14 +10,14 @@ $(document).ready(function () {
 
         $.ajax({
             type: "POST",
-            url: "/CuaHangDungCu/vendor/confirmmail.php",
+            url: "/CuaHangGiaDung/vendor/confirmmail.php",
             data: {
                 code: code,
             },
             success: function (response) {
                 if(response === 'Xác thực thành công. Bạn đã được đăng ký tài khoản!'){
                     setTimeout(function(){
-                        window.location.href = "http://localhost/CuaHangDungCu/public/login.php";
+                        window.location.href = "http://localhost/CuaHangGiaDung/public/login.php";
                     },500)
                 }else{
                     alert(response);

@@ -1,5 +1,5 @@
 <?php 
-include 'C:\xampp\htdocs\CuaHangDungCu\config\connectdb.php';
+include '../../../config/connectdb.php';
 
 if (isset($_POST['action'])) {
     $Product = 'SELECT DISTINCT sp.idSanPham, sp.tensanpham, sp.dongia, hasp.urlhinhanh, dmsp.tendanhmuc
