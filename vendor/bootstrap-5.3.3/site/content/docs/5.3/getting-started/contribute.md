@@ -58,7 +58,7 @@ Running our documentation locally requires the use of Hugo, which gets installed
 
 1. Run through the [tooling setup](#tooling-setup) above to install all dependencies.
 2. From the root `/bootstrap` directory, run `npm run docs-serve` in the command line.
-3. Open `http://localhost:9001/` in your browser, and voilà.
+3. Open `:9001/` in your browser, and voilà.
 
 Learn more about using Hugo by reading its [documentation](https://gohugo.io/documentation/).
 

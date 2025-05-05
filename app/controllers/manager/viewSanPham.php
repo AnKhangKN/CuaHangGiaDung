@@ -55,7 +55,7 @@ if (isset($_GET['idSanPham']) && isset($_GET['idChiTietSanPham'])) {
                         <div class="content__body-td-modal-img">
                             <div class="image-container">
                                 <?php foreach ($images as $image): ?>
-                                    <img src="http://localhost/CuaHangGiaDung/public/assets/images/products/<?php echo htmlspecialchars($image); ?>" alt="Hình ảnh sản phẩm">
+                                    <img src="/CuaHangGiaDung/public/assets/images/products/<?php echo htmlspecialchars($image); ?>" alt="Hình ảnh sản phẩm">
                                 <?php endforeach; ?>
                             </div>
                         </div>

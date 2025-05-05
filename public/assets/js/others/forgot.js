@@ -84,8 +84,7 @@ $(document).ready(function () {
         $(".btn_login").removeClass("loading-circle");
 
         // Chuyển hướng sau khi xử lý xong
-        window.location.href =
-          "http://localhost/CuaHangGiaDung/public/login.php";
+        window.location.href = "/CuaHangGiaDung/public/login.php";
       },
       error: function (xhr, status, error) {
         console.error("Có lỗi xảy ra: ", error);

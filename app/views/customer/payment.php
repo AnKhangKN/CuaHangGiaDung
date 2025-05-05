@@ -95,7 +95,7 @@ if (isset($_SESSION['user_id'])) {
                                 ?>
 
                             <div class="infor_payment_login">
-                                    Bạn đã có tài khoản? <a href="http://localhost/CuaHangGiaDung/public/login.php">Đăng nhập</a>
+                                    Bạn đã có tài khoản? <a href="/CuaHangGiaDung/public/login.php">Đăng nhập</a>
                             </div>
                             <p>Hãy nhập thông tin tài khoản để có thể tiến hành thanh toán.</p>
                                 

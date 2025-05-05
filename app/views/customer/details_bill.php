@@ -18,11 +18,11 @@
         $comment = checkComment($idBill);
 
         if(!$DetailBillid){
-            header('Location: http://localhost/CuaHangGiaDung/index.php?page=information');
+            header('Location: /CuaHangGiaDung/index.php?page=information');
         }
     } else {
         
-        header('Location: http://localhost/CuaHangGiaDung/index.php?page=information');
+        header('Location: /CuaHangGiaDung/index.php?page=information');
     }
 
 ?>
