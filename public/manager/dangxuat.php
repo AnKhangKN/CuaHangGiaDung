@@ -7,6 +7,6 @@
         unset($_SESSION['quyen']);
         
 
-        header('Location: http://localhost/CuaHangDungCu/public/index.php');
+        header('Location: http://localhost/CuaHangGiaDung/public/index.php');
     }
 ?>
