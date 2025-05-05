@@ -19,7 +19,7 @@ $(document).ready(function () {
         ) {
           setTimeout(function () {
             window.location.href =
-              "http://localhost/CuaHangGiaDung/public/login.php";
+              "/CuaHangGiaDung/public/login.php";
           }, 500);
         } else {
           alert(response);
@@ -39,7 +39,7 @@ $(document).ready(function () {
             success: function (response) {
                 if(response === 'Xác thực thành công. Bạn đã được đăng ký tài khoản!'){
                     setTimeout(function(){
-                        window.location.href = "http://localhost/CuaHangGiaDung/public/login.php";
+                        window.location.href = "/CuaHangGiaDung/public/login.php";
                     },500)
                 }else{
                     alert(response);

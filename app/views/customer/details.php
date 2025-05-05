@@ -6,12 +6,12 @@
         $ProductId = getProductByProductId($id);
 
         if(!$ProductId){
-            header('Location: http://localhost/CuaHangGiaDung/public/index.php?page=products');
+            header('Location: /CuaHangGiaDung/public/index.php?page=products');
             exit;
         }
         
     }  else{
-        header('Location: http://localhost/CuaHangGiaDung/public/index.php?page=products');
+        header('Location: /CuaHangGiaDung/public/index.php?page=products');
         exit;
     }
 

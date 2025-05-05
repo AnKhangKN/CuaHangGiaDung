@@ -47,8 +47,7 @@ $(document).ready(function () {
           // Nếu không có lỗi, chuyển hướng trang
           setTimeout(() => {
             $(".load_signup").removeClass("loading-circle");
-            window.location.href =
-              "http://localhost/CuaHangGiaDung/public/confirm.php";
+            window.location.href = "/CuaHangGiaDung/public/confirm.php";
           }, 0);
         }
         console.log(response); // Ghi phản hồi vào console để kiểm tra

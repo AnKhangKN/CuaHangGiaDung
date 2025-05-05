@@ -1,6 +1,6 @@
 .header{
     height: 80px;
-    background-color: rgb(24, 24, 24);
+    background-color:orange;
     position: fixed;
     top: 0;
     width: 100%; 
@@ -44,7 +44,7 @@
 .nav_ul_list_item{
     display: inline-block;
     padding: 0 16px;
-    color: white;
+    color: orange;
 }
 
 .nav_ul_list_item_link{

@@ -360,7 +360,7 @@ if (isset($_POST["product__sumit"])) {
                                     ?>
 
                                     <label for="" class="content__modal-body-label">Hình ảnh sản phẩm: </label>
-                                    <img class="content__body-td-img" width="40" height="50" src="http://localhost/CuaHangGiaDung/public/assets/images/products/<?php echo $row__hinhanhsp["urlhinhanh"]; ?>" alt="Hinh anh san pham">
+                                    <img class="content__body-td-img" width="40" height="50" src="/CuaHangGiaDung/public/assets/images/products/<?php echo $row__hinhanhsp["urlhinhanh"]; ?>" alt="Hinh anh san pham">
                                     <input require type="file" name="urlhinhanh" id="" class="">
 
 
@@ -418,7 +418,7 @@ if (isset($_POST["product__sumit"])) {
                                     <input require type="file" name="hinhanhurl[]" id="" class="" multiple> <!-- Chọn nhiều ảnh -->
                                     <div class="content__modal-body-image-gallery">
                                         <?php foreach ($images as $image): ?>
-                                            <img class="content__modal-body-image-gallery_item" src="http://localhost/CuaHangGiaDung/public/assets/images/products/<?php echo htmlspecialchars($image); ?>" alt="Hình ảnh sản phẩm">
+                                            <img class="content__modal-body-image-gallery_item" src="/CuaHangGiaDung/public/assets/images/products/<?php echo htmlspecialchars($image); ?>" alt="Hình ảnh sản phẩm">
                                         <?php endforeach; ?>
                                     </div>
                                 </div>
