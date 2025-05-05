@@ -125,7 +125,7 @@
                                 <div id="Productsize">
                                 <?php 
                                     $Category = getCategoryByProductId($id);
-                                    if($Category['tendanhmuc'] === 'Quần áo'){
+                                    if($Category['tendanhmuc'] === 'Máy ép'){
                                         ?>
                                         
                                 <div class="products_details_info_size_group">
@@ -160,7 +160,7 @@
                                 </div>
                                         
                                         <?php 
-                                    } elseif($Category['tendanhmuc'] === 'Giày dép'){
+                                    } elseif($Category['tendanhmuc'] === 'Nồi'){
                                         
                                         ?>
                                 <div class="products_details_info_size_group">

@@ -269,7 +269,6 @@
     margin: 19px 15px;
     width: 240px;
     height: 42px;
-    border-radius: 25px;
     display: flex;
     position: relative;
     cursor: pointer;
@@ -346,7 +345,6 @@
 #search_box_input{
     border: 0.5px solid #333;
     padding: 5px 20px;
-    border-radius: 22px;
     outline: none;
     height: 45px;
     width: 40%;
@@ -360,7 +358,7 @@
     justify-content: center;
     align-items: center;
     font-size: 18px;
-    border-radius: 50%;
+    border-radius: 0;
 }
 
 #search_box_close:hover{
@@ -408,7 +406,7 @@
         font-size: 16px;
         padding: 10px 14px;
         margin: 18px;
-        border-radius: 50%;
+    
     }
 
     .list_nav_after_hidden:hover{
@@ -505,7 +503,6 @@
         margin: 19px 15px;
         width: 40px;
         height: 40px;
-        border-radius: 50%;
     }
 
     .nav_tool_search{

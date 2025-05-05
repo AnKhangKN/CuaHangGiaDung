@@ -23,9 +23,6 @@
     <!-- css products -->
     <link rel="stylesheet" href="../public/assets/css/customer/product.css">
 
-    <!-- css news -->
-    <link rel="stylesheet" href="../public/assets/css/customer/news.css">
-
     <!-- css introduce -->
     <link rel="stylesheet" href="../public/assets/css/customer/introduce.css">
 
@@ -110,9 +107,7 @@
                     </li>
 
 
-                    <li class="nav_ul_list_item header_link_next">
-                        <a href="index.php?page=news" class="nav_ul_list_item_link">Tin tức</a>
-                    </li>
+                
                     <li class="nav_ul_list_item header_link_next">
                         <a href="index.php?page=introduce" class="nav_ul_list_item_link">Giới thiệu</a>
                     </li>
