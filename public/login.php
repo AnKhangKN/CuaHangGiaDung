@@ -4,7 +4,7 @@
 
     
     if(isset($_SESSION['user_id'])){
-        header('Location: http://localhost/CuaHangGiaDung/public/index.php');
+        header('Location: /CuaHangGiaDung/public/index.php');
     }
 ?>
 
@@ -59,7 +59,7 @@
             </div>
         </div>
 
-        <a href="http://localhost/CuaHangGiaDung/public/forgot.php">Quên mật khẩu?</a>
+        <a href="/CuaHangGiaDung/public/forgot.php">Quên mật khẩu?</a>
 
         <p class="main_title">HKN Store – Mua thông minh, sắm chất lượng.</p>
 

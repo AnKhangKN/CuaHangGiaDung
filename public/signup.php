@@ -50,7 +50,7 @@
 
         <div class="btn_container">
             <a href="index.php" style="text-decoration: none; color: #333;" class="back">Trở lại</a>
-            <button id="confirm_acc" class="continue" href="http://localhost/CuaHangGiaDung/public/confirm.php">Xác nhận tài khoản <div class="load_signup "></div> </button>
+            <button id="confirm_acc" class="continue" href="/CuaHangGiaDung/public/confirm.php">Xác nhận tài khoản <div class="load_signup "></div> </button>
         </div>
         
         

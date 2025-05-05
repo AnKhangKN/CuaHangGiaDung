@@ -4,7 +4,7 @@
 
     
     if(isset($_SESSION['user_id'])){
-        header('Location: http://localhost/CuaHangGiaDung/public/index.php');
+        header('Location: /CuaHangGiaDung/public/index.php');
     }
 ?>
 

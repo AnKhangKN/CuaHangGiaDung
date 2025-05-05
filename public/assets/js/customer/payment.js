@@ -501,8 +501,7 @@ $(document).ready(function () {
     const modal = $(".confirm_payment")[0]; // Truy cập phần tử DOM thực sự
     if (modal) {
       modal.style.display = "none";
-      window.location.href =
-        "http://localhost/CuaHangGiaDung/public/index.php?page=products";
+      window.location.href = "/CuaHangGiaDung/public/index.php?page=products";
     } else {
       console.log("Modal không được tìm thấy");
     }
@@ -516,7 +515,7 @@ $(document).ready(function () {
     if (modal) {
       modal.style.display = "none"; // Ẩn modal
       window.location.href =
-        "http://localhost/CuaHangGiaDung/public/index.php?page=information";
+        "/CuaHangGiaDung/public/index.php?page=information";
     } else {
       console.error("Modal không được tìm thấy");
     }
