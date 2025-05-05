@@ -24,7 +24,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "POST",
-            url: "/CuaHangDungCu/app/controllers/employee/add_product_detail.php",
+            url: "/CuaHangGiaDung/app/controllers/employee/add_product_detail.php",
             data: {
                 action: 'InfoSanPham',
                 idSanPham: idSanPham,
@@ -54,7 +54,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "POST",
-            url: "/CuaHangDungCu/app/controllers/employee/size_color_show.php",
+            url: "/CuaHangGiaDung/app/controllers/employee/size_color_show.php",
             data: { idSanPham: idSanPham },
             success: function(response) {
                 $("#product_detail_body").html(response);
@@ -93,7 +93,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "POST",
-            url: "/CuaHangDungCu/app/controllers/employee/get_product_detail.php",
+            url: "/CuaHangGiaDung/app/controllers/employee/get_product_detail.php",
             data: {
                 action: "select",
                 size: size_product,
@@ -184,7 +184,7 @@ $(document).ready(function () {
     
         $.ajax({
             type: "POST",
-            url: "/CuaHangDungCu/app/controllers/employee/add_to_cart.php",
+            url: "/CuaHangGiaDung/app/controllers/employee/add_to_cart.php",
             data: {
                 action: 'add_cart',
                 idSanPham: idSanPham,
@@ -216,7 +216,7 @@ $(document).ready(function () {
         // Send AJAX request to delete the item
         $.ajax({
             type: "POST",
-            url: "/CuaHangDungCu/app/controllers/employee/delete_item_cart.php",
+            url: "/CuaHangGiaDung/app/controllers/employee/delete_item_cart.php",
             data: {
                 action: "remove_cart",
                 idSanPham: idSanPham,
@@ -245,7 +245,7 @@ $(document).ready(function () {
         const query = $(this).val(); // Lấy giá trị input
     
         $.ajax({
-            url: '/CuaHangDungCu/app/controllers/employee/search_product.php',
+            url: '/CuaHangGiaDung/app/controllers/employee/search_product.php',
             method: 'POST',
             data: { query: query },  // Gửi cả khi là chuỗi trống
             success: function (data) {
@@ -264,7 +264,7 @@ $(document).ready(function () {
         if (phone.length > 0) {
             // Gửi yêu cầu AJAX nếu có giá trị trong input
             $.ajax({
-                url: '/CuaHangDungCu/app/controllers/employee/search_customer.php',
+                url: '/CuaHangGiaDung/app/controllers/employee/search_customer.php',
                 method: 'POST',
                 data: { phone: phone },
                 success: function (data) {
@@ -345,7 +345,7 @@ function dsDonHangCoIdKH() {
 
     $.ajax({
         type: "POST",
-        url: "/CuaHangDungCu/app/controllers/employee/payment_customer.php",
+        url: "/CuaHangGiaDung/app/controllers/employee/payment_customer.php",
         data: {
             action: "CustomerId",
             idKhachHang: idKhachHang,
@@ -414,7 +414,7 @@ function dsDonHangKhongCoThongTin() {
 
     $.ajax({
         type: "POST",
-        url: "/CuaHangDungCu/app/controllers/employee/payment_no_acc.php",
+        url: "/CuaHangGiaDung/app/controllers/employee/payment_no_acc.php",
         data: {
             action: "NoAcc",
             idNhanVien: idNhanVien,

@@ -1,6 +1,6 @@
 .header{
     height: 80px;
-    background-color: rgb(24, 24, 24);
+    background-color: #ff6900;
     position: fixed;
     top: 0;
     width: 100%; 
@@ -43,7 +43,7 @@
 }
 
 .nav{
-    background-color: rgb(30, 31, 32);
+    background-color: #ff6900;
 }
 
 .list_tool{

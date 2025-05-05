@@ -1,6 +1,6 @@
 <?php
 
-include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/config/connect.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangGiaDung/config/connect.php");
 
 // Bật chế độ ngoại lệ cho MySQLi
 $conn->report_mode = MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT;
@@ -40,11 +40,11 @@ if (!$result_ctsp_cthd->num_rows > 0) {
 
     echo "<script>
             alert('Đã xóa sản phẩm thành công');
-            window.location.href = '/CuaHangDungCu/public/manager/index.php?page=sanpham';
+            window.location.href = '/CuaHangGiaDung/public/manager/index.php?page=sanpham';
             </script>";
 } else {
     echo "<script>
             alert('Không thể xóa sản phẩm đã được bán');
-            window.location.href = '/CuaHangDungCu/public/manager/index.php?page=sanpham';
+            window.location.href = '/CuaHangGiaDung/public/manager/index.php?page=sanpham';
             </script>";
 }

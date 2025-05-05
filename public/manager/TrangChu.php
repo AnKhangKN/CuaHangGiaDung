@@ -1,6 +1,6 @@
 <?php
 
-include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/config/connect.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangGiaDung/config/connect.php");
     
 
 ?>
