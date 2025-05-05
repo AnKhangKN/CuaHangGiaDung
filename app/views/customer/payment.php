@@ -50,7 +50,7 @@ if (isset($_SESSION['user_id'])) {
                     <div class="col-lg-7 container_left">
                         
                         <div class="title">
-                            <p>HKN STORE VIETNAM</p>
+                            <p><img src="../public/assets/images/Logo_unie.webp" alt="" srcset=""> STORE VIETNAM</p>
                         </div>
                         <div class="container_infor_payment">
                             <div class="infor_payment_title">
@@ -276,7 +276,7 @@ if (isset($_SESSION['user_id'])) {
                                 }else{
                                     ?>
                                     
-                                    <button id="btn_confirm_account">Xác nhận để đặt hàng <div class="loader "></div></button>
+                                    <button style="background-color: #f66526" id="btn_confirm_account">Xác nhận để đặt hàng <div class="loader "></div></button>
                                     
                                     <?php
                                 }

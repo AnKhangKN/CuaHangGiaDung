@@ -41,8 +41,8 @@
                     </div>
 
                     <div class="introduce_img">
-                        <img src="../public/assets/images/logo_trang.jpg" alt="">
-                        <h2>HKN store xin chào</h2>
+                        <img src="../public/assets/images/Logo_unie.webp" alt="">
+                        
                     </div>
                 </div>
             </div>

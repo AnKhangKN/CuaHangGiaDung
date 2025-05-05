@@ -23,9 +23,6 @@
     <!-- css products -->
     <link rel="stylesheet" href="../public/assets/css/customer/product.css">
 
-    <!-- css news -->
-    <link rel="stylesheet" href="../public/assets/css/customer/news.css">
-
     <!-- css introduce -->
     <link rel="stylesheet" href="../public/assets/css/customer/introduce.css">
 
@@ -61,7 +58,7 @@
                     <i class="fa-solid fa-bars fa-lg" id="menu_icon"></i>
                 </div>
                 <div class="nav_logo">
-                    <a href="index.php"><img src="../public/assets/images/Logo_unie.webp" class="nav_logo_img" alt="HKN store"></a>                  
+                    <a href="index.php"><img src="../public/assets/images/logo_xam_unie.jpg" class="nav_logo_img" alt="HKN store"></a>                  
                 </div>
                 <ul class="nav_ul_list text-white" id="menu">
                     <li class="nav_ul_list_item header_link_next">
@@ -110,9 +107,7 @@
                     </li>
 
 
-                    <li class="nav_ul_list_item header_link_next">
-                        <a href="index.php?page=news" class="nav_ul_list_item_link">Tin tức</a>
-                    </li>
+                
                     <li class="nav_ul_list_item header_link_next">
                         <a href="index.php?page=introduce" class="nav_ul_list_item_link">Giới thiệu</a>
                     </li>

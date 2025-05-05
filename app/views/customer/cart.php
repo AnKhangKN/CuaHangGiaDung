@@ -129,8 +129,8 @@
                                     <div class="payment_contents_action_erorr">
                                         <p>Giỏ hàng của bạn hiện chưa đạt mức tối thiểu để thanh toán.</p>
                                     </div>
-                                    <div class="payment_contents_action_btn" >
-                                    <a id="pay_page" href="index.php?page=payment" >Thanh toán</a>
+                                    <div class="payment_contents_action_btn" style="background-color: #f66526">
+                                    <a id="pay_page" href="index.php?page=payment"  >Thanh toán</a>
                                     </div>
                                     
                                 </div>
