@@ -10,14 +10,14 @@ html {
 }
 
 :root {
-  --main-color: #414d6e;
+  --main-color: #e7a285;
   --first-color: #f66526;
-  --second-color: #25afb4;
+  --second-color: #f16625;
   --third-color: #f66526;
   --white-color: #ededed;
-  --blue-color: #0061f2;
+  --blue-color: #f16625;
   --yellow-color: #f4a100;
-  --green-color: #00ac69;
+  --green-color: #f16625;
   --red-color: #e81500;
   --gray-color: #f66526;
 
@@ -320,7 +320,7 @@ a {
   background-color: var(--green-color);
   color: var(--white-color);
   padding: 12px 26px;
-  border-radius: 25px;
+  border-radius: 4px;
   border: none;
 }
 
@@ -694,6 +694,7 @@ a {
 
 .content__modal-body-input {
   width: 400px;
+  height: 46px;
   outline: none;
   padding: 4px;
   border-radius: 10px;
