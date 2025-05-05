@@ -4,11 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin HKN store</title>
+    <link rel="stylesheet" href="../../app/views/manager/assets/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<<<<<<< HEAD
     <link rel="icon" type="image/x-icon" href="/CuaHangGiaDung/public/assets/images/logo_trang.jpg">
     <link rel="stylesheet" href="/CuaHangGiaDung/app/views/manager/assets/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="/CuaHangGiaDung/vendor/fontawesome-free-6.6.0-web/css/all.css">
+=======
+    <link rel="icon" type="image/x-icon" href="../../public/assets/images/logo_trang.jpg">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../vendor/fontawesome-free-6.6.0-web/css/all.min.css">
+>>>>>>> 5096cfbe63074b4db946ac854d3be1cfcf5c2769
 </head>
 <body id="body">
 <div class="l-navbar" id="navbar">

@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangGiaDung/config/connect.php");
+=======
+include "../../config/connect.php";
+>>>>>>> 5096cfbe63074b4db946ac854d3be1cfcf5c2769
 
 function test_input($data)
 {
