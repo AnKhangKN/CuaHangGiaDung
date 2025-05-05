@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin UNIE</title>
-    <link rel="stylesheet" href="../../app/views/manager/assets/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="icon" type="image/x-icon" href="../../public/assets/images/logo_trang.jpg">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../../vendor/fontawesome-free-6.6.0-web/css/all.min.css">
-    <link rel="stylesheet" href="../../vendor/bootstrap-5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../app/views/manager/assets/css/style.css">
+    <!-- <link rel="stylesheet" href="../../vendor/bootstrap-5.3.3/dist/css/bootstrap.min.css"> -->
     
 </head>
 <body id="body">
@@ -17,7 +17,7 @@
         <div class="nav">
             <div>
                 <a href="/CuaHangGiaDung/public/manager/index.php" class="nav__logo">
-                    <img src="/CuaHangGiaDung/public/assets/images/logo_trang.jpg" alt="" class="nav__logo-icon">
+                    <img src="/CuaHangGiaDung/public/assets/images/logo_cam.webp" alt="" class="nav__logo-icon">
                     <span class="nav__logo-text">HKN store</span>
                 </a>
 
