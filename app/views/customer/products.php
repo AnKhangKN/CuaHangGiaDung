@@ -20,7 +20,7 @@
 
             <!-- banner top -->
             <div class="banner_products_top">
-                <img src="../public/assets/images/sliders/slider_demo_3.jpg" alt="Banner">
+                <img src="../public/assets/images/sliders/banner10801.webp" alt="Banner">
             </div>
             <!-- all products -->
             <!-- all products top -->

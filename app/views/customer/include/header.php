@@ -61,7 +61,7 @@
                     <i class="fa-solid fa-bars fa-lg" id="menu_icon"></i>
                 </div>
                 <div class="nav_logo">
-                    <a href="index.php"><img src="../public/assets/images/logo_den.jpg" class="nav_logo_img" alt="HKN store"></a>                  
+                    <a href="index.php"><img src="../public/assets/images/Logo_unie.webp" class="nav_logo_img" alt="HKN store"></a>                  
                 </div>
                 <ul class="nav_ul_list text-white" id="menu">
                     <li class="nav_ul_list_item header_link_next">
