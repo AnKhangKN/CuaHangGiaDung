@@ -12,7 +12,7 @@
                     </a>
                     <a href="#" class="footer_content_item">
                         <i class="fa-solid fa-envelope"></i>
-                        <span>hknstore@gmail.com</span> 
+                        <span>uniestore@gmail.com</span> 
                     </a>
                     <a href="#" class="footer_content_item">
                         <i class="fa-solid fa-paper-plane"></i>

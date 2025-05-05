@@ -106,15 +106,7 @@
                                     <span class="products_details_info_title_name"><?php echo htmlentities($ProductId['tensanpham'])?></span>
                                 </div>
                                 <div class="products_details_info_price">
-                                    <!-- <div class="products_details_info_price_under">
-                                        <div class="products_details_info_price_under_promotion">
-                                            
-                                            <span>40%</span>
-                                        </div>
-                                        
-                                        
-                                        <del>160.000đ</del>
-                                    </div> -->
+                                
                                     <!-- giá hiệ tại -->
                                     <span class="products_details_info_price_new">
                                     <?php echo number_format($ProductId['dongia'],0,',','.') ?> 
@@ -236,7 +228,7 @@
                                         </button>
                                     </div>
                                     <div class="products_details_info_add_btn col-lg-8">
-                                        <button class="add_cart">Thêm vào giỏ hàng</button>
+                                        <button class="add_cart" style="background-color: #f66526">Thêm vào giỏ hàng</button>
                                         
                                     </div>
                                 </div>
@@ -244,18 +236,7 @@
                             </form>
                         </div>
 
-                        <div class="products_details_sub_info row">
-                            <div class="col-lg-6">
-                                <div class="products_details_sub_info_text">
-                                    <p>Freeship đơn hàng giá trị trên 1 triệu đồng</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="products_details_sub_info_text">
-                                    <p>Đổi hàng chưa qua sử dụng trong vòng 30 ngày</p>
-                                </div>
-                            </div>
-                        </div>
+                        
 
                         <div class="info_product">
                             <div class="info_product_title">
