@@ -4,38 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- bootstrap -->
-    <link rel="stylesheet" href="/CuaHangDungCu/vendor/bootstrap-5.3.3/dist/css/bootstrap.min.css">
-    <script src="/CuaHangDungCu/vendor/bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/CuaHangGiaDung/vendor/bootstrap-5.3.3/dist/css/bootstrap.min.css">
+    <script src="/CuaHangGiaDung/vendor/bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- fontawesome -->
-    <link rel="stylesheet" href="/CuaHangDungCu/vendor/fontawesome-free-6.6.0-web/css/all.min.css">
+    <link rel="stylesheet" href="/CuaHangGiaDung/vendor/fontawesome-free-6.6.0-web/css/all.min.css">
 
     <!-- css header -->
-    <link rel="stylesheet" href="/CuaHangDungCu/public/assets/css/customer/header.css">
+    <link rel="stylesheet" href="/CuaHangGiaDung/public/assets/css/customer/header.css">
 
     <!-- css home -->
-    <link rel="stylesheet" href="/CuaHangDungCu/public/assets/css/customer/home.css">
+    <link rel="stylesheet" href="/CuaHangGiaDung/public/assets/css/customer/home.css">
 
     <!-- css products -->
-    <link rel="stylesheet" href="/CuaHangDungCu/public/assets/css/customer/product.css">
+    <link rel="stylesheet" href="/CuaHangGiaDung/public/assets/css/customer/product.css">
 
     <!-- css news -->
-    <link rel="stylesheet" href="/CuaHangDungCupublic/assets/css/customer/news.css">
+    <link rel="stylesheet" href="/CuaHangGiaDungpublic/assets/css/customer/news.css">
 
     <!-- css introduce -->
-    <link rel="stylesheet" href="/CuaHangDungCu/public/assets/css/customer/introduce.css">
+    <link rel="stylesheet" href="/CuaHangGiaDung/public/assets/css/customer/introduce.css">
 
     <!-- css contact -->
-    <link rel="stylesheet" href="/CuaHangDungCu/public/assets/css/customer/contact.css">
+    <link rel="stylesheet" href="/CuaHangGiaDung/public/assets/css/customer/contact.css">
 
     <!-- css cart -->
-    <link rel="stylesheet" href="/CuaHangDungCu/public/assets/css/customer/cart.css">
+    <link rel="stylesheet" href="/CuaHangGiaDung/public/assets/css/customer/cart.css">
 
     <!-- css 404 -->
-    <link rel="stylesheet" href="/CuaHangDungCu/public/assets/css/customer/404.css">
+    <link rel="stylesheet" href="/CuaHangGiaDung/public/assets/css/customer/404.css">
 
     <!-- css footer -->
-    <link rel="stylesheet" href="/CuaHangDungCu/public/assets/css/customer/footer.css">
+    <link rel="stylesheet" href="/CuaHangGiaDung/public/assets/css/customer/footer.css">
 
     
 
@@ -48,7 +48,7 @@
                     <i class="fa-solid fa-bars fa-lg" id="menu_icon"></i>
                 </div>
                 <div class="nav_logo">
-                    <a href="#"><img src="/CuaHangDungCu/public/assets/images/logo_den.jpg" class="nav_logo_img" alt="HKN store"></a>                  
+                    <a href="#"><img src="/CuaHangGiaDung/public/assets/images/logo_den.jpg" class="nav_logo_img" alt="HKN store"></a>                  
                 </div>
                 <ul class="nav_ul_list text-white" id="menu">
                     <li class="nav_ul_list_item header_link_next">
@@ -150,7 +150,7 @@
                     <div class="title_error">
                         <p class="title_error_item">Trang bạn truy cập không tồn tại</p>
                         <p class="title_error_content">Hãy kiểm tra lại đường dẫn <span>
-                            <a style="color: #333; text-decoration: none; font-size: 18px; font-weight: 500;" href="/CuaHangDungCu/public/index.php">nhấn vào để trở lại</a></span></p>
+                            <a style="color: #333; text-decoration: none; font-size: 18px; font-weight: 500;" href="/CuaHangGiaDung/public/index.php">nhấn vào để trở lại</a></span></p>
                     </div>
                 </div>
                 
@@ -197,8 +197,8 @@
                 <p class="text-center" style="margin-bottom: 0;">Bản quyền © 2024 bởi HKN store</p>
             </div>
         </footer>
-    <script src="/CuaHangDungCu/public/assets/js/customer/header.js"></script>
+    <script src="/CuaHangGiaDung/public/assets/js/customer/header.js"></script>
 
-    <script src="/CuaHangDungCu/public/assets/js/customer/home.js"></script>
+    <script src="/CuaHangGiaDung/public/assets/js/customer/home.js"></script>
 </body>
 </html>

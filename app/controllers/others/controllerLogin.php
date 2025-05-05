@@ -3,8 +3,8 @@
 session_start();
 
 // Bao gồm các tệp cần thiết cho quản lý session và kết nối cơ sở dữ liệu
-include '../../../config/session.php';
-include '../../../config/connectdb.php';
+include '../../../../CuaHangGiaDung/config/session.php';
+include '../../../../CuaHangGiaDung/config/connectdb.php';
 
 // Kết nối đến cơ sở dữ liệu
 $conn = connectBD();

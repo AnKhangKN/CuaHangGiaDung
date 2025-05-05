@@ -18,11 +18,11 @@
         $comment = checkComment($idBill);
 
         if(!$DetailBillid){
-            header('Location: http://localhost/CuaHangDungCu/index.php?page=information');
+            header('Location: http://localhost/CuaHangGiaDung/index.php?page=information');
         }
     } else {
         
-        header('Location: http://localhost/CuaHangDungCu/index.php?page=information');
+        header('Location: http://localhost/CuaHangGiaDung/index.php?page=information');
     }
 
 ?>
@@ -87,7 +87,7 @@
                                 if($Bill['trangthai'] == 2){
                                     ?>
 
-                                    <a class="btn btn-dark text-white" href="/CuaHangDungCu/app/controllers/customer/paint_bill.php?idBill=<?php echo htmlentities($idBill)?>">Xuất hóa đơn</a>
+                                    <a class="btn btn-dark text-white" href="/CuaHangGiaDung/app/controllers/customer/paint_bill.php?idBill=<?php echo htmlentities($idBill)?>">Xuất hóa đơn</a>
                                     
                                     <?php
                                 }else{
