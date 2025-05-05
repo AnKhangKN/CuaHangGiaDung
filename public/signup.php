@@ -24,7 +24,7 @@
 
     <div class="container-fluid mx-auto mt-0 wrapper">
     <header class="header">
-        <img src="../public/assets/images/logo_trang.jpg" class="header_logo" alt="logo_trang">
+        <img src="../public/assets/images/Logo.webp" class="header_logo" alt="logo_trang">
         <p class="header_title">Hãy đăng ký tài khoản và tham gia mua sắm cùng chúng tôi</p>
     </header>
     <main class="main">
