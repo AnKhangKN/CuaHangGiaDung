@@ -24,7 +24,7 @@
                 <ul class="nav__list">
 
                     <a href="/CuaHangGiaDung/public/manager/index.php?page=sanpham" class="nav__link">
-                        <i class='fa-solid fa-basketball nav__icon'></i>
+                        <i class="fa-solid fa-cart-shopping nav__icon"></i>
                         <span class="nav__text">Sản phẩm</span>
                     </a>
 
