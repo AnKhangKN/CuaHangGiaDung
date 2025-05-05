@@ -351,7 +351,6 @@ a {
 }
 
 .content__header-form-search-cost-input {
-  border-radius: 25px;
   outline-color: var(--blue-color);
   border: 1px solid #ddd;
   padding: 10px;
@@ -363,7 +362,6 @@ a {
   border: none;
   font-size: 16px;
   padding: 10px 14px;
-  border-radius: 25px;
   color: var(--white-color);
   background-color: var(--blue-color);
 }
@@ -373,7 +371,6 @@ a {
   font-size: 16px;
   padding: 10px 24px;
   border: 1px solid #ccc;
-  border-radius: 20px 0 0 20px;
   outline-color: var(--blue-color);
 }
 
@@ -381,7 +378,6 @@ a {
   border: none;
   font-size: 16px;
   padding: 10px 14px;
-  border-radius: 0 20px 20px 0;
   color: var(--white-color);
   background-color: var(--blue-color);
 }
