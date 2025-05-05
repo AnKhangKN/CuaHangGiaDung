@@ -5,7 +5,7 @@ function connectBD(){
     $server = "localhost";
     $user = "root";
     $pass = "";
-    $dbname = "giadungwebb"; //tên cơ sở dữ liệu
+    $dbname = "ql_ch_hkn"; //tên cơ sở dữ liệu
 
     $conn = mysqli_connect($server, $user, $pass, $dbname);
 
