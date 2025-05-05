@@ -41,7 +41,7 @@
         <p  class="main_title">HKN Store – Mua thông minh, sắm chất lượng.</p>
 
         <div class="btn_container">
-            <a href="http://localhost/CuaHangDungCu/public/signup.php" style="text-decoration: none; color: #333;" class="back">Trở lại</a>
+            <a href="http://localhost/CuaHangGiaDung/public/signup.php" style="text-decoration: none; color: #333;" class="back">Trở lại</a>
             <button id="Confirm" class="continue">Hoàn thành đăng kí</button>
         </div>
         

@@ -1,7 +1,7 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/CuaHangDungCu/app/controllers/customer/customerController.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/CuaHangDungCu/config/connectdb.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/CuaHangGiaDung/app/controllers/customer/customerController.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/CuaHangGiaDung/config/connectdb.php';
 
 
 if(isset($_GET['query'])){

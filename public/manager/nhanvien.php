@@ -1,6 +1,6 @@
 <?php
 
-include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/config/connect.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangGiaDung/config/connect.php");
 
 function test_input($data)
 {
@@ -49,17 +49,17 @@ if (isset($_POST["product__sumit"])) {
     if ($result_check_sdt->num_rows > 0) {
         echo "<script>
         alert('Số điện thoại đã tồn tại.');
-        window.location.href = '/CuaHangDungCu/public/manager/index.php?page=nhanvien';
+        window.location.href = '/CuaHangGiaDung/public/manager/index.php?page=nhanvien';
         </script>";
     }else if ($result_check_cccd->num_rows > 0) {
         echo "<script>
         alert('Số căn cước công dân đã tồn tại.');
-        window.location.href = '/CuaHangDungCu/public/manager/index.php?page=nhanvien';
+        window.location.href = '/CuaHangGiaDung/public/manager/index.php?page=nhanvien';
         </script>";
     } else if ($result_check_email->num_rows > 0) {
         echo "<script>
         alert('Email đã tồn tại.');
-        window.location.href = '/CuaHangDungCu/public/manager/index.php?page=nhanvien';
+        window.location.href = '/CuaHangGiaDung/public/manager/index.php?page=nhanvien';
         </script>";
     } else {
         // Bắt đầu giao dịch
@@ -86,14 +86,14 @@ if (isset($_POST["product__sumit"])) {
 
             echo "<script>
             alert('Thêm nhân viên thành công.');
-            window.location.href = '/CuaHangDungCu/public/manager/index.php?page=nhanvien';
+            window.location.href = '/CuaHangGiaDung/public/manager/index.php?page=nhanvien';
             </script>";
         } catch (Exception $e) {
             // Hủy giao dịch nếu có lỗi
             $conn->rollback();
             echo "<script>
             alert('Lỗi thêm nhân viên.');
-            window.location.href = '/CuaHangDungCu/public/manager/index.php?page=nhanvien';
+            window.location.href = '/CuaHangGiaDung/public/manager/index.php?page=nhanvien';
             </script>";
         }
     }
@@ -106,7 +106,7 @@ $current_page = !empty($_GET["pages"]) ? $_GET["pages"] : 1;
 $offset = ($current_page - 1) * $item_per_page;
 
 if ($search_nhanvien) {
-    include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/app/views/manager/includes/header.php");
+    include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangGiaDung/app/views/manager/includes/header.php");
     $sql_nv_tk = "SELECT * FROM nhanvien nv JOIN taikhoan tk ON nv.idTaiKhoan = tk.idTaiKhoan
                 WHERE nv.tennhanvien LIKE '%" . $search_nhanvien . "%'
                 OR nv.sdt LIKE '%" . $search_nhanvien . "%' 
@@ -145,7 +145,7 @@ $totalPages = ceil($totalNumber / $item_per_page);
                 Thêm nhân viên
             </button>
 
-            <form action="/CuaHangDungCu/public/manager/nhanvien.php" class="content__header-form-search">
+            <form action="/CuaHangGiaDung/public/manager/nhanvien.php" class="content__header-form-search">
                 <input type="text" name="search_nhanvien" required class="content__header-form-search-text" placeholder="Tìm kiếm tên, sdt, cccd, email nhân viên">
 
                 <button type="submit" class="content__header-form-search-submit">
@@ -206,7 +206,7 @@ $totalPages = ceil($totalNumber / $item_per_page);
                                 <td class="content__body-td">
                                     <!-- <button class="content__body-td__btn-see view-nhanvien js_content__body-td__btn-see" data-id="<?php echo $row_nv_tk['idNhanVien'] ?>">xem</button> -->
 
-                                    <form action="/CuaHangDungCu/app/controllers/manager/editNhanVien.php" class="content__body-td-form" method="POST">
+                                    <form action="/CuaHangGiaDung/app/controllers/manager/editNhanVien.php" class="content__body-td-form" method="POST">
                                         <input type="hidden" name="idNhanVien" value="<?php echo $row_nv_tk["idNhanVien"] ?>">
                                         <input type="hidden" name="idTaiKhoan" value="<?php echo $row_nv_tk["idTaiKhoan"] ?>">
                                         <input type="submit" class="content__body-td__btn-edit" value="sửa">
@@ -223,7 +223,7 @@ $totalPages = ceil($totalNumber / $item_per_page);
                 </tbody>
             </table>
 
-            <?php include $_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/app/controllers/manager/paginationNhanVien.php" ?>
+            <?php include $_SERVER['DOCUMENT_ROOT'] . "/CuaHangGiaDung/app/controllers/manager/paginationNhanVien.php" ?>
         </div>
     </div>
 </div>
@@ -334,5 +334,5 @@ $totalPages = ceil($totalNumber / $item_per_page);
 </div>
 
 <?php
-include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/app/views/manager/includes/footer.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangGiaDung/app/views/manager/includes/footer.php");
 ?>

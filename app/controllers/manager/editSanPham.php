@@ -1,6 +1,6 @@
 <?php
 
-include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/config/connect.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangGiaDung/config/connect.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $idSanPham = $_POST['idSanPham'] ?? null;
@@ -84,7 +84,7 @@ if (isset($_POST["product__sumit"])) {
             $stmt3->execute();
 
             // Đoạn mã xử lý phần thêm nhiều ảnh
-            $image_path = 'C:/xampp/htdocs/CuaHangDungCu/public/assets/images/products/';
+            $image_path = 'C:/xampp/htdocs/CuaHangGiaDung/public/assets/images/products/';
             if (isset($_FILES['hinhanhurl']) && !empty($_FILES['hinhanhurl']['name'][0])) {
                 foreach ($_FILES['hinhanhurl']['name'] as $key => $image_name) {
                     if ($_FILES['hinhanhurl']['error'][$key] === UPLOAD_ERR_OK) {
@@ -107,18 +107,18 @@ if (isset($_POST["product__sumit"])) {
             } else {
                 echo "<script>
                 alert('Vui lòng chọn ít nhất 1 ảnh');
-                window.location.href = '/CuaHangDungCu/app/controllers/manager/editSanPham.php';
+                window.location.href = '/CuaHangGiaDung/app/controllers/manager/editSanPham.php';
                 </script>";
             }
 
-            move_uploaded_file($image_tmp_name, 'C:/xampp/htdocs/CuaHangDungCu/public/assets/images/product/' . $image);
+            move_uploaded_file($image_tmp_name, 'C:/xampp/htdocs/CuaHangGiaDung/public/assets/images/product/' . $image);
         } else {
             $stmt4 = $conn->prepare("INSERT INTO hinhanhsanpham (urlhinhanh, idSanPham) VALUES (?, ?)");
             $stmt4->bind_param("si", $image, $idSanPham);
             $stmt4->execute();
 
             // Đoạn mã xử lý phần thêm nhiều ảnh
-            $image_path = 'C:/xampp/htdocs/CuaHangDungCu/public/assets/images/products/';
+            $image_path = 'C:/xampp/htdocs/CuaHangGiaDung/public/assets/images/products/';
             if (isset($_FILES['hinhanhurl']) && !empty($_FILES['hinhanhurl']['name'][0])) {
                 foreach ($_FILES['hinhanhurl']['name'] as $key => $image_name) {
                     if ($_FILES['hinhanhurl']['error'][$key] === UPLOAD_ERR_OK) {
@@ -141,23 +141,23 @@ if (isset($_POST["product__sumit"])) {
             } else {
                 echo "<script>
                 alert('Vui lòng chọn ít nhất 1 ảnh');
-                window.location.href = '/CuaHangDungCu/app/controllers/manager/editSanPham.php';
+                window.location.href = '/CuaHangGiaDung/app/controllers/manager/editSanPham.php';
                 </script>";
             }
-            move_uploaded_file($image_tmp_name, 'C:/xampp/htdocs/CuaHangDungCu/public/assets/images/product/' . $image);
+            move_uploaded_file($image_tmp_name, 'C:/xampp/htdocs/CuaHangGiaDung/public/assets/images/product/' . $image);
         }
     } catch (Exception $e) {
         // Nếu có lỗi, rollback giao dịch
         $conn->rollback();
         echo "<script>
             alert('Không thể sửa sản phẩm này.');
-            window.location.href = '/CuaHangDungCu/public/manager/index.php?page=sanpham';
+            window.location.href = '/CuaHangGiaDung/public/manager/index.php?page=sanpham';
             </script>";
     }
 
     echo "<script>
             alert('Sửa sản phẩm thành công.');
-            window.location.href = '/CuaHangDungCu/public/manager/index.php?page=sanpham';
+            window.location.href = '/CuaHangGiaDung/public/manager/index.php?page=sanpham';
             </script>";
 }
 
@@ -172,61 +172,61 @@ if (isset($_POST["product__sumit"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin HKN store</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="icon" type="image/x-icon" href="/CuaHangDungCu/public/assets/images/logo_trang.jpg">
-    <link rel="stylesheet" href="/CuaHangDungCu/app/views/manager/assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="/CuaHangGiaDung/public/assets/images/logo_trang.jpg">
+    <link rel="stylesheet" href="/CuaHangGiaDung/app/views/manager/assets/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="/CuaHangDungCu/vendor/fontawesome-free-6.6.0-web/css/all.css">
+    <link rel="stylesheet" href="/CuaHangGiaDung/vendor/fontawesome-free-6.6.0-web/css/all.css">
 </head>
 
 <body id="body">
     <div class="l-navbar" id="navbar">
         <div class="nav">
             <div>
-                <a href="/CuaHangDungCu/public/manager/index.php" class="nav__logo">
-                    <img src="/CuaHangDungCu/public/assets/images/logo_trang.jpg" alt="" class="nav__logo-icon">
+                <a href="/CuaHangGiaDung/public/manager/index.php" class="nav__logo">
+                    <img src="/CuaHangGiaDung/public/assets/images/logo_trang.jpg" alt="" class="nav__logo-icon">
                     <span class="nav__logo-text">HKN store</span>
                 </a>
 
                 <ul class="nav__list">
 
-                    <a href="/CuaHangDungCu/public/manager/index.php?page=sanpham" class="nav__link">
+                    <a href="/CuaHangGiaDung/public/manager/index.php?page=sanpham" class="nav__link">
                         <i class='fa-solid fa-basketball nav__icon'></i>
                         <span class="nav__text">Sản phẩm</span>
                     </a>
 
-                    <a href="/CuaHangDungCu/public/manager/index.php?page=danhmuc" class="nav__link">
+                    <a href="/CuaHangGiaDung/public/manager/index.php?page=danhmuc" class="nav__link">
                         <i class='fa-solid fa-list nav__icon'></i>
                         <span class="nav__text">DM sản phẩm</span>
                     </a>
 
-                    <a href="/CuaHangDungCu/public/manager/index.php?page=nhanvien" class="nav__link">
+                    <a href="/CuaHangGiaDung/public/manager/index.php?page=nhanvien" class="nav__link">
                         <i class='fa-regular fa-user nav__icon'></i>
                         <span class="nav__text">Nhân viên</span>
                     </a>
 
-                    <a href="/CuaHangDungCu/public/manager/index.php?page=khachhang" class="nav__link">
+                    <a href="/CuaHangGiaDung/public/manager/index.php?page=khachhang" class="nav__link">
                         <i class='fa-solid fa-person nav__icon'></i>
                         <span class="nav__text">Khách hàng</span>
                     </a>
 
-                    <a href="/CuaHangDungCu/public/manager/index.php?page=nhacungcap" class="nav__link">
+                    <a href="/CuaHangGiaDung/public/manager/index.php?page=nhacungcap" class="nav__link">
                         <i class="fa-solid fa-house nav__icon"></i>
                         <span class="nav__text">Nhà cung cấp</span>
                     </a>
 
-                    <a href="/CuaHangDungCu/public/manager/index.php?page=donhang" class="nav__link">
+                    <a href="/CuaHangGiaDung/public/manager/index.php?page=donhang" class="nav__link">
                         <i class='fa-solid fa-box nav__icon'></i>
                         <span class="nav__text">Đơn hàng</span>
                     </a>
 
-                    <a href="/CuaHangDungCu/public/manager/index.php?page=thongke" class="nav__link">
+                    <a href="/CuaHangGiaDung/public/manager/index.php?page=thongke" class="nav__link">
                         <i class='fa-solid fa-chart-pie nav__icon'></i>
                         <span class="nav__text">Thống kê</span>
                     </a>
                 </ul>
             </div>
 
-            <a href="/CuaHangDungCu/public/manager/index.php?page=dangxuat" class="nav__link">
+            <a href="/CuaHangGiaDung/public/manager/index.php?page=dangxuat" class="nav__link">
                 <i class='fa-solid fa-right-from-bracket nav__icon'></i>
                 <span class="nav__text">Đăng xuất</span>
             </a>
@@ -240,7 +240,7 @@ if (isset($_POST["product__sumit"])) {
             </div>
 
             <div class="header__home">
-                <a href="/CuaHangDungCu/public/manager/index.php">
+                <a href="/CuaHangGiaDung/public/manager/index.php">
                     <h3>Trang chủ</h3>
                 </a>
             </div>
@@ -274,7 +274,7 @@ if (isset($_POST["product__sumit"])) {
 
                     <div class="content__body">
 
-                        <form action="/CuaHangDungCu/app/controllers/manager/editSanPham.php" method="POST" class="content__body-from" enctype="multipart/form-data">
+                        <form action="/CuaHangGiaDung/app/controllers/manager/editSanPham.php" method="POST" class="content__body-from" enctype="multipart/form-data">
 
                             <input type="hidden" name="idSanPham" value="<?php echo $idSanPham; ?>">
                             <input type="hidden" name="idChiTietSanPham" value="<?php echo $idChiTietSanPham; ?>">
@@ -360,7 +360,7 @@ if (isset($_POST["product__sumit"])) {
                                     ?>
 
                                     <label for="" class="content__modal-body-label">Hình ảnh sản phẩm: </label>
-                                    <img class="content__body-td-img" width="40" height="50" src="http://localhost/CuaHangDungCu/public/assets/images/products/<?php echo $row__hinhanhsp["urlhinhanh"]; ?>" alt="Hinh anh san pham">
+                                    <img class="content__body-td-img" width="40" height="50" src="http://localhost/CuaHangGiaDung/public/assets/images/products/<?php echo $row__hinhanhsp["urlhinhanh"]; ?>" alt="Hinh anh san pham">
                                     <input require type="file" name="urlhinhanh" id="" class="">
 
 
@@ -418,7 +418,7 @@ if (isset($_POST["product__sumit"])) {
                                     <input require type="file" name="hinhanhurl[]" id="" class="" multiple> <!-- Chọn nhiều ảnh -->
                                     <div class="content__modal-body-image-gallery">
                                         <?php foreach ($images as $image): ?>
-                                            <img class="content__modal-body-image-gallery_item" src="http://localhost/CuaHangDungCu/public/assets/images/products/<?php echo htmlspecialchars($image); ?>" alt="Hình ảnh sản phẩm">
+                                            <img class="content__modal-body-image-gallery_item" src="http://localhost/CuaHangGiaDung/public/assets/images/products/<?php echo htmlspecialchars($image); ?>" alt="Hình ảnh sản phẩm">
                                         <?php endforeach; ?>
                                     </div>
                                 </div>
@@ -433,7 +433,7 @@ if (isset($_POST["product__sumit"])) {
 
 
 
-                    <script src="/CuaHangDungCu/app/views/manager/assets/js/main.js"></script>
+                    <script src="/CuaHangGiaDung/app/views/manager/assets/js/main.js"></script>
 
 </body>
 

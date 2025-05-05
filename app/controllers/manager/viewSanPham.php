@@ -1,5 +1,5 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/config/connect.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangGiaDung/config/connect.php");
 
 if (isset($_GET['idSanPham']) && isset($_GET['idChiTietSanPham'])) {
     $idSanPham = $_GET['idSanPham'];
@@ -55,7 +55,7 @@ if (isset($_GET['idSanPham']) && isset($_GET['idChiTietSanPham'])) {
                         <div class="content__body-td-modal-img">
                             <div class="image-container">
                                 <?php foreach ($images as $image): ?>
-                                    <img src="http://localhost/CuaHangDungCu/public/assets/images/products/<?php echo htmlspecialchars($image); ?>" alt="Hình ảnh sản phẩm">
+                                    <img src="http://localhost/CuaHangGiaDung/public/assets/images/products/<?php echo htmlspecialchars($image); ?>" alt="Hình ảnh sản phẩm">
                                 <?php endforeach; ?>
                             </div>
                         </div>
@@ -138,6 +138,6 @@ if (isset($_GET['idSanPham']) && isset($_GET['idChiTietSanPham'])) {
     echo '<div style="text-align: center; font-family: Arial, sans-serif; color: #333;">ID sản phẩm không hợp lệ.</div>';
 }
 
-include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangDungCu/app/views/manager/includes/footer.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/CuaHangGiaDung/app/views/manager/includes/footer.php");
 
 ?>
